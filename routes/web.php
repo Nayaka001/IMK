@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BartenderController;
+use App\Http\Controllers\KasirController;
+use App\Http\Controllers\KitchenController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +18,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
+//Bagian Halaman Awal
+Route::get('/', [LoginController::class, 'index'])->name('index.login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.login');
+
+//Bagian Kitchen
+Route::get('/kitchen', [KitchenController::class, 'index'])->name('index.kitchen');
+
+//Bagian Kasir
+Route::get('/kasir', [KasirController::class, 'index'])->name('index.kasir');
+
+//Bagian Admin
+Route::get('/admin', [AdminController::class, 'index'])->name('index.admin');
+
+//Bagian Bartender
+Route::get('/bartender', [BartenderController::class, 'index'])->name('index.bartender');
