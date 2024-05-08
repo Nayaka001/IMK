@@ -33,3 +33,19 @@ Route::get('/admin', [AdminController::class, 'index'])->name('index.admin');
 
 //Bagian Bartender
 Route::get('/bartender', [BartenderController::class, 'index'])->name('index.bartender');
+
+Route::get('/main', function () {
+    return view('mainmenu');
+});
+Route::get('/new-order', function () {
+    return view('neworder');
+});
+Route::get('/form-dine-in', function () {
+    return view('formnewdine');
+});
+Route::get('/form-take-away', function () {
+    return view('formnewtake');
+});
+Route::get('/form-reserve', function () {
+    return view('formnewres');
+});
