@@ -49,3 +49,6 @@ Route::get('/form-take-away', function () {
 Route::get('/form-reserve', function () {
     return view('formnewres');
 });
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+});
