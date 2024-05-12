@@ -26,7 +26,7 @@ class UserFactory extends Factory
             'id_user' => $this->faker->uuid,
             'level_user' => $this->faker->randomElement(['Admin', 'Kasir', 'Kitchen', 'Bartender', 'Pelayan']),
             'username' => $this->faker->unique()->userName,
-            'password' => $this->faker->password,
+                
             'updated_at' => null,
         ];
     }

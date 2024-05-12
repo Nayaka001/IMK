@@ -11,34 +11,37 @@ class LoginController extends Controller
     public function index(){
         return view('login');
     }
-    public function login(Request $request){
-        $username = $request->input('username');
-        $karyawan = Karyawan::where('username', $username)->first();
-        if ($karyawan) {
-            if (password_verify($request->input('password'), $karyawan->password)) {
-                $request->session()->regenerate();
+    public function authenticate(Request $request){
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+        $credentials = $request->only('username', 'password');
 
-                
-                // elseif ($karyawan->jobdesk === 2) {
-                //     return redirect()->route('index.bartender');
-                // } elseif ($karyawan->jobdesk === 3) {
-                //     return redirect()->route('index.kitchen');
-                // }
-                
+        if (Auth::attempt($credentials)) {
+
+            $request->session()->regenerate();
+
+            $user = Auth::user();
+            
+            if ($user->level_user === 'Kasir') {
+                return redirect()->route('index.kasir')->with('notification', 'Login Berhasil sebagai Kasir');
+            } elseif ($user->level_user === 'Kitchen') {
+                return redirect()->route('index.kasir')->with('notification', 'Login Berhasil sebagai Kasir');
+            } elseif ($user->level_user === 'Bartender') {
+                return redirect()->route('index.bartender')->with('notification', 'Login Berhasil sebagai Kasir');
             }
         }
-        if ($karyawan->jobdesk === 'kasir') {
-            return redirect()->route('index.kasir');
-            
-        }
-        else if($karyawan->jobdesk === 'kitchen') {
-            return redirect()->route('index.kitchen');
-            
-        }
-        else if($karyawan->jobdesk === 'bartender') {
-            return redirect()->route('index.bartender');
-            
-        }
-        return back()->with('loginerror', 'Login Gagal');
+        
+        return back()->with('loginerror', 'Login Gagal, Input yang anda masukkan tidak tersedia');
     }
+    public function logout(){
+        Auth::logout();
+     
+        request()->session()->invalidate();
+     
+        request()->session()->regenerateToken();
+     
+        return redirect('/');
+        }
 }

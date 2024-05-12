@@ -2,19 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Passwords\CanResetPassword;
 
-class User extends Authenticatable
+
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable;
+    use Notifiable, CanResetPassword;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+
+    public $timestamps = false;
+    public $incrementing = false;
+
     protected $fillable = [
         'id_user',
         'level_user',
@@ -23,24 +24,35 @@ class User extends Authenticatable
         'username',
         'password',
     ];
+    
+    protected $primaryKey = 'id_user'; // Nama kolom yang digunakan sebagai identifier
+    public function getAuthIdentifierName()
+    {
+        return 'id_user'; // Nama kolom yang digunakan sebagai identifier
+    }
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public function getAuthIdentifier()
+    {
+        return $this->{$this->getAuthIdentifierName()};
+    }
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-    ];
+    public function getAuthPassword()
+    {
+        return $this->password; // Kolom yang berisi kata sandi pengguna
+    }
+
+    public function getRememberToken()
+    {
+        return $this->remember_token;
+    }
+
+    public function setRememberToken($value)
+    {
+        $this->remember_token = $value;
+    }
+
+    public function getRememberTokenName()
+    {
+        return 'remember_token'; // Nama kolom yang digunakan untuk menyimpan token pengingat sesi
+    }
 }

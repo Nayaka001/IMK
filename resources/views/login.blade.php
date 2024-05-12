@@ -14,6 +14,12 @@
             <h1 class="text-[#FFD369] text-5xl font-bold text-center mt-10">LOGIN</h1>
                 <form action="{{route('login.login')}}" method="POST">
                     @csrf
+                    @if(session('loginerror'))
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                            <strong class="font-bold">Oops!</strong>
+                            <span class="block sm:inline">{{ session('loginerror') }}</span>
+                        </div>
+                    @endif
                     <label for="username" class="mx-10">
                         <span class="block font-semibold mb-1">Username</span>
                         <input type="text" id="username" name="username" placeholder="masukkan username" class="px-3 py-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500" required />
@@ -25,7 +31,9 @@
                         <p id="username" class="pt-1 text-xs"></p>
                     </label>
                     <button id="submitBtn" class="my-28 outline outline-[#FFD369] px-5 py-2 rounded-full text-black font-bold font-inter block mx-auto w-full hover:bg-[#FFD369] hover:text-amber-50 focus:ring focus:ring-[#FFD369]" type="submit">Login</button>
-                </form> 
+                    
+                </form>
+                
             </div>
             <div class="hidden md:flex md:w-1/2 md:mx-0 md:justify-end">
                 <img src="img/bg2.png" alt="" class="md:object-cover">
