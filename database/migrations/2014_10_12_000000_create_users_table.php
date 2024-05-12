@@ -17,9 +17,11 @@ return new class extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
             $table->string('username', 20);
-            $table->string('password', 20);
+            $table->string('password');
         });
+
     }
+    
 
     /**
      * Reverse the migrations.

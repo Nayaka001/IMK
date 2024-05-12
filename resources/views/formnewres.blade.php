@@ -2,7 +2,7 @@
 
 @section('container')
 <div class="mx-auto h-screen bg-[#FFFFF0]">
-        <a href="" class="flex pt-3 pl-5 w-fit">
+        <a href="{{route('kasir.neworder')}}" class="flex pt-3 pl-5 w-fit">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 36 34" fill="none">
                 <path d="M17.0625 31.125L3 17.0625L17.0625 3M4.95312 17.0625H33.4688" stroke="black" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -31,27 +31,57 @@
                 </defs>
               </svg>
             <div class="container flex justify-between relative z-20 mb-4 mx-auto">
-                <a href="">
+                <a href="" id="showForm1">
                     <div class="w-32 h-32 rounded-full bg-[#fffff0] relative mx-3 -mt-14 flex-col shadow-lg group hover:bg-black md:w-40 md:h-40">
-                        <img src="img/iftar.png" width="70" alt="" class="mx-auto pt-1 md:pt-7">
+                        <img src="/img/iftar.png" width="70" alt="" class="mx-auto pt-1 md:pt-7">
                         <h1 class="group-hover:text-white text-center font-bold text-sm md:text-md">Makan di tempat</h1>
                     </div>
                 </a>
-                <a href="">
+                <a href="" id="showForm2">
                     <div class="w-32 h-32 rounded-full bg-[#fffff0] relative mx-3 -mt-36 flex-col drop-shadow-lg group hover:bg-black md:w-40 md:h-40">
-                        <img src="img/bento.png" width="40" alt="" class="mx-auto pt-3 md:pt-7">
+                        <img src="/img/bento.png" width="40" alt="" class="mx-auto pt-3 md:pt-7">
                         <h1 class="text-black text-center font-bold pt-2 group-hover:text-white md:text-lg">Bawa Pulang</h1>
                     </div>
                 </a>
-                <a href="">
+                <a href="" id="showForm3">
                     <div class="w-32 h-32 rounded-full bg-black relative mx-3 -mt-20 flex-col drop-shadow-lg group hover:bg-black md:w-40 md:h-40">
-                        <img src="img/cooking.png" width="60" alt="" class="mx-auto pt-4 md:pt-7">
+                        <img src="/img/cooking.png" width="60" alt="" class="mx-auto pt-4 md:pt-7">
                         <h1 class="text-white text-center font-bold pt-2 group-hover:text-white md:text-lg">Reservasi</h1>
                     </div>
                 </a>
             </div>
         </div>
-        <div class="mx-3 pb-2 md:mx-8">
+        <div id="form1" class="hidden mx-3 pb-2 md:mx-8">
+            <form action="">
+                <label for="nama-pelanggan" class="mx-10">
+                    <span class="block font-semibold">Nama Pelanggan</span>
+                    <input type="text" id="nama-pelanggan" placeholder="Masukkan Nama Pelanggan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
+                    {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
+                </label>
+                <label for="jumlah-orang" class="mx-10">
+                    <span class="block font-semibold">Jumlah Orang</span>
+                    <input type="number" id="jumlah-orang" placeholder="Masukkan Jumlah Orang" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
+                    {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
+                </label>
+                <label for="nomor-meja" class="mx-10">
+                    <span class="block font-semibold">Nomor Meja</span>
+                    <input type="text" id="nomor-meja" placeholder="Masukkan Nomor Meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
+                    {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
+                </label>
+            </form>
+            <button class="my-7 bg-[#FFD369] px-5 py-2 rounded-full text-black font-bold font-inter block mx-auto w-full hover:bg-[#f8dea0] focus:ring focus:ring-[#FFD369]">Selanjutnya</button>
+        </div>
+        <div id="form2" class="hidden mx-3 pb-2 pt-2 md:mx-8">
+            <form action="">
+                <label for="nama-pelanggan" class="mx-10">
+                    <span class="block font-semibold">Nama Pelanggan</span>
+                    <input type="text" id="nama-pelanggan" placeholder="Masukkan Nama Pelanggan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
+                    {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
+                </label>
+            </form>
+            <button class="my-7 bg-[#FFD369] px-5 py-2 rounded-full text-black font-bold font-inter block mx-auto w-full hover:bg-[#f8dea0] focus:ring focus:ring-[#FFD369]">Selanjutnya</button>
+        </div>
+        <div id="form3" class="hidden mx-3 pb-2 md:mx-8">
             <form action="">
                 <label for="nama-pelanggan" class="mx-10">
                     <span class="block font-semibold">Nama Pelanggan</span>
@@ -88,3 +118,125 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+<script>
+    // Fungsi untuk menampilkan atau menyembunyikan formulir "Makan di tempat"
+    document.getElementById('showForm1').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('form1').classList.remove('hidden');
+        document.getElementById('form2').classList.add('hidden');
+        document.getElementById('form3').classList.add('hidden');
+    });
+
+    // Fungsi untuk menampilkan atau menyembunyikan formulir "Bawa Pulang"
+    document.getElementById('showForm2').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('form1').classList.add('hidden');
+        document.getElementById('form2').classList.remove('hidden');
+        document.getElementById('form3').classList.add('hidden');
+    });
+
+    // Fungsi untuk menampilkan atau menyembunyikan formulir "Reservasi"
+    document.getElementById('showForm3').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('form1').classList.add('hidden');
+        document.getElementById('form2').classList.add('hidden');
+        document.getElementById('form3').classList.remove('hidden');
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('form3').classList.remove('hidden');
+    });
+    document.getElementById('showForm3').addEventListener('click', function(event) {
+    event.preventDefault();
+    
+    // Mengubah href
+    this.setAttribute('href', '');
+
+    // Mengubah id
+    this.setAttribute('id', 'showForm3');
+
+    // Mengubah kelas untuk menyesuaikan tampilan
+    this.querySelector('div').classList.remove('bg-[#fffff0]');
+    this.querySelector('div').classList.add('bg-black');
+    this.querySelector('h1').classList.remove('text-black');
+    this.querySelector('h1').classList.add('text-white');
+
+    document.getElementById('showForm1').querySelector('div').classList.remove('bg-black');
+    document.getElementById('showForm1').querySelector('div').classList.add('bg-[#fffff0]');
+    document.getElementById('showForm1').querySelector('h1').classList.remove('text-white');
+    document.getElementById('showForm1').querySelector('h1').classList.add('text-black');
+    document.getElementById('showForm2').querySelector('div').classList.remove('bg-black');
+    document.getElementById('showForm2').querySelector('div').classList.add('bg-[#fffff0]');
+    document.getElementById('showForm2').querySelector('h1').classList.remove('text-white');
+    document.getElementById('showForm2').querySelector('h1').classList.add('text-black');
+
+    // Mengubah teks di dalam h1
+    this.querySelector('h1').textContent = 'Reservasi';
+    document.getElementById('showForm1').querySelector('h1').textContent = 'Makan di tempat';
+    });
+
+    document.getElementById('showForm1').addEventListener('click', function(event) {
+    event.preventDefault();
+    
+    // Mengubah href
+    this.setAttribute('href', '');
+
+    // Mengubah id
+    this.setAttribute('id', 'showForm1');
+
+    // Mengubah kelas untuk menyesuaikan tampilan
+    this.querySelector('div').classList.remove('bg-[#fffff0]');
+    this.querySelector('div').classList.add('bg-black');
+    this.querySelector('h1').classList.remove('text-black');
+    this.querySelector('h1').classList.add('text-white');
+
+    // Mengembalikan tampilan showForm1 ke kelas awalnya
+    document.getElementById('showForm3').querySelector('div').classList.remove('bg-black');
+    document.getElementById('showForm3').querySelector('div').classList.add('bg-[#fffff0]');
+    document.getElementById('showForm3').querySelector('h1').classList.remove('text-white');
+    document.getElementById('showForm3').querySelector('h1').classList.add('text-black');
+
+    document.getElementById('showForm2').querySelector('div').classList.remove('bg-black');
+    document.getElementById('showForm2').querySelector('div').classList.add('bg-[#fffff0]');
+    document.getElementById('showForm2').querySelector('h1').classList.remove('text-white');
+    document.getElementById('showForm2').querySelector('h1').classList.add('text-black');
+
+    // Mengubah teks di dalam h1
+    this.querySelector('h1').textContent = 'Makan di tempat';
+    document.getElementById('showForm3').querySelector('h1').textContent = 'Reservasi';
+    });
+
+
+    document.getElementById('showForm2').addEventListener('click', function(event) {
+    event.preventDefault();
+    
+    // Mengubah href
+    this.setAttribute('href', '');
+
+    // Mengubah id
+    this.setAttribute('id', 'showForm2');
+
+    // Mengubah kelas untuk menyesuaikan tampilan
+    this.querySelector('div').classList.remove('bg-[#fffff0]');
+    this.querySelector('div').classList.add('bg-black');
+    this.querySelector('h1').classList.remove('text-black');
+    this.querySelector('h1').classList.add('text-white');
+
+    document.getElementById('showForm1').querySelector('div').classList.remove('bg-black');
+    document.getElementById('showForm1').querySelector('div').classList.add('bg-[#fffff0]');
+    document.getElementById('showForm1').querySelector('h1').classList.remove('text-white');
+    document.getElementById('showForm1').querySelector('h1').classList.add('text-black');
+
+    document.getElementById('showForm3').querySelector('div').classList.remove('bg-black');
+    document.getElementById('showForm3').querySelector('div').classList.add('bg-[#fffff0]');
+    document.getElementById('showForm3').querySelector('h1').classList.remove('text-white');
+    document.getElementById('showForm3').querySelector('h1').classList.add('text-black');
+
+    // Mengubah teks di dalam h1
+    this.querySelector('h1').textContent = 'Bawa Pulang';
+    document.getElementById('showForm1').querySelector('h1').textContent = 'Makan di tempat';
+});
+
+    
+</script>
+@endpush
