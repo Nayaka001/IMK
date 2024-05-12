@@ -36,7 +36,7 @@ Route::get('/kasir/laporan', [KasirController::class, 'laporan'])->name('index.l
 Route::get('/kasir/daftar', [KasirController::class, 'daftar'])->name('index.daftar');
 
 //Bagian Admin
-Route::get('/admin', [AdminController::class, 'index'])->name('index.admin');
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('index.admin');
 
 //Bagian Bartender
 Route::get('/bartender', [BartenderController::class, 'index'])->name('index.bartender');
@@ -50,7 +50,4 @@ Route::get('/form-take-away', function () {
 });
 Route::get('/form-reserve', function () {
     return view('formnewres');
-});
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
 });
