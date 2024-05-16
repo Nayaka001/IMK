@@ -14,12 +14,33 @@ class RoleKasirMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle($request, Closure $next)
-    {
-        if (!Auth::check() || Auth::user()->level_user !== 'kasir') {
-            return redirect('/'); // Redirect ke halaman yang sesuai jika bukan kasir
-        }
-
+    public function handle($request, Closure $next, ...$roles)
+{
+    $user = $request->user();
+    
+    // Periksa apakah pengguna sudah login dan memiliki salah satu peran yang diizinkan
+    if ($user && in_array($user->level_user, $roles)) {
         return $next($request);
     }
+
+    // Arahkan pengguna berdasarkan peran mereka jika mereka tidak memiliki akses ke rute ini
+    if ($user) {
+        switch ($user->level_user) {
+            case 'Admin':
+                return redirect('/admin/dashboard');
+            case 'Bartender':
+                return redirect('/bartender/dashboard');
+            case 'Kasir':
+                return redirect('/kasir/main');
+            case 'Pelayan':
+                return redirect('/pelayan/main');
+            default:
+                return redirect('/');
+        }
+    }
+
+    // Jika pengguna tidak login, arahkan ke halaman utama
+    return redirect('/');
+}
+
 }
