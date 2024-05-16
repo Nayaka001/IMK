@@ -27,7 +27,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/kitchen', [KitchenController::class, 'index'])->name('index.kitchen');
 
 //Bagian Kasir
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'role:Kasir'])->group(function () {
     Route::get('/kasir/main', [KasirController::class, 'index'])->name('index.kasir');
     Route::get('/kasir/neworder', [KasirController::class, 'neworder'])->name('kasir.neworder');
     Route::get('/kasir/neworder/newdine', [KasirController::class, 'newdine'])->name('kasir.newdine');
@@ -38,12 +38,14 @@ Route::middleware('auth')->group(function () {
 });
 
 //Bagian Admin
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('index.admin');
 });
-//Bagian Bartender
-Route::get('/bartender', [BartenderController::class, 'index'])->name('index.bartender');
 
+//Bagian Bartender
+Route::middleware(['auth', 'role:Bartender'])->group(function () {
+    Route::get('/bartender', [BartenderController::class, 'index'])->name('index.bartender');
+});
 
 Route::get('/form-dine-in', function () {
     return view('formnewdine');
