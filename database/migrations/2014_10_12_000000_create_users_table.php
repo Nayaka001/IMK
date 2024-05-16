@@ -16,7 +16,7 @@ return new class extends Migration
             $table->enum('level_user', ['Admin', 'Kasir', 'Kitchen', 'Bartender', 'Pelayan']);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
-            $table->string('username', 20);
+            $table->string('username', 20)->unique();
             $table->string('password');
         });
 
