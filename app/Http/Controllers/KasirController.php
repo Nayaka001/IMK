@@ -2,13 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
+use App\Models\Menu;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class KasirController extends Controller
 {
-    public function index(){
-        return view('mainmenu');
+    public function index(Request $request){
+        if ($request->has('search')) {
+            $kategori = Kategori::paginate(6);
+            $menu = Menu::where('nama_menu', 'LIKE', '%' . $request->search . '%')->get();
+
+        } else {
+            $kategori = Kategori::paginate(5);
+            $menu = Menu::all();
+        }
+        
+        return view('menu', [
+            'kategori' => $kategori,
+            'menu' => $menu
+        ]);
+    }
+    public function show(){
+        
+
     }
     public function neworder(){
 

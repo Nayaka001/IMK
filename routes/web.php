@@ -28,7 +28,7 @@ Route::get('/kitchen', [KitchenController::class, 'index'])->name('index.kitchen
 
 //Bagian Kasir
 Route::middleware(['auth', 'role:Kasir'])->group(function () {
-    Route::get('/kasir/main', [KasirController::class, 'index'])->name('index.kasir');
+    Route::get('/menu', [KasirController::class, 'index'])->name('index.menu');
     Route::get('/kasir/neworder', [KasirController::class, 'neworder'])->name('kasir.neworder');
     Route::get('/kasir/neworder/newdine', [KasirController::class, 'newdine'])->name('kasir.newdine');
     Route::get('/kasir/neworder/newres', [KasirController::class, 'newres'])->name('kasir.newres');
@@ -65,41 +65,41 @@ Route::get('/order-list', function () {
     return view('orderlist');
 })->name('order-list');
 
-Route::get('/menu', function () {
-    return view('menu');
-})->name('menu');
+// Route::get('/menu', function () {
+//     return view('menu');
+// })->name('menu');
 
 Route::get('/menu/kids', function () {
     return view('menukids');
-})->name('menu');
+});
 
 Route::get('/menu/sayuran', function () {
     return view('menusayuran');
-})->name('menu');
+});
 
 Route::get('/menu/steak', function () {
     return view('menusteak');
-})->name('menu');
+});
 
 Route::get('/menu/steak', function () {
     return view('menusteak');
-})->name('menu');
+});
 
 Route::get('menu/rice', function () {
     return view('menurice');
-})->name('menu');
+});
 
 Route::get('/menu/geprek', function () {
     return view('menugeprek');
-})->name('menu');
+});
 
 Route::get('/menu/cemilan', function () {
     return view('menucemilan');
-})->name('menu');
+});
 
 Route::get('/menu/minuman', function () {
     return view('menuminuman');
-})->name('menu');
+});
 
 Route::get('/report', function () {
     return view('report');
