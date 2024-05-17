@@ -22,7 +22,7 @@
                   </div>
                   <div class="px-3 text-right basis-1/3">
                     <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-[#000000] to-[#CCCCBD]">
-                      <i class="ni leading-none ni-money-coins text-lg relative top-3.5 text-white"></i>
+                      <i class="fa fa-pizza-slice text-lg relative top-3.5 text-white"></i>
                     </div>
                   </div>
                 </div>
@@ -46,7 +46,7 @@
                   </div>
                   <div class="px-3 text-right basis-1/3">
                     <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-[#000000] to-[#CCCCBD]">
-                      <i class="ni leading-none ni-world text-lg relative top-3.5 text-white"></i>
+                      <i class="fa fa-utensils text-lg relative top-3.5 text-white"></i>
                     </div>
                   </div>
                 </div>
@@ -70,7 +70,7 @@
                   </div>
                   <div class="px-3 text-right basis-1/3">
                     <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-[#000000] to-[#CCCCBD]">
-                      <i class="ni leading-none ni-paper-diploma text-lg relative top-3.5 text-white"></i>
+                      <i class="fa fa-blender text-lg relative top-3.5 text-white"></i>
                     </div>
                   </div>
                 </div>
@@ -94,7 +94,7 @@
                   </div>
                   <div class="px-3 text-right basis-1/3">
                     <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-[#000000] to-[#CCCCBD]">
-                      <i class="ni leading-none ni-cart text-lg relative top-3.5 text-white"></i>
+                      <i class="fa fa-cash-register text-lg relative top-3.5 text-white"></i>
                     </div>
                   </div>
                 </div>
@@ -113,7 +113,7 @@
                     <div class="relative flex flex-col min-w-0 break-words bg-gradient-to-br from-[#FFD369] to-[#FFFFFF] shadow-xl border-0 border-transparent border-solid rounded-2xl bg-clip-border">
                       <div class="p-4 mx-6 mb-0 text-center bg-transparent border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                         <div class="w-16 h-16 text-center bg-center icon bg-transparent border-black border-2 border-solid shadow-soft-2xl rounded-xl">
-                          <i class="relative text-black opacity-100 fas fa-landmark text-xl top-31/100"></i>
+                          <i class="relative text-black opacity-100 fa fa-dollar-sign text-xl top-31/100"></i>
                         </div>
                       </div>
                       <div class="flex-auto p-4 pt-0 text-center">
@@ -128,7 +128,7 @@
                     <div class="relative flex flex-col min-w-0 break-words bg-gradient-to-br from-[#FFD369] to-[#FFFFFF] shadow-xl border-0 border-transparent border-solid rounded-2xl bg-clip-border">
                       <div class="p-4 mx-6 mb-0 text-center bg-transparent border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                         <div class="w-16 h-16 text-center bg-center icon bg-transparent border-black border-2 border-solid shadow-soft-2xl rounded-xl">
-                          <i class="relative text-black opacity-100 fab fa-paypal text-xl top-31/100"></i>
+                          <i class="relative text-black opacity-100 fa fa-wallet text-xl top-31/100"></i>
                         </div>
                       </div>
                       <div class="flex-auto p-4 pt-0 text-center">
@@ -143,7 +143,7 @@
                     <div class="relative flex flex-col min-w-0 break-words bg-gradient-to-br from-[#FFD369] to-[#FFFFFF] shadow-xl border-0 border-transparent border-solid rounded-2xl bg-clip-border">
                       <div class="p-4 mx-6 mb-0 text-center bg-transparent border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                         <div class="w-16 h-16 text-center bg-center icon bg-transparent border-black border-2 border-solid shadow-soft-2xl rounded-xl">
-                          <i class="relative text-black opacity-100 fas fa-landmark text-xl top-31/100"></i>
+                          <i class="relative text-black opacity-100 fa fa-shopping-cart text-xl top-31/100"></i>
                         </div>
                       </div>
                       <div class="flex-auto p-4 pt-0 text-center">
@@ -158,7 +158,7 @@
                     <div class="relative flex flex-col min-w-0 break-words bg-gradient-to-br from-[#FFD369] to-[#FFFFFF] shadow-xl border-0 border-transparent border-solid rounded-2xl bg-clip-border">
                       <div class="p-4 mx-6 mb-0 text-center bg-transparent border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                         <div class="w-16 h-16 text-center bg-center icon bg-transparent border-black border-2 border-solid shadow-soft-2xl rounded-xl">
-                          <i class="relative text-black opacity-100 fas fa-landmark text-xl top-31/100"></i>
+                          <i class="relative text-black opacity-100 fa fa-users text-xl top-31/100"></i>
                         </div>
                       </div>
                       <div class="flex-auto p-4 pt-0 text-center">
@@ -225,7 +225,7 @@
                           </div>
                         </div>
                         <div class="flex flex-col items-center justify-center xl:w-3/6">
-                          <img src="assets/img/menu1.jpg" alt="Description of Image" class=" rounded-lg h-16 w-16">
+                          <img src="/assets/img/menu1.jpg" alt="Description of Image" class=" rounded-lg h-16 w-16">
                         </div>
                       </li>
                       <li class="relative flex px-4 py-2 pl-0 mt-6 bg-gradient-to-b from-[#FFD369] to-[#cfdbd5] border-b border-solid border-transparent rounded-t-inherit rounded-xl shadow-slate-700 shadow-xl">
@@ -240,7 +240,7 @@
                           </div>
                         </div>
                         <div class="flex flex-col items-center justify-center xl:w-3/6">
-                          <img src="./assets/img/menu1.jpg" alt="Description of Image" class=" rounded-lg h-16 w-16">
+                          <img src="/assets/img/menu1.jpg" alt="Description of Image" class=" rounded-lg h-16 w-16">
                         </div>
                       </li>
                       <li class="relative flex px-4 py-2 pl-0 mt-6 bg-gradient-to-b from-[#FFD369] to-[#cfdbd5] border-b border-solid border-transparent rounded-t-inherit rounded-xl shadow-xl shadow-slate-700">
@@ -255,7 +255,7 @@
                           </div>
                         </div>
                         <div class="flex flex-col items-center justify-center xl:w-3/6">
-                          <img src="./assets/img/menu1.jpg" alt="Description of Image" class=" rounded-lg h-16 w-16">
+                          <img src="/assets/img/menu1.jpg" alt="Description of Image" class=" rounded-lg h-16 w-16">
                         </div>
                       </li>
                     </ul>

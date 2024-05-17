@@ -1,5 +1,11 @@
-var pageName = page;
-var sidenav_target = to_build + "pages/" + pageName + ".html";
+var pageName = window.location.pathname.split("/").pop().split(".")[0];
+if (!window.location.pathname.includes("pages")) {
+  pageName = "dashboard"; // Menggunakan nama halaman utama Blade.php Anda
+}
+var basePath = "/"; // Base path untuk public assets
+
+// Menggunakan path yang sesuai untuk halaman utama Blade.php
+var sidenav_target = basePath + "admin/" + pageName;
 
 var fixedPlugin = document.querySelector("[fixed-plugin]");
 var fixedPluginButton = document.querySelector("[fixed-plugin-button]");
@@ -13,7 +19,6 @@ var buttonNavbarFixed = document.querySelector("[navbarFixed]");
 
 var sidenav = document.querySelector("aside");
 var sidenav_icons = sidenav.querySelectorAll("li a div");
-
 
 var transparentBtn = document.querySelector("[transparent-style-btn]");
 var whiteBtn = document.querySelector("[white-style-btn]");
