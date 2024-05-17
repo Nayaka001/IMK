@@ -56,3 +56,51 @@ Route::get('/form-take-away', function () {
 Route::get('/form-reserve', function () {
     return view('formnewres');
 });
+
+Route::get('/new-order', function () {
+    return view('neworder');
+})->name('new-order');
+
+Route::get('/order-list', function () {
+    return view('orderlist');
+})->name('order-list');
+
+Route::get('/menu', function () {
+    return view('menu');
+})->name('menu');
+
+Route::get('/menu/kids', function () {
+    return view('menukids');
+})->name('menu');
+
+Route::get('/menu/sayuran', function () {
+    return view('menusayuran');
+})->name('menu');
+
+Route::get('/menu/steak', function () {
+    return view('menusteak');
+})->name('menu');
+
+Route::get('/menu/steak', function () {
+    return view('menusteak');
+})->name('menu');
+
+Route::get('menu/rice', function () {
+    return view('menurice');
+})->name('menu');
+
+Route::get('/menu/geprek', function () {
+    return view('menugeprek');
+})->name('menu');
+
+Route::get('/menu/cemilan', function () {
+    return view('menucemilan');
+})->name('menu');
+
+Route::get('/menu/minuman', function () {
+    return view('menuminuman');
+})->name('menu');
+
+Route::get('/report', function () {
+    return view('report');
+})->name('report');
