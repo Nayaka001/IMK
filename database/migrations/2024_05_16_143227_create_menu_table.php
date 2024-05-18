@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('harga');
             $table->unsignedBigInteger('id_ktgmenu');
             $table->foreign('id_ktgmenu')->references('id_ktgmenu')->on('kategori-menu')->onDelete('restrict');
-            $table->binary('gambar_menu')->nullable();
+            $table->string('gambar_menu')->nullable();
             $table->text('keterangan')->nullable();
 
         });
