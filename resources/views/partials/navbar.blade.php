@@ -5,11 +5,11 @@
         <img src="/img/logo1.png" alt="" class="-mt-3 sm:-mt-7">
         <div class="flex-col justify-between">
             <a href="{{ route('index.menu') }}">
-                <div class="items-center group py-1 w-16 h-14 mx-auto hover:bg-[#FFD369] hover:rounded-xl sm:w-20 sm:h-16 {{ request()->routeIs('menu') ? 'bg-[#FFD369] rounded-xl' : '' }}">
+                <div class="items-center group py-1 w-16 h-14 mx-auto hover:bg-[#FFD369] hover:rounded-xl sm:w-20 sm:h-16 {{ request()->routeIs('index.menu') ? 'bg-[#FFD369] rounded-xl' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 30 30" fill="none" class="mx-auto">
                         <path d="M1.25 27.475C1.25 28.175 1.8125 28.7375 2.5125 28.7375H18.75C19.45 28.7375 20.0125 28.175 20.0125 27.475V26.25H1.25V27.475ZM10.625 11.2375C5.9375 11.2375 1.25 13.75 1.25 18.75H20C20 13.75 15.3125 11.2375 10.625 11.2375ZM4.525 16.25C5.9125 14.3125 8.8625 13.7375 10.625 13.7375C12.3875 13.7375 15.3375 14.3125 16.725 16.25H4.525ZM1.25 21.25H20V23.75H1.25V21.25ZM22.5 6.25V1.25H20V6.25H13.75L14.0375 8.75H25.9875L24.2375 26.25H22.5V28.75H24.65C25.7 28.75 26.5625 27.9375 26.6875 26.9125L28.75 6.25H22.5Z" fill="#FFFFF0"/>
                       </svg>                    
-                    <h5 class="text-white mt-1 text-center text-[13px] group-hover:text-black {{ request()->routeIs('menu') ? 'text-black' : '' }}">Menu</h5>
+                    <h5 class="text-white mt-1 text-center text-[13px] group-hover:text-black {{ request()->routeIs('index.menu') ? 'text-black' : '' }}">Menu</h5>
                 </div>
             </a>
             <a href="{{ route('new-order') }}">

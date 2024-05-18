@@ -23,7 +23,8 @@
             <a href="{{ route('logout') }}" class="inline-block bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
                 Logout
               </a>              
-        </div><div class="fixed top-14 right-6 m-4">
+        </div>
+        <div class="fixed top-14 right-6 m-4">
             <button id="logoutButton" class="inline-block bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
                 Logout
             </button>
