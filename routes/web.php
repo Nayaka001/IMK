@@ -40,6 +40,9 @@ Route::middleware(['auth', 'role:Kasir'])->group(function () {
 //Bagian Admin
 Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('index.admin');
+    Route::get('/admin/user', function () {
+        return view('admin.user');
+    })->name('user');
 });
 
 //Bagian Bartender

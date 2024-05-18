@@ -13,7 +13,7 @@
       <div class="items-center block w-auto max-h-screen overflow-auto h-sidenav grow basis-full">
         <ul class="flex flex-col pl-0 mb-0">
           <li class="mt-0.5 w-full">
-            <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-[#cfdbd5] px-4 font-semibold text-slate-700 transition-colors" href="./pages/dashboard.html">
+            <a class="py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors {{ request()->routeIs('index.admin') ? 'bg-[#cfdbd5] rounded-lg font-semibold text-slate-700' : '' }}" href="{{ route('index.admin') }}">
               <div class="bg-gradient-to-tl from-[#000000] to-[#CCCCBD] shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                 <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <title>shop</title>
@@ -40,23 +40,11 @@
           </li>
 
           <li class="mt-0.5 w-full">
-            <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="./pages/tables.html">
-              <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center stroke-0 text-center xl:p-2.5">
-                <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <title>office</title>
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                      <g transform="translate(1716.000000, 291.000000)">
-                        <g transform="translate(153.000000, 2.000000)">
-                          <path class="fill-slate-800 opacity-60" d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z"></path>
-                          <path class="fill-slate-800" d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"></path>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </svg>
+            <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors {{ request()->routeIs('user') ? 'bg-[#cfdbd5] rounded-lg font-semibold text-slate-700' : '' }}" href="{{ route('user') }}">
+              <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center stroke-0 text-center xl:p-2.5 {{ request()->routeIs('user') ? 'bg-gradient-to-tl from-[#000000] to-[#CCCCBD]' : '' }}">
+                <i class="fa fa-utensils text-lg text-gray-700 {{ request()->routeIs('user') ? 'text-white' : '' }}"></i>
               </div>
-              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">User</span>
+              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Karyawan</span>
             </a>
           </li>
 
@@ -77,7 +65,7 @@
                   </g>
                 </svg>
               </div>
-              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Tambah Akun User</span>
+              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Pendaftaran Akun User</span>
             </a>
           </li>
 
@@ -100,28 +88,6 @@
                 </svg>
               </div>
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Menu</span>
-            </a>
-          </li>
-
-          <li class="mt-0.5 w-full">
-            <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="./pages/rtl.html">
-              <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center stroke-0 text-center xl:p-2.5">
-                <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <title>settings</title>
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                      <g transform="translate(1716.000000, 291.000000)">
-                        <g transform="translate(304.000000, 151.000000)">
-                          <polygon class="fill-slate-800 opacity-60" points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667"></polygon>
-                          <path class="fill-slate-800 opacity-60" d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z"></path>
-                          <path class="fill-slate-800" d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z"></path>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Kategori</span>
             </a>
           </li>
 
@@ -320,16 +286,25 @@
               <li class="text-sm leading-normal">
                 <a class="opacity-50 text-slate-700" href="javascript:;">Pages</a>
               </li>
+              @if (request()->routeIs('index.admin'))
               <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Dashboard</li>
+              @elseif (request()->routeIs('user'))
+              <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Karyawan</li>
+              @endif
             </ol>
+            @if (request()->routeIs('index.admin'))
             <h6 class="mb-0 font-bold capitalize">Dashboard</h6>
+            @elseif (request()->routeIs('user'))
+            <h6 class="mb-0 font-bold capitalize">Karyawan</h6>
+            @endif
           </nav>
 
           <div class="flex items-center md:ml-auto ml-0 pr-0">
             <h5 class="text-center text-sm text-slate-500">Kamis, 9 Mei 2024</h5>
           </div>
 
-          <div class="flex items-center mt-2 grow sm:mt-0 sm:mr-0 md:mr-0 lg:flex lg:basis-auto">
+          <div class="flex items-center mt-2 grow sm:mt-0 sm:mr-0 md:mr-0 lg:flex lg:basis-auto justify-end">
+            <!-- @if (request()->routeIs('index.admin'))
             <div class="flex items-center md:ml-auto md:pr-4">
               <select class="inline-block px-0.5 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-2 border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
                 <option value="option1">Daily</option>
@@ -337,12 +312,32 @@
                 <option value="option3">Monthly</option>
               </select>
             </div>
-            <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
+            @endif
+            <div class="flex items-center md:ml-auto md:pr-4">
+              <span class="inline-block p-2 m-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-2 border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
+                Logout
+              </span>
+            </div> -->
+            <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full md:pr-4">
               <!-- online builder btn  -->
               <!-- <li class="flex items-center">
                 <a class="inline-block px-8 py-2 mb-0 mr-4 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro border-fuchsia-500 ease-soft-in hover:scale-102 active:shadow-soft-xs text-fuchsia-500 hover:border-fuchsia-500 active:bg-fuchsia-500 active:hover:text-fuchsia-500 hover:text-fuchsia-500 tracking-tight-soft hover:bg-transparent hover:opacity-75 hover:shadow-none active:text-white active:hover:bg-transparent" target="_blank" href="https://www.creative-tim.com/builder/soft-ui?ref=navbar-dashboard&amp;_ga=2.76518741.1192788655.1647724933-1242940210.1644448053">Online Builder</a>
               </li> -->
-              <li class="flex items-center">
+              @if (request()->routeIs('index.admin'))
+              <div class="flex items-center ml-2 md:ml-auto md:pr-4">
+                <select class="inline-block px-0.5 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-2 border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
+                  <option value="option1">Daily</option>
+                  <option value="option2">Weekly</option>
+                  <option value="option3">Monthly</option>
+                </select>
+              </div>
+              @endif
+              <div class="flex items-center ml-2 md:ml-auto md:pr-4">
+                <span class="inline-block p-2 m-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-2 border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
+                  Logout
+                </span>
+              </div>
+              <li class="flex items-center ml-2">
                 <a href="./pages/sign-in.html" class="block px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500">
                   <i class="fa fa-user sm:mr-1"></i>
                   <span class="hidden sm:inline">Admin</span>
