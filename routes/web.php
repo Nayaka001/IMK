@@ -104,3 +104,13 @@ Route::get('/menu/minuman', function () {
 Route::get('/report', function () {
     return view('report');
 })->name('report');
+
+
+// tes (nnt dihapus)
+Route::get('/new-order', function () {
+    return view('formnewdine');
+})->name('new-order');
+
+Route::get('/new-order/addmenu', function () {
+    return view('neworder');
+})->name('new-order');
