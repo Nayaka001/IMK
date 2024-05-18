@@ -11,11 +11,11 @@ class KasirController extends Controller
 {
     public function index(Request $request){
         if ($request->has('search')) {
-            $kategori = Kategori::paginate(6);
+            $kategori = Kategori::all();
             $menu = Menu::where('nama_menu', 'LIKE', '%' . $request->search . '%')->get();
 
         } else {
-            $kategori = Kategori::paginate(5);
+            $kategori = Kategori::all();
             $menu = Menu::all();
         }
         

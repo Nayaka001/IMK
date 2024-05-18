@@ -15,7 +15,7 @@
                     <div>
                       <p class="mb-0 font-sans text-sm font-bold leading-normal">Menu</p>
                       <h5 class="mb-0 font-bold">
-                        50
+                        {{ $totalMenu }}
                         <span class="text-sm leading-normal font-weight-bolder text-lime-500"></span>
                       </h5>
                     </div>
@@ -39,7 +39,7 @@
                     <div>
                       <p class="mb-0 font-sans text-sm font-semibold leading-normal">Kitchen</p>
                       <h5 class="mb-0 font-bold">
-                        7
+                        {{$totalKitchenUsers}}
                         <span class="text-sm leading-normal font-weight-bolder text-lime-500"></span>
                       </h5>
                     </div>
@@ -63,7 +63,7 @@
                     <div>
                       <p class="mb-0 font-sans text-sm font-semibold leading-normal">Bartender</p>
                       <h5 class="mb-0 font-bold">
-                        8
+                        {{$totalBartenderUsers}}
                         <span class="text-sm leading-normal text-red-600 font-weight-bolder"></span>
                       </h5>
                     </div>
@@ -87,7 +87,7 @@
                     <div>
                       <p class="mb-0 font-sans text-sm font-semibold leading-normal">Kasir</p>
                       <h5 class="mb-0 font-bold">
-                        2
+                        {{$totalKasirUsers}}
                         <span class="text-sm leading-normal font-weight-bolder text-lime-500"></span>
                       </h5>
                     </div>
