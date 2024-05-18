@@ -49,8 +49,10 @@
                 </a>
             </div>
 
-            <h1 class="text-3xl font-bold ml-3 pt-4">Crispy Food</h1>
-            <hr class="mt-5 w-full mx-3">
+            <div class="flex-none">
+                <h1 class="text-3xl font-bold ml-3 pt-4">Crispy Food</h1>
+                <hr class="mt-5 w-full mx-3">
+            </div>
 
             <div class="mt-10 w-full mx-auto container gap-6 flex flex-wrap sm:justify-start">
                 <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
@@ -87,8 +89,10 @@
                 </div>
             </div>
 
-            <h1 class="text-3xl font-bold ml-3 mt-3">Snack Goreng </h1>
-            <hr class="mt-5 w-full mx-3">
+            <div class="flex-none">
+                <h1 class="text-3xl font-bold ml-3 mt-3">Snack Goreng </h1>
+                <hr class="mt-5 w-full mx-3">
+            </div>
 
             <div class="mt-10 w-full mx-auto container gap-6 flex flex-wrap sm:justify-start">
                 <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
@@ -125,8 +129,10 @@
                 </div>
             </div>
 
-            <h1 class="text-3xl font-bold ml-3 mt-3">Sweet</h1>
-            <hr class="mt-5 w-full mx-3">
+            <div class="flex-none">
+                <h1 class="text-3xl font-bold ml-3 mt-3">Sweet</h1>
+                <hr class="mt-5 w-full mx-3">
+            <div class="flex-none">
 
             <div class="mt-10 w-full mx-auto container gap-6 flex flex-wrap sm:justify-start">
                 <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
@@ -163,8 +169,10 @@
                 </div>
             </div>
 
-            <h1 class="text-3xl font-bold ml-3 mt-3">Kukus</h1>
-            <hr class="mt-5 w-full mx-3">
+            <div class="flex-none">
+                <h1 class="text-3xl font-bold ml-3 mt-3">Kukus</h1>
+                <hr class="mt-5 w-full mx-3">
+            </div>
 
             <div class="mt-10 w-full mx-auto container gap-6 flex flex-wrap sm:justify-start">
                 <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
