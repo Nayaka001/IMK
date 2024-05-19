@@ -53,7 +53,7 @@
                 <h1 class="text-3xl font-bold ml-3 pt-3">Grill Steak</h1>
                 <hr class="mt-5 w-full mx-3">
             </div>
-
+            
             <div class="mt-10 w-full mx-auto container gap-6 flex flex-wrap sm:justify-start">
                 <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
                     <img src="https://source.unsplash.com/600x400" alt="Image Caption" class="w-full">

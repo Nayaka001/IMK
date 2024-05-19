@@ -50,7 +50,7 @@
             </div>
             <div id="search-results" class="mt-10 w-full mx-auto container gap-6 flex flex-wrap sm:justify-start">
                 @foreach($kategori as $kategoris)
-                <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->kategori}}</h1>
+                <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
                 <hr class="mt-5 w-full mx-3">
                 @foreach($menu as $menus)
                 @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
