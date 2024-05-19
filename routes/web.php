@@ -47,6 +47,18 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/user', function () {
         return view('admin.user');
     })->name('user');
+    Route::get('/admin/user/pelayan', function () {
+        return view('admin.pelayan');
+    })->name('user-pelayan');
+    Route::get('/admin/user/kitchen', function () {
+        return view('admin.kitchen');
+    })->name('user-kitchen');
+    Route::get('/admin/user/bartender', function () {
+        return view('admin.bartender');
+    })->name('user-bartender');
+    Route::get('/admin/user/kasir', function () {
+        return view('admin.kasir');
+    })->name('user-kasir');
 });
 
 //Bagian Bartender
