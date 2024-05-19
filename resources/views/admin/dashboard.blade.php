@@ -13,7 +13,7 @@
                 <div class="flex flex-row -mx-3">
                   <div class="flex-none w-2/3 max-w-full px-3">
                     <div>
-                      <p class="mb-0 font-sans text-sm font-bold leading-normal">Menu</p>
+                      <p class="mb-0 font-sans text-sm font-semibold leading-normal">Pelayan</p>
                       <h5 class="mb-0 font-bold">
                         {{ $totalMenu }}
                         <span class="text-sm leading-normal font-weight-bolder text-lime-500"></span>
@@ -22,7 +22,7 @@
                   </div>
                   <div class="px-3 text-right basis-1/3">
                     <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-[#000000] to-[#CCCCBD]">
-                      <i class="fa fa-pizza-slice text-lg relative top-3.5 text-white"></i>
+                      <i class="ni ni-single-02 text-lg relative top-3.5 text-white"></i>
                     </div>
                   </div>
                 </div>
@@ -193,6 +193,28 @@
             <div class="w-full max-w-full mt-6 px-3 md:mt-6 lg:mt-0 md:flex-none xl:w-1/3">
                 <div class="relative flex flex-col h-full min-w-0 mb-6 break-words bg-[#e8eddf] bg-transparent border-0 border-gray-400 border-solid rounded-2xl shadow-soft-xl border-black/12.5 bg-clip-border">
                   <div class="p-6 px-4 pb-0 mb-0 bg-[#e8eddf] bg-transparent border-b-0 border-gray-400 border-solid rounded-t-2xl border-black/12.5">
+                    <div class="w-full max-w-full px-3 mb-6 sm:w-full sm:flex-none xl:mb-3 xl:w-full">
+                      <div class="relative flex flex-col min-w-0 break-words bg-gradient-to-b from-[#FFD369] to-[#FFFFFF] shadow-xl rounded-2xl bg-clip-border">
+                        <div class="flex-auto p-4">
+                          <div class="flex flex-row -mx-3">
+                            <div class="flex-none w-2/3 max-w-full px-3">
+                              <div>
+                                <p class="mb-0 font-sans text-sm font-semibold leading-normal">Menu</p>
+                                <h5 class="mb-0 font-bold">
+                                  {{ $totalMenu }}
+                                  <span class="text-sm leading-normal font-weight-bolder text-lime-500"></span>
+                                </h5>
+                              </div>
+                            </div>
+                            <div class="px-3 text-right basis-1/3">
+                              <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-[#000000] to-[#CCCCBD]">
+                                <i class="fa fa-pizza-slice text-lg relative top-3.5 text-white"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     <div class="flex flex-wrap -mx-3">
                       <div class="max-w-full px-3 md:w-1/2 md:flex-none">
                         <h6 class="mb-0 font-semibold">Menu Terlaris</h6>
