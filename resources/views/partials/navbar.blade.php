@@ -12,12 +12,12 @@
                     <h5 class="text-white mt-1 text-center text-[13px] group-hover:text-black {{ request()->routeIs('index.menu') ? 'text-black' : '' }}">Menu</h5>
                 </div>
             </a>
-            <a href="{{ route('new-order') }}">
-                <div class="items-center group my-10 py-1 w-16 h-14 mx-auto hover:bg-[#FFD369] hover:rounded-xl sm:w-20 sm:h-16 {{ request()->routeIs('new-order') ? 'bg-[#FFD369] rounded-xl' : '' }}">
+            <a href="{{ route('kasir.neworder') }}">
+                <div class="items-center group my-10 py-1 w-16 h-14 mx-auto hover:bg-[#FFD369] hover:rounded-xl sm:w-20 sm:h-16 {{ request()->routeIs('kasir.neworder') ? 'bg-[#FFD369] rounded-xl' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 35 36" fill="none" class="mx-auto">
                         <path d="M4.27832 12.4526H20.32V15.3826H4.27832V12.4526ZM4.27832 9.52254H20.32V6.59253H4.27832V9.52254ZM4.27832 21.2426H14.4867V18.3126H4.27832V21.2426ZM26.1679 16.6571L27.2033 15.617C27.7721 15.0456 28.6908 15.0456 29.2596 15.617L30.295 16.6571C30.8637 17.2285 30.8637 18.1514 30.295 18.7228L29.2596 19.7629L26.1679 16.6571ZM25.1325 17.6973L17.4033 25.4618V28.5676H20.495L28.2242 20.8031L25.1325 17.6973Z" fill="#FFFFF0"/>
                     </svg>
-                    <h5 class="text-white text-center text-[13px] group-hover:text-black {{ request()->routeIs('new-order') ? 'text-black' : '' }}">New Order</h5>
+                    <h5 class="text-white text-center text-[13px] group-hover:text-black {{ request()->routeIs('kasir.neworder') ? 'text-black' : '' }}">New Order</h5>
                 </div>
             </a>
             <a href="{{ route('order-list') }}">
