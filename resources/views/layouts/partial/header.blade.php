@@ -22,9 +22,9 @@
           </li>
 
           <li class="mt-0.5 w-full">
-            <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors {{ request()->routeIs('user', 'user-pelayan', 'user-kitchen', 'user-bartender', 'user-kasir') ? 'bg-[#cfdbd5] rounded-lg font-semibold text-slate-700' : '' }}" href="{{ route('user', 'user-pelayan', 'user-kitchen', 'user-bartender', 'user-kasir') }}">
-              <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center stroke-0 text-center xl:p-2.5 {{ request()->routeIs('user', 'user-pelayan', 'user-kitchen', 'user-bartender', 'user-kasir') ? 'bg-gradient-to-tl from-[#000000] to-[#CCCCBD]' : '' }}">
-                <i class="fa fa-utensils text-lg text-gray-700 {{ request()->routeIs('user', 'user-pelayan', 'user-kitchen', 'user-bartender', 'user-kasir') ? 'text-white' : '' }}"></i>
+            <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors {{ request()->routeIs('user') ? 'bg-[#cfdbd5] rounded-lg font-semibold text-slate-700' : '' }}" href="{{ route('user') }}">
+              <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center stroke-0 text-center xl:p-2.5 {{ request()->routeIs('user') ? 'bg-gradient-to-tl from-[#000000] to-[#CCCCBD]' : '' }}">
+                <i class="fa fa-utensils text-lg text-gray-700 {{ request()->routeIs('user') ? 'text-white' : '' }}"></i>
               </div>
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Karyawan</span>
             </a>

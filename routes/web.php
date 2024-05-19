@@ -44,12 +44,10 @@ Route::middleware(['auth', 'role:Kasir'])->group(function () {
 //Bagian Admin
 Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('index.admin');
-    Route::get('/admin/user', function () {
-        return view('admin.user');
-    })->name('user');
+    Route::get('/admin/user', [AdminController::class, 'user'])->name('user');
     Route::get('/admin/user/pelayan', function () {
         return view('admin.pelayan');
-    })->name('user-pelayan');
+    })->name('user.pelayan');
     Route::get('/admin/user/kitchen', function () {
         return view('admin.kitchen');
     })->name('user-kitchen');
