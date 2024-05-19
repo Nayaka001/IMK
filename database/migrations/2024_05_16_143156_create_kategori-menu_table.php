@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('kategori-menu', function (Blueprint $table) {
             $table->id('id_ktgmenu');
+            $table->string('subkategori', 100);
             $table->string('kategori', 100);
             $table->enum('jenis', ['Makanan', 'Minuman']);
             
         });
     }
 
-    /**
+    /**       
      * Reverse the migrations.
      */
     public function down(): void
