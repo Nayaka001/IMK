@@ -15,7 +15,7 @@
                     <div>
                       <p class="mb-0 font-sans text-sm font-semibold leading-normal">Pelayan</p>
                       <h5 class="mb-0 font-bold">
-                        {{ $totalMenu }}
+                        {{$totalPelayanUsers}}
                         <span class="text-sm leading-normal font-weight-bolder text-lime-500"></span>
                       </h5>
                     </div>
