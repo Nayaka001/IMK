@@ -58,7 +58,7 @@
                       <h1 class="font-bold mt-1 text-lg ">Rp 15.000</h1>
                     </div>
                 </div>
-                <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
+                {{-- <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
                     <img src="https://source.unsplash.com/600x400" alt="Image Caption" class="w-full">
                     <div class="px-2 py-2">
                       <div class="font-bold text-lg mb-1">Chicken Steak</div>
@@ -97,7 +97,7 @@
                       <p class="text-xs mb-1 text-gray-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, libero!</p>
                       <h1 class="font-bold mt-1 text-lg">Rp 15.000</h1>
                     </div>
-                </div>
+                </div> --}}
                 
             </div>
         </div>

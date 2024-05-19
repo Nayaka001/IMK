@@ -9,9 +9,9 @@
     
             <div class="w-3/5 my-7 ml-24 sm:w-2/3 sm:ml-32 -mr-[70px] md:-mr-12">
                 <div class="w-3/4 flex justify-between gap-6 sm:w-4/6 md:w-3/4 lg:w-10/12">
-                    <form action="" class="w-full">
+                    <form action="{{route('kasir.addnewdine')}}" method="GET" class="w-full">
                         <div class="flex items-center">
-                            <input type="search" placeholder="Search" class="px-3 py-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 peer "/>
+                            <input type="search" placeholder="Search" id="search" name="search" class="px-3 py-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 peer "/>
                             <button class="items-center mx-3">
                                 <ion-icon name="search-outline" size="small"></ion-icon>
                             </button>
@@ -19,77 +19,233 @@
                     </form>
                     <ion-icon name="person-circle-outline" class="flex items-center text-5xl -ml-7 -mr-3 -mt-1"></ion-icon>
                     <div class="text-center items-center">
-                        <h1 class="text-sm">Sadtria</h1>
+                        <h1 class="text-sm">{{ auth()->user()->karyawan->nama }}</h1>
                         <p class="text-xs text-slate-500">Cashier</p>
                     </div>
                 </div>
                 <div class="w-3/4 flex justify-between my-5 overflow-x-scroll sm:w-4/6 md:w-3/4 lg:w-10/12 xl:overflow-visible">
-                    <a href="/menu">
-                        <div class="rounded-2xl bg-[#FFD369] w-fit px-3 py-2 shadow-md mx-2 font-bold">All</div>
-                    </a>
-                    <a href="/menu/kids">
-                        <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Kids Meal</div>
-                    </a>
-                    <a href="/menu/sayuran">
-                        <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Sayuran</div>
-                    </a>
-                    <a href="/menu/steak">
-                        <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Steaks & Hotplates</div>
-                    </a>
-                    <a href="/menu/rice">
-                        <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold ">Rice Hotplate</div>
-                    </a>
-                    <a href="/menu/geprek">
-                        <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Geprek</div>
-                    </a>
-                    <a href="/menu/cemilan">
-                        <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Cemilan</div>
-                    </a>
-                    <a href="/menu/minuman">
-                        <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold ">Minuman</div>
-                    </a>
+                    <div id="AllLink" class="rounded-2xl bg-[#FFD369] w-fit px-3 py-2 shadow-md mx-2 font-bold">All</div>
+                    <div id="kidsMealLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Kids Meal</div>
+                    <div id="sayuranLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Sayuran</div>
+                    <div id="steakLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Steaks & Hotplates</div>
+                    <div id="riceLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold ">Rice Hotplate</div>
+                    <div id="geprekLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Geprek</div>
+                    <div id="cemilanLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Cemilan</div>
+                    <div id="minumanLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold ">Minuman</div>
                 </div>
-                <div class="mx-auto mt-10 w-full container gap-6 sm:flex sm:flex-wrap sm:justify-start">
-                    <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
-                        <img src="https://source.unsplash.com/600x400" alt="Image Caption" class="w-full object-cover">
-                        <div class="px-2 py-2">
-                          <div class="font-bold text-lg mb-1">Chicken Steak</div>
-                          <p class="text-xs mb-1 text-gray-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, libero!</p>
-                          <div class="justify-between flex">
-                            <h1 class="font-bold mt-1 text-lg">Rp 15.000</h1>
-                            <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group text-3xl">
-                                <ion-icon name="add-circle-outline" class="group-hover:text-white"></ion-icon>
-                            </button>
-                          </div>
+                <div id="all">
+                    @foreach($kategori as $kategoris)
+                    <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+                    <hr class="mt-5 w-full mx-3"> 
+                    <div id="all" class="mx-auto mt-10 w-full container gap-6 sm:flex sm:flex-wrap sm:justify-start"> 
+                        @foreach($menu as $menus)
+                        @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                        <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
+                            <img src="{{$menus->gambar_menu}} alt="Image Caption class="w-full object-cover">
+                            <div class="px-2 py-2">
+                            <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                            <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                            <div class="justify-between flex">
+                                <h1 class="font-bold mt-1 text-lg">Rp {{$menus->harga}}</h1>
+                                <button id="addButton-{{$menus->id_menu}}" class="hover:rounded-full hover:bg-[#FFD369] h-8 group text-3xl">
+                                    <ion-icon name="add-circle-outline" class="group-hover:text-white"></ion-icon>
+                                </button>
+                            </div>
+                            </div>
                         </div>
+                        @endif
+                        @endforeach         
                     </div>
-                    <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
-                        <img src="https://source.unsplash.com/600x400" alt="Image Caption" class="w-full object-cover">
-                        <div class="px-2 py-2">
-                          <div class="font-bold text-lg mb-1">Chicken Steak</div>
-                          <p class="text-xs mb-1 text-gray-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, libero!</p>
-                          <div class="justify-between flex">
-                            <h1 class="font-bold mt-1 text-lg">Rp 15.000</h1>
-                            <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group text-3xl">
-                                <ion-icon name="add-circle-outline" class="group-hover:text-white"></ion-icon>
-                            </button>
-                          </div>
+                    @endforeach
+                </div>
+                <div id="kidsmeal">
+                    @foreach($kategori as $kategoris)
+                    @if($kategoris->kategori === 'KIDS MEAL')
+                    <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+                    <hr class="mt-5 w-full mx-3"> 
+                    <div id="all" class="mx-auto mt-10 w-full container gap-6 sm:flex sm:flex-wrap sm:justify-start">                     
+                        @foreach($menu as $menus)
+                        @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                        <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
+                            <img src="{{$menus->gambar_menu}} alt="Image Caption class="w-full object-cover">
+                            <div class="px-2 py-2">
+                            <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                            <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                            <div class="justify-between flex">
+                                <h1 class="font-bold mt-1 text-lg">Rp {{$menus->harga}}</h1>
+                                <button id="addButton-{{$menus->id_menu}}" class="hover:rounded-full hover:bg-[#FFD369] h-8 group text-3xl">
+                                    <ion-icon name="add-circle-outline" class="group-hover:text-white"></ion-icon>
+                                </button>
+                            </div>
+                            </div>
                         </div>
+                        @endif
+                        @endforeach         
                     </div>
-                    <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
-                        <img src="https://source.unsplash.com/600x400" alt="Image Caption" class="w-full object-cover">
-                        <div class="px-2 py-2">
-                          <div class="font-bold text-lg mb-1">Chicken Steak</div>
-                          <p class="text-xs mb-1 text-gray-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, libero!</p>
-                          <div class="justify-between flex">
-                            <h1 class="font-bold mt-1 text-lg">Rp 15.000</h1>
-                            <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group text-3xl">
-                                <ion-icon name="add-circle-outline" class="group-hover:text-white"></ion-icon>
-                            </button>
-                          </div>
+                    @endif
+                    @endforeach
+                </div>
+                <div id="sayuran">
+                    @foreach($kategori as $kategoris)
+                    @if($kategoris->kategori === 'SAYURAN')
+                    <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+                    <hr class="mt-5 w-full mx-3"> 
+                    <div id="all" class="mx-auto mt-10 w-full container gap-6 sm:flex sm:flex-wrap sm:justify-start">                     
+                        @foreach($menu as $menus)
+                        @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                        <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
+                            <img src="{{$menus->gambar_menu}} alt="Image Caption class="w-full object-cover">
+                            <div class="px-2 py-2">
+                            <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                            <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                            <div class="justify-between flex">
+                                <h1 class="font-bold mt-1 text-lg">Rp {{$menus->harga}}</h1>
+                                <button id="addButton-{{$menus->id_menu}}" class="hover:rounded-full hover:bg-[#FFD369] h-8 group text-3xl">
+                                    <ion-icon name="add-circle-outline" class="group-hover:text-white"></ion-icon>
+                                </button>
+                            </div>
+                            </div>
                         </div>
+                        @endif
+                        @endforeach         
                     </div>
- 
+                    @endif
+                    @endforeach
+                </div>
+                <div id="steak">
+                    @foreach($kategori as $kategoris)
+                    @if($kategoris->kategori === 'STEAKS & HOTPLATES')
+                    <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+                    <hr class="mt-5 w-full mx-3"> 
+                    <div id="all" class="mx-auto mt-10 w-full container gap-6 sm:flex sm:flex-wrap sm:justify-start">                     
+                        @foreach($menu as $menus)
+                        @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                        <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
+                            <img src="{{$menus->gambar_menu}} alt="Image Caption class="w-full object-cover">
+                            <div class="px-2 py-2">
+                            <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                            <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                            <div class="justify-between flex">
+                                <h1 class="font-bold mt-1 text-lg">Rp {{$menus->harga}}</h1>
+                                <button id="addButton-{{$menus->id_menu}}" class="hover:rounded-full hover:bg-[#FFD369] h-8 group text-3xl">
+                                    <ion-icon name="add-circle-outline" class="group-hover:text-white"></ion-icon>
+                                </button>
+                            </div>
+                            </div>
+                        </div>
+                        @endif
+                        @endforeach         
+                    </div>
+                    @endif
+                    @endforeach
+                </div>
+                <div id="rice">
+                    @foreach($kategori as $kategoris)
+                    @if($kategoris->kategori === 'RICE HOTPLATE')
+                    <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+                    <hr class="mt-5 w-full mx-3"> 
+                    <div id="all" class="mx-auto mt-10 w-full container gap-6 sm:flex sm:flex-wrap sm:justify-start">                     
+                        @foreach($menu as $menus)
+                        @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                        <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
+                            <img src="{{$menus->gambar_menu}} alt="Image Caption class="w-full object-cover">
+                            <div class="px-2 py-2">
+                            <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                            <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                            <div class="justify-between flex">
+                                <h1 class="font-bold mt-1 text-lg">Rp {{$menus->harga}}</h1>
+                                <button id="addButton-{{$menus->id_menu}}" class="hover:rounded-full hover:bg-[#FFD369] h-8 group text-3xl">
+                                    <ion-icon name="add-circle-outline" class="group-hover:text-white"></ion-icon>
+                                </button>
+                            </div>
+                            </div>
+                        </div>
+                        @endif
+                        @endforeach         
+                    </div>
+                    @endif
+                    @endforeach
+                </div>
+                <div id="geprek">
+                    @foreach($kategori as $kategoris)
+                    @if($kategoris->kategori === 'GEPREK')
+                    <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+                    <hr class="mt-5 w-full mx-3"> 
+                    <div id="all" class="mx-auto mt-10 w-full container gap-6 sm:flex sm:flex-wrap sm:justify-start">                     
+                        @foreach($menu as $menus)
+                        @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                        <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
+                            <img src="{{$menus->gambar_menu}} alt="Image Caption class="w-full object-cover">
+                            <div class="px-2 py-2">
+                            <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                            <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                            <div class="justify-between flex">
+                                <h1 class="font-bold mt-1 text-lg">Rp {{$menus->harga}}</h1>
+                                <button id="addButton-{{$menus->id_menu}}" class="hover:rounded-full hover:bg-[#FFD369] h-8 group text-3xl">
+                                    <ion-icon name="add-circle-outline" class="group-hover:text-white"></ion-icon>
+                                </button>
+                            </div>
+                            </div>
+                        </div>
+                        @endif
+                        @endforeach         
+                    </div>
+                    @endif
+                    @endforeach
+                </div>
+                <div id="cemilan">
+                    @foreach($kategori as $kategoris)
+                    @if($kategoris->kategori === 'CEMILAN')
+                    <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+                    <hr class="mt-5 w-full mx-3"> 
+                    <div id="all" class="mx-auto mt-10 w-full container gap-6 sm:flex sm:flex-wrap sm:justify-start">                     
+                        @foreach($menu as $menus)
+                        @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                        <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
+                            <img src="{{$menus->gambar_menu}} alt="Image Caption class="w-full object-cover">
+                            <div class="px-2 py-2">
+                            <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                            <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                            <div class="justify-between flex">
+                                <h1 class="font-bold mt-1 text-lg">Rp {{$menus->harga}}</h1>
+                                <button id="addButton-{{$menus->id_menu}}" class="hover:rounded-full hover:bg-[#FFD369] h-8 group text-3xl">
+                                    <ion-icon name="add-circle-outline" class="group-hover:text-white"></ion-icon>
+                                </button>
+                            </div>
+                            </div>
+                        </div>
+                        @endif
+                        @endforeach         
+                    </div>
+                    @endif
+                    @endforeach
+                </div>
+                <div id="minuman">
+                    @foreach($kategori as $kategoris)
+                    @if($kategoris->kategori === 'MINUMAN')
+                    <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+                    <hr class="mt-5 w-full mx-3"> 
+                    <div id="all" class="mx-auto mt-10 w-full container gap-6 sm:flex sm:flex-wrap sm:justify-start">                     
+                        @foreach($menu as $menus)
+                        @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                        <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
+                            <img src="{{$menus->gambar_menu}} alt="Image Caption class="w-full object-cover">
+                            <div class="px-2 py-2">
+                            <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                            <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                            <div class="justify-between flex">
+                                <h1 class="font-bold mt-1 text-lg">Rp {{$menus->harga}}</h1>
+                                <button id="addButton-{{$menus->id_menu}}" class="hover:rounded-full hover:bg-[#FFD369] h-8 group text-3xl">
+                                    <ion-icon name="add-circle-outline" class="group-hover:text-white"></ion-icon>
+                                </button>
+                            </div>
+                            </div>
+                        </div>
+                        @endif
+                        @endforeach         
+                    </div>
+                    @endif
+                    @endforeach
                 </div>
             </div>
 
@@ -102,19 +258,19 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-8">
                                 <path d="M11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM15.29 16.71L11 12.41V7H13V11.59L16.71 15.3L15.29 16.71Z" fill="black"/>
                             </svg>
-                            <p class="text-sm ml-0.5 md:text-base">18 Mei 2024 3.41 PM</p>
+                            <p class="text-sm ml-0.5 md:text-base">{{ now()->format('d F Y g:i A') }}</p>
                         </div>
                         <div class="flex my-2 items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-8">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M8 7C8 5.93913 8.42143 4.92172 9.17157 4.17157C9.92172 3.42143 10.9391 3 12 3C13.0609 3 14.0783 3.42143 14.8284 4.17157C15.5786 4.92172 16 5.93913 16 7C16 8.06087 15.5786 9.07828 14.8284 9.82843C14.0783 10.5786 13.0609 11 12 11C10.9391 11 9.92172 10.5786 9.17157 9.82843C8.42143 9.07828 8 8.06087 8 7ZM8 13C6.67392 13 5.40215 13.5268 4.46447 14.4645C3.52678 15.4021 3 16.6739 3 18C3 18.7956 3.31607 19.5587 3.87868 20.1213C4.44129 20.6839 5.20435 21 6 21H18C18.7956 21 19.5587 20.6839 20.1213 20.1213C20.6839 19.5587 21 18.7956 21 18C21 16.6739 20.4732 15.4021 19.5355 14.4645C18.5979 13.5268 17.3261 13 16 13H8Z" fill="black"/>
                             </svg>
-                            <p class="text-sm ml-0.5 md:text-base">Fildza</p>
+                            <p class="text-sm ml-0.5 md:text-base">{{ session('nama_pelanggan') }}</p>
                         </div>
                         <div class="flex my-2 items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-8">
                                 <path d="M22 7.5C22 5.57 17.52 4 12 4C6.48 4 2 5.57 2 7.5C2 9.31 5.95 10.81 11 10.98V15H9.35C8.53 15 7.8 15.5 7.49 16.26L6 20H8L9.2 17H14.8L16 20H18L16.5 16.26C16.2 15.5 15.46 15 14.65 15H13V10.98C18.05 10.81 22 9.31 22 7.5ZM12 6C16.05 6 18.74 6.86 19.72 7.5C18.74 8.14 16.05 9 12 9C7.95 9 5.26 8.14 4.28 7.5C5.26 6.86 7.95 6 12 6Z" fill="black"/>
                             </svg>
-                            <p class="text-sm ml-0.5 md:text-base">M01</p>
+                            <p class="text-sm ml-0.5 md:text-base">{{session('nomor_meja')}}</p>
                         </div>
                         <div class="flex my-2 items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-8">
@@ -126,25 +282,25 @@
 
                     {{-- menu --}}
                     <hr class="px-2">
-                        <div class="flex-none py-2">
-                            <button class="hover:rounded-lg hover:bg-red-200 h-8 md:ml-0 absolute right-36 sm:right-60 md:right-[340px] lg:right-0">
+                        <div id="selectedMenuItems" class="flex-none py-2">
+                            {{-- <button class="hover:rounded-lg hover:bg-red-200 h-8 md:ml-0 absolute right-36 sm:right-60 md:right-[340px] lg:right-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="md:size-7 lg:size-8">
                                     <path d="M16 9V19H8V9H16ZM14.5 3H9.5L8.5 4H5V6H19V4H15.5L14.5 3ZM18 7H6V19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7Z" fill="#FF0000"/>
                                   </svg>
-                            </button>
-                            <div class="flex items-center gap-10 sm:gap-0 mt-6 lg:mt-0">
+                            </button> --}}
+                            {{-- <div class="flex items-center gap-10 sm:gap-0 mt-6 lg:mt-0">
                                 <img src="https://source.unsplash.com/50x50" alt="" class="rounded-lg hidden sm:flex md:size-[100px] lg:size-32">
                                 <h1 class="w-[170px] text-sm font-semibold sm:w-52 sm:ml-2 md:text-base md:w-52 lg:w-full">Chicken Steak Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, amet?</h1>
-                            </div>
+                            </div> --}}
 
-                            <div class="flex item mt-1">
+                            {{-- <div class="flex item mt-1">
                                 <h1 class="text-sm text-gray-600">Note : </h1>
                                 <form action="">
                                     <textarea name="" id="" cols="13" rows="3" class="mt-1 ml-1 text-sm text-gray-600 py-0 px-1 sm:w-48 md:w-64 lg:w-72"></textarea>
                                 </form>
                             </div>
-                            
-                            <div class="flex items-center gap-3 sm:gap-20 md:gap-32 lg:justify-between">
+                             --}}
+                            {{-- <div class="flex items-center gap-3 sm:gap-20 md:gap-32 lg:justify-between">
                                 <div x-data="{ productQuantity: 1 }">
                                     <label for="Quantity" class="sr-only"> Quantity </label>
                                     <div class="flex items-center rounded border border-gray-200 w-14 h-7 my-2 md:w-20 md:h-7 lg:w-24 lg:h-8">
@@ -174,7 +330,7 @@
                                     </div>
                                 </div>
                                 <h1 class="font-bold text-lg lg:text-xl">Rp 15.000</h1>
-                            </div>
+                            </div> --}}
                         </div>
                     <hr class="px-2">
                     {{-- end menu --}}
@@ -230,7 +386,222 @@
             </div>
             {{-- end detail pesanan --}}
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+                const buttons = document.querySelectorAll('[id^="addButton-"]');
+            
+                buttons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const buttonId = e.target.id;
+                        const menuId = buttonId.split('-')[1];
+                        const menuCard = button.closest('.rounded-md');
+                        const menuImage = menuCard.querySelector('img').src;
+                        const menuName = menuCard.querySelector('.font-bold').textContent;
+                        const menuPrice = menuCard.querySelector('.justify-between h1').textContent;
+            
+                        const selectedMenuItems = document.getElementById('selectedMenuItems');
+            
+                        const selectedMenuItemHTML = `
+                            <div class="flex-none py-2">
+                                <button class="hover:rounded-lg hover:bg-red-200 h-8 md:ml-0 absolute right-36 sm:right-60 md:right-[340px] lg:right-0 delete-button" data-id="{{ $menus->id_menu }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="md:size-7 lg:size-8">
+                                        <path d="M16 9V19H8V9H16ZM14.5 3H9.5L8.5 4H5V6H19V4H15.5L14.5 3ZM18 7H6V19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7Z" fill="#FF0000"/>
+                                    </svg>
+                                </button>
+                                <div class="flex items-center gap-10 sm:gap-0 mt-6 lg:mt-0">
+                                    <img src="${menuImage}" alt="" class="rounded-lg hidden sm:flex md:size-[100px] lg:size-32">
+                                    <h1 class="w-[170px] text-sm font-semibold sm:w-52 sm:ml-2 md:text-base md:w-52 lg:w-full">${menuName}</h1>
+                                </div>
+            
+                                <div class="flex item mt-1">
+                                    <h1 class="text-sm text-gray-600">Note : </h1>
+                                    <form action="">
+                                        <textarea name="" id="" cols="13" rows="3" class="mt-1 ml-1 text-sm text-gray-600 py-0 px-1 sm:w-48 md:w-64 lg:w-72"></textarea>
+                                    </form>
+                                </div>
+                                
+                                <div class="flex items-center gap-3 sm:gap-20 md:gap-32 lg:justify-between">
+                                    <div x-data="{ productQuantity: 1 }">
+                                        <label for="Quantity" class="sr-only"> Quantity </label>
+                                        <div class="flex items-center rounded border border-gray-200 w-14 h-7 my-2 md:w-20 md:h-7 lg:w-24 lg:h-8">
+                                        <button
+                                            type="button"
+                                            x-on:click="productQuantity--"
+                                            :disabled="productQuantity === 0"
+                                            class="size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75"
+                                        >
+                                            &minus;
+                                        </button>
+                                    
+                                        <input
+                                            type="number"
+                                            id="Quantity"
+                                            x-model="productQuantity"
+                                            class="h-5 w-8 lg:h-7 lg:w-9 border-transparent text-center text-xs px-0 lg:text-lg [-moz-appearance:_textfield] sm:text-sm [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+                                        />
+                                    
+                                        <button
+                                            type="button"
+                                            x-on:click="productQuantity++"
+                                            class="size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75"
+                                        >
+                                            &plus;
+                                        </button>
+                                        </div>
+                                    </div>
+                                    <h1 class="font-bold text-lg lg:text-xl">${menuPrice}</h1>
+                                </div>
+                            </div>
+                            <hr class="px-2">
+                        `;
+            
+                        selectedMenuItems.insertAdjacentHTML('beforeend', selectedMenuItemHTML);
+                    });
+                });
+            });
+            </script>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('.delete-button').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const menuItem = this.closest('.menu-item');
+                        if (confirm('Are you sure you want to delete this menu item?')) {
+                            menuItem.remove();
+                        }
+                    });
+                });
+            });
 
+            </script>
+            
+        <script>
+            // Mendapatkan elemen yang diperlukan
+            const allMenu = document.getElementById('all');
+            const kidsMealMenu = document.getElementById('kidsmeal');
+            const sayuranMenu = document.getElementById('sayuran');
+            const steakMenu = document.getElementById('steak');
+            const riceMenu = document.getElementById('rice');
+            const geprekMenu = document.getElementById('geprek');
+            const cemilanMenu = document.getElementById('cemilan');
+            const minumanMenu = document.getElementById('minuman');
+        
+            // Menyembunyikan elemen #all dan menampilkan elemen #sayuran
+            function showAllMenu() {
+                allMenu.style.display = 'block';
+                kidsMealMenu.style.display = 'none';
+                sayuranMenu.style.display = 'none';
+                steakMenu.style.display = 'none';
+                riceMenu.style.display = 'none';
+                geprekMenu.style.display = 'none';
+                cemilanMenu.style.display = 'none';
+                minumanMenu.style.display = 'none';
+            }
+            function showKidsMealMenu() {
+                allMenu.style.display = 'none';
+                kidsMealMenu.style.display = 'block';
+                sayuranMenu.style.display = 'none';
+                steakMenu.style.display = 'none';
+                riceMenu.style.display = 'none';
+                geprekMenu.style.display = 'none';
+                cemilanMenu.style.display = 'none';
+                minumanMenu.style.display = 'none';
+            }
+            function showSayuranMenu() {
+                allMenu.style.display = 'none';
+                kidsMealMenu.style.display = 'none';
+                sayuranMenu.style.display = 'block';
+                steakMenu.style.display = 'none';
+                riceMenu.style.display = 'none';
+                geprekMenu.style.display = 'none';
+                cemilanMenu.style.display = 'none';
+                minumanMenu.style.display = 'none';
+            }
+            function showSteakMenu() {
+                allMenu.style.display = 'none';
+                kidsMealMenu.style.display = 'none';
+                sayuranMenu.style.display = 'none';
+                steakMenu.style.display = 'block';
+                riceMenu.style.display = 'none';
+                geprekMenu.style.display = 'none';
+                cemilanMenu.style.display = 'none';
+                minumanMenu.style.display = 'none';
+            }
+            function showRiceMenu() {
+                allMenu.style.display = 'none';
+                kidsMealMenu.style.display = 'none';
+                sayuranMenu.style.display = 'none';
+                steakMenu.style.display = 'none';
+                riceMenu.style.display = 'block';
+                geprekMenu.style.display = 'none';
+                cemilanMenu.style.display = 'none';
+                minumanMenu.style.display = 'none';
+            }
+            function showGeprekMenu() {
+                allMenu.style.display = 'none';
+                kidsMealMenu.style.display = 'none';
+                sayuranMenu.style.display = 'none';
+                steakMenu.style.display = 'none';
+                riceMenu.style.display = 'none';
+                geprekMenu.style.display = 'block';
+                cemilanMenu.style.display = 'none';
+                minumanMenu.style.display = 'none';
+            }
+            function showCemilanMenu() {
+                allMenu.style.display = 'none';
+                kidsMealMenu.style.display = 'none';
+                sayuranMenu.style.display = 'none';
+                steakMenu.style.display = 'none';
+                riceMenu.style.display = 'none';
+                geprekMenu.style.display = 'none';
+                cemilanMenu.style.display = 'block';
+                minumanMenu.style.display = 'none';
+            }
+            function showMinumanMenu() {
+                allMenu.style.display = 'none';
+                kidsMealMenu.style.display = 'none';
+                sayuranMenu.style.display = 'none';
+                steakMenu.style.display = 'none';
+                riceMenu.style.display = 'none';
+                geprekMenu.style.display = 'none';
+                cemilanMenu.style.display = 'none';
+                minumanMenu.style.display = 'block';
+            }
+
+            // Mendengarkan klik pada tautan "Kids Meal"
+            document.getElementById('AllLink').addEventListener('click', function(event) {
+            event.preventDefault(); // Menghentikan perilaku bawaan dari tautan
+            showAllMenu(); // Memanggil fungsi untuk menampilkan menu Kids Meal
+            });
+            document.getElementById('kidsMealLink').addEventListener('click', function(event) {
+            event.preventDefault(); // Menghentikan perilaku bawaan dari tautan
+            showKidsMealMenu(); // Memanggil fungsi untuk menampilkan menu Kids Meal
+            });
+            document.getElementById('sayuranLink').addEventListener('click', function(event) {
+            event.preventDefault(); 
+            showSayuranMenu(); 
+            });
+            document.getElementById('steakLink').addEventListener('click', function(event) {
+            event.preventDefault(); 
+            showSteakMenu(); 
+            });
+            document.getElementById('riceLink').addEventListener('click', function(event) {
+            event.preventDefault(); 
+            showRiceMenu(); 
+            });
+            document.getElementById('geprekLink').addEventListener('click', function(event) {
+            event.preventDefault(); 
+            showGeprekMenu(); 
+            });
+            document.getElementById('cemilanLink').addEventListener('click', function(event) {
+            event.preventDefault(); 
+            showCemilanMenu(); 
+            });
+            document.getElementById('minumanLink').addEventListener('click', function(event) {
+            event.preventDefault(); 
+            showMinumanMenu(); 
+            });
+        </script>
+        
         <script>
             function appendNumber(number) {
               const display = document.getElementById('display');
