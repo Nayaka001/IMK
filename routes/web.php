@@ -55,6 +55,10 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/user/kasir', function () {
         return view('admin.kasir');
     })->name('user-kasir');
+
+    Route::get('/admin/form-daftar-akun', function () {
+        return view('admin.form-daftar-akun');
+    })->name('daftar-akun');
 });
 
 //Bagian Bartender
