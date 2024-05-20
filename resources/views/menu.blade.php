@@ -6,17 +6,95 @@
 
         @include('partials.navbar')
 
+        {{-- alert --}}
+        @if(session('notification'))
+        <div id="alert" class="fixed top-0 right-0 m-4 rounded-xl border border-gray-100 bg-white p-4 z-50 ease-in-out duration-300 transition-opacity hidden" role="alert">
+            <div class="flex items-start gap-4">
+                <span class="text-green-600">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="h-6 w-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </span>
+            
+                <div class="flex-1">
+                  <strong class="block font-medium text-gray-900"> Berhasil! </strong>
+            
+                  <p class="mt-1 text-sm text-gray-700">{{ session('notification') }}</p>
+                </div>
+            </div>
+        </div>
+        @endif
+        {{-- end alert --}}
+        {{-- <div role="alert" class="rounded-xl border border-gray-100 bg-white p-4">
+            <div class="flex items-start gap-4">
+              <span class="text-green-600">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-6 w-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </span>
+          
+              <div class="flex-1">
+                <strong class="block font-medium text-gray-900"> Changes saved </strong>
+          
+                <p class="mt-1 text-sm text-gray-700">Your product changes have been saved.</p>
+              </div>
+          
+              <button class="text-gray-500 transition hover:text-gray-600">
+                <span class="sr-only">Dismiss popup</span>
+          
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-6 w-6"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+        </div> --}}
+
+
+
+
+
+        
+        
         <div class="w-full my-7 ml-24 mr-7 sm:ml-36">
             <div class="w-3/4 flex justify-between gap-6 md:w-5/6 lg:w-full">
                 <form action="{{ route('index.menu') }}" method="GET" class="w-full">
                     <div class="flex items-center">
                         <input type="search" placeholder="Search" id="search" name="search" class="px-3 py-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 peer "/>
-                        <button class="items-center mx-3">
+                        <button class="items-center mx-3 z-0">
                             <ion-icon name="search-outline" size="small"></ion-icon>
                         </button>
                     </div>
                 </form>
-                <ion-icon name="person-circle-outline" class="flex items-center text-5xl -ml-7 -mr-3 -mt-1"></ion-icon>
+                <ion-icon name="person-circle-outline" class="flex items-center text-5xl -ml-7 -mr-3 -mt-1 z-0"></ion-icon>
                 <div class="text-center items-center">
                     <h1 class="text-sm">{{ auth()->user()->karyawan->nama }}</h1>
                     <p class="text-xs text-slate-500">Cashier</p>
