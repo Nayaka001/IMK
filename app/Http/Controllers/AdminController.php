@@ -6,6 +6,8 @@ use App\Models\Karyawan;
 use App\Models\User;
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -31,5 +33,27 @@ class AdminController extends Controller
             'user' => $user,
             'karyawan' => $karyawan
         ]);
+    }
+    public function daftar(){
+        
+        return view('admin.form-daftar-akun');
+    }
+    public function storedaftar(Request $request){
+        $user = User::create([
+            'id_user' => (string) Str::uuid(),
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'level_user' => $request->level_user
+        ]);
+        Karyawan::create([
+            'id_user' => $user->id_user,
+            'nama' => $request->nama,
+            'tgl_lahir' => $request->tgl_lahir,
+            'alamat' => $request->alamat,
+            'no_hp' => $request->no_hp,
+            'gaji' => $request->gaji,
+            'foto' => $request->foto,
+        ]);
+        return redirect()->route('user');
     }
 }
