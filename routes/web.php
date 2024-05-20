@@ -62,6 +62,9 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
 //Bagian Bartender
 Route::middleware(['auth', 'role:Bartender'])->group(function () {
     Route::get('/bartender', [BartenderController::class, 'index'])->name('index.bartender');
+
+
+
 });
 
 Route::get('/form-dine-in', function () {
@@ -131,3 +134,11 @@ Route::get('/new-order', function () {
 // Route::get('/new-order/addmenu', function () {
 //     return view('neworder');
 // })->name('new-order');
+
+//kitchen
+Route::get('/kitchen-main', function () {
+    return view('kitchen.mainmenu');
+});
+Route::get('/kitchen-detail', function () {
+    return view('kitchen.detail');
+});
