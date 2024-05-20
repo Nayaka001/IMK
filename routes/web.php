@@ -89,9 +89,9 @@ Route::get('/new-order', function () {
     return view('neworder');
 })->name('new-order');
 
-Route::get('/order-list', function () {
-    return view('orderlist');
-})->name('order-list');
+// Route::get('/order-list', function () {
+//     return view('orderlist');
+// })->name('order-list');
 
 // Route::get('/menu', function () {
 //     return view('menu');
@@ -138,6 +138,15 @@ Route::get('/report', function () {
 Route::get('/new-order', function () {
     return view('formnewdine');
 })->name('new-order');
+
+Route::get('/order-list', function () {
+    return view('orderlistwaiting');
+})->name('order-list');
+
+Route::get('/order-list/done', function () {
+    return view('orderlistdone');
+})->name('order-list');
+
 
 // Route::get('/new-order/addmenu', function () {
 //     return view('neworder');

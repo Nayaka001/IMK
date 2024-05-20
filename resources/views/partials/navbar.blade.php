@@ -36,6 +36,57 @@
                     <h5 class="text-white text-center text-[13px] group-hover:text-black {{ request()->routeIs('report') ? 'text-black' : '' }}">Report</h5>
                 </div>
             </a>
+            <a href="{{ route('logout') }}">
+                <button id="logoutButton" class="w-full mx-auto">
+                    <div class="items-center group my-10 p-2 w-fit h-fit mx-auto hover:bg-[#FFD369] hover:rounded-xl flex gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 30 30" fill="none" class="mx-auto">
+                            <path d="M24.7917 11.6667L22.7354 13.7229L25.0396 16.0417H13.125V18.9583H25.0396L22.7354 21.2625L24.7917 23.3333L30.625 17.5L24.7917 11.6667ZM7.29167 7.29167H17.5V4.375H7.29167C5.6875 4.375 4.375 5.6875 4.375 7.29167V27.7083C4.375 29.3125 5.6875 30.625 7.29167 30.625H17.5V27.7083H7.29167V7.29167Z" fill="#FFFFF0"/>
+                        </svg>
+                        <h5 class="text-white text-center text-[13px] group-hover:text-black tracking-wider">Logout</h5>
+                    </div>
+                </button>
+            </a>
         </div>
     </div>
 </div>
+@push('scripts')
+<script>
+    // Mengambil elemen alert
+    var alertBox = document.getElementById('alert');
+    window.addEventListener('DOMContentLoaded', (event) => {
+            // Periksa apakah notifikasi telah ditampilkan sebelumnya
+            if(alertBox && alertBox.classList.contains('hidden') && "{{ session('notification') }}") {
+                alertBox.classList.remove('hidden');
+                setTimeout(function() {
+                    alertBox.style.opacity = '0';
+                    // Simpan status notifikasi ke dalam localStorage
+                    localStorage.setItem('notificationShown', 'true');
+                }, 3000);
+            }
+        });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('logoutButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin logout?',
+                text: "Anda akan keluar dari akun Anda!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, Logout!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect ke route logout setelah pengguna mengonfirmasi
+                    window.location.href = "{{ route('logout') }}";
+                }
+            });
+        });
+    });
+</script>
+@endpush
