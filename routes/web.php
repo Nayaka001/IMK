@@ -45,6 +45,9 @@ Route::middleware(['auth', 'role:Kasir'])->group(function () {
 Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('index.admin');
     Route::get('/admin/user', [AdminController::class, 'user'])->name('user');
+    Route::get('/admin/form-daftar-akun', [AdminController::class, 'daftar'])->name('daftar-akun');
+    Route::post('/admin/store-daftar', [AdminController::class, 'storedaftar'])->name('store.daftar');
+
     Route::get('/admin/user/pelayan', function () {
         return view('admin.pelayan');
     })->name('user.pelayan');
@@ -58,9 +61,6 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
         return view('admin.kasir');
     })->name('user-kasir');
 
-    Route::get('/admin/form-daftar-akun', function () {
-        return view('admin.form-daftar-akun');
-    })->name('daftar-akun');
 
     Route::get('/admin/laporan-penjualan', function () {
         return view('admin.laporan-penjualan');
