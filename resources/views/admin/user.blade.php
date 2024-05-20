@@ -59,6 +59,7 @@
                     </thead>
                     <tbody>
                       @foreach($karyawan as $karyawans)
+                      @if($karyawans->user->level_user != 'Admin')
                       <tr>
                         <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
                           <div class="flex px-2 py-1">
@@ -95,6 +96,7 @@
                           <!-- <a href="javascript:;" class="text-xs font-semibold leading-tight text-slate-400"> Edit </a> -->
                         </td>
                       </tr>
+                      @endif
                       @endforeach
                     </tbody>
                   </table>
