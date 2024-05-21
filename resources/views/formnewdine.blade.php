@@ -108,14 +108,19 @@
                         <input type="number" id="jumlah-orang" name="jumlah_orang" placeholder="Masukkan Jumlah Orang" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
                         {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
                     </label>
-                    <label for="tanggal" class="mx-10">
+                    {{-- <label for="tanggal" class="mx-10">
                         <span class="block font-semibold">Tanggal Kedatangan</span>
                         <input type="date" id="tanggal" name="tangga_datang" placeholder="Masukkan Kedatangan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
-                        {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
+                        <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p>
                     </label>
                     <label for="waktu" class="mx-10">
                         <span class="block font-semibold">Waktu Kedatangan</span>
                         <input type="time" id="waktu" name="waktu_datang" placeholder="Masukkan Waktu Kedatangan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
+                        <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p>
+                    </label> --}}
+                    <label for="waktu" class="mx-10">
+                        <span class="block font-semibold">Waktu Kedatangan</span>
+                        <input type="datetime-local" id="waktu" name="waktu_datang" placeholder="Masukkan Waktu Kedatangan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
                         {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
                     </label>
                     <label for="nomor-meja" class="mx-10">

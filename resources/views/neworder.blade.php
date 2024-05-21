@@ -41,7 +41,7 @@
                         @foreach($menu as $menus)
                         @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
                         <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
-                            <img src="{{$menus->gambar_menu}} alt="Image Caption class="w-full object-cover">
+                            <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
                             <div class="px-2 py-2">
                             <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
                             <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
@@ -58,7 +58,7 @@
                     </div>
                     @endforeach
                 </div>
-                <div id="kidsmeal">
+                <div id="kidsmeal" class="hidden">
                     @foreach($kategori as $kategoris)
                     @if($kategoris->kategori === 'KIDS MEAL')
                     <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
@@ -67,7 +67,7 @@
                         @foreach($menu as $menus)
                         @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
                         <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
-                            <img src="{{$menus->gambar_menu}} alt="Image Caption class="w-full object-cover">
+                            <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
                             <div class="px-2 py-2">
                             <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
                             <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
@@ -85,7 +85,7 @@
                     @endif
                     @endforeach
                 </div>
-                <div id="sayuran">
+                <div id="sayuran" class="hidden">
                     @foreach($kategori as $kategoris)
                     @if($kategoris->kategori === 'SAYURAN')
                     <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
@@ -94,7 +94,7 @@
                         @foreach($menu as $menus)
                         @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
                         <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
-                            <img src="{{$menus->gambar_menu}} alt="Image Caption class="w-full object-cover">
+                            <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
                             <div class="px-2 py-2">
                             <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
                             <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
@@ -112,7 +112,7 @@
                     @endif
                     @endforeach
                 </div>
-                <div id="steak">
+                <div id="steak" class="hidden">
                     @foreach($kategori as $kategoris)
                     @if($kategoris->kategori === 'STEAKS & HOTPLATES')
                     <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
@@ -121,7 +121,7 @@
                         @foreach($menu as $menus)
                         @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
                         <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
-                            <img src="{{$menus->gambar_menu}} alt="Image Caption class="w-full object-cover">
+                            <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
                             <div class="px-2 py-2">
                             <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
                             <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
@@ -139,7 +139,7 @@
                     @endif
                     @endforeach
                 </div>
-                <div id="rice">
+                <div id="rice" class="hidden">
                     @foreach($kategori as $kategoris)
                     @if($kategoris->kategori === 'RICE HOTPLATE')
                     <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
@@ -148,7 +148,7 @@
                         @foreach($menu as $menus)
                         @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
                         <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
-                            <img src="{{$menus->gambar_menu}} alt="Image Caption class="w-full object-cover">
+                            <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
                             <div class="px-2 py-2">
                             <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
                             <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
@@ -166,7 +166,7 @@
                     @endif
                     @endforeach
                 </div>
-                <div id="geprek">
+                <div id="geprek" class="hidden"   >
                     @foreach($kategori as $kategoris)
                     @if($kategoris->kategori === 'GEPREK')
                     <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
@@ -175,7 +175,7 @@
                         @foreach($menu as $menus)
                         @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
                         <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
-                            <img src="{{$menus->gambar_menu}} alt="Image Caption class="w-full object-cover">
+                            <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
                             <div class="px-2 py-2">
                             <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
                             <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
@@ -193,34 +193,35 @@
                     @endif
                     @endforeach
                 </div>
-                <div id="cemilan">
-                    @foreach($kategori as $kategoris)
+                <div id="cemilan" class="hidden">
+                @foreach($kategori as $kategoris)
                     @if($kategoris->kategori === 'CEMILAN')
-                    <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
-                    <hr class="mt-5 w-full mx-3"> 
-                    <div id="all" class="mx-auto mt-10 w-full container gap-6 sm:flex sm:flex-wrap sm:justify-start">                     
-                        @foreach($menu as $menus)
-                        @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
-                        <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
-                            <img src="{{$menus->gambar_menu}} alt="Image Caption class="w-full object-cover">
-                            <div class="px-2 py-2">
-                            <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
-                            <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
-                            <div class="justify-between flex">
-                                <h1 class="font-bold mt-1 text-lg">Rp {{$menus->harga}}</h1>
-                                <button id="addButton-{{$menus->id_menu}}" class="hover:rounded-full hover:bg-[#FFD369] h-8 group text-3xl">
-                                    <ion-icon name="add-circle-outline" class="group-hover:text-white"></ion-icon>
-                                </button>
-                            </div>
-                            </div>
+                        <h1 class="text-3xl font-bold ml-3 pt-4">{{ $kategoris->subkategori }}</h1>
+                        <hr class="mt-5 w-full mx-3">
+                        <div id="all" class="mx-auto mt-10 w-full container gap-6 sm:flex sm:flex-wrap sm:justify-start">
+                            @foreach($menu as $menus)
+                                @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                                    <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
+                                        <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                                        <div class="px-2 py-2">
+                                            <div class="font-bold text-lg mb-1">{{ $menus->nama_menu }}</div>
+                                            <p class="text-xs mb-1 text-gray-600">{{ $menus->keterangan }}</p>
+                                            <div class="justify-between flex">
+                                                <h1 class="font-bold mt-1 text-lg">Rp {{ $menus->harga }}</h1>
+                                                <button id="addButton-{{ $menus->id_menu }}" class="hover:rounded-full hover:bg-[#FFD369] h-8 group text-3xl">
+                                                    <ion-icon name="add-circle-outline" class="group-hover:text-white"></ion-icon>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
                         </div>
-                        @endif
-                        @endforeach         
-                    </div>
                     @endif
-                    @endforeach
+                @endforeach
+
                 </div>
-                <div id="minuman">
+                <div id="minuman" class="hidden">
                     @foreach($kategori as $kategoris)
                     @if($kategoris->kategori === 'MINUMAN')
                     <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
@@ -229,7 +230,7 @@
                         @foreach($menu as $menus)
                         @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
                         <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-3/5 md:w-60 lg:w-56">
-                            <img src="{{$menus->gambar_menu}} alt="Image Caption class="w-full object-cover">
+                            <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
                             <div class="px-2 py-2">
                             <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
                             <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
@@ -279,28 +280,57 @@
                             <p class="text-sm ml-0.5 md:text-base">001</p>
                         </div>
                     </div>
+                    <!-- Modal -->
+                    <div id="deleteModal" class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+                        <div class="absolute inset-0 bg-black opacity-50"></div>
+                        <div class="bg-white rounded-lg p-6 z-10 max-w-md mx-auto">
+                            <h2 class="text-xl font-bold mb-4">Konfirmasi Penghapusan</h2>
+                            <p id="modalMessage">Apakah Anda yakin ingin menghapus item ini?</p>
+                            <div class="mt-6 flex justify-end">
+                                <button id="cancelButton" class="bg-gray-500 text-white px-4 py-2 rounded mr-2">Batal</button>
+                                <button id="confirmDeleteButton" class="bg-red-500 text-white px-4 py-2 rounded">Hapus</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Modal -->
+                    <!-- Modal -->
+                    <div id="infoModal" class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+                        <div class="absolute inset-0 bg-black opacity-50"></div>
+                        <div class="bg-white rounded-lg p-6 z-10 max-w-md mx-auto">
+                            <h2 class="text-xl font-bold mb-4">Informasi</h2>
+                            <p id="infoModalMessage">Item already added!</p>
+                            <div class="mt-6 flex justify-end">
+                                <button id="infoModalCloseButton" class="bg-gray-500 text-white px-4 py-2 rounded">Tutup</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+
 
                     {{-- menu --}}
                     <hr class="px-2">
                         <div id="selectedMenuItems" class="flex-none py-2">
-                            {{-- <button class="hover:rounded-lg hover:bg-red-200 h-8 md:ml-0 absolute right-36 sm:right-60 md:right-[340px] lg:right-0">
+                            <button class="hover:rounded-lg hover:bg-red-200 h-8 md:ml-0 absolute right-36 sm:right-60 md:right-[340px] lg:right-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="md:size-7 lg:size-8">
                                     <path d="M16 9V19H8V9H16ZM14.5 3H9.5L8.5 4H5V6H19V4H15.5L14.5 3ZM18 7H6V19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7Z" fill="#FF0000"/>
                                   </svg>
-                            </button> --}}
-                            {{-- <div class="flex items-center gap-10 sm:gap-0 mt-6 lg:mt-0">
+                            </button>
+                            <div class="flex items-center gap-10 sm:gap-0 mt-6 lg:mt-0">
                                 <img src="https://source.unsplash.com/50x50" alt="" class="rounded-lg hidden sm:flex md:size-[100px] lg:size-32">
                                 <h1 class="w-[170px] text-sm font-semibold sm:w-52 sm:ml-2 md:text-base md:w-52 lg:w-full">Chicken Steak Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, amet?</h1>
-                            </div> --}}
+                            </div>
 
-                            {{-- <div class="flex item mt-1">
+                            <div class="flex item mt-1">
                                 <h1 class="text-sm text-gray-600">Note : </h1>
                                 <form action="">
                                     <textarea name="" id="" cols="13" rows="3" class="mt-1 ml-1 text-sm text-gray-600 py-0 px-1 sm:w-48 md:w-64 lg:w-72"></textarea>
                                 </form>
                             </div>
-                             --}}
-                            {{-- <div class="flex items-center gap-3 sm:gap-20 md:gap-32 lg:justify-between">
+                            
+                            <div class="flex items-center gap-3 sm:gap-20 md:gap-32 lg:justify-between">
                                 <div x-data="{ productQuantity: 1 }">
                                     <label for="Quantity" class="sr-only"> Quantity </label>
                                     <div class="flex items-center rounded border border-gray-200 w-14 h-7 my-2 md:w-20 md:h-7 lg:w-24 lg:h-8">
@@ -330,7 +360,7 @@
                                     </div>
                                 </div>
                                 <h1 class="font-bold text-lg lg:text-xl">Rp 15.000</h1>
-                            </div> --}}
+                            </div>
                         </div>
                     <hr class="px-2">
                     {{-- end menu --}}
@@ -387,43 +417,48 @@
             {{-- end detail pesanan --}}
         </div>
         <script>
+            let itemIdToDelete;
             document.addEventListener('DOMContentLoaded', (event) => {
-                const buttons = document.querySelectorAll('[id^="addButton-"]');
-            
-                buttons.forEach(button => {
-                    button.addEventListener('click', (e) => {
-                        const buttonId = e.target.id;
-                        const menuId = buttonId.split('-')[1];
-                        const menuCard = button.closest('.rounded-md');
-                        const menuImage = menuCard.querySelector('img').src;
-                        const menuName = menuCard.querySelector('.font-bold').textContent;
-                        const menuPrice = menuCard.querySelector('.justify-between h1').textContent;
-            
-                        const selectedMenuItems = document.getElementById('selectedMenuItems');
-            
-                        const selectedMenuItemHTML = `
-                            <div class="flex-none py-2">
-                                <button class="hover:rounded-lg hover:bg-red-200 h-8 md:ml-0 absolute right-36 sm:right-60 md:right-[340px] lg:right-0 delete-button" data-id="{{ $menus->id_menu }}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="md:size-7 lg:size-8">
-                                        <path d="M16 9V19H8V9H16ZM14.5 3H9.5L8.5 4H5V6H19V4H15.5L14.5 3ZM18 7H6V19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7Z" fill="#FF0000"/>
-                                    </svg>
-                                </button>
-                                <div class="flex items-center gap-10 sm:gap-0 mt-6 lg:mt-0">
-                                    <img src="${menuImage}" alt="" class="rounded-lg hidden sm:flex md:size-[100px] lg:size-32">
-                                    <h1 class="w-[170px] text-sm font-semibold sm:w-52 sm:ml-2 md:text-base md:w-52 lg:w-full">${menuName}</h1>
-                                </div>
-            
-                                <div class="flex item mt-1">
-                                    <h1 class="text-sm text-gray-600">Note : </h1>
-                                    <form action="">
-                                        <textarea name="" id="" cols="13" rows="3" class="mt-1 ml-1 text-sm text-gray-600 py-0 px-1 sm:w-48 md:w-64 lg:w-72"></textarea>
-                                    </form>
-                                </div>
-                                
-                                <div class="flex items-center gap-3 sm:gap-20 md:gap-32 lg:justify-between">
-                                    <div x-data="{ productQuantity: 1 }">
-                                        <label for="Quantity" class="sr-only"> Quantity </label>
-                                        <div class="flex items-center rounded border border-gray-200 w-14 h-7 my-2 md:w-20 md:h-7 lg:w-24 lg:h-8">
+            const buttons = document.querySelectorAll('[id^="addButton-"]');
+            const selectedMenuItems = document.getElementById('selectedMenuItems');
+
+            // Event listener untuk tombol add
+            buttons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const buttonId = e.target.closest('button').id;
+                    const menuId = buttonId.split('-')[1];
+                    const menuCard = button.closest('.rounded-md');
+                    const menuImage = menuCard.querySelector('img').src;
+                    const menuName = menuCard.querySelector('.font-bold').textContent;
+                    const menuPrice = menuCard.querySelector('.justify-between h1').textContent;
+
+                    // Check if the menu item is already added
+                    if (selectedMenuItems.querySelector(`.menu-item[data-id="${menuId}"]`)) {
+                        showInfoModal('Item already added!');
+                        return;
+                    }
+
+                    const selectedMenuItemHTML = `
+                        <div class="flex-none py-2 menu-item" data-id="${menuId}">
+                            <button class="hover:rounded-lg hover:bg-red-200 h-8 delete-button" data-id="${menuId}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="md:size-7 lg:size-8">
+                                    <path d="M16 9V19H8V9H16ZM14.5 3H9.5L8.5 4H5V6H19V4H15.5L14.5 3ZM18 7H6V19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7Z" fill="#FF0000"/>
+                                </svg>
+                            </button>
+                            <div class="flex items-center gap-10 sm:gap-0 mt-6 lg:mt-0">
+                                <img src="${menuImage}" alt="" class="rounded-lg hidden sm:flex md:size-[100px] lg:size-32">
+                                <h1 class="w-[170px] text-sm font-semibold sm:w-52 sm:ml-2 md:text-base md:w-52 lg:w-full">${menuName}</h1>
+                            </div>
+                            <div class="flex item mt-1">
+                                <h1 class="text-sm text-gray-600">Note : </h1>
+                                <form action="">
+                                    <textarea name="" id="" cols="13" rows="3" class="mt-1 ml-1 text-sm text-gray-600 py-0 px-1 sm:w-48 md:w-64 lg:w-72"></textarea>
+                                </form>
+                            </div>
+                            <div class="flex items-center gap-3 sm:gap-20 md:gap-32 lg:justify-between">
+                                <div x-data="{ productQuantity: 1 }">
+                                    <label for="Quantity" class="sr-only"> Quantity </label>
+                                    <div class="flex items-center rounded border border-gray-200 w-14 h-7 my-2 md:w-20 md:h-7 lg:w-24 lg:h-8">
                                         <button
                                             type="button"
                                             x-on:click="productQuantity--"
@@ -432,14 +467,12 @@
                                         >
                                             &minus;
                                         </button>
-                                    
                                         <input
                                             type="number"
                                             id="Quantity"
                                             x-model="productQuantity"
                                             class="h-5 w-8 lg:h-7 lg:w-9 border-transparent text-center text-xs px-0 lg:text-lg [-moz-appearance:_textfield] sm:text-sm [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
                                         />
-                                    
                                         <button
                                             type="button"
                                             x-on:click="productQuantity++"
@@ -447,32 +480,70 @@
                                         >
                                             &plus;
                                         </button>
-                                        </div>
                                     </div>
-                                    <h1 class="font-bold text-lg lg:text-xl">${menuPrice}</h1>
                                 </div>
+                                <h1 class="font-bold text-lg lg:text-xl">${menuPrice}</h1>
                             </div>
-                            <hr class="px-2">
-                        `;
-            
-                        selectedMenuItems.insertAdjacentHTML('beforeend', selectedMenuItemHTML);
-                    });
-                });
-            });
-            </script>
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                document.querySelectorAll('.delete-button').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const menuItem = this.closest('.menu-item');
-                        if (confirm('Are you sure you want to delete this menu item?')) {
-                            menuItem.remove();
-                        }
-                    });
-                });
-            });
+                        </div>
+                        <hr class="px-2">
+                    `;
 
-            </script>
+                    selectedMenuItems.insertAdjacentHTML('beforeend', selectedMenuItemHTML);
+                            
+                    // Add event listener to the delete button of the newly added item
+                    const newDeleteButton = selectedMenuItems.querySelector(`.delete-button[data-id="${menuId}"]`);
+                    newDeleteButton.addEventListener('click', (e) => {
+                        // Simpan ID item yang akan dihapus ke dalam itemIdToDelete
+                        itemIdToDelete = menuId;
+                        // Tampilkan modal konfirmasi penghapusan
+                        showModal();
+                    });
+                });
+            });
+            // Modal functionality
+            const deleteModal = document.getElementById('deleteModal');
+            const cancelButton = document.getElementById('cancelButton');
+            const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+            const modalMessage = document.getElementById('modalMessage');
+            const infoModal = document.getElementById('infoModal');
+            const infoModalCloseButton = document.getElementById('infoModalCloseButton');
+            const infoModalMessage = document.getElementById('infoModalMessage');
+
+
+            const showModal = (message = 'Apakah Anda yakin ingin menghapus item ini?') => {
+                modalMessage.textContent = message;
+                deleteModal.classList.remove('opacity-0', 'pointer-events-none');
+                deleteModal.classList.add('opacity-100');
+            };
+
+            const hideModal = () => {
+                deleteModal.classList.add('opacity-0', 'pointer-events-none');
+                deleteModal.classList.remove('opacity-100');
+            };
+
+            cancelButton.addEventListener('click', hideModal);
+
+            confirmDeleteButton.addEventListener('click', () => {
+                const itemToDelete = selectedMenuItems.querySelector(`.menu-item[data-id="${itemIdToDelete}"]`);
+                if (itemToDelete) {
+                    itemToDelete.remove();
+                }
+                hideModal();
+            }); 
+                const showInfoModal = (message) => {
+                    infoModalMessage.textContent = message;
+                    infoModal.classList.remove('opacity-0', 'pointer-events-none');
+                    infoModal.classList.add('opacity-100');
+                };
+
+                const hideInfoModal = () => {
+                    infoModal.classList.add('opacity-0', 'pointer-events-none');
+                    infoModal.classList.remove('opacity-100');
+                };
+
+                infoModalCloseButton.addEventListener('click', hideInfoModal);
+            });
+         </script>
             
         <script>
             // Mendapatkan elemen yang diperlukan
