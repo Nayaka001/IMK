@@ -65,6 +65,10 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/laporan-penjualan', function () {
         return view('admin.laporan-penjualan');
     })->name('laporan-penjualan');
+
+    Route::get('/admin/laporan-pendapatan', function () {
+        return view('admin.laporan-pendapatan');
+    })->name('laporan-pendapatan');
 });
 
 //Bagian Bartender
