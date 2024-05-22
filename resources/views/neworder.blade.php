@@ -277,7 +277,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-8">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M5.586 4.586C5 5.172 5 6.114 5 8V17C5 18.886 5 19.828 5.586 20.414C6.172 21 7.114 21 9 21H15C16.886 21 17.828 21 18.414 20.414C19 19.828 19 18.886 19 17V8C19 6.114 19 5.172 18.414 4.586C17.828 4 16.886 4 15 4H9C7.114 4 6.172 4 5.586 4.586ZM9 8C8.73478 8 8.48043 8.10536 8.29289 8.29289C8.10536 8.48043 8 8.73478 8 9C8 9.26522 8.10536 9.51957 8.29289 9.70711C8.48043 9.89464 8.73478 10 9 10H15C15.2652 10 15.5196 9.89464 15.7071 9.70711C15.8946 9.51957 16 9.26522 16 9C16 8.73478 15.8946 8.48043 15.7071 8.29289C15.5196 8.10536 15.2652 8 15 8H9ZM9 12C8.73478 12 8.48043 12.1054 8.29289 12.2929C8.10536 12.4804 8 12.7348 8 13C8 13.2652 8.10536 13.5196 8.29289 13.7071C8.48043 13.8946 8.73478 14 9 14H15C15.2652 14 15.5196 13.8946 15.7071 13.7071C15.8946 13.5196 16 13.2652 16 13C16 12.7348 15.8946 12.4804 15.7071 12.2929C15.5196 12.1054 15.2652 12 15 12H9ZM9 16C8.73478 16 8.48043 16.1054 8.29289 16.2929C8.10536 16.4804 8 16.7348 8 17C8 17.2652 8.10536 17.5196 8.29289 17.7071C8.48043 17.8946 8.73478 18 9 18H13C13.2652 18 13.5196 17.8946 13.7071 17.7071C13.8946 17.5196 14 17.2652 14 17C14 16.7348 13.8946 16.4804 13.7071 16.2929C13.5196 16.1054 13.2652 16 13 16H9Z" fill="black"/>
                             </svg>
-                            <p class="text-sm ml-0.5 md:text-base">001</p>
+                            <p class="text-sm ml-0.5 md:text-base">{{session('order_id')}}</p>
                         </div>
                     </div>
                     <!-- Modal -->
@@ -367,8 +367,8 @@
     
                     <div class="flex items-center gap-2 mt-5 sm:gap-20 md:gap-[150px] lg:justify-between">
                         <h1 class="font-semibold text-sm py-4 text-gray-600 lg:text-base">Subtotal</h1>
-                        <h1 id="subTotal" class="font-bold text-lg lg:text-xl">45000</h1>
-                    </div>
+                        <h1 id="subTotal" class="font-bold text-lg lg:text-xl">Rp.0</h1>
+                    </div>                   
                     <div id="moneyDisplay" class="hidden">
                         <div class="flex items-center gap-2 sm:gap-20 md:gap-[150px] lg:justify-between">
                             <h1 class="font-semibold text-sm py-4 text-gray-600 lg:text-base">Uang</h1>
@@ -379,8 +379,17 @@
                             <h1 id="change" class="font-bold text-lg lg:text-xl"></h1>
                         </div>
                     </div>
-                    
+
+                    {{-- <form action="{{ route('save-menu-to-session') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="menuId" value="${menuId}">
+                        <input type="hidden" name="menuName" value="${menuName}">
+                        <input type="hidden" name="menuPrice" value="${menuPrice}">
+                        <input type="hidden" name="productQuantity" value="${productQuantity}">
+                        <button type="submit">Simpan ke Session</button>
+                    </form> --}}
                     <button id="confirmOrderBtn" class="bg-[#FFD369] p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Konfirmasi</button>
+                    
 
                     <div id="moneySection" class="hidden mt-5 h-screen">
                         <h1 class="text-xl md:text-2xl font-bold pt-7">Masukkan Uang</h1>
@@ -418,134 +427,198 @@
         </div>
         <script>
             let itemIdToDelete;
+            let subtotal = 0;
+        
             document.addEventListener('DOMContentLoaded', (event) => {
-            const buttons = document.querySelectorAll('[id^="addButton-"]');
-            const selectedMenuItems = document.getElementById('selectedMenuItems');
-
-            // Event listener untuk tombol add
-            buttons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const buttonId = e.target.closest('button').id;
-                    const menuId = buttonId.split('-')[1];
-                    const menuCard = button.closest('.rounded-md');
-                    const menuImage = menuCard.querySelector('img').src;
-                    const menuName = menuCard.querySelector('.font-bold').textContent;
-                    const menuPrice = menuCard.querySelector('.justify-between h1').textContent;
-
-                    // Check if the menu item is already added
-                    if (selectedMenuItems.querySelector(`.menu-item[data-id="${menuId}"]`)) {
-                        showInfoModal('Item already added!');
-                        return;
-                    }
-
-                    const selectedMenuItemHTML = `
-                        <div class="flex-none py-2 menu-item" data-id="${menuId}">
-                            <button class="hover:rounded-lg hover:bg-red-200 h-8 delete-button" data-id="${menuId}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="md:size-7 lg:size-8">
-                                    <path d="M16 9V19H8V9H16ZM14.5 3H9.5L8.5 4H5V6H19V4H15.5L14.5 3ZM18 7H6V19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7Z" fill="#FF0000"/>
-                                </svg>
-                            </button>
-                            <div class="flex items-center gap-10 sm:gap-0 mt-6 lg:mt-0">
-                                <img src="${menuImage}" alt="" class="rounded-lg hidden sm:flex md:size-[100px] lg:size-32">
-                                <h1 class="w-[170px] text-sm font-semibold sm:w-52 sm:ml-2 md:text-base md:w-52 lg:w-full">${menuName}</h1>
-                            </div>
-                            <div class="flex item mt-1">
-                                <h1 class="text-sm text-gray-600">Note : </h1>
-                                <form action="">
-                                    <textarea name="" id="" cols="13" rows="3" class="mt-1 ml-1 text-sm text-gray-600 py-0 px-1 sm:w-48 md:w-64 lg:w-72"></textarea>
-                                </form>
-                            </div>
-                            <div class="flex items-center gap-3 sm:gap-20 md:gap-32 lg:justify-between">
-                                <div x-data="{ productQuantity: 1 }">
-                                    <label for="Quantity" class="sr-only"> Quantity </label>
+                const buttons = document.querySelectorAll('[id^="addButton-"]');
+                const selectedMenuItems = document.getElementById('selectedMenuItems');
+                const subtotalElement = document.getElementById('subTotal');
+        
+                function formatNumber(number) {
+                    return number.toLocaleString('id-ID');
+                }
+        
+                function updateSubtotal() {
+                    subtotalElement.textContent = `Rp. ${formatNumber(Math.floor(subtotal))}`;
+                }
+        
+                function updateSubtotalForQuantityChange() {
+                    subtotal = 0; // Inisialisasi ulang subtotal
+                    const menuItems = selectedMenuItems.querySelectorAll('.menu-item');
+                    menuItems.forEach(item => {
+                        const priceElement = item.querySelector('.total-price');
+                        const quantityElement = item.querySelector('.quantity-input');
+                        const menuPrice = parseFloat(priceElement.dataset.price);
+                        const productQuantity = parseInt(quantityElement.value);
+                        subtotal += menuPrice * productQuantity;
+                    });
+                    updateSubtotal();
+                }
+        
+                // Event listener untuk tombol add
+                buttons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const buttonId = e.target.closest('button').id;
+                        const menuId = buttonId.split('-')[1];
+                        const menuCard = e.target.closest('.rounded-md');
+                        const menuImage = menuCard.querySelector('img').src;
+                        const menuName = menuCard.querySelector('.font-bold').textContent;
+                        const menuPriceText = menuCard.querySelector('.justify-between h1').textContent;
+                        const menuPrice = parseFloat(menuPriceText.replace(/[^0-9.-]+/g, "")); // Remove any non-numeric characters
+        
+                        // Check if the menu item is already added
+                        if (selectedMenuItems.querySelector(`.menu-item[data-id="${menuId}"]`)) {
+                            showInfoModal('Item already added!');
+                            return;
+                        }
+        
+                        const selectedMenuItemHTML = `
+                            <div class="flex-none py-2 menu-item" data-id="${menuId}">
+                                <button class="hover:rounded-lg hover:bg-red-200 h-8 delete-button" data-id="${menuId}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="md:size-7 lg:size-8">
+                                        <path d="M16 9V19H8V9H16ZM14.5 3H9.5L8.5 4H5V6H19V4H15.5L14.5 3ZM18 7H6V19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7Z" fill="#FF0000"/>
+                                    </svg>
+                                </button>
+                                <div class="flex items-center gap-10 sm:gap-0 mt-6 lg:mt-0">
+                                    <img src="${menuImage}" alt="" class="rounded-lg hidden sm:flex md:size-[100px] lg:size-32">
+                                    <h1 class="w-[170px] text-sm font-semibold sm:w-52 sm:ml-2 md:text-base md:w-52 lg:w-full">${menuName}</h1>
+                                </div>
+                                <div class="flex item mt-1">
+                                    <h1 class="text-sm text-gray-600">Note : </h1>
+                                    <form action="">
+                                        <textarea name="" id="" cols="13" rows="3" class="mt-1 ml-1 text-sm text-gray-600 py-0 px-1 sm:w-48 md:w-64 lg:w-72"></textarea>
+                                    </form>
+                                </div>
+                                <div class="flex items-center gap-3 sm:gap-20 md:gap-32 lg:justify-between">
                                     <div class="flex items-center rounded border border-gray-200 w-14 h-7 my-2 md:w-20 md:h-7 lg:w-24 lg:h-8">
                                         <button
                                             type="button"
-                                            x-on:click="productQuantity--"
-                                            :disabled="productQuantity === 0"
-                                            class="size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75"
+                                            class="button-minus size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75"
                                         >
                                             &minus;
                                         </button>
                                         <input
                                             type="number"
                                             id="Quantity"
-                                            x-model="productQuantity"
-                                            class="h-5 w-8 lg:h-7 lg:w-9 border-transparent text-center text-xs px-0 lg:text-lg [-moz-appearance:_textfield] sm:text-sm [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+                                            class="quantity-input h-5 w-8 lg:h-7 lg:w-9 border-transparent text-center text-xs px-0 lg:text-lg [-moz-appearance:_textfield] sm:text-sm [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+                                            value="1"
                                         />
                                         <button
                                             type="button"
-                                            x-on:click="productQuantity++"
-                                            class="size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75"
+                                            class="button-plus size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75"
                                         >
                                             &plus;
                                         </button>
                                     </div>
+                                    <h1 class="total-price font-bold text-lg lg:text-xl" data-price="${menuPrice.toFixed(0)}">Rp.<span>${formatNumber(menuPrice.toFixed(0))}</span></h1>
                                 </div>
-                                <h1 class="font-bold text-lg lg:text-xl">${menuPrice}</h1>
                             </div>
-                        </div>
-                        <hr class="px-2">
-                    `;
-
-                    selectedMenuItems.insertAdjacentHTML('beforeend', selectedMenuItemHTML);
-                            
-                    // Add event listener to the delete button of the newly added item
-                    const newDeleteButton = selectedMenuItems.querySelector(`.delete-button[data-id="${menuId}"]`);
-                    newDeleteButton.addEventListener('click', (e) => {
-                        // Simpan ID item yang akan dihapus ke dalam itemIdToDelete
-                        itemIdToDelete = menuId;
-                        // Tampilkan modal konfirmasi penghapusan
-                        showModal();
+                            <hr class="px-2">
+                        `;
+        
+                        // Append the new menu item HTML to the selected menu items container
+                        selectedMenuItems.insertAdjacentHTML('beforeend', selectedMenuItemHTML);
+        
+                        subtotal += menuPrice;
+                        updateSubtotal();
+        
+                        // Event listeners for the quantity buttons and input
+                        const newMenuItem = selectedMenuItems.querySelector(`.menu-item[data-id="${menuId}"]`);
+                        const buttonMinus = newMenuItem.querySelector('.button-minus');
+                        const buttonPlus = newMenuItem.querySelector('.button-plus');
+                        const quantityInput = newMenuItem.querySelector('.quantity-input');
+                        const totalPriceElement = newMenuItem.querySelector('.total-price span');
+                        let productQuantity = parseInt(quantityInput.value);
+        
+                        buttonMinus.addEventListener('click', () => {
+                            if (productQuantity > 0) {
+                                productQuantity--;
+                                quantityInput.value = productQuantity;
+                                totalPriceElement.textContent = formatNumber(Math.floor(productQuantity * parseFloat(totalPriceElement.parentElement.dataset.price)));
+                                updateSubtotalForQuantityChange();
+                            }
+                        });
+        
+                        buttonPlus.addEventListener('click', () => {
+                            productQuantity++;
+                            quantityInput.value = productQuantity;
+                            totalPriceElement.textContent = formatNumber(Math.floor(productQuantity * parseFloat(totalPriceElement.parentElement.dataset.price)));
+                            updateSubtotalForQuantityChange();
+                        });
+        
+                        quantityInput.addEventListener('input', () => {
+                            productQuantity = parseInt(quantityInput.value);
+                            totalPriceElement.textContent = formatNumber(Math.floor(productQuantity * parseFloat(totalPriceElement.parentElement.dataset.price)));
+                            updateSubtotalForQuantityChange();
+                        });
+        
+                        // Add event listener to the delete button of the newly added item
+                        const newDeleteButton = newMenuItem.querySelector(`.delete-button[data-id="${menuId}"]`);
+                        newDeleteButton.addEventListener('click', (e) => {
+                            itemIdToDelete = menuId;
+                            showModal();
+                        });
                     });
                 });
-            });
-            // Modal functionality
-            const deleteModal = document.getElementById('deleteModal');
-            const cancelButton = document.getElementById('cancelButton');
-            const confirmDeleteButton = document.getElementById('confirmDeleteButton');
-            const modalMessage = document.getElementById('modalMessage');
-            const infoModal = document.getElementById('infoModal');
-            const infoModalCloseButton = document.getElementById('infoModalCloseButton');
-            const infoModalMessage = document.getElementById('infoModalMessage');
-
-
-            const showModal = (message = 'Apakah Anda yakin ingin menghapus item ini?') => {
-                modalMessage.textContent = message;
-                deleteModal.classList.remove('opacity-0', 'pointer-events-none');
-                deleteModal.classList.add('opacity-100');
-            };
-
-            const hideModal = () => {
-                deleteModal.classList.add('opacity-0', 'pointer-events-none');
-                deleteModal.classList.remove('opacity-100');
-            };
-
-            cancelButton.addEventListener('click', hideModal);
-
-            confirmDeleteButton.addEventListener('click', () => {
-                const itemToDelete = selectedMenuItems.querySelector(`.menu-item[data-id="${itemIdToDelete}"]`);
-                if (itemToDelete) {
-                    itemToDelete.remove();
+        
+                function removeItemAndUpdateSubtotal(menuId) {
+                    const itemToDelete = selectedMenuItems.querySelector(`.menu-item[data-id="${menuId}"]`);
+                    if (itemToDelete) {
+                        const priceElement = itemToDelete.querySelector('.total-price');
+                        const quantityElement = itemToDelete.querySelector('#Quantity');
+                        const menuPrice = parseFloat(priceElement.dataset.price);
+                        const productQuantity = parseInt(quantityElement.value);
+                        subtotal -= menuPrice * productQuantity;
+                        itemToDelete.remove();
+                        updateSubtotal();
+                    }
                 }
-                hideModal();
-            }); 
+        
+                // Modal functionality
+                const deleteModal = document.getElementById('deleteModal');
+                const cancelButton = document.getElementById('cancelButton');
+                const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+                const modalMessage = document.getElementById('modalMessage');
+                const infoModal = document.getElementById('infoModal');
+                const infoModalCloseButton = document.getElementById('infoModalCloseButton');
+                const infoModalMessage = document.getElementById('infoModalMessage');
+        
+                const showModal = (message = 'Apakah Anda yakin ingin menghapus item ini?') => {
+                    modalMessage.textContent = message;
+                    deleteModal.classList.remove('opacity-0', 'pointer-events-none');
+                    deleteModal.classList.add('opacity-100');
+                };
+        
+                const hideModal = () => {
+                    deleteModal.classList.add('opacity-0', 'pointer-events-none');
+                    deleteModal.classList.remove('opacity-100');
+                };
+        
+                cancelButton.addEventListener('click', hideModal);
+        
+                confirmDeleteButton.addEventListener('click', () => {
+                    removeItemAndUpdateSubtotal(itemIdToDelete);
+                    hideModal();
+                });
+        
                 const showInfoModal = (message) => {
                     infoModalMessage.textContent = message;
                     infoModal.classList.remove('opacity-0', 'pointer-events-none');
                     infoModal.classList.add('opacity-100');
                 };
-
+        
                 const hideInfoModal = () => {
                     infoModal.classList.add('opacity-0', 'pointer-events-none');
                     infoModal.classList.remove('opacity-100');
                 };
-
+        
                 infoModalCloseButton.addEventListener('click', hideInfoModal);
             });
-         </script>
+        </script>
+        
             
-        <script>
+            
+            <script>
             // Mendapatkan elemen yang diperlukan
             const allMenu = document.getElementById('all');
             const kidsMealMenu = document.getElementById('kidsmeal');
@@ -672,56 +745,74 @@
             showMinumanMenu(); 
             });
         </script>
-        
         <script>
+            function formatNumber(number) {
+                return number.toLocaleString('id-ID');
+            }
+            
+            function parseFormattedNumber(formattedNumber) {
+                return parseInt(formattedNumber.replace(/\./g, ''));
+            }
+            
             function appendNumber(number) {
-              const display = document.getElementById('display');
-              if (display.innerText === '0') {
-                display.innerText = number;
-              } else {
-                display.innerText += number;
-              }
+                const display = document.getElementById('display');
+                if (display.innerText === '0') {
+                    display.innerText = number;
+                } else {
+                    display.innerText += number;
+                }
+                // Update display with formatted number
+                display.innerText = formatNumber(parseFormattedNumber(display.innerText));
             }
-        
+            
             function clearDisplay() {
-              document.getElementById('display').innerText = '0';
+                document.getElementById('display').innerText = '0';
             }
-
+            
             function confirmMoney(isInput = false) {
                 let money;
                 if (isInput) {
-                    money = parseFloat(document.getElementById('inputDisplay').value);
+                    money = parseFormattedNumber(document.getElementById('inputDisplay').value);
                 } else {
                     const display = document.getElementById('display').innerText;
-                    money = parseFloat(display);
+                    money = parseFormattedNumber(display);
                 }
-                const subtotal = parseFloat(document.getElementById('subTotal').innerText);
-
+        
+                console.log('Money:', money);
+                
+                const subtotalText = document.getElementById('subTotal').innerText.replace('Rp. ', '');
+                const subtotal = parseFormattedNumber(subtotalText);
+                
+                console.log('Subtotal:', subtotal);
+        
                 if (money >= subtotal) {
                     const change = money - subtotal;
-                    document.getElementById('money').innerText = `Rp ${money.toLocaleString()}`;
-                    document.getElementById('change').innerText = `Rp ${change.toLocaleString()}`;
+                    document.getElementById('money').innerText = `Rp ${formatNumber(money)}`;
+                    document.getElementById('change').innerText = `Rp ${formatNumber(change)}`;
                     document.getElementById('moneySection').classList.add('hidden');
                     document.getElementById('moneyDisplay').classList.remove('hidden');
                 } else {
                     alert('Jumlah uang tidak mencukupi');
                 }
             }
-
+            
             document.getElementById('confirmOrderBtn').addEventListener('click', function() {
-            document.getElementById('moneySection').classList.remove('hidden');
-            document.getElementById('moneySection').scrollIntoView({ behavior: 'smooth' });
-        });
-
-        // Disable scrolling past the confirm order button
-        document.addEventListener('scroll', function() {
-            var confirmOrderButton = document.getElementById('confirmOrderBtn');
-            var rect = confirmOrderButton.getBoundingClientRect();
-            var moneySection = document.getElementById('moneySection');
-
-            if (rect.top < window.innerHeight && moneySection.classList.contains('hidden')) {
-                window.scrollTo(0, rect.top + window.scrollY - window.innerHeight + confirmOrderButton.offsetHeight);
-            }
-        }, { passive: true });
+                document.getElementById('moneySection').classList.remove('hidden');
+                document.getElementById('moneySection').scrollIntoView({ behavior: 'smooth' });
+            });
+        
+            // Disable scrolling past the confirm order button
+            document.addEventListener('scroll', function() {
+                var confirmOrderButton = document.getElementById('confirmOrderBtn');
+                var rect = confirmOrderButton.getBoundingClientRect();
+                var moneySection = document.getElementById('moneySection');
+            
+                if (rect.top < window.innerHeight && moneySection.classList.contains('hidden')) {
+                    window.scrollTo(0, rect.top + window.scrollY - window.innerHeight + confirmOrderButton.offsetHeight);
+                }
+            }, { passive: true });
         </script>
+        
+        
+        
 @endsection
