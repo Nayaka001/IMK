@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('no_hp', 14)->unique();
             $table->text('alamat');
             $table->integer('gaji');
-            $table->binary('dokumen')->nullable();
+            $table->string('foto')->nullable();
             
         });
     }
