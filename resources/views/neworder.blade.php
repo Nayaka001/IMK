@@ -282,18 +282,21 @@
                     </div>
                     <!-- Modal -->
                     <div id="deleteModal" class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
-                        <div class="absolute inset-0 bg-black opacity-50"></div>
+                        <div class="absolute inset-0 bg-black opacity-75"></div>
                         <div class="bg-white rounded-lg p-6 z-10 max-w-md mx-auto">
-                            <h2 class="text-xl font-bold mb-4">Konfirmasi Penghapusan</h2>
-                            <p id="modalMessage">Apakah Anda yakin ingin menghapus item ini?</p>
-                            <div class="mt-6 flex justify-end">
-                                <button id="cancelButton" class="bg-gray-500 text-white px-4 py-2 rounded mr-2">Batal</button>
-                                <button id="confirmDeleteButton" class="bg-red-500 text-white px-4 py-2 rounded">Hapus</button>
+                            <div class="text-center">
+                                <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                </svg>
+                                <p id="modalMessage" class="mb-5 text-lg font-normal text-black dark:text-gray-400">Apakah Anda yakin ingin menghapus item ini?</p>
+                                <div class="mt-6 flex justify-end">
+                                    <button id="cancelButton" class="bg-gray-500 text-white px-4 py-2 rounded mr-2">Batal</button>
+                                    <button id="confirmDeleteButton" class="bg-red-500 text-white px-4 py-2 rounded">Hapus</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Modal -->
+
                     <!-- Modal -->
                     <div id="infoModal" class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
                         <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -305,9 +308,6 @@
                             </div>
                         </div>
                     </div>
-
-                    
-
 
 
                     {{-- menu --}}
