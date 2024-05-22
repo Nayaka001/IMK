@@ -100,7 +100,7 @@ class UsersKaryawanSeeder extends Seeder
                 'no_hp' => $item['no_hp'],
                 'alamat' => $item['alamat'],
                 'gaji' => $item['gaji'],
-                'dokumen' => null,
+                'foto' => null,
             ]);
         }
     }
