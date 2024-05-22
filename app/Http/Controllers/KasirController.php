@@ -33,10 +33,15 @@ class KasirController extends Controller
         return view('formnewdine');
     }
     public function neworderdine(Request $request){
+        $lastOrderId = Session::get('lastOrderId', 0);
+
+    // Tambahkan 1 ke ID order terakhir untuk membuat ID order baru
+        $newOrderId = $lastOrderId + 1;
 
         Session::put('nama_pelanggan', $request->nama_pelanggan);
         Session::put('jumlah_orang', $request->jumlah_orang);
         Session::put('nomor_meja', $request->nomor_meja);
+        Session::put('order_id', $newOrderId);
         // dd(Session::all());
 
         // Simpan data form ke sesi

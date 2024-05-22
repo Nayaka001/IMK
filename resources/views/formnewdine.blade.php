@@ -58,22 +58,20 @@
                 </div>
             </div>
             <div id="form1" class="hidden mx-3 pb-2 md:mx-8">
-                <form action="{{route('kasir.newdine')}}" method="POST">
+                <form id="orderForm" action="{{route('kasir.newdine')}}" method="POST">
                     @csrf
+                    <input type="hidden" id="order-id" name="order_id">
                     <label for="nama-pelanggan" class="mx-10">
                         <span class="block font-semibold">Nama Pelanggan</span>
                         <input type="text" id="nama-pelanggan" name="nama_pelanggan" placeholder="Masukkan Nama Pelanggan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
-                        {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
                     </label>
                     <label for="jumlah-orang" class="mx-10">
                         <span class="block font-semibold">Jumlah Orang</span>
                         <input type="number" id="jumlah-orang" name="jumlah_orang" placeholder="Masukkan Jumlah Orang" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
-                        {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
                     </label>
                     <label for="nomor-meja" class="mx-10">
                         <span class="block font-semibold">Nomor Meja</span>
                         <input type="text" id="nomor-meja" name="nomor_meja" placeholder="Masukkan Nomor Meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
-                        {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
                     </label>
                     <button type="submit" class="my-7 bg-[#FFD369] px-5 py-2 rounded-full text-black font-bold font-inter block mx-auto w-full hover:bg-[#f8dea0] focus:ring focus:ring-[#FFD369]">Selanjutnya</button>
                 </form>
@@ -136,6 +134,35 @@
     </div>
 @endsection
 @push('scripts')
+{{-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const orderForm = document.getElementById('orderForm');
+        const orderIdInput = document.getElementById('order-id');
+
+        // Function to get the last order ID from session storage
+        function getLastOrderId() {
+            let lastOrderId = sessionStorage.getItem('lastOrderId');
+            return lastOrderId ? parseInt(lastOrderId, 10) : 0; // Return 0 if no order ID is found
+        }
+
+        // Function to save the new order ID to session storage
+        function saveNewOrderId(newOrderId) {
+            sessionStorage.setItem('lastOrderId', newOrderId);
+        }
+
+        orderForm.addEventListener('submit', function (event) {
+            // Get the last order ID and increment it by 1
+            const lastOrderId = getLastOrderId();
+            const newOrderId = lastOrderId + 1;
+
+            // Save the new order ID to session storage
+            saveNewOrderId(newOrderId);
+
+            // Set the new order ID in the hidden input field
+            orderIdInput.value = newOrderId;
+        });
+    });
+</script> --}}
 <script>
     // Fungsi untuk menampilkan atau menyembunyikan formulir "Makan di tempat"
     document.getElementById('showForm1').addEventListener('click', function(event) {
