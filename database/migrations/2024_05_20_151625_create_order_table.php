@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->id('id_order');
             $table->enum('tipe_order', ['Makan di Tempat', 'Reservasi', 'Bawa Pulang']);
+            $table->enum('tipe_pembayaran', ['Tunai', 'NonTunai']);
             $table->string('nama_pelanggan', 100);
             $table->integer('jlh_org')->nullable(); //DINE IN & RESERVASI
             $table->char('id_meja', 3)->nullable(); //DINE IN & RESERVASI
