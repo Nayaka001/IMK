@@ -60,11 +60,18 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/user/kasir', function () {
         return view('admin.kasir');
     })->name('user-kasir');
+    Route::get('/admin/profile', function () {
+        return view('admin.profile');
+    })->name('profile');
 
 
     Route::get('/admin/laporan-penjualan', function () {
         return view('admin.laporan-penjualan');
     })->name('laporan-penjualan');
+
+    Route::get('/admin/laporan-pendapatan', function () {
+        return view('admin.laporan-pendapatan');
+    })->name('laporan-pendapatan');
 });
 
 //Bagian Bartender
