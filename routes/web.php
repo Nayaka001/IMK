@@ -30,11 +30,12 @@ Route::get('/kitchen', [KitchenController::class, 'index'])->name('index.kitchen
 Route::middleware(['auth', 'role:Kasir'])->group(function () {
     Route::get('/menu', [KasirController::class, 'index'])->name('index.menu');
     Route::get('/kasir/neworder', [KasirController::class, 'neworder'])->name('kasir.neworder');
-    Route::post('/kasir/neworder/newdine', [KasirController::class, 'neworderdine'])->name('kasir.newdine');
-    Route::post('/kasir/neworder/newres', [KasirController::class, 'neworderres'])->name('kasir.newres');
-    Route::post('/kasir/neworder/newtake', [KasirController::class, 'newordertake'])->name('kasir.newtake');
+    // Route::post('/kasir/neworder/newdine', [KasirController::class, 'neworderdine'])->name('kasir.newdine');
+    // Route::post('/kasir/neworder/newres', [KasirController::class, 'neworderres'])->name('kasir.newres');
+    // Route::post('/kasir/neworder/newtake', [KasirController::class, 'newordertake'])->name('kasir.newtake');
     
     Route::get('/kasir/addmenu/newdine', [KasirController::class, 'addnewdine'])->name('kasir.addnewdine');
+    Route::post('/kasir/neworder/newdine/action', [KasirController::class, 'store'])->name('kasir.newdine.action');
     Route::get('/kasir/addmenu/newres', [KasirController::class, 'addnewres'])->name('kasir.addnewres');
     Route::get('/kasir/addmenu/newtake', [KasirController::class, 'addnewtake'])->name('kasir.addnewtake');
     Route::get('/kasir/laporan', [KasirController::class, 'laporan'])->name('index.laporan');
@@ -150,9 +151,9 @@ Route::get('/order-list', function () {
     return view('orderlistwaiting');
 })->name('order-list');
 
-Route::get('/order-list/done', function () {
-    return view('orderlistdone');
-})->name('order-list');
+// Route::get('/order-list/done', function () {
+//     return view('orderlistdone');
+// })->name('order-list');
 
 
 // Route::get('/new-order/addmenu', function () {

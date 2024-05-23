@@ -18,5 +18,5 @@ class Menu extends Model
         'keterangan',
     ];
     
-    protected $primaryKey = 'id_menu'; // Nama kolom yang digunakan sebagai identifier
+    protected $primaryKey = 'id_menu';
 }

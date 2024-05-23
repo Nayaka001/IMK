@@ -122,48 +122,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
 
             const selectedMenuItemHTML = `
-                <div class="flex-none py-2 menu-item" data-id="${menuId}">
-                    <button class="hover:rounded-lg hover:bg-red-200 h-8 delete-button" data-id="${menuId}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="md:size-7 lg:size-8">
-                            <path d="M16 9V19H8V9H16ZM14.5 3H9.5L8.5 4H5V6H19V4H15.5L14.5 3ZM18 7H6V19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7Z" fill="#FF0000"/>
-                        </svg>
-                    </button>
-                    <div class="flex items-center gap-10 sm:gap-0 mt-6 lg:mt-0">
-                        <img src="${menuImage}" alt="" class="rounded-lg hidden sm:flex md:size-[100px] lg:size-32">
-                        <h1 class="w-[170px] text-sm font-semibold sm:w-52 sm:ml-2 md:text-base md:w-52 lg:w-full">${menuName}</h1>
-                    </div>
-                    <div class="flex item mt-1">
-                        <h1 class="text-sm text-gray-600">Note : </h1>
-                        <form action="">
-                            <textarea name="" id="" cols="13" rows="3" class="mt-1 ml-1 text-sm text-gray-600 py-0 px-1 sm:w-48 md:w-64 lg:w-72"></textarea>
-                        </form>
-                    </div>
-                    <div class="flex items-center gap-3 sm:gap-20 md:gap-32 lg:justify-between">
-                        <div class="flex items-center rounded border border-gray-200 w-14 h-7 my-2 md:w-20 md:h-7 lg:w-24 lg:h-8">
-                            <button
-                                type="button"
-                                class="button-minus size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75"
-                            >
-                                &minus;
-                            </button>
-                            <input
-                                type="number"
-                                id="Quantity"
-                                class="quantity-input h-5 w-8 lg:h-7 lg:w-9 border-transparent text-center text-xs px-0 lg:text-lg [-moz-appearance:_textfield] sm:text-sm [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-                                value="1"
-                            />
-                            <button
-                                type="button"
-                                class="button-plus size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75"
-                            >
-                                &plus;
-                            </button>
-                        </div>
-                        <h1 class="total-price font-bold text-lg lg:text-xl" data-price="${menuPrice.toFixed(0)}">Rp.<span>${formatNumber(menuPrice.toFixed(0))}</span></h1>
-                    </div>
+            <div class="flex-none py-2 menu-item" data-id="${menuId}">
+            <button type="button" class="hover:rounded-lg hover:bg-red-200 h-8 delete-button" data-id="${menuId}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="md:size-7 lg:size-8">
+                    <path d="M16 9V19H8V9H16ZM14.5 3H9.5L8.5 4H5V6H19V4H15.5L14.5 3ZM18 7H6V19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7Z" fill="#FF0000"/>
+                </svg>
+            </button>
+            <div class="flex items-center gap-10 sm:gap-0 mt-6 lg:mt-0">
+                <img src="${menuImage}" alt="" class="rounded-lg hidden sm:flex md:size-[100px] lg:size-32">
+                <h1 class="w-[170px] text-sm font-semibold sm:w-52 sm:ml-2 md:text-base md:w-52 lg:w-full">${menuName}</h1>
+                <input type="hidden" name="items[${menuId}][name]" value="${menuName}">
+                <input type="hidden" name="items[${menuId}][price]" value="${menuPrice}">
+                <input type="hidden" name="items[${menuId}][menu_id]" value="${menuId}">
+            </div>
+            <div class="flex item mt-1">
+                <h1 class="text-sm text-gray-600">Note : </h1>
+                <textarea name="items[${menuId}][note]" cols="13" rows="3" class="mt-1 ml-1 text-sm text-gray-600 py-0 px-1 sm:w-48 md:w-64 lg:w-72"></textarea>
+            </div>
+            <div class="flex items-center gap-3 sm:gap-20 md:gap-32 lg:justify-between">
+                <div class="flex items-center rounded border border-gray-200 w-14 h-7 my-2 md:w-20 md:h-7 lg:w-24 lg:h-8">
+                    <button type="button" class="button-minus size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75">&minus;</button>
+                    <input type="number" name="items[${menuId}][quantity]" class="quantity-input h-5 w-8 lg:h-7 lg:w-9 border-transparent text-center text-xs px-0 lg:text-lg [-moz-appearance:_textfield] sm:text-sm [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none" value="1">
+                    <button type="button" class="button-plus size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75">&plus;</button>
                 </div>
-                <hr class="px-2">
-            `;
+                <h1 class="total-price font-bold text-lg lg:text-xl" data-price="${menuPrice.toFixed(0)}">Rp.<span>${formatNumber(menuPrice.toFixed(0))}</span></h1>
+            </div>
+        </div>
+        <hr class="px-2">
+    `;
 
             // Append the new menu item HTML to the selected menu items container
             selectedMenuItems.insertAdjacentHTML('beforeend', selectedMenuItemHTML);
@@ -204,6 +190,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             // Add event listener to the delete button of the newly added item
             const newDeleteButton = newMenuItem.querySelector(`.delete-button[data-id="${menuId}"]`);
             newDeleteButton.addEventListener('click', (e) => {
+                e.preventDefault();
                 itemIdToDelete = menuId;
                 showModal();
             });
@@ -214,14 +201,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const itemToDelete = selectedMenuItems.querySelector(`.menu-item[data-id="${menuId}"]`);
         if (itemToDelete) {
             const priceElement = itemToDelete.querySelector('.total-price');
-            const quantityElement = itemToDelete.querySelector('#Quantity');
-            const menuPrice = parseFloat(priceElement.dataset.price);
-            const productQuantity = parseInt(quantityElement.value);
-            subtotal -= menuPrice * productQuantity;
-            itemToDelete.remove();
-            updateSubtotal();
+            const totalPrice = parseFloat(priceElement.dataset.price); // Total price for the item
+            const quantityElement = itemToDelete.querySelector('.quantity-input');
+            const productQuantity = parseInt(quantityElement.value); // Quantity of the item
+            subtotal -= totalPrice * productQuantity; // Subtract the total price of the item from the subtotal
+            itemToDelete.remove(); // Remove the item from the DOM
+            updateSubtotal(); // Update the subtotal displayed on the page
         }
     }
+    
 
     // Modal functionality
     const deleteModal = document.getElementById('deleteModal');
