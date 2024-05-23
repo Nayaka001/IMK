@@ -107,3 +107,57 @@
             background-color: rgba(0, 0, 0, 0.5) !important;
         }
     </style> -->
+
+    <!-- <style>
+        .custom-rounded tr {
+        overflow: hidden; /* memastikan semua border internal terpotong */
+        }
+
+        .custom-rounded td:first-child {
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        }
+
+        .custom-rounded td:last-child {
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        }
+
+        .custom-table {
+  border-collapse: separate;
+  border-spacing: 0 10px;  /* Jarak horizontal 0, jarak vertikal 10px */
+}
+
+    </style> -->
+
+    <style>
+.custom-rounded tr {
+  overflow: hidden; /* memastikan semua border internal terpotong */
+  box-shadow: 0px 8px 6px -1px rgba(0, 0, 0, 0.4); /* Menambahkan shadow pada setiap baris */
+}
+
+.custom-rounded td {
+  border-bottom: 2px solid #ccccbd; /* Menambahkan border bawah pada setiap cell */
+}
+
+.custom-rounded td:first-child {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.custom-rounded td:last-child {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.custom-table {
+  border-collapse: separate;
+  border-spacing: 0 10px; /* Jarak horizontal 0, jarak vertikal 10px */
+}
+
+.custom-size {
+  height: 95px; /* Sesuai dengan ukuran yang Anda inginkan */
+  width: 115px;  /* Sesuai dengan ukuran yang Anda inginkan */
+}
+
+</style>

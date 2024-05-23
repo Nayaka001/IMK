@@ -34,8 +34,8 @@
                       <tr>
                         <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
                           <div class="flex px-2 py-1">
-                            <div>
-                              <img src="https://source.unsplash.com/800x800" class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" alt="user1" />
+                            <div class="">
+                              <img src="https://source.unsplash.com/800x800" class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-12 w-12 rounded-xl" alt="user1" />
                             </div>
                             <div class="flex flex-col justify-center">
                               <h6 class="mb-1 text-sm leading-normal">{{$karyawans->nama}}</h6>
@@ -63,7 +63,7 @@
                         </td>
                         <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
                             <a class="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text" href="javascript:;"><i class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
-                            <a id="tambahKaryawanBtn" class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
+                            <a id="editKaryawanBtn" class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
 
                             <!-- The Modal -->
                             <div id="myModal" class="modal flex">
@@ -74,7 +74,7 @@
                                   <div class="p-6 mb-0 text-center bg-white border-b-0 rounded-t-2xl">
                                     <h5>Edit Data Karyawan</h5>
                                   </div>
-                                  <form id="tambahKaryawanForm" class="p-6">
+                                  <form id="editKaryawanForm" class="p-6">
                                       <div class="mb-4">
                                         <label class="block font-normal" for="nama">Nama Lengkap</label>
                                         <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Nama Lengkap" id="nama" name="nama">
@@ -120,9 +120,9 @@
             <div class="relative flex flex-col min-w-0 mb-6 break-words bg-[#e8eddf] border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
               <div class="p-6 pb-0 mb-0 bg-[#e8eddf] border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                 <h6>Data Pelayan</h6>
-                <div class="flex-none w-full max-w-full px-6 justify-end text-right">
+                <!-- <div class="flex-none w-full max-w-full px-6 justify-end text-right">
                     <a class="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"> <i class="fas fa-plus"> </i>&nbsp;&nbsp;Tambah Karyawan</a>
-                </div>
+                </div> -->
               </div>
               <div class="flex-auto px-0 pt-0 pb-2">
                 <div class="p-0 overflow-x-auto">
@@ -145,7 +145,7 @@
                         <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
                           <div class="flex px-2 py-1">
                             <div>
-                              <img src="https://source.unsplash.com/800x800" class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" alt="user1" />
+                              <img src="https://source.unsplash.com/800x800" class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-12 w-12 rounded-xl" alt="user1" />
                             </div>
                             <div class="flex flex-col justify-center">
                               <h6 class="mb-1 text-sm leading-normal">{{$karyawans->nama}}</h6>
@@ -191,9 +191,9 @@
             <div class="relative flex flex-col min-w-0 mb-6 break-words bg-[#e8eddf] border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
               <div class="p-6 pb-0 mb-0 bg-[#e8eddf] border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                 <h6>Data Kitchen</h6>
-                <div class="flex-none w-full max-w-full px-6 justify-end text-right">
+                <!-- <div class="flex-none w-full max-w-full px-6 justify-end text-right">
                     <a class="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"> <i class="fas fa-plus"> </i>&nbsp;&nbsp;Tambah Karyawan</a>
-                </div>
+                </div> -->
               </div>
               <div class="flex-auto px-0 pt-0 pb-2">
                 <div class="p-0 overflow-x-auto">
@@ -216,7 +216,7 @@
                         <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
                           <div class="flex px-2 py-1">
                             <div>
-                              <img src="https://source.unsplash.com/800x800" class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" alt="user1" />
+                              <img src="https://source.unsplash.com/800x800" class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-12 w-12 rounded-xl" alt="user1" />
                             </div>
                             <div class="flex flex-col justify-center">
                               <h6 class="mb-1 text-sm leading-normal">{{$karyawans->nama}}</h6>
@@ -262,9 +262,9 @@
             <div class="relative flex flex-col min-w-0 mb-6 break-words bg-[#e8eddf] border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
               <div class="p-6 pb-0 mb-0 bg-[#e8eddf] border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                 <h6>Data Bartender</h6>
-                <div class="flex-none w-full max-w-full px-6 justify-end text-right">
+                <!-- <div class="flex-none w-full max-w-full px-6 justify-end text-right">
                     <a class="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"> <i class="fas fa-plus"> </i>&nbsp;&nbsp;Tambah Karyawan</a>
-                </div>
+                </div> -->
               </div>
               <div class="flex-auto px-0 pt-0 pb-2">
                 <div class="p-0 overflow-x-auto">
@@ -287,7 +287,7 @@
                         <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
                           <div class="flex px-2 py-1">
                             <div>
-                              <img src="https://source.unsplash.com/800x800" class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" alt="user1" />
+                              <img src="https://source.unsplash.com/800x800" class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-12 w-12 rounded-xl" alt="user1" />
                             </div>
                             <div class="flex flex-col justify-center">
                               <h6 class="mb-1 text-sm leading-normal">{{$karyawans->nama}}</h6>
@@ -333,9 +333,9 @@
             <div class="relative flex flex-col min-w-0 mb-6 break-words bg-[#e8eddf] border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
               <div class="p-6 pb-0 mb-0 bg-[#e8eddf] border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                 <h6>Data Kasir</h6>
-                <div class="flex-none w-full max-w-full px-6 justify-end text-right">
+                <!-- <div class="flex-none w-full max-w-full px-6 justify-end text-right">
                     <a class="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"> <i class="fas fa-plus"> </i>&nbsp;&nbsp;Tambah Karyawan</a>
-                </div>
+                </div> -->
               </div>
               <div class="flex-auto px-0 pt-0 pb-2">
                 <div class="p-0 overflow-x-auto">
@@ -358,7 +358,7 @@
                         <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
                           <div class="flex px-2 py-1">
                             <div>
-                              <img src="https://source.unsplash.com/800x800" class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-9 w-9 rounded-xl" alt="user1" />
+                              <img src="https://source.unsplash.com/800x800" class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-soft-in-out h-12 w-12 rounded-xl" alt="user1" />
                             </div>
                             <div class="flex flex-col justify-center">
                               <h6 class="mb-1 text-sm leading-normal">{{$karyawans->nama}}</h6>
@@ -518,7 +518,7 @@
     var modal = document.getElementById("myModal");
 
     // Get the button that opens the modal
-    var btn = document.getElementById("tambahKaryawanBtn");
+    var btn = document.getElementById("editKaryawanBtn");
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
