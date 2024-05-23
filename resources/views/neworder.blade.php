@@ -323,62 +323,19 @@
 
 
                     {{-- menu --}}
+                    <form id="menuForm" action="{{route('kasir.newdine.action')}}" method="POST">
+                    @csrf
                     <hr class="px-2">
                         <div id="selectedMenuItems" class="flex-none py-2">
-                            <button class="hover:rounded-lg hover:bg-red-200 h-8 md:ml-0 absolute right-36 sm:right-60 md:right-[340px] lg:right-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="md:size-7 lg:size-8">
-                                    <path d="M16 9V19H8V9H16ZM14.5 3H9.5L8.5 4H5V6H19V4H15.5L14.5 3ZM18 7H6V19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7Z" fill="#FF0000"/>
-                                  </svg>
-                            </button>
-                            <div class="flex items-center gap-10 sm:gap-0 mt-6 lg:mt-0">
-                                <img src="https://source.unsplash.com/50x50" alt="" class="rounded-lg hidden sm:flex md:size-[100px] lg:size-32">
-                                <h1 class="w-[170px] text-sm font-semibold sm:w-52 sm:ml-2 md:text-base md:w-52 lg:w-full">Chicken Steak Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, amet?</h1>
-                            </div>
-
-                            <div class="flex item mt-1">
-                                <h1 class="text-sm text-gray-600">Note : </h1>
-                                <form action="">
-                                    <textarea name="" id="" cols="13" rows="3" class="mt-1 ml-1 text-sm text-gray-600 py-0 px-1 sm:w-48 md:w-64 lg:w-72"></textarea>
-                                </form>
-                            </div>
+                            <input type="hidden" name="tipe_order" value="Makan di Tempat">
+                            <input type="hidden" name="progress" value="Dimasak">
                             
-                            <div class="flex items-center gap-3 sm:gap-20 md:gap-32 lg:justify-between">
-                                <div x-data="{ productQuantity: 1 }">
-                                    <label for="Quantity" class="sr-only"> Quantity </label>
-                                    <div class="flex items-center rounded border border-gray-200 w-14 h-7 my-2 md:w-20 md:h-7 lg:w-24 lg:h-8">
-                                    <button
-                                        type="button"
-                                        x-on:click="productQuantity--"
-                                        :disabled="productQuantity === 0"
-                                        class="size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75"
-                                    >
-                                        &minus;
-                                    </button>
-                                
-                                    <input
-                                        type="number"
-                                        id="Quantity"
-                                        x-model="productQuantity"
-                                        class="h-5 w-8 lg:h-7 lg:w-9 border-transparent text-center text-xs px-0 lg:text-lg [-moz-appearance:_textfield] sm:text-sm [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-                                    />
-                                
-                                    <button
-                                        type="button"
-                                        x-on:click="productQuantity++"
-                                        class="size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75"
-                                    >
-                                        &plus;
-                                    </button>
-                                    </div>
-                                </div>
-                                <h1 class="font-bold text-lg lg:text-xl">Rp 15.000</h1>
-                            </div>
                         </div>
                     <hr class="px-2">
                     {{-- end menu --}}
     
                     <div class="flex items-center gap-2 mt-5 sm:gap-20 md:gap-[150px] lg:justify-between">
-                        <h1 class="font-semibold text-sm py-4 text-gray-600 lg:text-base">Subtotal</h1>
+                        <h1 class="font-semibold text-sm py-4 text-gray-600 lg:text-base">Total</h1>
                         <h1 id="subTotal" class="font-bold text-lg lg:text-xl">Rp.0</h1>
                     </div>                   
                     <div id="moneyDisplay" class="hidden">
@@ -397,18 +354,19 @@
                             <h1 id="paymentMethod" class="text-sm text-black"></h1>
                         </div>
                     </div>
+                    <div id="btn2" class="hidden">
+                        <div class="flex gap-2">
+                            <button class="bg-[#FFD369] p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Print</button>
+                            <button id="kirimButton" data-modal-target="popup-modal-berhasil" data-modal-toggle="popup-modal-berhasil" class="bg-green-500 p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Kirim</button>
+                            
+                        </div>
+                    </div>
+                    </form>
 
                     
 
                     
                     <button id="btn1" data-modal-target="popup-modal-konfirmasi-pesan" data-modal-toggle="popup-modal-konfirmasi-pesan" class="bg-[#FFD369] p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Konfirmasi</button>
-                    <div id="btn2" class="hidden">
-                        <div class="flex gap-2">
-                            <button class="bg-[#FFD369] p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Print</button>
-                            <button id="kirimButton" data-modal-target="popup-modal-berhasil" data-modal-toggle="popup-modal-berhasil" class="bg-green-500 p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Kirim</button>
-                        </div>
-                    </div>
-
                     <div id="moneySection" class="hidden mt-5 h-screen">
                         <h1 class="text-xl md:text-2xl font-bold pt-7">Masukkan Uang</h1>
 
