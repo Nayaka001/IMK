@@ -281,7 +281,7 @@
                         </div>
                     </div>
                     <!-- Modal -->
-                    <div id="deleteModal" class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+                    {{-- <div id="deleteModal" class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
                         <div class="absolute inset-0 bg-black opacity-75"></div>
                         <div class="bg-white rounded-lg p-6 z-10 max-w-md mx-auto">
                             <div class="text-center">
@@ -293,6 +293,18 @@
                                     <button id="cancelButton" class="bg-gray-500 text-white px-4 py-2 rounded mr-2">Batal</button>
                                     <button id="confirmDeleteButton" class="bg-red-500 text-white px-4 py-2 rounded">Hapus</button>
                                 </div>
+                            </div>
+                        </div>
+                    </div> --}}
+
+                    <div id="deleteModal" class="fixed inset-0 z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+                        <div class="absolute inset-0 bg-black opacity-50"></div>
+                        <div class="bg-white rounded-lg p-6 z-10 max-w-md mx-auto">
+                            <h2 class="text-xl font-bold mb-4">Konfirmasi Penghapusan</h2>
+                            <p id="modalMessage">Apakah Anda yakin ingin menghapus item ini?</p>
+                            <div class="mt-6 flex justify-end">
+                                <button id="cancelButton" class="bg-gray-500 text-white px-4 py-2 rounded mr-2">Batal</button>
+                                <button id="confirmDeleteButton" class="bg-red-500 text-white px-4 py-2 rounded">Hapus</button>
                             </div>
                         </div>
                     </div>
@@ -311,62 +323,19 @@
 
 
                     {{-- menu --}}
+                    <form id="menuForm" action="{{route('kasir.newdine.action')}}" method="POST">
+                    @csrf
                     <hr class="px-2">
                         <div id="selectedMenuItems" class="flex-none py-2">
-                            <button data-modal-target="popup-modal-delete" data-modal-toggle="popup-modal-delete" class="hover:rounded-lg hover:bg-red-200 h-8 md:ml-0 absolute right-36 sm:right-60 md:right-[340px] lg:right-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="md:size-7 lg:size-8">
-                                    <path d="M16 9V19H8V9H16ZM14.5 3H9.5L8.5 4H5V6H19V4H15.5L14.5 3ZM18 7H6V19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7Z" fill="#FF0000"/>
-                                  </svg>
-                            </button>
-                            <div class="flex items-center gap-10 sm:gap-0 mt-6 lg:mt-0">
-                                <img src="https://source.unsplash.com/50x50" alt="" class="rounded-lg hidden sm:flex md:size-[100px] lg:size-32">
-                                <h1 class="w-[170px] text-sm font-semibold sm:w-52 sm:ml-2 md:text-base md:w-52 lg:w-full">Chicken Steak Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, amet?</h1>
-                            </div>
-
-                            <div class="flex item mt-1">
-                                <h1 class="text-sm text-gray-600">Note : </h1>
-                                <form action="">
-                                    <textarea name="" id="" cols="13" rows="3" class="mt-1 ml-1 text-sm text-gray-600 py-0 px-1 sm:w-48 md:w-64 lg:w-72"></textarea>
-                                </form>
-                            </div>
+                            <input type="hidden" name="tipe_order" value="Makan di Tempat">
+                            <input type="hidden" name="progress" value="Dimasak">
                             
-                            <div class="flex items-center gap-3 sm:gap-20 md:gap-32 lg:justify-between">
-                                <div x-data="{ productQuantity: 1 }">
-                                    <label for="Quantity" class="sr-only"> Quantity </label>
-                                    <div class="flex items-center rounded border border-gray-200 w-14 h-7 my-2 md:w-20 md:h-7 lg:w-24 lg:h-8">
-                                    <button
-                                        type="button"
-                                        x-on:click="productQuantity--"
-                                        :disabled="productQuantity === 0"
-                                        class="size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75"
-                                    >
-                                        &minus;
-                                    </button>
-                                
-                                    <input
-                                        type="number"
-                                        id="Quantity"
-                                        x-model="productQuantity"
-                                        class="h-5 w-8 lg:h-7 lg:w-9 border-transparent text-center text-xs px-0 lg:text-lg [-moz-appearance:_textfield] sm:text-sm [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-                                    />
-                                
-                                    <button
-                                        type="button"
-                                        x-on:click="productQuantity++"
-                                        class="size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75"
-                                    >
-                                        &plus;
-                                    </button>
-                                    </div>
-                                </div>
-                                <h1 class="font-bold text-lg lg:text-xl">Rp 15.000</h1>
-                            </div>
                         </div>
                     <hr class="px-2">
                     {{-- end menu --}}
     
                     <div class="flex items-center gap-2 mt-5 sm:gap-20 md:gap-[150px] lg:justify-between">
-                        <h1 class="font-semibold text-sm py-4 text-gray-600 lg:text-base">Subtotal</h1>
+                        <h1 class="font-semibold text-sm py-4 text-gray-600 lg:text-base">Total</h1>
                         <h1 id="subTotal" class="font-bold text-lg lg:text-xl">Rp.0</h1>
                     </div>                   
                     <div id="moneyDisplay" class="hidden">
@@ -385,26 +354,19 @@
                             <h1 id="paymentMethod" class="text-sm text-black"></h1>
                         </div>
                     </div>
-
-                    
-
-                    {{-- <form action="{{ route('save-menu-to-session') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="menuId" value="${menuId}">
-                        <input type="hidden" name="menuName" value="${menuName}">
-                        <input type="hidden" name="menuPrice" value="${menuPrice}">
-                        <input type="hidden" name="productQuantity" value="${productQuantity}">
-                        <button type="submit">Simpan ke Session</button>
-                    </form> --}}
-                    {{-- <button id="confirmOrderBtn" class="bg-[#FFD369] p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Konfirmasi</button> --}}
-                    <button id="btn1" data-modal-target="popup-modal-konfirmasi-pesan" data-modal-toggle="popup-modal-konfirmasi-pesan" class="bg-[#FFD369] p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Konfirmasi</button>
                     <div id="btn2" class="hidden">
                         <div class="flex gap-2">
                             <button class="bg-[#FFD369] p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Print</button>
                             <button id="kirimButton" data-modal-target="popup-modal-berhasil" data-modal-toggle="popup-modal-berhasil" class="bg-green-500 p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Kirim</button>
+                            
                         </div>
                     </div>
+                    </form>
 
+                    
+
+                    
+                    <button id="btn1" data-modal-target="popup-modal-konfirmasi-pesan" data-modal-toggle="popup-modal-konfirmasi-pesan" class="bg-[#FFD369] p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Konfirmasi</button>
                     <div id="moneySection" class="hidden mt-5 h-screen">
                         <h1 class="text-xl md:text-2xl font-bold pt-7">Masukkan Uang</h1>
 
@@ -438,16 +400,88 @@
 
             </div>
             {{-- end detail pesanan --}}
+
+            
         </div>
 
-    </div>
+       
+        {{-- modal metode pembayaran --}}
+            <!-- Main modal -->
+            <div id="select-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative p-4 w-full max-w-md max-h-full">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <!-- Modal header -->
+                        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                Metode Pembayaran
+                            </h3>
+                            
+                        </div>
+                        <!-- Modal body -->
+                        <div class="p-4 md:p-5">
+                            <p class="text-gray-500 dark:text-gray-400 mb-4">Pilih metode pembayaran:</p>
+                            <ul class="mb-4 flex justify-between gap-3">
+                                <li class="w-full">
+                                    <input type="radio" id="Tunai" name="job" value="Tunai" class="hidden peer" required>
+                                    <label for="Tunai" class="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 dark:peer-checked:text-[#FFD369] peer-checked:border-[#FFD369] peer-checked:text-[#FFD369] peer-checked:font-semibold hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500">
+                                        <div class="flex gap-5">
+                                            <img src="/img/cash.png" alt="">
+                                            <div class="w-full text-lg font-semibold">Tunai</div>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li class="w-full">
+                                    <input type="radio" id="Digital" name="job" value="Digital" class="hidden peer" required>
+                                    <label for="Digital" class="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 dark:peer-checked:text-[#FFD369] peer-checked:border-[#FFD369] peer-checked:text-[#FFD369] peer-checked:font-semibold hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500">
+                                        <div class="flex gap-5">
+                                            <img src="/img/digital.png" alt="" width="45" height="45">
+                                            <div class="w-full text-lg font-semibold">Digital</div>
+                                        </div>
+                                    </label>
+                                </li>
+                            </ul>
+                            <button id="nextButton" class="text-black inline-flex w-full justify-center bg-green-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-500 dark:hover:bg-blue-700 dark:focus:ring-blue-800 my-2" data-modal-target="popup-modal-bayar" data-modal-toggle="popup-modal-bayar" data-modal-hide="select-modal" disabled>
+                                Selanjutnya
+                            </button>
+                            <button class="text-black inline-flex w-full justify-center bg-red-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-500 dark:hover:bg-blue-700 dark:focus:ring-blue-800 my-2" data-modal-toggle="popup-modal-konfirmasi-pesan" data-modal-target="popup-modal-konfirmasi-pesan" data-modal-hide="select-modal">
+                                Batalkan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        {{-- end modal metode pembayaran --}}
+        {{-- modal pembayaran --}}
+        <div id="popup-modal-bayar" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <div class="p-4 md:p-5 text-center">
+                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                        </svg>
+                        <h3 id="confirmationText" class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Apakah anda yakin memilih metode pembayaran ..... ?</h3>
+                        <button id="confirmOrderBtn" data-modal-hide="popup-modal-bayar" type="button" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                            Ya
+                        </button>
+                        <button data-modal-hide="popup-modal-bayar" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" data-modal-target="select-modal" data-modal-toggle="select-modal" data-modal-hide="popup-modal-bayar">
+                            Tidak
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- end modal pembayaran --}}
+
+       
+        
+
 
         
 
-    
+    </div>
 
-
-
+{{--     
         <script>
             let itemIdToDelete;
             let subtotal = 0;
@@ -638,10 +672,10 @@
                 infoModalCloseButton.addEventListener('click', hideInfoModal);
             });
         </script>
-        
+         --}}
             
             
-            <script>
+        {{-- <script>
             // Mendapatkan elemen yang diperlukan
             const allMenu = document.getElementById('all');
             const kidsMealMenu = document.getElementById('kidsmeal');
@@ -767,57 +801,58 @@
             event.preventDefault(); 
             showMinumanMenu(); 
             });
-        </script>
+        </script> --}}
+
         <script>
-            function formatNumber(number) {
-                return number.toLocaleString('id-ID');
-            }
+            // function formatNumber(number) {
+            //     return number.toLocaleString('id-ID');
+            // }
             
-            function parseFormattedNumber(formattedNumber) {
-                return parseInt(formattedNumber.replace(/\./g, ''));
-            }
+            // function parseFormattedNumber(formattedNumber) {
+            //     return parseInt(formattedNumber.replace(/\./g, ''));
+            // }
             
-            function appendNumber(number) {
-                const display = document.getElementById('display');
-                if (display.innerText === '0') {
-                    display.innerText = number;
-                } else {
-                    display.innerText += number;
-                }
-                // Update display with formatted number
-                display.innerText = formatNumber(parseFormattedNumber(display.innerText));
-            }
+            // function appendNumber(number) {
+            //     const display = document.getElementById('display');
+            //     if (display.innerText === '0') {
+            //         display.innerText = number;
+            //     } else {
+            //         display.innerText += number;
+            //     }
+            //     // Update display with formatted number
+            //     display.innerText = formatNumber(parseFormattedNumber(display.innerText));
+            // }
             
-            function clearDisplay() {
-                document.getElementById('display').innerText = '0';
-            }
+            // function clearDisplay() {
+            //     document.getElementById('display').innerText = '0';
+            // }
             
-            function confirmMoney(isInput = false) {
-                let money;
-                if (isInput) {
-                    money = parseFormattedNumber(document.getElementById('inputDisplay').value);
-                } else {
-                    const display = document.getElementById('display').innerText;
-                    money = parseFormattedNumber(display);
-                }
+            // function confirmMoney(isInput = false) {
+            //     let money;
+            //     if (isInput) {
+            //         money = parseFormattedNumber(document.getElementById('inputDisplay').value);
+            //     } else {
+            //         const display = document.getElementById('display').innerText;
+            //         money = parseFormattedNumber(display);
+            //     }
         
-                console.log('Money:', money);
+            //     console.log('Money:', money);
                 
-                const subtotalText = document.getElementById('subTotal').innerText.replace('Rp. ', '');
-                const subtotal = parseFormattedNumber(subtotalText);
+            //     const subtotalText = document.getElementById('subTotal').innerText.replace('Rp. ', '');
+            //     const subtotal = parseFormattedNumber(subtotalText);
                 
-                console.log('Subtotal:', subtotal);
+            //     console.log('Subtotal:', subtotal);
         
-                if (money >= subtotal) {
-                    const change = money - subtotal;
-                    document.getElementById('money').innerText = `Rp ${formatNumber(money)}`;
-                    document.getElementById('change').innerText = `Rp ${formatNumber(change)}`;
-                    document.getElementById('moneySection').classList.add('hidden');
-                    document.getElementById('moneyDisplay').classList.remove('hidden');
-                } else {
-                    alert('Jumlah uang tidak mencukupi');
-                }
-            }
+            //     if (money >= subtotal) {
+            //         const change = money - subtotal;
+            //         document.getElementById('money').innerText = `Rp ${formatNumber(money)}`;
+            //         document.getElementById('change').innerText = `Rp ${formatNumber(change)}`;
+            //         document.getElementById('moneySection').classList.add('hidden');
+            //         document.getElementById('moneyDisplay').classList.remove('hidden');
+            //     } else {
+            //         alert('Jumlah uang tidak mencukupi');
+            //     }
+            // }
             
             document.getElementById('confirmOrderBtn').addEventListener('click', function() {
                 const selectedPaymentMethod = document.querySelector('input[name="job"]:checked').value;
@@ -827,16 +862,16 @@
                 }
             });
         
-            // Disable scrolling past the confirm order button
-            document.addEventListener('scroll', function() {
-                var confirmOrderButton = document.getElementById('confirmOrderBtn');
-                var rect = confirmOrderButton.getBoundingClientRect();
-                var moneySection = document.getElementById('moneySection');
+            // // Disable scrolling past the confirm order button
+            // document.addEventListener('scroll', function() {
+            //     var confirmOrderButton = document.getElementById('confirmOrderBtn');
+            //     var rect = confirmOrderButton.getBoundingClientRect();
+            //     var moneySection = document.getElementById('moneySection');
             
-                if (rect.top < window.innerHeight && moneySection.classList.contains('hidden')) {
-                    window.scrollTo(0, rect.top + window.scrollY - window.innerHeight + confirmOrderButton.offsetHeight);
-                }
-            }, { passive: true });
+            //     if (rect.top < window.innerHeight && moneySection.classList.contains('hidden')) {
+            //         window.scrollTo(0, rect.top + window.scrollY - window.innerHeight + confirmOrderButton.offsetHeight);
+            //     }
+            // }, { passive: true });
 
             // pop up modal metode pembayaran
             document.addEventListener('DOMContentLoaded', (event) => {
@@ -877,114 +912,6 @@
 
             });
         </script>
-
-        {{-- modal delete --}}
-        <div id="popup-modal-delete" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative p-4 w-full max-w-md max-h-full">
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                    <div class="p-4 md:p-5 text-center">
-                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                        </svg>
-                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Anda yakin ingin menghapus menu ini?</h3>
-                        <button data-modal-hide="popup-modal-delete" type="button" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                            Ya
-                        </button>
-                        <button data-modal-hide="popup-modal-delete" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Tidak</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{-- end modal delete --}}
-
-        {{-- modal konfirmasi pesanan --}}
-        <div id="popup-modal-konfirmasi-pesan" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative p-4 w-full max-w-md max-h-full">
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                    <div class="p-4 md:p-5 text-center">
-                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                        </svg>
-                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Apakah anda yakin semua informasi pesanan Anda sudah benar ?</h3>
-                        <button data-modal-target="select-modal" data-modal-toggle="select-modal" data-modal-hide="popup-modal-konfirmasi-pesan" type="button" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                            Ya
-                        </button>
-                        <button data-modal-hide="popup-modal-konfirmasi-pesan" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Tidak</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{-- end modal konfirmasi pesanan --}}
-
-        {{-- modal metode pembayaran --}}
-            <!-- Main modal -->
-            <div id="select-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative p-4 w-full max-w-md max-h-full">
-                    <!-- Modal content -->
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <!-- Modal header -->
-                        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                                Metode Pembayaran
-                            </h3>
-                            
-                        </div>
-                        <!-- Modal body -->
-                        <div class="p-4 md:p-5">
-                            <p class="text-gray-500 dark:text-gray-400 mb-4">Pilih metode pembayaran:</p>
-                            <ul class="mb-4 flex justify-between gap-3">
-                                <li class="w-full">
-                                    <input type="radio" id="Tunai" name="job" value="Tunai" class="hidden peer" required>
-                                    <label for="Tunai" class="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 dark:peer-checked:text-[#FFD369] peer-checked:border-[#FFD369] peer-checked:text-[#FFD369] peer-checked:font-semibold hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500">
-                                        <div class="flex gap-5">
-                                            <img src="/img/cash.png" alt="">
-                                            <div class="w-full text-lg font-semibold">Tunai</div>
-                                        </div>
-                                    </label>
-                                </li>
-                                <li class="w-full">
-                                    <input type="radio" id="Digital" name="job" value="Digital" class="hidden peer" required>
-                                    <label for="Digital" class="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 dark:peer-checked:text-[#FFD369] peer-checked:border-[#FFD369] peer-checked:text-[#FFD369] peer-checked:font-semibold hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500">
-                                        <div class="flex gap-5">
-                                            <img src="/img/digital.png" alt="" width="45" height="45">
-                                            <div class="w-full text-lg font-semibold">Digital</div>
-                                        </div>
-                                    </label>
-                                </li>
-                            </ul>
-                            <button id="nextButton" class="text-black inline-flex w-full justify-center bg-green-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-500 dark:hover:bg-blue-700 dark:focus:ring-blue-800 my-2" data-modal-target="popup-modal-bayar" data-modal-toggle="popup-modal-bayar" data-modal-hide="select-modal" disabled>
-                                Selanjutnya
-                            </button>
-                            <button class="text-black inline-flex w-full justify-center bg-red-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-500 dark:hover:bg-blue-700 dark:focus:ring-blue-800 my-2" data-modal-toggle="popup-modal-konfirmasi-pesan" data-modal-target="popup-modal-konfirmasi-pesan" data-modal-hide="select-modal">
-                                Batalkan
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-        {{-- end modal metode pembayaran --}}
-
-        {{-- modal pembayaran --}}
-        <div id="popup-modal-bayar" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative p-4 w-full max-w-md max-h-full">
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                    <div class="p-4 md:p-5 text-center">
-                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                        </svg>
-                        <h3 id="confirmationText" class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Apakah anda yakin memilih metode pembayaran ..... ?</h3>
-                        <button id="confirmOrderBtn" data-modal-hide="popup-modal-bayar" type="button" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                            Ya
-                        </button>
-                        <button data-modal-hide="popup-modal-bayar" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" data-modal-target="select-modal" data-modal-toggle="select-modal" data-modal-hide="popup-modal-bayar">
-                            Tidak
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{-- end modal pembayaran --}}
-
         {{-- modal berhasil --}}
         <div id="popup-modal-berhasil" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative p-4 w-full max-w-md max-h-full">
@@ -1010,5 +937,30 @@
             </div>
         </div>
         {{-- end modal berhasil --}}
+
+         {{-- modal konfirmasi pesanan --}}
+         <div id="popup-modal-konfirmasi-pesan" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <div class="p-4 md:p-5 text-center">
+                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                        </svg>
+                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Apakah anda yakin semua informasi pesanan Anda sudah benar ?</h3>
+                        <button data-modal-target="select-modal" data-modal-toggle="select-modal" data-modal-hide="popup-modal-konfirmasi-pesan" type="button" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                            Ya
+                        </button>
+                        <button data-modal-hide="popup-modal-konfirmasi-pesan" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Tidak</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- end modal konfirmasi pesanan --}}
+         
+
+
+
+        
         
 @endsection
+
