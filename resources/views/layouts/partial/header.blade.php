@@ -1,5 +1,5 @@
  <!-- sidenav  -->
- <aside class="max-w-62.5 ease-nav-brand z-990 fixed inset-y-0 my-4 ml-4 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-2xl border-0 bg-white p-0 antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0 xl:bg-transparent">
+ <aside class="max-w-62.5 ease-nav-brand z-10 fixed inset-y-0 my-4 ml-4 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-2xl border-0 bg-white p-0 antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0 xl:bg-transparent">
       <div class="h-19.5">
         <i class="absolute top-0 right-0 hidden p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden" sidenav-close></i>
         <a class="block px-8 py-6 m-0 text-sm whitespace-nowrap text-slate-700" href="javascript:;" target="_blank">
@@ -26,7 +26,7 @@
               <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center stroke-0 text-center xl:p-2.5 {{ request()->routeIs('daftar-akun') ? 'bg-gradient-to-tl from-[#000000] to-[#CCCCBD]' : '' }}">
                 <i class="fa fa-user-plus text-lg text-gray-700 {{ request()->routeIs('daftar-akun') ? 'text-white' : '' }}"></i>
               </div>
-              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Pendaftaran Akun User</span>
+              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Pendaftaran Akun</span>
             </a>
           </li>
 
