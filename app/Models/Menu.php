@@ -19,4 +19,8 @@ class Menu extends Model
     ];
     
     protected $primaryKey = 'id_menu';
+    public function detailorder()
+    {
+        return $this->hasMany(OrderDetail::class, 'id_menu', 'id_menu');
+    }
 }

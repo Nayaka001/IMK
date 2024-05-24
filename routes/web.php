@@ -38,8 +38,11 @@ Route::middleware(['auth', 'role:Kasir'])->group(function () {
     Route::post('/kasir/neworder/newdine/action', [KasirController::class, 'store'])->name('kasir.newdine.action');
     Route::get('/kasir/addmenu/newres', [KasirController::class, 'addnewres'])->name('kasir.addnewres');
     Route::get('/kasir/addmenu/newtake', [KasirController::class, 'addnewtake'])->name('kasir.addnewtake');
+
+    Route::get('/order-list', [KasirController::class, 'orderwait'])->name('index.orderwait');
+    Route::get('/orders/{id_order}', [KasirController::class, 'modal'])->name('modal');
+    Route::get('/order-list/done', [KasirController::class, 'orderdone'])->name('index.orderdone');
     Route::get('/kasir/laporan', [KasirController::class, 'laporan'])->name('index.laporan');
-    Route::get('/kasir/daftar', [KasirController::class, 'daftar'])->name('index.daftar');
 });
 
 //Bagian Admin
@@ -150,9 +153,7 @@ Route::get('/new-order', function () {
     return view('formnewdine');
 })->name('new-order');
 
-Route::get('/order-list', function () {
-    return view('orderlistwaiting');
-})->name('order-list');
+
 
 // Route::get('/order-list/done', function () {
 //     return view('orderlistdone');
