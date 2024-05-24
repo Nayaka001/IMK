@@ -138,10 +138,68 @@ class KasirController extends Controller
 
         return view('neworder');
     }
+    public function orderwait(){
+        $orders = Order::all();
+        $detail = Order::with('detailorder')->get();
+
+    // Array untuk menyimpan hasil perhitungan
+        $ordersWithDetails = [];
+
+        // Loop untuk setiap order dan menghitung jumlah entri di OrderDetail
+        foreach ($orders as $order) {
+            $orderId = $order->id_order;
+            $totalMenu = OrderDetail::where('id_order', $orderId)->count();
+
+            // Menyimpan hasil perhitungan dalam array
+            $ordersWithDetails[] = [
+                'order' => $order,
+                'detail' => $detail,
+                'totalMenu' => $totalMenu,
+            ];
+        }
+
+        // Mengirim hasil ke view
+        return view('orderlistwaiting', ['ordersWithDetails' => $ordersWithDetails]);
+    }
+    public function modal($id_order){
+        $order = Order::find($id_order);
+        $detailOrders = OrderDetail::where('id_order', $id_order)->get();
+
+        $allNotes = [];
+        $allMenus = [];
+
+        foreach ($detailOrders as $detailOrder) {
+
+            $notes = $detailOrder->note;
+            if ($notes) {
+                $allNotes[] = $notes;
+            } 
+            
+            $menu = $detailOrder->menu->nama_menu;
+            if ($menu) {
+                $allMenus[] = $menu;
+            }
+
+        }
+        $jumlahMenu = $order->detailorder()->count();
+        $orderDetails = [
+            'waktu_order' => $order->waktu_order,
+            'nama_pelanggan' => $order->nama_pelanggan,
+            'jlh_org' => $order->jlh_org,
+            'id_meja' => $order->id_meja,
+            'jlh_menu' => $jumlahMenu,
+            'notes' => $allNotes,
+            'menus' => $allMenus
+        ];
+
+
+        // Kembalikan data dalam format JSON
+        return response()->json($orderDetails);
+    }
+    public function orderdone(){
+        return view('orderlistdone');
+    }
     public function laporan(){
         return view('laporan');
-    }
-    public function daftar(){
-        return view('daftar');
     }
 }

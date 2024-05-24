@@ -20,4 +20,12 @@ class OrderDetail extends Model
         'progress',
     ];
     protected $primaryKey = 'id_order_details';
+    public function order()
+    {
+        return $this->belongsTo(Order::class, 'id_order', 'id_order');
+    }
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class, 'id_menu', 'id_menu');
+    }
 }

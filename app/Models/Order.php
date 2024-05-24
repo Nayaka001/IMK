@@ -21,5 +21,9 @@ class Order extends Model
         'kedatangan',
     ];
     protected $primaryKey = 'id_order';
+    public function detailorder()
+    {
+        return $this->hasMany(OrderDetail::class, 'id_order', 'id_order');
+    }
 
 }
