@@ -30,7 +30,7 @@ return new class extends Migration
             $table->foreign('id_order')->references('id_order')->on('order')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('id_menu');
             $table->foreign('id_menu')->references('id_menu')->on('menu')->onDelete('restrict')->onUpdate('restrict');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->integer('jumlah');
             $table->integer('subtotal');
             $table->enum('progress', ['Dimasak', 'Siap Disajikan', 'Selesai']);

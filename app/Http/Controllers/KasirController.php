@@ -56,7 +56,7 @@ class KasirController extends Controller
                 $orderDetail = new OrderDetail();
                 $orderDetail->id_order = $customerId; // Menggunakan ID Order yang baru saja disimpan
                 $orderDetail->id_menu = $item['menu_id'];
-                $orderDetail->note = $item['note'] ?? null;
+                $orderDetail->note = $item['note'];
                 $orderDetail->jumlah = $item['quantity'];
                 $orderDetail->subtotal = $item['price'];
                 $orderDetail->progress = $request->input('progress');

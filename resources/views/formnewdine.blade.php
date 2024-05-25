@@ -64,10 +64,12 @@
                     <label for="nama-pelanggan" class="mx-10">
                         <span class="block font-semibold">Nama Pelanggan</span>
                         <input type="text" id="nama-pelanggan" name="nama_pelanggan" placeholder="Masukkan Nama Pelanggan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
+                        <p id="nama-error" class="text-sm m-1 text-pink-700 invisible">Nama tidak valid</p>
                     </label>
                     <label for="jumlah-orang" class="mx-10">
                         <span class="block font-semibold">Jumlah Orang</span>
                         <input type="number" id="jumlah-orang" name="jumlah_orang" placeholder="Masukkan Jumlah Orang" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
+                        <p id="jumlah-error" class="text-sm m-1 text-pink-700 invisible">Jumlah orang tidak valid</p>
                     </label>
                     <label for="nomor-meja" class="mx-10">
                         <span class="block font-semibold">Nomor Meja</span>
@@ -134,6 +136,41 @@
     </div>
 @endsection
 @push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const namaPelangganInput = document.getElementById('nama-pelanggan');
+    const jumlahOrangInput = document.getElementById('jumlah-orang');
+
+    const namaError = document.getElementById('nama-error');
+    const jumlahError = document.getElementById('jumlah-error');
+
+    // Regex for validation
+    const namaRegex = /^[a-zA-Z\s]+$/;  // Hanya huruf dan spasi
+    const jumlahRegex = /^[1-9]\d*$/;  // Angka lebih dari 0
+
+    // Function to validate Nama Pelanggan
+    function validateNamaPelanggan() {
+        if (!namaRegex.test(namaPelangganInput.value)) {
+            namaError.classList.remove('invisible');
+        } else {
+            namaError.classList.add('invisible');
+        }
+    }
+
+    // Function to validate Jumlah Orang
+    function validateJumlahOrang() {
+        if (!jumlahRegex.test(jumlahOrangInput.value)) {
+            jumlahError.classList.remove('invisible');
+        } else {
+            jumlahError.classList.add('invisible');
+        }
+    }
+
+    // Add event listeners
+    namaPelangganInput.addEventListener('input', validateNamaPelanggan);
+    jumlahOrangInput.addEventListener('input', validateJumlahOrang);
+});
+</script>
 {{-- <script>
     document.addEventListener('DOMContentLoaded', function () {
         const orderForm = document.getElementById('orderForm');
@@ -285,4 +322,6 @@
 
 
 </script>
+
+
 @endpush
