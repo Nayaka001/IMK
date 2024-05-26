@@ -4,7 +4,34 @@
 @include('layouts.partial.navbar-user')
     
 <div class="w-full px-6 py-6 mx-auto">
-  <div id="deleteModal" class="hidden fixed inset-0 z-50 overflow-auto bg-gray-500 bg-opacity-50">
+
+  <!-- The Modal -->
+<div id="deleteModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="deleteModalClose" class="close mr-4 mt-2 top-4 right-4">&times;</span>
+        <div class="flex-auto p-6">
+            <div class="p-6 mb-0 text-center bg-white rounded-t-2xl">
+                <h5><i class="fas fa-trash-alt mr-2 text-xl"></i>Apakah Anda yakin ingin menghapus data ini?</h5>
+                <div class="w-full mt-2 h-1 bg-slate-700 rounded"></div>
+            </div>
+            <p class="text-center">Data yang dihapus tidak dapat dikembalikan.</p>
+            <div class="flex flex-none md:w-full space-y-4 md:space-y-0 justify-end text-right">
+            <div class="flex w-full text-right col-span-2 mx-2 md:ml-auto justify-end">
+              <button id="cancelDelete" class="inline-block w-1/6 px-6 py-3 mr-2 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Batal</button>
+              <form id="deleteForm" action="{{route('destroyuser', ['id_user' => ':id_user'])}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+              <button type="submit" class="inline-block w-1/6 px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Hapus Data</button>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+  <!-- Modal Delete Naya -->
+  <!-- <div id="deleteModal" class="hidden fixed inset-0 z-50 overflow-auto bg-gray-500 bg-opacity-50">
     <div class="flex items-center justify-center min-h-screen">
         <div class="bg-yellow-200 p-8 rounded shadow-lg">
                 <p>Apakah Anda yakin ingin menghapus?</p>
@@ -18,7 +45,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- table 1 -->
     <div id="all" class="flex flex-wrap -mx-3">
           <div class="flex-none w-full max-w-full px-3">
@@ -390,23 +417,28 @@
     var deleteModal = document.getElementById('deleteModal');
     var deleteButtons = document.querySelectorAll('.delete-button');
     var cancelDelete = document.getElementById('cancelDelete');
+    var modalClose = deleteModal.getElementsByClassName("close")[0];
     var deleteForm = document.getElementById('deleteForm');
     
     // Fungsi untuk menampilkan modal
     function showModal() {
-        deleteModal.classList.remove('hidden');
+        deleteModal.style.display = "flex";
     }
 
     // Fungsi untuk menyembunyikan modal
     function hideModal() {
-        deleteModal.classList.add('hidden');
+        deleteModal.style.display = "none";
     }
 
-    // Tambahkan event listener untuk tombol cancel
-    cancelDelete.addEventListener('click', function(event) {
-        event.preventDefault();
+    // Tambahkan event listener untuk tombol close
+    modalClose.onclick = function() {
         hideModal();
-    });
+    };
+
+    // Tambahkan event listener untuk tombol cancel
+    cancelDelete.onclick = function() {
+        hideModal();
+    };
 
     // Tambahkan event listener untuk klik di luar modal untuk menutup modal
     window.addEventListener('click', function(event) {
@@ -417,19 +449,18 @@
 
     // Tambahkan event listener untuk semua tombol delete
     deleteButtons.forEach(function(button) {
-    button.addEventListener('click', function(event) {
+      button.addEventListener('click', function(event) {
         event.preventDefault();
         var id_user = this.getAttribute('data-id');
         var action = '{{ route('destroyuser', ['id_user' => ':id_user']) }}';
         action = action.replace(':id_user', id_user);
-        var form = document.getElementById('deleteForm');
-        form.setAttribute('action', action);
+        deleteForm.setAttribute('action', action);
         showModal();
+      });
     });
-});
-});
-
+  });
 </script>
+
 <script>
   document.addEventListener('DOMContentLoaded', (event) => {
   const all = document.getElementById('all');
@@ -585,32 +616,9 @@
 
 
 
-<!-- The Modal -->
-<div id="deleteModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <span id="deleteModalClose" class="close mr-4 mt-2 top-4 right-4">&times;</span>
-        <div class="flex-auto p-6">
-            <div class="p-6 mb-0 text-center bg-white rounded-t-2xl">
-                <h5><i class="fas fa-trash-alt mr-2 text-xl"></i>Apakah Anda yakin ingin menghapus data ini?</h5>
-                <div class="w-full mt-2 h-1 bg-slate-700 rounded"></div>
-            </div>
-            <p class="text-center">Data yang dihapus tidak dapat dikembalikan.</p>
-            <div class="flex flex-none md:w-full space-y-4 md:space-y-0 justify-end text-right">
-            <div class="w-full text-right col-span-2 mx-2 md:ml-auto">
-              <button id="confirmDeleteButton" type="submit" class="inline-block w-1/6 px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Hapus data</button>
-              <a id="cancelDeleteButton" class="inline-block w-1/6 px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Batal</a>
-            </div>
-          </div>
-            <!-- <div class="flex justify-end mt-4 space-x-4">
-                <button id="confirmDeleteButton" class="btn-delete inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white rounded-lg">Hapus</button>
-                <button id="cancelDeleteButton" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white text-white px-6 py-3 rounded-lg">Batal</button>
-            </div> -->
-        </div>
-    </div>
-</div>
 
-<script>
+
+<!-- <script>
     // Get the modal
     var deleteModal = document.getElementById("deleteModal");
 
@@ -655,7 +663,7 @@
         // Add logic here to perform actual delete operation
         alert("Data berhasil dihapus!"); // Example alert, replace with your actual delete logic
     }
-</script>
+</script> -->
 
 
 
@@ -667,7 +675,7 @@
     var btn = document.getElementById("editKaryawanBtn");
 
     // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+    var span = modal.getElementsByClassName("close")[0];
 
     // When the user clicks the button, open the modal 
     btn.onclick = function() {

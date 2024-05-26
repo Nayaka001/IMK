@@ -71,6 +71,9 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/profile', function () {
         return view('admin.profile');
     })->name('profile');
+    Route::get('/admin/meja', function () {
+        return view('admin.meja');
+    })->name('meja');
 
 
     Route::get('/admin/laporan-penjualan', function () {

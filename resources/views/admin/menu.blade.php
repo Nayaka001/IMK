@@ -90,25 +90,30 @@
                     <tbody>
                         @foreach($menus as $menu)
                         <!-- The Modal -->
-                          <div id="deleteModal" class="modal">
-                              <!-- Modal content -->
-                              <div class="modal-content">
-                                  <span id="deleteModalClose" class="close mr-4 mt-2 top-4 right-4">&times;</span>
-                                  <div class="flex-auto p-6">
-                                      <div class="p-6 mb-0 text-center bg-white rounded-t-2xl">
-                                          <h5><i class="fas fa-trash-alt mr-2 text-xl"></i>Apakah Anda yakin ingin menghapus Menu ini?</h5>
-                                          <div class="w-full mt-2 h-1 bg-slate-700 rounded"></div>
-                                      </div>
-                                      <p class="text-center">Menu yang dihapus tidak dapat dikembalikan.</p>
-                                      <div class="flex flex-none md:w-full space-y-4 md:space-y-0 justify-end text-right">
-                                      <div class="w-full text-right col-span-2 mx-2 md:ml-auto">
-                                        <button id="confirmDeleteButton" type="submit" class="inline-block w-1/6 px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Hapus data</button>
-                                        <a id="cancelDeleteButton" class="inline-block w-1/6 px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Batal</a>
-                                      </div>
-                                    </div>
-                                  </div>
-                              </div>
-                          </div>
+<div id="deleteModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="deleteModalClose" class="close mr-4 mt-2 top-4 right-4">&times;</span>
+        <div class="flex-auto p-6">
+            <div class="p-6 mb-0 text-center bg-white rounded-t-2xl">
+                <h5><i class="fas fa-trash-alt mr-2 text-xl"></i>Apakah Anda yakin ingin menghapus data ini?</h5>
+                <div class="w-full mt-2 h-1 bg-slate-700 rounded"></div>
+            </div>
+            <p class="text-center">Data yang dihapus tidak dapat dikembalikan.</p>
+            <div class="flex flex-none md:w-full space-y-4 md:space-y-0 justify-end text-right">
+            <div class="flex w-full text-right col-span-2 mx-2 md:ml-auto justify-end">
+              <button id="cancelDelete" class="inline-block w-1/6 px-6 py-3 mr-2 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Batal</button>
+              <form id="deleteForm" action="{{route('destroymenu', ['id_menu' => ':id_menu'])}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+              <button type="submit" class="inline-block w-1/6 px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Hapus Data</button>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
 
                         <!-- <div id="deleteModal" class="hidden fixed inset-0 z-50 overflow-auto bg-gray-500 bg-opacity-50">
                           <div class="flex items-center justify-center min-h-screen">
@@ -146,7 +151,7 @@
                             <td class="px-4 py-3 text-sm text-slate-800 bg-gradient-to-b from-[#FFD369] to-[#cfdbd5] ">{{$menu->ktgmenu->subkategori}}</td>
                             <td class="px-4 py-3 text-gray-900 bg-gradient-to-b from-[#FFD369] to-[#cfdbd5]">
                             <a id="editMenuBtn" class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
-                            <a id="deleteBtn" class="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 delete-button to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text" data-id="{{ $menu->id_menu }}" ><i class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
+                            <a class="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 delete-button to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text delete-button" data-id="{{ $menu->id_menu }}" ><i class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
                                 <!-- <a href="javascript:;" class="text-xs font-semibold leading-tight text-slate-400"> Edit </a> -->
                             </td>
                         </tr>
@@ -162,6 +167,140 @@
         </div>
     </div>
 </div> 
+
+
+<div class="flex w-full mb-0">
+
+  <div class="flex w-full md:w-1/2">
+    <div class="w-full px-6 py-6 mx-auto">
+        <!-- table 1 -->
+        <div class="flex flex-wrap -mx-3">
+              <div class="flex-none w-full max-w-full px-3">
+                <div class="relative flex flex-col min-w-0 mb-6 break-words bg-[#e8eddf] border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
+                  <div class="p-6 pb-0 mb-0 bg-[#e8eddf] border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                    <h6>Data Kategori</h6>
+                    <div class="flex-none w-full max-w-full px-6 justify-end text-right">
+                        <a class="inline-block px-3 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"><i class="fas fa-plus"> </i></i>&nbsp;&nbsp;Tambah Data</a>
+                    </div>
+                  </div>
+                  <div class="flex-auto px-0 pt-0 pb-2">
+                    <div class="p-0 overflow-x-auto">
+                      <table class="items-center w-full mb-6 align-top border-gray-800 text-slate-500">
+                        <thead class="align-bottom">
+                          <tr>
+                            <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-500 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-800 opacity-70">No</th>
+                            <!-- <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-500 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-800 opacity-70">Tanggal</th> -->
+                            <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-500 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-800 opacity-70">Kategori</th>
+                            <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-500 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-800 opacity-70">Jenis</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
+                              <!-- <p class="mb-0 text-xs font-semibold leading-tight">Jl. Mawar No. 10, Jakarta</p> -->
+                              <p class="mb-0 text-sm leading-tight text-slate-600">1</p>
+                            </td>
+                            <td class="p-2 text-center align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
+                              <p class="mb-0 text-sm leading-tight">STEAKS & HOTPLATES</p>
+                              <!-- <p class="mb-0 text-xs leading-tight text-slate-600">18-10-2004</p> -->
+                            </td>
+                            <td class="p-2 text-center align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
+                              <span class="text-sm leading-tight text-slate-600">Makanan</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
+                              <!-- <p class="mb-0 text-xs font-semibold leading-tight">Jl. Mawar No. 10, Jakarta</p> -->
+                              <p class="mb-0 text-sm leading-tight text-slate-600">2</p>
+                            </td>
+                            <td class="p-2 text-center align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
+                              <p class="mb-0 text-sm leading-tight">STEAKS & HOTPLATES</p>
+                              <!-- <p class="mb-0 text-xs leading-tight text-slate-600">18-10-2004</p> -->
+                            </td>
+                            <td class="p-2 text-center align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
+                              <span class="text-sm leading-tight text-slate-600">Makanan</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
+                              <!-- <p class="mb-0 text-xs font-semibold leading-tight">Jl. Mawar No. 10, Jakarta</p> -->
+                              <p class="mb-0 text-sm leading-tight text-slate-600">3</p>
+                            </td>
+                            <td class="p-2 text-center align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
+                              <p class="mb-0 text-sm leading-tight">STEAKS & HOTPLATES</p>
+                              <!-- <p class="mb-0 text-xs leading-tight text-slate-600">18-10-2004</p> -->
+                            </td>
+                            <td class="p-2 text-center align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
+                              <span class="text-sm leading-tight text-slate-600">Makanan</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+  </div>
+
+
+  <div class="flex w-full md:w-1/2">
+    <div class="w-full px-6 py-6 mx-auto">
+        <!-- table 1 -->
+        <div class="flex flex-wrap -mx-3">
+              <div class="flex-none w-full max-w-full px-3">
+                <div class="relative flex flex-col min-w-0 mb-6 break-words bg-[#e8eddf] border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
+                  <div class="p-6 pb-0 mb-0 bg-[#e8eddf] border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                    <h6>Data Sub-Kategori</h6>
+                    <div class="flex-none w-full max-w-full px-6 justify-end text-right">
+                        <a class="inline-block px-3 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"><i class="fas fa-plus"> </i>&nbsp;&nbsp;Tambah Data</a>
+                    </div>
+                  </div>
+                  <div class="flex-auto px-0 pt-0 pb-2">
+                    <div class="p-0 overflow-x-auto">
+                      <table class="items-center w-full mb-6 align-top border-gray-800 text-slate-500">
+                        <thead class="align-bottom">
+                          <tr>
+                            <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-500 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-800 opacity-70">No</th>
+                            <!-- <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-500 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-800 opacity-70">Tanggal</th> -->
+                            <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-500 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-800 opacity-70">Sub-Kategori</th>
+                            <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-500 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-800 opacity-70">Kategori</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
+                              <!-- <p class="mb-0 text-xs font-semibold leading-tight">Jl. Mawar No. 10, Jakarta</p> -->
+                              <p class="mb-0 text-sm leading-tight text-slate-600">1</p>
+                            </td>
+                            <td class="p-2 text-center align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
+                              <p class="mb-0 text-sm leading-tight">Crispy Steak with Brown Sauce</p>
+                              <!-- <p class="mb-0 text-xs leading-tight text-slate-600">18-10-2004</p> -->
+                            </td>
+                            <td class="p-2 text-center align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
+                              <span class="text-sm leading-tight text-slate-600">STEAKS & HOTPLATES</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
@@ -217,7 +356,56 @@
                     </div>                          
 </div>
 
+<script>
+  // Fungsi untuk menampilkan modal konfirmasi
+  document.addEventListener('DOMContentLoaded', function() {
+    // Ambil elemen-elemen yang dibutuhkan
+    var deleteModal = document.getElementById('deleteModal');
+    var deleteButtons = document.querySelectorAll('.delete-button');
+    var cancelDelete = document.getElementById('cancelDelete');
+    var modalClose = deleteModal.getElementsByClassName("close")[0];
+    var deleteForm = document.getElementById('deleteForm');
+    
+    // Fungsi untuk menampilkan modal
+    function showModal() {
+        deleteModal.style.display = "flex";
+    }
 
+    // Fungsi untuk menyembunyikan modal
+    function hideModal() {
+        deleteModal.style.display = "none";
+    }
+
+    // Tambahkan event listener untuk tombol close
+    modalClose.onclick = function() {
+        hideModal();
+    };
+
+    // Tambahkan event listener untuk tombol cancel
+    cancelDelete.onclick = function() {
+        hideModal();
+    };
+
+    // Tambahkan event listener untuk klik di luar modal untuk menutup modal
+    window.addEventListener('click', function(event) {
+        if (event.target === deleteModal) {
+            hideModal();
+        }
+    });
+
+    // Tambahkan event listener untuk semua tombol delete
+    deleteButtons.forEach(function(button) {
+      button.addEventListener('click', function(event) {
+        event.preventDefault();
+        var id_menu = this.getAttribute('data-id');
+        var action = '{{ route('destroymenu', ['id_menu' => ':id_menu']) }}';
+        action = action.replace(':id_menu', id_menu);
+        deleteForm.setAttribute('action', action);
+        showModal();
+      });
+    });
+  });
+</script>
 
 <!-- <script>
   // Fungsi untuk menampilkan modal konfirmasi
@@ -324,34 +512,7 @@
         editModal.style.display = "none";
     };
 
-    // Script for "Delete Data" modal
-    var deleteModal = document.getElementById("deleteModal");
-    var deleteBtn = document.getElementById("deleteBtn");
-    var deleteClose = deleteModal.getElementsByClassName("close")[0];
-    var cancelDeleteButton = document.getElementById("cancelDeleteButton");
-
-    deleteBtn.onclick = function() {
-        deleteModal.style.display = "flex";
-    };
-
-    deleteClose.onclick = function() {
-        deleteModal.style.display = "none";
-    };
-    // When the user clicks cancel button, close the modal
-    cancelDeleteButton.onclick = function() {
-        deleteModal.style.display = "none";
-    }
-
-    // Script for handling delete operation
-    var confirmDeleteButton = document.getElementById("confirmDeleteButton");
-    confirmDeleteButton.onclick = function() {
-        // Place your delete logic here
-        // For example, you can use AJAX to send delete request to server
-        // After successful deletion, you can close the modal
-        deleteModal.style.display = "none";
-        // Add logic here to perform actual delete operation
-        alert("Data berhasil dihapus!"); // Example alert, replace with your actual delete logic
-    }
+  
 
     // Improved event handling for closing the modal when clicking outside
     window.onclick = function(event) {
@@ -360,9 +521,6 @@
         }
         if (event.target == editModal) {
             editModal.style.display = "none";
-        }
-        if (event.target == deleteModal) {
-            deleteModal.style.display = "none";
         }
     };
 </script>
