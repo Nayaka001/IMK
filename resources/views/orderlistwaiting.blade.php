@@ -33,7 +33,7 @@
         </div>
             <div class="mt-10 w-full container gap-6 flex flex-wrap mr-0">
                 {{-- card --}}
-                @foreach($ordersWithDetails as $order)
+                @foreach($ordersWithDetails  as $order)
                 <div class="rounded-xl shadow-lg mb-7 bg-white w-full md:w-80 lg:w-96">
                     @if($order['order']->tipe_order === 'Makan di Tempat')
                         <div class="h-5 w-full bg-[#00F0FF] text-white font-bold text-sm rounded-t-xl px-2">
@@ -498,29 +498,17 @@
                                                 <div class="bg-[#EEEEEE] my-2 w-full sm:w-80 h-fit p-2 rounded-xl mt-5 mr-5">
                                                     <h1 class="font-bold text-lg">Notes</h1>
                                                     {{-- notes permenu --}}
-                                                    <div class="flex">
-                                                        <p class="font-semibold text-base mr-3 w-1/2">${response.menus.join('<br>')}</p>
-                                                        <p class="text-base w-2/3">${response.notes.join('<br>')}</p>                                                        
+                                                    <div class="note-container flex">
+                                                                                                                
                                                     </div>
                                                     {{-- end notes permenu --}}
                                                 </div>
                                             </div>
-                                            <div class="flex-col w-full">
+                                            <div class="menu-container flex-col w-full">
                                                 {{-- menu yang dipesan --}}
-                                                <div class="flex my-3">
-                                                    <div>
-                                                        <img src="https://source.unsplash.com/110x110" alt="" class="rounded-xl object-cover hidden sm:flex">                                               </div>
-                                                    <div class="flex w-full justify-between">
-                                                        <div class="ml-3 w-1/2">
-                                                            <h1 class="text-lg font-semibold">${response.menus.join('<br>')}</h1>
-                                                            <div class="w-16 text-center bg-[#FFD369] rounded-full">1</div>
-                                                        </div>
-                                                        <div>
-                                                            <h1 class="text-lg font-bold">Rp 15000</h1>
-                                                            <div class="text-center w-fit p-1 px-2 bg-green-300 rounded-full">Selesai</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                
+                                                    
+                                                
                                                 {{-- end menu yang dipesan --}}
                                                 <div class="flex text-xl font-bold mt-10 justify-between">
                                                     <div>Total</div>
@@ -528,8 +516,51 @@
                                                 </div>
                                             </div>
                                                 `;
-
                 $('#modalBody').html(modalBody);
+
+                // Bagian menu yang dipesan
+                const container = document.querySelector('.menu-container');
+
+                response.detailorder.forEach(menu => {
+                    const menuItem = document.createElement('div');
+                    menuItem.className = 'flex-col w-full';
+
+                    menuItem.innerHTML = `
+                    <div class=" flex my-3">
+                        <div>
+                            <img src="https://source.unsplash.com/110x110" alt="" class="rounded-xl object-cover hidden sm:flex">
+                        </div>
+                        <div class="flex w-full justify-between">
+                            <div class="ml-3 w-1/2">
+                                <h1 class="text-lg font-semibold">Steak</h1>
+                                <div class="w-16 text-center bg-[#FFD369] rounded-full">${menu.jumlah}</div>
+                            </div>
+                            <div>
+                                <h1 class="text-lg font-bold">Rp ${menu.subtotal}</h1>
+                                <div class="text-center w-fit p-1 px-2 bg-green-300 rounded-full">${menu.progress}</div>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+
+                    container.appendChild(menuItem);
+                });
+                // const container = document.querySelector('.note-container');
+
+                // response.detailorder.forEach(note => {
+                //     const noteItem = document.createElement('div');
+                //     noteItem.className = 'flex';
+
+                //     noteItem.innerHTML = `
+                //     <p class="font-semibold text-base mr-3 w-1/2">Steak}</p>
+                //     <p class="text-base w-2/3">${note.note}</p>
+                //     `;
+
+                //     container.appendChild(noteItem);
+                // });
+
+
+
                 $('#default-modal').removeClass('hidden');
             },
             error: function() {
