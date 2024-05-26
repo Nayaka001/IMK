@@ -164,8 +164,7 @@ class KasirController extends Controller
     public function modal($id_order){
         $order = Order::find($id_order);
         $detailOrders = OrderDetail::where('id_order', $id_order)->get();
-
-        $allNotes = [];
+        $allNotes = []; 
         $allMenus = [];
 
         foreach ($detailOrders as $detailOrder) {
@@ -191,8 +190,6 @@ class KasirController extends Controller
             'notes' => $allNotes,
             'menus' => $allMenus
         ];
-
-
         // Kembalikan data dalam format JSON
         return response()->json($orderDetails);
     }

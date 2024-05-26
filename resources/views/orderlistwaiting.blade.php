@@ -458,6 +458,8 @@
             url: '/orders/' + orderId, // Ganti dengan endpoint yang sesuai
             type: 'GET',
             success: function(response) {
+
+                console.log(response)
                 // Asumsikan responsenya adalah object dengan struktur data yang diperlukan
                 var modalBody = `
                 <div class="w-full">

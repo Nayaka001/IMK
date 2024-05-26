@@ -21,7 +21,7 @@ class UsersKaryawanSeeder extends Seeder
                 'username' => 'nayaka1810',
                 'password' => 'Naya1810',
                 'level_user' => 'Kasir',
-                'nama' => 'Nayaka',
+                'nama' => 'Nayaka',     
                 'tgl_lahir' => '1990-10-18',
                 'no_hp' => '081234567890',
                 'alamat' => 'Jl. Mawar No. 10, Jakarta',
