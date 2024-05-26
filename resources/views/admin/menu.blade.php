@@ -16,76 +16,7 @@
                     </select>
                     <a id="tambahMenuBtn" class="ml-4 inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"> <i class="fas fa-plus"> </i>&nbsp;&nbsp;Tambah Menu</a>
 
-                    <!-- The Modal -->
-                    <div id="tambahModal" class="modal flex text-left">
-                    <!-- Modal content -->
-                    <div class="modal-content relative z-10 w-full max-w-xl mx-auto" style="max-width: 800px;"> <!-- Adjusted width to max-w-6xl -->
-                        <span class="close absolute top-4 right-4">&times;</span>
-                        <div class="flex-auto p-6">
-                        <div class="p-6 mb-0 text-center bg-white border-b-0 rounded-t-2xl">
-                            <h5>Tambah Menu</h5>
-                        </div>
-                        <form id="tambahMenuForm" class="p-6">
-                            <div class="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
-                            <div class="w-full px-2 md:w-1/2">
-                                <div class="mb-4">
-                                <label class="block font-normal" for="nama">Nama Menu</label>
-                                <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Nama Menu" id="nama" name="nama">
-                                </div>
-                                <div class="mb-4">
-                                <label class="block font-normal" for="harga">Harga</label>
-                                <input type="number" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Harga" id="harga" name="harga">
-                                </div>
-                                <div class="mb-4">
-                                <label class="block font-normal" for="jenis-menu">Jenis Menu</label>
-                                <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="jenis-menu" name="jenis-menu">
-                                    <option value="">Pilih Jenis Menu</option>
-                                    <option value="Kasir">Makanan</option>
-                                    <option value="Bartender">Minuman</option>
-                                </select>
-                                </div>
-                                <div class="mb-4">
-                                <label class="block font-normal" for="kategori">Kategori</label>
-                                <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="kategori" name="kategori">
-                                    <option value="">Pilih Kategori</option>
-                                    <option value="Kasir">STEAKS & HOTPLATES</option>
-                                    <option value="Bartender">RICE HOTPLATE</option>
-                                    <option value="Kitchen">GEPREK</option>
-                                    <option value="Pelayan">CEMILAN</option>
-                                    <option value="Pelayan">SAYURAN</option>
-                                    <option value="Pelayan">MINUMAN</option>
-                                    <option value="Pelayan">KIDS MEAL</option>
-                                </select>
-                                </div>
-                            </div>
-                            <div class="w-full px-2 md:w-1/2">
-                                <div class="mb-4">
-                                <label class="block font-normal" for="sub-kategori">Sub Kategori</label>
-                                <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="sub-kategori" name="sub-kategori">
-                                    <option value="">Pilih Sub Kategori</option>
-                                    <option value="Kasir">Rice Hotplate Sambal Matah/Korek</option>
-                                    <option value="Bartender">Nasi Geprek Sambal Matah/Korek</option>
-                                    <option value="Kitchen">Varian Geprek + Indomie</option>
-                                    <option value="Pelayan">Rice Bowl Sambal Matah/Korek</option>
-                                </select>
-                                </div>
-                                <div class="mb-4">
-                                <label class="block font-normal" for="keterangan">Keterangan</label>
-                                <textarea type="tel" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan keterangan menu" id="keterangan" name="keterangan"></textarea>
-                                </div>
-                                <div class="mb-4">
-                                <label class="block font-normal" for="foto">Foto</label>
-                                <input type="file" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="foto" name="foto">
-                                </div>
-                            </div>
-                            </div>
-                            <div class="text-center">
-                            <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Tambah Menu</button>
-                            </div>
-                        </form>
-                        </div>
-                    </div>
-                    </div>
+                    
 
                 </div>
               </div>
@@ -123,7 +54,7 @@
                             </td>
                             <td class="px-4 py-3 text-sm text-slate-800 bg-gradient-to-b from-[#FFD369] to-[#cfdbd5] ">Crispy Steak with Brown Sauce</td>
                             <td class="px-4 py-3 text-gray-900 bg-gradient-to-b from-[#FFD369] to-[#cfdbd5]">
-                            <a class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
+                                <a id="editMenuBtn" class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
                                 <a class="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text" href="javascript:;"><i class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
                                 <!-- <a href="javascript:;" class="text-xs font-semibold leading-tight text-slate-400"> Edit </a> -->
                             </td>
@@ -149,49 +80,8 @@
                             </td>
                             <td class="px-4 py-3 text-sm text-slate-800 bg-gradient-to-b from-[#FFD369] to-[#cfdbd5] ">Crispy Steak with Brown Sauce</td>
                             <td class="px-4 py-3 text-gray-900 bg-gradient-to-b from-[#FFD369] to-[#cfdbd5]">
-                                <a id="editMenuBtn" class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
+                                <a class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
                                 <a class="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text" href="javascript:;"><i class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
-
-                                
-                                <!-- The Modal -->
-                            <div id="editModal" class="modal flex">
-                              <!-- Modal content -->
-                              <div class="modal-content relative z-10">
-                                <span class="close absolute top-4 right-4">&times;</span>
-                                <div class="flex-auto p-6">
-                                  <div class="p-6 mb-0 text-center bg-white border-b-0 rounded-t-2xl">
-                                    <h5>Edit Data Karyawan</h5>
-                                  </div>
-                                  <form id="editKaryawanForm" class="p-6">
-                                      <div class="mb-4">
-                                        <label class="block font-normal" for="nama">Nama Lengkap</label>
-                                        <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Nama Lengkap" id="nama" name="nama">
-                                      </div>
-                                      <div class="mb-4">
-                                        <label class="block font-normal " for="telepon">No Telepon</label>
-                                        <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Telepon" id="telepon" name="telepon">
-                                      </div>
-                                      <div class="mb-4">
-                                        <label class="block font-normal " for="alamat">Alamat</label>
-                                        <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Alamat" id="alamat" name="alamat">
-                                      </div>
-                                      <div class="mb-4">
-                                        <label class="block font-normal " for="tanggal_lahir">Tanggal Lahir</label>
-                                        <input type="date" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Tanggal Lahir" id="tanggal_lahir" name="tanggal_lahir">
-                                      </div>
-                                      <div class="mb-4">
-                                        <label class="block font-normal " for="gaji">Gaji</label>
-                                        <input type="number" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Gaji" id="gaji" name="gaji">
-                                      </div>
-                                      <div class="text-center">
-                                        <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Edit Data</button>
-                                      </div>
-                                  </form>
-                                </div>
-                              </div>
-                            </div>
-
-
                             </td>
                         </tr>
 
@@ -230,6 +120,140 @@
         </div>
     </div>
 </div> 
+
+
+
+<!-- TAMBAH MENU Modal -->
+<div id="tambahModal" class="modal flex text-left">
+                    <!-- Modal content -->
+                    <div class="modal-content relative z-10 w-full max-w-xl mx-auto" style="max-width: 800px;"> <!-- Adjusted width to max-w-6xl -->
+                        <span class="close absolute top-4 right-4">&times;</span>
+                        <div class="flex-auto p-6">
+                        <div class="p-6 mb-0 text-center border-b-0 rounded-t-2xl">
+                            <h1 class="font-semibold text-lg"><i class="fa fa-utensils mr-2"> </i>Tambah Menu</h1>
+                            <div class="w-full mt-2 p-1 mb-2 h-2 bg-slate-700 rounded"></div>
+                        </div>
+                        <form id="tambahMenuForm" class="p-6">
+                            <div class="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
+                            <div class="w-full px-2 md:w-1/2">
+                                <div class="mb-4">
+                                <label class="block font-normal" for="nama">Nama Menu</label>
+                                <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Nama Menu" id="nama" name="nama">
+                                </div>
+                                <div class="mb-4">
+                                <label class="block font-normal" for="harga">Harga</label>
+                                <input type="number" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Harga" id="harga" name="harga">
+                                </div>
+                                <div class="mb-4">
+                                <label class="block font-normal" for="sub-kategori">Sub Kategori</label>
+                                <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="sub-kategori" name="sub-kategori">
+                                    <option value="">Pilih Sub Kategori</option>
+                                    <option value="Kasir">Rice Hotplate Sambal Matah/Korek</option>
+                                    <option value="Bartender">Nasi Geprek Sambal Matah/Korek</option>
+                                    <option value="Kitchen">Varian Geprek + Indomie</option>
+                                    <option value="Pelayan">Rice Bowl Sambal Matah/Korek</option>
+                                </select>
+                                </div>
+                                
+                            </div>
+                            <div class="w-full px-2 md:w-1/2">
+                                <div class="mb-4">
+                                <label class="block font-normal" for="keterangan">Keterangan</label>
+                                <textarea type="tel" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan keterangan menu" id="keterangan" name="keterangan"></textarea>
+                                </div>
+                                <div class="mb-4">
+                                <label class="block font-normal" for="foto">Foto</label>
+                                <input type="file" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="foto" name="foto">
+                                </div>
+                            </div>
+                            </div>
+                            <div class="text-center">
+                            <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Tambah Menu</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+</div>
+
+
+
+
+<!-- Edit Modal -->
+<div id="editMenu" class="modal flex">
+    <!-- Modal content -->
+    <div class="modal-content relative z-10 w-full max-w-xl mx-auto" style="max-width: 800px;"> <!-- Adjusted width to max-w-6xl -->
+                        <span class="close absolute top-4 right-4">&times;</span>
+                        <div class="flex-auto p-6">
+                        <div class="p-6 mb-0 text-center bg-white border-b-0 rounded-t-2xl">
+                            <h5 class="font-semibold text-lg"><i class="fa fa-utensils mr-2"> </i>Edit Menu</h5>
+                            <div class="w-full mt-2 p-1 mb-2 h-2 bg-slate-700 rounded"></div>
+                        </div>
+                        <form id="tambahMenuForm" class="p-6">
+                            <div class="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
+                            <div class="w-full px-2 md:w-1/2">
+                                <div class="mb-4">
+                                <label class="block font-normal" for="nama">Nama Menu</label>
+                                <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Nama Menu" id="nama" name="nama">
+                                </div>
+                                <div class="mb-4">
+                                <label class="block font-normal" for="harga">Harga</label>
+                                <input type="number" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Harga" id="harga" name="harga">
+                                </div>
+                                <div class="mb-4">
+                                <label class="block font-normal" for="sub-kategori">Sub Kategori</label>
+                                <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="sub-kategori" name="sub-kategori">
+                                    <option value="">Pilih Sub Kategori</option>
+                                    <option value="Kasir">Rice Hotplate Sambal Matah/Korek</option>
+                                    <option value="Bartender">Nasi Geprek Sambal Matah/Korek</option>
+                                    <option value="Kitchen">Varian Geprek + Indomie</option>
+                                    <option value="Pelayan">Rice Bowl Sambal Matah/Korek</option>
+                                </select>
+                                </div>
+                                
+                            </div>
+                            <div class="w-full px-2 md:w-1/2">
+                                <div class="mb-4">
+                                <label class="block font-normal" for="keterangan">Keterangan</label>
+                                <textarea type="tel" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan keterangan menu" id="keterangan" name="keterangan"></textarea>
+                                </div>
+                                <div class="mb-4">
+                                <label class="block font-normal" for="foto">Foto</label>
+                                <input type="file" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="foto" name="foto">
+                                </div>
+                            </div>
+                            </div>
+                            <div class="text-center">
+                            <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Tambah Menu</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>                          
+</div>
+
+<!-- The Modal -->
+<div id="deleteModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="deleteModalClose" class="close mr-4 mt-2 top-4 right-4">&times;</span>
+        <div class="flex-auto p-6">
+            <div class="p-6 mb-0 text-center bg-white rounded-t-2xl">
+                <h5><i class="fas fa-trash-alt mr-2 text-xl"></i>Apakah Anda yakin ingin menghapus data ini?</h5>
+                <div class="w-full mt-2 h-1 bg-slate-700 rounded"></div>
+            </div>
+            <p class="text-center">Data yang dihapus tidak dapat dikembalikan.</p>
+            <div class="flex flex-none md:w-full space-y-4 md:space-y-0 justify-end text-right">
+            <div class="w-full text-right col-span-2 mx-2 md:ml-auto">
+              <button id="confirmDeleteButton" type="submit" class="inline-block w-1/6 px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Hapus data</button>
+              <a id="cancelDeleteButton" class="inline-block w-1/6 px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Batal</a>
+            </div>
+          </div>
+            <!-- <div class="flex justify-end mt-4 space-x-4">
+                <button id="confirmDeleteButton" class="btn-delete inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white rounded-lg">Hapus</button>
+                <button id="cancelDeleteButton" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white text-white px-6 py-3 rounded-lg">Batal</button>
+            </div> -->
+        </div>
+    </div>
+</div>
 
 
 <!-- <script>
@@ -276,7 +300,7 @@ tambahClose.onclick = function() {
 };
 
 // Script for "Edit Data Karyawan" modal
-var editModal = document.getElementById("editModal");
+var editModal = document.getElementById("editMenu");
 var editBtn = document.getElementById("editMenuBtn");
 var editClose = editModal.getElementsByClassName("close")[0];
 
