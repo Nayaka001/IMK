@@ -50,10 +50,11 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('index.admin');
     Route::get('/admin/user', [AdminController::class, 'user'])->name('user');
     Route::get('/admin/form-daftar-akun', [AdminController::class, 'daftar'])->name('daftar-akun');
-    Route::post('/admin/store-daftar', [AdminController::class, 'storedaftar'])->name('store.daftar');
+    Route::post('/admin/store-daftar', [AdminController::class, 'storeuser'])->name('store.user');
     Route::get('/admin/menu', [AdminController::class, 'menu'])->name('menu');
     Route::post('/admin/storemenu', [AdminController::class, 'storemenu'])->name('storemenu');
     Route::delete('/admin/destroymenu/{id_menu}', [AdminController::class, 'destroymenu'])->name('destroymenu');
+    Route::delete('/admin/destroyuser/{id_user}', [AdminController::class, 'destroyuser'])->name('destroyuser');
 
     Route::get('/admin/user/pelayan', function () {
         return view('admin.pelayan');

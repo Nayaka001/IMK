@@ -39,7 +39,8 @@
         <!-- <div class="w-full px-3 py-6 max-w-full lg:w-full lg:flex-none">
           <div class="border-black/12.5 shadow-soft-xl relative z-20 flex min-w-0 flex-col break-words rounded-2xl border-0 border-gray-400 border-solid bg-[#cfdbd5] bg-transparent bg-clip-border">
             <div class="border-black/12.5 mb-6 rounded-t-2xl border-b-0 border-solid bg-[#cfdbd5] bg-transparent p-6 pb-0 font-semibold"> -->
-              <form class="space-y-4 text-slate-700 p-4">
+              <form action="{{route('store.user')}}" method="POST" enctype="multipart/form-data" class="space-y-4 text-slate-700 p-4">
+                @csrf
                 <div class="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
                   <div class="w-full  px-2 md:w-1/2">
                       <div class="mb-2">
