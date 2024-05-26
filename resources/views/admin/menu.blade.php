@@ -27,7 +27,8 @@
                         <span class="close absolute top-4 right-4">&times;</span>
                         <div class="flex-auto p-6">
                         <div class="p-6 mb-0 text-center bg-white border-b-0 rounded-t-2xl">
-                            <h5>Tambah Menu</h5>
+                            <h1 class="font-semibold text-lg"><i class="fa fa-utensils mr-2"> </i>Tambah Menu</h1>
+                            <div class="w-full mt-2 p-1 mb-2 h-2 bg-slate-700 rounded"></div>
                         </div>
                         <form id="tambahMenuForm" method="POST" enctype="multipart/form-data" action="{{route('storemenu')}}" class="p-6">
                           @csrf
@@ -35,23 +36,15 @@
                             <div class="w-full px-2 md:w-1/2">
                                 <div class="mb-4">
                                 <label class="block font-normal" for="nama">Nama Menu</label>
-                                <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Nama Menu" id="nama" name="nama">
+                                <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Nama Menu" id="nama" name="nama">
                                 </div>
                                 <div class="mb-4">
                                 <label class="block font-normal" for="harga">Harga</label>
-                                <input type="number" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Harga" id="harga" name="harga">
+                                <input type="number" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Harga" id="harga" name="harga">
                                 </div>
-                                <div class="mb-4">
-                                
-                                </div>
-                                <div class="mb-4">
-                                
-                                </div>
-                            </div>
-                            <div class="w-full px-2 md:w-1/2">
                                 <div class="mb-4">
                                 <label class="block font-normal" for="sub-kategori">Sub Kategori</label>
-                                <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="sub-kategori" name="subkategori">
+                                <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="sub-kategori" name="subkategori">
                                     <option value="">Pilih Sub Kategori</option>
                                     <option value="Rice Hotplate Sambal Matah/Korek">Rice Hotplate Sambal Matah/Korek</option>
                                     <option value="Nasi Geprek Sambal Matah/Korek">Nasi Geprek Sambal Matah/Korek</option>
@@ -59,13 +52,15 @@
                                     <option value="Rice Bowl Sambal Matah/Korek">Rice Bowl Sambal Matah/Korek</option>
                                 </select>
                                 </div>
+                            </div>
+                            <div class="w-full px-2 md:w-1/2">
                                 <div class="mb-4">
                                 <label class="block font-normal" for="keterangan">Keterangan</label>
-                                <textarea type="tel" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan keterangan menu" id="keterangan" name="keterangan"></textarea>
+                                <textarea type="tel" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan keterangan menu" id="keterangan" name="keterangan"></textarea>
                                 </div>
                                 <div class="mb-4">
                                 <label class="block font-normal" for="foto">Foto</label>
-                                <input type="file" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="foto" name="foto">
+                                <input type="file" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="foto" name="foto">
                                 </div>
                             </div>
                             </div>
@@ -94,7 +89,28 @@
                     </thead>
                     <tbody>
                         @foreach($menus as $menu)
-                        <div id="deleteModal" class="hidden fixed inset-0 z-50 overflow-auto bg-gray-500 bg-opacity-50">
+                        <!-- The Modal -->
+                          <div id="deleteModal" class="modal">
+                              <!-- Modal content -->
+                              <div class="modal-content">
+                                  <span id="deleteModalClose" class="close mr-4 mt-2 top-4 right-4">&times;</span>
+                                  <div class="flex-auto p-6">
+                                      <div class="p-6 mb-0 text-center bg-white rounded-t-2xl">
+                                          <h5><i class="fas fa-trash-alt mr-2 text-xl"></i>Apakah Anda yakin ingin menghapus Menu ini?</h5>
+                                          <div class="w-full mt-2 h-1 bg-slate-700 rounded"></div>
+                                      </div>
+                                      <p class="text-center">Menu yang dihapus tidak dapat dikembalikan.</p>
+                                      <div class="flex flex-none md:w-full space-y-4 md:space-y-0 justify-end text-right">
+                                      <div class="w-full text-right col-span-2 mx-2 md:ml-auto">
+                                        <button id="confirmDeleteButton" type="submit" class="inline-block w-1/6 px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Hapus data</button>
+                                        <a id="cancelDeleteButton" class="inline-block w-1/6 px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Batal</a>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+                          </div>
+
+                        <!-- <div id="deleteModal" class="hidden fixed inset-0 z-50 overflow-auto bg-gray-500 bg-opacity-50">
                           <div class="flex items-center justify-center min-h-screen">
                               <div class="bg-yellow-200 p-8 rounded shadow-lg">
                                       <p>Apakah Anda yakin ingin menghapus?</p>
@@ -108,7 +124,7 @@
                                       </div>
                                   </div>
                               </div>
-                          </div>
+                          </div> -->
                         <tr class="custom-rounded">
                             <td class="px-4 py-3 text-slate-800 bg-gradient-to-b from-[#FFD369] to-[#cfdbd5] border-b">{{$menu->id_menu}}</td>
                             <td class="px-4 py-3 text-gray-900 bg-gradient-to-b from-[#FFD369] to-[#cfdbd5] border-b">
@@ -129,8 +145,8 @@
                             </td>
                             <td class="px-4 py-3 text-sm text-slate-800 bg-gradient-to-b from-[#FFD369] to-[#cfdbd5] ">{{$menu->ktgmenu->subkategori}}</td>
                             <td class="px-4 py-3 text-gray-900 bg-gradient-to-b from-[#FFD369] to-[#cfdbd5]">
-                            <a class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
-                            <a class="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 delete-button to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text" data-id="{{ $menu->id_menu }}" ><i class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
+                            <a id="editMenuBtn" class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
+                            <a id="deleteBtn" class="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 delete-button to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text" data-id="{{ $menu->id_menu }}" ><i class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
                                 <!-- <a href="javascript:;" class="text-xs font-semibold leading-tight text-slate-400"> Edit </a> -->
                             </td>
                         </tr>
@@ -149,7 +165,61 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
-<script>
+
+<!-- Edit Modal -->
+<div id="editMenu" class="modal flex">
+    <!-- Modal content -->
+    <div class="modal-content relative z-10 w-full max-w-xl mx-auto" style="max-width: 800px;"> <!-- Adjusted width to max-w-6xl -->
+                        <span class="close absolute top-4 right-4">&times;</span>
+                        <div class="flex-auto p-6">
+                        <div class="p-6 mb-0 text-center bg-white border-b-0 rounded-t-2xl">
+                            <h5 class="font-semibold text-lg"><i class="fa fa-utensils mr-2"> </i>Edit Menu</h5>
+                            <div class="w-full mt-2 p-1 mb-2 h-2 bg-slate-700 rounded"></div>
+                        </div>
+                        <form id="tambahMenuForm" class="p-6">
+                            <div class="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
+                            <div class="w-full px-2 md:w-1/2">
+                                <div class="mb-4">
+                                <label class="block font-normal" for="nama">Nama Menu</label>
+                                <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Nama Menu" id="nama" name="nama">
+                                </div>
+                                <div class="mb-4">
+                                <label class="block font-normal" for="harga">Harga</label>
+                                <input type="number" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Harga" id="harga" name="harga">
+                                </div>
+                                <div class="mb-4">
+                                <label class="block font-normal" for="sub-kategori">Sub Kategori</label>
+                                <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="sub-kategori" name="sub-kategori">
+                                    <option value="">Pilih Sub Kategori</option>
+                                    <option value="Kasir">Rice Hotplate Sambal Matah/Korek</option>
+                                    <option value="Bartender">Nasi Geprek Sambal Matah/Korek</option>
+                                    <option value="Kitchen">Varian Geprek + Indomie</option>
+                                    <option value="Pelayan">Rice Bowl Sambal Matah/Korek</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="w-full px-2 md:w-1/2">
+                                <div class="mb-4">
+                                <label class="block font-normal" for="keterangan">Keterangan</label>
+                                <textarea type="tel" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan keterangan menu" id="keterangan" name="keterangan"></textarea>
+                                </div>
+                                <div class="mb-4">
+                                <label class="block font-normal" for="foto">Foto</label>
+                                <input type="file" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="foto" name="foto">
+                                </div>
+                            </div>
+                            </div>
+                            <div class="text-center">
+                            <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Tambah Menu</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>                          
+</div>
+
+
+
+<!-- <script>
   // Fungsi untuk menampilkan modal konfirmasi
   document.addEventListener('DOMContentLoaded', function() {
     // Ambil elemen-elemen yang dibutuhkan
@@ -195,7 +265,7 @@
 });
 });
 
-</script>
+</script> -->
 
 
 <!-- <script>
@@ -229,41 +299,73 @@
 
 <script>
     // Script for "Tambah Menu" modal
-var tambahModal = document.getElementById("tambahModal");
-var tambahBtn = document.getElementById("tambahMenuBtn");
-var tambahClose = tambahModal.getElementsByClassName("close")[0];
+    var tambahModal = document.getElementById("tambahModal");
+    var tambahBtn = document.getElementById("tambahMenuBtn");
+    var tambahClose = tambahModal.getElementsByClassName("close")[0];
 
-tambahBtn.onclick = function() {
-  tambahModal.style.display = "flex";
-};
+    tambahBtn.onclick = function() {
+        tambahModal.style.display = "flex";
+    };
 
-tambahClose.onclick = function() {
-  tambahModal.style.display = "none";
-};
+    tambahClose.onclick = function() {
+        tambahModal.style.display = "none";
+    };
 
-// Script for "Edit Data Karyawan" modal
-var editModal = document.getElementById("editModal");
-var editBtn = document.getElementById("editMenuBtn");
-var editClose = editModal.getElementsByClassName("close")[0];
+    // Script for "Edit Data Karyawan" modal
+    var editModal = document.getElementById("editMenu");
+    var editBtn = document.getElementById("editMenuBtn");
+    var editClose = editModal.getElementsByClassName("close")[0];
 
-editBtn.onclick = function() {
-  editModal.style.display = "flex";
-};
+    editBtn.onclick = function() {
+        editModal.style.display = "flex";
+    };
 
-editClose.onclick = function() {
-  editModal.style.display = "none";
-};
+    editClose.onclick = function() {
+        editModal.style.display = "none";
+    };
 
-// Improved event handling for closing the modal when clicking outside
-window.onclick = function(event) {
-  if (event.target == tambahModal) {
-    tambahModal.style.display = "none";
-  }
-  if (event.target == editModal) {
-    editModal.style.display = "none";
-  }
-};
+    // Script for "Delete Data" modal
+    var deleteModal = document.getElementById("deleteModal");
+    var deleteBtn = document.getElementById("deleteBtn");
+    var deleteClose = deleteModal.getElementsByClassName("close")[0];
+    var cancelDeleteButton = document.getElementById("cancelDeleteButton");
 
+    deleteBtn.onclick = function() {
+        deleteModal.style.display = "flex";
+    };
+
+    deleteClose.onclick = function() {
+        deleteModal.style.display = "none";
+    };
+    // When the user clicks cancel button, close the modal
+    cancelDeleteButton.onclick = function() {
+        deleteModal.style.display = "none";
+    }
+
+    // Script for handling delete operation
+    var confirmDeleteButton = document.getElementById("confirmDeleteButton");
+    confirmDeleteButton.onclick = function() {
+        // Place your delete logic here
+        // For example, you can use AJAX to send delete request to server
+        // After successful deletion, you can close the modal
+        deleteModal.style.display = "none";
+        // Add logic here to perform actual delete operation
+        alert("Data berhasil dihapus!"); // Example alert, replace with your actual delete logic
+    }
+
+    // Improved event handling for closing the modal when clicking outside
+    window.onclick = function(event) {
+        if (event.target == tambahModal) {
+            tambahModal.style.display = "none";
+        }
+        if (event.target == editModal) {
+            editModal.style.display = "none";
+        }
+        if (event.target == deleteModal) {
+            deleteModal.style.display = "none";
+        }
+    };
 </script>
+
 
 @endsection('content')

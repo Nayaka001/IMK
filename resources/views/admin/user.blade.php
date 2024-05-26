@@ -79,46 +79,10 @@
                         </td>
                         <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
                             <a class="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text delete-button" data-id="{{ $karyawans->id_user }}" ><i class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
+
                             <a id="editKaryawanBtn" class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
 
-                            <!-- The Modal -->
-                            <div id="myModal" class="modal flex">
-                              <!-- Modal content -->
-                              <div class="modal-content relative z-10">
-                                <span class="close absolute top-4 right-4">&times;</span>
-                                <div class="flex-auto p-6">
-                                  <div class="p-6 mb-0 text-center bg-white border-b-0 rounded-t-2xl">
-                                    <h5>Edit Data Karyawan</h5>
-                                  </div>
-                                  <form id="editKaryawanForm" class="p-6">
-                                      <div class="mb-4">
-                                        <label class="block font-normal" for="nama">Nama Lengkap</label>
-                                        <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Nama Lengkap" id="nama" name="nama">
-                                      </div>
-                                      <div class="mb-4">
-                                        <label class="block font-normal " for="telepon">No Telepon</label>
-                                        <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Telepon" id="telepon" name="telepon">
-                                      </div>
-                                      <div class="mb-4">
-                                        <label class="block font-normal " for="alamat">Alamat</label>
-                                        <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Alamat" id="alamat" name="alamat">
-                                      </div>
-                                      <div class="mb-4">
-                                        <label class="block font-normal " for="tanggal_lahir">Tanggal Lahir</label>
-                                        <input type="date" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Tanggal Lahir" id="tanggal_lahir" name="tanggal_lahir">
-                                      </div>
-                                      <div class="mb-4">
-                                        <label class="block font-normal " for="gaji">Gaji</label>
-                                        <input type="number" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Gaji" id="gaji" name="gaji">
-                                      </div>
-                                      <div class="text-center">
-                                        <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Edit Data</button>
-                                      </div>
-                                  </form>
-                                </div>
-                              </div>
-
-                            </div>
+                            
                           <!-- <a href="javascript:;" class="text-xs font-semibold leading-tight text-slate-400"> Edit </a> -->
                         </td>
                       </tr>
@@ -578,6 +542,122 @@
       }
     }
 </script> -->
+
+
+                            <!-- Modal Edit Data Karyawan-->
+                            <div id="myModal" class="modal flex">
+                              <!-- Modal content -->
+                              <div class="modal-content relative z-10">
+                                <span class="close absolute top-4 right-4">&times;</span>
+                                <div class="flex-auto p-6">
+                                  <div class="p-6 mb-0 text-center bg-white border-b-0 rounded-t-2xl">
+                                    <h5 class="font-semibold text-lg"><i class="ni ni-single-02 mr-2"></i>Edit Data Karyawan</h5>
+                                    <div class="w-full mt-2 mb-0 h-1 bg-slate-700 rounded"></div>
+                                  </div>
+                                  <form id="editKaryawanForm" class="p-6">
+                                      <div class="mb-4">
+                                        <label class="block font-normal" for="nama">Nama Lengkap</label>
+                                        <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Nama Lengkap" id="nama" name="nama">
+                                      </div>
+                                      <div class="mb-4">
+                                        <label class="block font-normal " for="telepon">No Telepon</label>
+                                        <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Telepon" id="telepon" name="telepon">
+                                      </div>
+                                      <div class="mb-4">
+                                        <label class="block font-normal " for="alamat">Alamat</label>
+                                        <textarea type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Alamat" id="alamat" name="alamat"></textarea>
+                                      </div>
+                                      <div class="mb-4">
+                                        <label class="block font-normal " for="tanggal_lahir">Tanggal Lahir</label>
+                                        <input type="date" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Tanggal Lahir" id="tanggal_lahir" name="tanggal_lahir">
+                                      </div>
+                                      <div class="mb-4">
+                                        <label class="block font-normal " for="gaji">Gaji</label>
+                                        <input type="number" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Gaji" id="gaji" name="gaji">
+                                      </div>
+                                      <div class="text-center">
+                                        <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Edit Data</button>
+                                      </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+
+
+
+<!-- The Modal -->
+<div id="deleteModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="deleteModalClose" class="close mr-4 mt-2 top-4 right-4">&times;</span>
+        <div class="flex-auto p-6">
+            <div class="p-6 mb-0 text-center bg-white rounded-t-2xl">
+                <h5><i class="fas fa-trash-alt mr-2 text-xl"></i>Apakah Anda yakin ingin menghapus data ini?</h5>
+                <div class="w-full mt-2 h-1 bg-slate-700 rounded"></div>
+            </div>
+            <p class="text-center">Data yang dihapus tidak dapat dikembalikan.</p>
+            <div class="flex flex-none md:w-full space-y-4 md:space-y-0 justify-end text-right">
+            <div class="w-full text-right col-span-2 mx-2 md:ml-auto">
+              <button id="confirmDeleteButton" type="submit" class="inline-block w-1/6 px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Hapus data</button>
+              <a id="cancelDeleteButton" class="inline-block w-1/6 px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Batal</a>
+            </div>
+          </div>
+            <!-- <div class="flex justify-end mt-4 space-x-4">
+                <button id="confirmDeleteButton" class="btn-delete inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white rounded-lg">Hapus</button>
+                <button id="cancelDeleteButton" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white text-white px-6 py-3 rounded-lg">Batal</button>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+<script>
+    // Get the modal
+    var deleteModal = document.getElementById("deleteModal");
+
+    // Get the button that opens the modal
+    var deleteBtn = document.getElementById("deleteKaryawanBtn");
+
+    // Get the <span> element that closes the modal
+    var deleteModalClose = document.getElementById("deleteModalClose");
+
+    // Get the cancel button inside the modal
+    var cancelDeleteButton = document.getElementById("cancelDeleteButton");
+
+    // When the user clicks the button, open the modal 
+    deleteBtn.onclick = function() {
+        deleteModal.style.display = "flex";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    deleteModalClose.onclick = function() {
+        deleteModal.style.display = "none";
+    }
+
+    // When the user clicks cancel button, close the modal
+    cancelDeleteButton.onclick = function() {
+        deleteModal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == deleteModal) {
+            deleteModal.style.display = "none";
+        }
+    }
+
+    // Script for handling delete operation
+    var confirmDeleteButton = document.getElementById("confirmDeleteButton");
+    confirmDeleteButton.onclick = function() {
+        // Place your delete logic here
+        // For example, you can use AJAX to send delete request to server
+        // After successful deletion, you can close the modal
+        deleteModal.style.display = "none";
+        // Add logic here to perform actual delete operation
+        alert("Data berhasil dihapus!"); // Example alert, replace with your actual delete logic
+    }
+</script>
+
+
 
 <script>
     // Get the modal
