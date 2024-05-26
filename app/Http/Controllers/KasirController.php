@@ -183,9 +183,11 @@ class KasirController extends Controller
         $jumlahMenu = $order->detailorder()->count();
         $orderDetails = [
             'waktu_order' => $order->waktu_order,
+            
             'nama_pelanggan' => $order->nama_pelanggan,
             'jlh_org' => $order->jlh_org,
             'id_meja' => $order->id_meja,
+            'detailorder' => $detailOrders,
             'jlh_menu' => $jumlahMenu,
             'notes' => $allNotes,
             'menus' => $allMenus
