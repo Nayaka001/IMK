@@ -17,7 +17,7 @@
                     </div>
                     <div class="mx-auto sm:ml-auto my-auto">
                         <h1 class="text-xs sm:text-sm font-semibold">Pendapatan Hari ini</h1>
-                        <h1 class="font-bold text-xl sm:text-2xl">Rp 10.000.000</h1>
+                        <h1 class="font-bold text-xl sm:text-2xl">Rp {{ number_format($totalIncome, 0, ',', '.') }}</h1>
                     </div>
                 </div>
                 {{--jumlah pesanan --}}
@@ -33,7 +33,7 @@
                     </div>
                     <div class="mx-auto sm:ml-3 my-auto">
                         <h1 class="text-xs sm:text-sm font-semibold">Jumlah Pesanan</h1>
-                        <h1 class="font-bold text-xl sm:text-2xl">200</h1>
+                        <h1 class="font-bold text-xl sm:text-2xl">{{ $totalOrders }}</h1>
                     </div>
                 </div>
             </div>
@@ -52,6 +52,8 @@
                             <tbody>
                                 <tr>
                                     {{-- list makanan --}}
+                                    @foreach ($menuQuantities as $menuId => $quantity)
+                                    
                                     <th class="my-2 flex gap-3 px-3 py-2 font-normal rounded-xl bg-[#2C2C2C]">
                                         <div class="relative h-12 w-12">
                                             <img
@@ -61,11 +63,13 @@
                                             />
                                         </div>
                                         <div class="text-sm">
-                                        <div class="font-medium text-white">Chicken Steak</div>
-                                        <div class="text-gray-400">Jumlah pesanan : 23</div>
-                                        </div>
-                                    </th>
-                                    
+                                        <div class="font-medium text-white">{{ $menuNames[$menuId] }}</div>
+                                        
+                                        <div class="text-gray-400">Jumlah pesanan : {{ $quantity }}</div>
+                                    </div>
+                                </th>
+                               
+                                    @endforeach
                                 </tr>
                                 
                             </tbody>

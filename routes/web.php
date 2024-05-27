@@ -43,6 +43,8 @@ Route::middleware(['auth', 'role:Kasir'])->group(function () {
     Route::get('/orders/{id_order}', [KasirController::class, 'modal'])->name('modal');
     Route::get('/order-list/done', [KasirController::class, 'orderdone'])->name('index.orderdone');
     Route::get('/kasir/laporan', [KasirController::class, 'laporan'])->name('index.laporan');
+
+    Route::get('/report',  [KasirController::class, 'indexreport'])->name('report');
 });
 
 //Bagian Admin
@@ -147,9 +149,7 @@ Route::get('/menu/minuman', function () {
     return view('menuminuman');
 });
 
-Route::get('/report', function () {
-    return view('report');
-})->name('report');
+
 
 
 // tes (nnt dihapus)

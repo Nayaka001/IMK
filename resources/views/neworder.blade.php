@@ -675,7 +675,7 @@
          --}}
             
             
-        {{-- <script>
+        <script>
             // Mendapatkan elemen yang diperlukan
             const allMenu = document.getElementById('all');
             const kidsMealMenu = document.getElementById('kidsmeal');
@@ -801,7 +801,7 @@
             event.preventDefault(); 
             showMinumanMenu(); 
             });
-        </script> --}}
+        </script>
 
         <script>
             // function formatNumber(number) {
@@ -927,11 +927,6 @@
                             <path d="M15 0C18.9782 0 22.7936 1.58035 25.6066 4.3934C28.4196 7.20644 30 11.0218 30 15C30 18.9782 28.4196 22.7936 25.6066 25.6066C22.7936 28.4196 18.9782 30 15 30C11.0218 30 7.20644 28.4196 4.3934 25.6066C1.58035 22.7936 0 18.9782 0 15C0 11.0218 1.58035 7.20644 4.3934 4.3934C7.20644 1.58035 11.0218 0 15 0ZM13.1314 17.9593L9.79929 14.625C9.67983 14.5055 9.53801 14.4108 9.38194 14.3461C9.22586 14.2815 9.05858 14.2482 8.88964 14.2482C8.72071 14.2482 8.55342 14.2815 8.39735 14.3461C8.24127 14.4108 8.09946 14.5055 7.98 14.625C7.73875 14.8663 7.60321 15.1935 7.60321 15.5346C7.60321 15.8758 7.73875 16.203 7.98 16.4443L12.2229 20.6871C12.342 20.8072 12.4837 20.9025 12.6398 20.9675C12.7959 21.0326 12.9634 21.066 13.1325 21.066C13.3016 21.066 13.4691 21.0326 13.6252 20.9675C13.7813 20.9025 13.923 20.8072 14.0421 20.6871L22.8279 11.8993C22.9489 11.7803 23.0452 11.6386 23.1112 11.4822C23.1772 11.3258 23.2116 11.158 23.2124 10.9882C23.2132 10.8185 23.1803 10.6503 23.1158 10.4934C23.0513 10.3364 22.9563 10.1937 22.8363 10.0737C22.7164 9.95358 22.5739 9.85843 22.417 9.79371C22.2601 9.72899 22.0919 9.69597 21.9222 9.69656C21.7525 9.69715 21.5846 9.73133 21.4281 9.79714C21.2717 9.86295 21.1298 9.95909 21.0107 10.08L13.1314 17.9593Z" fill="#42FF00"/>
                         </svg>
                         <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400 py-4">Berhasil terkirim ke kitchen & bartender</h3>
-                        <a href="/order-list">
-                            <button data-modal-hide="popup-modal-bayar" type="button" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                Lihat daftar pesanan
-                            </button>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -956,6 +951,16 @@
             </div>
         </div>
         {{-- end modal konfirmasi pesanan --}}
+
+        {{-- alert menu habis --}}
+        <div role="alert" class="hidden w-1/3 absolute top-2 right-2 rounded border-s-4 border-red-500 bg-red-50 p-4 opacity-95">
+            <strong class="block font-medium text-red-800"> Menu habis ! </strong>
+          
+            <p class="mt-2 text-sm text-red-700">
+              Tunggu konfirmasi dapur untuk ketersediaan menu kembali
+            </p>
+          </div>
+        {{-- end alert menu habis --}}
          
 
 

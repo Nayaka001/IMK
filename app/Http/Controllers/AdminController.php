@@ -6,6 +6,8 @@ use App\Models\Karyawan;
 use App\Models\Kategori;
 use App\Models\User;
 use App\Models\Menu;
+use App\Models\Order;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -18,13 +20,19 @@ class AdminController extends Controller
         $totalKasirUsers = User::where('level_user', 'Kasir')->count();
         $totalPelayanUsers = User::where('level_user', 'Pelayan')->count();
         $totalMenu = Menu::count();
+        $totalCustomer = Order::sum('jlh_org');
+        $jual = OrderDetail::sum('jumlah');
+        $dapat = OrderDetail::sum('subtotal');
 
         return view('admin.dashboard',[
             'totalKitchenUsers' => $totalKitchenUsers,
             'totalBartenderUsers' => $totalBartenderUsers,
             'totalKasirUsers' => $totalKasirUsers,
             'totalPelayanUsers' => $totalPelayanUsers,
-            'totalMenu' => $totalMenu
+            'totalMenu' => $totalMenu,
+            'totalCustomer' => $totalCustomer,
+            'jual' => $jual,
+            'dapat' => $dapat
         ]);
     }
     public function user(){
@@ -65,8 +73,11 @@ class AdminController extends Controller
     }
     public function menu(){
         $menus = Menu::all();
+        $kategori = Kategori::all();
+        
         return view('admin.menu',[
-            'menus' => $menus
+            'menus' => $menus,
+            'kategori' => $kategori
         ]);
     }
     public function storemenu(Request $request){

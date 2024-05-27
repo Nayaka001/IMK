@@ -21,7 +21,7 @@ new Chart(ctx2, {
     labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     datasets: [
       {
-        label: "Mobile apps",
+        label: "Pendapatan",
         tension: 0.4,
         borderWidth: 0,
         pointRadius: 0,
@@ -33,7 +33,7 @@ new Chart(ctx2, {
         maxBarThickness: 6,
       },
       {
-        label: "Websites",
+        label: "Pengeluaran",
         tension: 0.4,
         borderWidth: 0,
         pointRadius: 0,

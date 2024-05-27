@@ -195,6 +195,49 @@ class KasirController extends Controller
         // Kembalikan data dalam format JSON
         return response()->json($orderDetails);
     }
+    public function indexreport(){
+        // Ambil semua pesanan yang dibuat hari ini dan diurutkan berdasarkan waktu_order
+        $orders = Order::whereDate('waktu_order', now()->toDateString())
+                        ->orderBy('waktu_order')
+                        ->get();
+    
+        $totalIncome = 0;
+        $totalOrders = $orders->count();
+        $menuQuantities = [];
+
+        // Loop melalui setiap pesanan
+        foreach ($orders as $order) {
+            // Ambil detail pesanan dan hitung subtotalnya
+            $subtotal = $order->detailorder()->sum('subtotal');
+            $totalIncome += $subtotal;
+
+            // Ambil semua detail pesanan dari pesanan saat ini
+            $orderDetails = $order->detailorder;
+
+            // Loop melalui setiap detail pesanan dan tambahkan jumlah pesanan untuk setiap menu
+            foreach ($orderDetails as $detail) {
+                $menuId = $detail->id_menu;
+                if (!isset($menuQuantities[$menuId])) {
+                    $menuQuantities[$menuId] = 0;
+                }
+                $menuQuantities[$menuId] += $detail->jumlah;
+            }
+        }
+
+        arsort($menuQuantities);
+
+        // Ambil nama menu berdasarkan ID menu
+        $menuNames = Menu::whereIn('id_menu', array_keys($menuQuantities))->pluck('nama_menu', 'id_menu');
+
+
+        return view('report', [
+            'totalIncome' => $totalIncome,
+            'totalOrders' => $totalOrders,
+            'menuNames' => $menuNames,
+            'orderDetails' => $orderDetails,
+            'menuQuantities' => $menuQuantities
+        ]);
+    }
     public function orderdone(){
         return view('orderlistdone');
     }
