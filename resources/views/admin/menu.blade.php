@@ -195,45 +195,27 @@
                           </tr>
                         </thead>
                         <tbody>
+                          @php
+                              $nomorUrut = 1;
+                          @endphp
+                          @foreach($kategori->unique('kategori') as $kategoris)
                           <tr>
                             <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
                               <!-- <p class="mb-0 text-xs font-semibold leading-tight">Jl. Mawar No. 10, Jakarta</p> -->
-                              <p class="mb-0 text-sm leading-tight text-slate-600">1</p>
+                              <p class="mb-0 text-sm leading-tight text-slate-600">{{ $nomorUrut }}</p>
                             </td>
                             <td class="p-2 text-center align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
-                              <p class="mb-0 text-sm leading-tight">STEAKS & HOTPLATES</p>
+                              <p class="mb-0 text-sm leading-tight">{{$kategoris->kategori}}</p>
                               <!-- <p class="mb-0 text-xs leading-tight text-slate-600">18-10-2004</p> -->
                             </td>
                             <td class="p-2 text-center align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
-                              <span class="text-sm leading-tight text-slate-600">Makanan</span>
+                              <span class="text-sm leading-tight text-slate-600">{{$kategoris->jenis}}</span>
                             </td>
                           </tr>
-                          <tr>
-                            <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
-                              <!-- <p class="mb-0 text-xs font-semibold leading-tight">Jl. Mawar No. 10, Jakarta</p> -->
-                              <p class="mb-0 text-sm leading-tight text-slate-600">2</p>
-                            </td>
-                            <td class="p-2 text-center align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
-                              <p class="mb-0 text-sm leading-tight">STEAKS & HOTPLATES</p>
-                              <!-- <p class="mb-0 text-xs leading-tight text-slate-600">18-10-2004</p> -->
-                            </td>
-                            <td class="p-2 text-center align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
-                              <span class="text-sm leading-tight text-slate-600">Makanan</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
-                              <!-- <p class="mb-0 text-xs font-semibold leading-tight">Jl. Mawar No. 10, Jakarta</p> -->
-                              <p class="mb-0 text-sm leading-tight text-slate-600">3</p>
-                            </td>
-                            <td class="p-2 text-center align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
-                              <p class="mb-0 text-sm leading-tight">STEAKS & HOTPLATES</p>
-                              <!-- <p class="mb-0 text-xs leading-tight text-slate-600">18-10-2004</p> -->
-                            </td>
-                            <td class="p-2 text-center align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
-                              <span class="text-sm leading-tight text-slate-600">Makanan</span>
-                            </td>
-                          </tr>
+                          @php
+                              $nomorUrut++;
+                          @endphp
+                          @endforeach
                         </tbody>
                       </table>
                     </div>
@@ -269,19 +251,21 @@
                           </tr>
                         </thead>
                         <tbody>
+                          @foreach($kategori as $kategoris)
                           <tr>
                             <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
                               <!-- <p class="mb-0 text-xs font-semibold leading-tight">Jl. Mawar No. 10, Jakarta</p> -->
-                              <p class="mb-0 text-sm leading-tight text-slate-600">1</p>
+                              <p class="mb-0 text-sm leading-tight text-slate-600">{{$kategoris->id_ktgmenu}}</p>
                             </td>
                             <td class="p-2 text-center align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
-                              <p class="mb-0 text-sm leading-tight">Crispy Steak with Brown Sauce</p>
+                              <p class="mb-0 text-sm leading-tight">{{{$kategoris->subkategori}}}</p>
                               <!-- <p class="mb-0 text-xs leading-tight text-slate-600">18-10-2004</p> -->
                             </td>
                             <td class="p-2 text-center align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
-                              <span class="text-sm leading-tight text-slate-600">STEAKS & HOTPLATES</span>
+                              <span class="text-sm leading-tight text-slate-600">{{$kategoris->kategori}}</span>
                             </td>
                           </tr>
+                          @endforeach
                         </tbody>
                       </table>
                     </div>

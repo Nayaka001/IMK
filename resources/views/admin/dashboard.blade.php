@@ -119,7 +119,7 @@
                       <div class="flex-auto p-4 pt-0 text-center">
                         <h6 class="mb-0 font-sans font-bold text-center">Total Pendapatan</h6>
                         <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
-                        <h5 class="mb-0 font-bold text-black">+2.000.000</h5>
+                        <h5 class="mb-0 font-bold text-black">+Rp {{ number_format($dapat, 0, ',', '.') }}</h5>
                       </div>
                     </div>
                   </div>
@@ -149,7 +149,7 @@
                       <div class="flex-auto p-4 pt-0 text-center">
                         <h6 class="mb-0 font-sans font-bold text-center">Total Penjualan</h6>
                         <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
-                        <h5 class="mb-0 font-bold text-black">500</h5>
+                        <h5 class="mb-0 font-bold text-black">{{$jual}}</h5>
                       </div>
                     </div>
                   </div>
@@ -164,7 +164,7 @@
                       <div class="flex-auto p-4 pt-0 text-center">
                         <h6 class="mb-0 font-sans font-bold text-center">Total Customer</h6>
                         <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
-                        <h5 class="mb-0 font-bold text-black">500</h5>
+                        <h5 class="mb-0 font-bold text-black">{{$totalCustomer}}</h5>
                       </div>
                     </div>
                   </div>
