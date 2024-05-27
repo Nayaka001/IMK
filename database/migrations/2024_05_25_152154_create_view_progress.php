@@ -101,9 +101,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::statement("DROP VIEW IF EXISTS cooking_orders;");
-        DB::statement("DROP VIEW IF EXISTS serving_orders;");
-        DB::statement("DROP VIEW IF EXISTS completed_orders;");
+        DB::statement("DROP VIEW IF EXISTS dimasak_orders;");
+        DB::statement("DROP VIEW IF EXISTS disajikan_orders;");
+        DB::statement("DROP VIEW IF EXISTS selesai_orders;");
     }
 };
 
