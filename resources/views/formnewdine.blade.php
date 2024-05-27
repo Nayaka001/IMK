@@ -71,9 +71,18 @@
                         <input type="number" id="jumlah-orang" name="jumlah_orang" placeholder="Masukkan Jumlah Orang" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
                         <p id="jumlah-error" class="text-sm m-1 text-pink-700 invisible">Jumlah orang tidak valid</p>
                     </label>
-                    <label for="nomor-meja" class="mx-10">
+                    {{-- <label for="nomor-meja" class="mx-10">
                         <span class="block font-semibold">Nomor Meja</span>
                         <input type="text" id="nomor-meja" name="nomor_meja" placeholder="Masukkan Nomor Meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
+                    </label> --}}
+                    <label for="nomor-meja" class="mx-10">
+                        <span class="block font-semibold">Nomor Meja</span>
+                        <select name="nomor_meja" id="nomor_meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm">
+                            <option value="M01">M01</option>
+                            <option value="M02">M02</option>
+                            <option value="M03">M03</option>
+                            <option value="M04">M04</option>
+                        </select>
                     </label>
                     <button type="submit" class="my-7 bg-[#FFD369] px-5 py-2 rounded-full text-black font-bold font-inter block mx-auto w-full hover:bg-[#f8dea0] focus:ring focus:ring-[#FFD369]">Selanjutnya</button>
                 </form>
@@ -123,10 +132,19 @@
                         <input type="datetime-local" id="waktu" name="waktu_datang" placeholder="Masukkan Waktu Kedatangan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
                         {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
                     </label>
+                    {{-- <label for="nomor-meja" class="mx-10">
+                        <span class="block font-semibold">Nomor Meja</span>
+                        <input type="" id="nomor-meja" name="nomor_meja" placeholder="Masukkan Nomor Meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " /> --}}
+                        {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
+                    {{-- </label> --}}
                     <label for="nomor-meja" class="mx-10">
                         <span class="block font-semibold">Nomor Meja</span>
-                        <input type="text" id="nomor-meja" name="nomor_meja" placeholder="Masukkan Nomor Meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
-                        {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
+                        <select name="nomor_meja" id="nomor_meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm">
+                            <option value="M01">M01</option>
+                            <option value="M02">M02</option>
+                            <option value="M03">M03</option>
+                            <option value="M04">M04</option>
+                        </select>
                     </label>
                     <button class="my-7 bg-[#FFD369] px-5 py-2 rounded-full text-black font-bold font-inter block mx-auto w-full hover:bg-[#f8dea0] focus:ring focus:ring-[#FFD369]">Selanjutnya</button>
                 </form>
