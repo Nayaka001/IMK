@@ -60,16 +60,16 @@
             <div id="form1" class="hidden mx-3 pb-2 md:mx-8">
                 <form id="orderForm" action="{{route('kasir.newdine')}}" method="POST">
                     @csrf
-                    <input type="hidden" id="order-id" name="order_id">
+                    <input type="hidden" id="order-id" name="order_id" required>
                     <label for="nama-pelanggan" class="mx-10">
                         <span class="block font-semibold">Nama Pelanggan</span>
-                        <input type="text" id="nama-pelanggan" name="nama_pelanggan" placeholder="Masukkan Nama Pelanggan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
-                        <p id="nama-error" class="text-sm m-1 text-pink-700 invisible">Nama tidak valid</p>
+                        <input type="text" id="nama-pelanggan-dine" name="nama_pelanggan" placeholder="Masukkan Nama Pelanggan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/>
+                        <p id="nama-error-dine" class="text-sm m-1 text-pink-700  hidden">Nama tidak valid</p>
                     </label>
                     <label for="jumlah-orang" class="mx-10">
                         <span class="block font-semibold">Jumlah Orang</span>
-                        <input type="number" id="jumlah-orang" name="jumlah_orang" placeholder="Masukkan Jumlah Orang" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
-                        <p id="jumlah-error" class="text-sm m-1 text-pink-700 invisible">Jumlah orang tidak valid</p>
+                        <input type="number" id="jumlah-orang-dine" name="jumlah-orang" placeholder="Masukkan Jumlah Orang" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/>
+                        <p id="jumlah-error-dine" class="text-sm m-1 text-pink-700  hidden">Jumlah orang tidak valid</p>
                     </label>
                     {{-- <label for="nomor-meja" class="mx-10">
                         <span class="block font-semibold">Nomor Meja</span>
@@ -77,60 +77,57 @@
                     </label> --}}
                     <label for="nomor-meja" class="mx-10">
                         <span class="block font-semibold">Nomor Meja</span>
-                        <select name="nomor_meja" id="nomor_meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm">
+                        <select name="nomor_meja" id="nomor-meja-dine" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm">
                             <option value="M01">M01</option>
                             <option value="M02">M02</option>
                             <option value="M03">M03</option>
                             <option value="M04">M04</option>
                         </select>
                     </label>
-                    <button type="submit" class="my-7 bg-[#FFD369] px-5 py-2 rounded-full text-black font-bold font-inter block mx-auto w-full hover:bg-[#f8dea0] focus:ring focus:ring-[#FFD369]">Selanjutnya</button>
-                </form>
+                    {{-- <input type="text" id="nomor-meja-dine" name="nomor_meja" placeholder="Masukkan Nomor Meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/> --}}
+                    <button type="submit" id="submit-dine" class="my-7 bg-[#FFD369] px-5 py-2 rounded-full text-black font-bold font-inter block mx-auto w-full hover:bg-[#f8dea0] focus:ring focus:ring-[#FFD369]">Selanjutnya</button>
+                 </form>
                 
             </div>
             <div id="form2" class="hidden mx-3 pb-2 pt-2 md:mx-8">
-                <form action="{{route('kasir.newres')}}" method="POST">
+                <form id="resForm" action="{{route('kasir.newtake')}}" method="POST">
                     @csrf
+                    <input type="hidden" id="order-id" name="order_id" required>
                     <label for="nama-pelanggan" class="mx-10">
                         <span class="block font-semibold">Nama Pelanggan</span>
-                        <input type="text" id="nama-pelanggan" name="nama_pelanggan" placeholder="Masukkan Nama Pelanggan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
-                        {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
+                        <input type="text" id="nama-pelanggan-take" name="nama_pelanggan" placeholder="Masukkan Nama Pelanggan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/>
+                        <p id="nama-error-take" class="text-sm m-1 text-pink-700  hidden">Nama tidak valid</p>
+                        
                     </label>
-                    <button class="my-7 bg-[#FFD369] px-5 py-2 rounded-full text-black font-bold font-inter block mx-auto w-full hover:bg-[#f8dea0] focus:ring focus:ring-[#FFD369]">Selanjutnya</button>
+                    <button type="submit" id="submit-take" class="my-7 bg-[#FFD369] px-5 py-2 rounded-full text-black font-bold font-inter block mx-auto w-full hover:bg-[#f8dea0] focus:ring focus:ring-[#FFD369]">Selanjutnya</button>
                 </form>
             </div>
             <div id="form3" class="hidden mx-3 pb-2 md:mx-8">
-                <form action="{{route('kasir.newtake')}}" method="POST">
+                <form action="{{route('kasir.newres')}}" method="POST">
                     @csrf
+                    <input type="hidden" id="order-id" name="order_id" required>
                     <label for="nama-pelanggan" class="mx-10">
                         <span class="block font-semibold">Nama Pelanggan</span>
-                        <input type="text" id="nama-pelanggan" name="nama_pelanggan" placeholder="Masukkan Nama Pelanggan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
-                        {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
+                        <input type="text" id="nama-pelanggan-res" name="nama_pelanggan" placeholder="Masukkan Nama Pelanggan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/>
+                        <p id="nama-error-res" class="text-sm m-1 text-pink-700  hidden">Nama tidak valid</p>
+                        
                     </label>
                     <label for="telepon" class="mx-10">
                         <span class="block font-semibold">Nomor telepon</span>
-                        <input type="number" id="telepon" placeholder="Masukkan Nomor Telepon" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
-                        {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
+                        <input type="number" id="telepon-res" placeholder="Masukkan Nomor Telepon" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/>
+                        <p id="telepon-error-res" class="text-sm m-1 text-pink-700  hidden">Nomor Handphone Tidak Valid</p>
                     </label>
                     <label for="jumlah-orang" class="mx-10">
                         <span class="block font-semibold">Jumlah Orang</span>
-                        <input type="number" id="jumlah-orang" name="jumlah_orang" placeholder="Masukkan Jumlah Orang" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
-                        {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
+                        <input type="number" id="jumlah-orang-res" name="jumlah_orang" placeholder="Masukkan Jumlah Orang" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/>
+                        <p id="jumlah-error-res" class="text-sm m-1 text-pink-700 hidden">Jumlah orang tidak valid</p>
                     </label>
-                    {{-- <label for="tanggal" class="mx-10">
-                        <span class="block font-semibold">Tanggal Kedatangan</span>
-                        <input type="date" id="tanggal" name="tangga_datang" placeholder="Masukkan Kedatangan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
-                        <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p>
-                    </label>
+              
                     <label for="waktu" class="mx-10">
                         <span class="block font-semibold">Waktu Kedatangan</span>
-                        <input type="time" id="waktu" name="waktu_datang" placeholder="Masukkan Waktu Kedatangan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
-                        <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p>
-                    </label> --}}
-                    <label for="waktu" class="mx-10">
-                        <span class="block font-semibold">Waktu Kedatangan</span>
-                        <input type="datetime-local" id="waktu" name="waktu_datang" placeholder="Masukkan Waktu Kedatangan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
-                        {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
+                        <input type="datetime-local" id="waktu-res" name="waktu_datang" placeholder="Masukkan Waktu Kedatangan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/>
+                        <p id="waktu-error-res" class="text-sm m-1 text-pink-700  hidden">Waktu tidak Valid</p>
+                        
                     </label>
                     {{-- <label for="nomor-meja" class="mx-10">
                         <span class="block font-semibold">Nomor Meja</span>
@@ -145,8 +142,9 @@
                             <option value="M03">M03</option>
                             <option value="M04">M04</option>
                         </select>
+                        {{-- <input type="text" id="nomor-meja" name="nomor_meja" placeholder="Masukkan Nomor Meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/> --}}                        
                     </label>
-                    <button class="my-7 bg-[#FFD369] px-5 py-2 rounded-full text-black font-bold font-inter block mx-auto w-full hover:bg-[#f8dea0] focus:ring focus:ring-[#FFD369]">Selanjutnya</button>
+                    <button type="submit" id="submit-res" class="my-7 bg-[#FFD369] px-5 py-2 rounded-full text-black font-bold font-inter block mx-auto w-full hover:bg-[#f8dea0] focus:ring focus:ring-[#FFD369]">Selanjutnya</button>
                 </form>
                 
             </div>
@@ -154,41 +152,7 @@
     </div>
 @endsection
 @push('scripts')
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-    const namaPelangganInput = document.getElementById('nama-pelanggan');
-    const jumlahOrangInput = document.getElementById('jumlah-orang');
 
-    const namaError = document.getElementById('nama-error');
-    const jumlahError = document.getElementById('jumlah-error');
-
-    // Regex for validation
-    const namaRegex = /^[a-zA-Z\s]+$/;  // Hanya huruf dan spasi
-    const jumlahRegex = /^[1-9]\d*$/;  // Angka lebih dari 0
-
-    // Function to validate Nama Pelanggan
-    function validateNamaPelanggan() {
-        if (!namaRegex.test(namaPelangganInput.value)) {
-            namaError.classList.remove('invisible');
-        } else {
-            namaError.classList.add('invisible');
-        }
-    }
-
-    // Function to validate Jumlah Orang
-    function validateJumlahOrang() {
-        if (!jumlahRegex.test(jumlahOrangInput.value)) {
-            jumlahError.classList.remove('invisible');
-        } else {
-            jumlahError.classList.add('invisible');
-        }
-    }
-
-    // Add event listeners
-    namaPelangganInput.addEventListener('input', validateNamaPelanggan);
-    jumlahOrangInput.addEventListener('input', validateJumlahOrang);
-});
-</script>
 {{-- <script>
     document.addEventListener('DOMContentLoaded', function () {
         const orderForm = document.getElementById('orderForm');
@@ -218,6 +182,136 @@
         });
     });
 </script> --}}
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const forms = [
+        {
+            namaPelanggan: document.getElementById('nama-pelanggan-dine'),
+            jumlahOrang: document.getElementById('jumlah-orang-dine'),
+            namaError: document.getElementById('nama-error-dine'),
+            jumlahError: document.getElementById('jumlah-error-dine'),
+            submitButton: document.getElementById('submit-dine')
+        },
+        {
+            namaPelanggan: document.getElementById('nama-pelanggan-take'),
+            namaError: document.getElementById('nama-error-take'),
+            submitButton: document.getElementById('submit-take')
+        },
+        {
+            namaPelanggan: document.getElementById('nama-pelanggan-res'),
+            jumlahOrang: document.getElementById('jumlah-orang-res'),
+            nomorHp: document.getElementById('telepon-res'),
+            waktuKedatangan: document.getElementById('waktu-res'),
+            namaError: document.getElementById('nama-error-res'),
+            jumlahError: document.getElementById('jumlah-error-res'),
+            nomorHpError: document.getElementById('telepon-error-res'),
+            waktuError: document.getElementById('waktu-error-res'),
+            submitButton: document.getElementById('submit-res')
+        }
+    ];
+
+    const namaRegex = /^[a-zA-Z\s]+$/;
+    const jumlahRegex = /^[1-9]\d*$/;
+    const nomorHpRegex = /^\d+$/;
+
+    function validateNamaPelanggan(input, error) {
+        if (!namaRegex.test(input.value)) {
+            error.classList.remove('hidden');
+            return false;
+        } else {
+            error.classList.add('hidden');
+            return true;
+        }
+    }
+
+    function validateJumlahOrang(input, error) {
+        if (!jumlahRegex.test(input.value)) {
+            error.classList.remove('hidden');
+            return false;
+        } else {
+            error.classList.add('hidden');
+            return true;
+        }
+    }
+
+    function validateNomorHp(input, error) {
+        if (!nomorHpRegex.test(input.value)) {
+            error.classList.remove('hidden');
+            return false;
+        } else {
+            error.classList.add('hidden');
+            return true;
+        }
+    }
+
+    function validateWaktuKedatangan(input, error) {
+        const now = new Date();
+        const waktuKedatangan = new Date(input.value);
+        if (waktuKedatangan < now) {
+            error.classList.remove('hidden');
+            return false;
+        } else {
+            error.classList.add('hidden');
+            return true;
+        }
+    }
+
+    function checkFormValidity(form) {
+        let isValid = true;
+
+        if (form.namaPelanggan) {
+            isValid = validateNamaPelanggan(form.namaPelanggan, form.namaError) && isValid;
+        }
+        if (form.jumlahOrang) {
+            isValid = validateJumlahOrang(form.jumlahOrang, form.jumlahError) && isValid;
+        }
+        if (form.nomorHp) {
+            isValid = validateNomorHp(form.nomorHp, form.nomorHpError) && isValid;
+        }
+        if (form.waktuKedatangan) {
+            isValid = validateWaktuKedatangan(form.waktuKedatangan, form.waktuError) && isValid;
+        }
+
+        form.submitButton.disabled = !isValid;
+        form.submitButton.classList.toggle('bg-black', !isValid);
+        form.submitButton.classList.toggle('text-white', !isValid);
+        form.submitButton.classList.toggle('bg-[#FFD369]', isValid);
+        form.submitButton.classList.toggle('cursor-not-allowed', !isValid);
+    }
+
+    forms.forEach(form => {
+        if (form.namaPelanggan) {
+            form.namaPelanggan.addEventListener('input', () => {
+                validateNamaPelanggan(form.namaPelanggan, form.namaError);
+                checkFormValidity(form);
+            });
+        }
+        if (form.jumlahOrang) {
+            form.jumlahOrang.addEventListener('input', () => {
+                validateJumlahOrang(form.jumlahOrang, form.jumlahError);
+                checkFormValidity(form);
+            });
+        }
+        if (form.nomorHp) {
+            form.nomorHp.addEventListener('input', () => {
+                validateNomorHp(form.nomorHp, form.nomorHpError);
+                checkFormValidity(form);
+            });
+        }
+        if (form.waktuKedatangan) {
+            form.waktuKedatangan.addEventListener('change', () => {
+                validateWaktuKedatangan(form.waktuKedatangan, form.waktuError);
+                checkFormValidity(form);
+            });
+        }
+    });
+});
+
+
+
+</script>
+
 <script>
     // Fungsi untuk menampilkan atau menyembunyikan formulir "Makan di tempat"
     document.getElementById('showForm1').addEventListener('click', function(event) {

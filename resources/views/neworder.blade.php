@@ -675,7 +675,7 @@
          --}}
             
             
-        {{-- <script>
+        <script>
             // Mendapatkan elemen yang diperlukan
             const allMenu = document.getElementById('all');
             const kidsMealMenu = document.getElementById('kidsmeal');
@@ -801,7 +801,7 @@
             event.preventDefault(); 
             showMinumanMenu(); 
             });
-        </script> --}}
+        </script>
 
         <script>
             // function formatNumber(number) {

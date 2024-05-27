@@ -88,7 +88,7 @@
                                         <div class="p-3 md:p-5 space-y-1 flex" id="modalBody">
                                             
                                                 
-                                                
+                                             
                                         </div>
                                     </div>
 
@@ -499,15 +499,14 @@
                                                     <h1 class="font-bold text-lg">Notes</h1>
                                                     {{-- notes permenu --}}
                                                     <div class="note-container flex">
-                                                                                                                
+                                                        <p class="font-semibold text-base mr-3 w-1/2">Chicken Steak :</p>
+                                                        <p class="text-base w-2/3">gak pakai sayur Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum, perspiciatis.</p>                                                                                                        
                                                     </div>
                                                     {{-- end notes permenu --}}
                                                 </div>
                                             </div>
                                             <div class="menu-container flex-col w-full">
                                                 {{-- menu yang dipesan --}}
-                                                
-                                                    
                                                 
                                                 {{-- end menu yang dipesan --}}
                                                 <div class="flex text-xl font-bold mt-10 justify-between">
@@ -519,44 +518,57 @@
                 $('#modalBody').html(modalBody);
 
                 // Bagian menu yang dipesan
-                const container = document.querySelector('.menu-container');
+                const menuContainer = document.querySelector('.menu-container');
+                // const noteContainer = document.querySelector('.note-container');
 
-                response.detailorder.forEach(menu => {
+                response.detailorder.forEach(detail => {
                     const menuItem = document.createElement('div');
                     menuItem.className = 'flex-col w-full';
+                    const idMenu = detail.id_menu;
+                    // const menuData = response.menus.find(menu => menu.id_menu === idMenu);
 
                     menuItem.innerHTML = `
                     <div class=" flex my-3">
                         <div>
-                            <img src="https://source.unsplash.com/110x110" alt="" class="rounded-xl object-cover hidden sm:flex">
+                            <img src="" alt="" class="rounded-xl object-cover hidden sm:flex">
                         </div>
                         <div class="flex w-full justify-between">
                             <div class="ml-3 w-1/2">
-                                <h1 class="text-lg font-semibold">Steak</h1>
-                                <div class="w-16 text-center bg-[#FFD369] rounded-full">${menu.jumlah}</div>
+                                <h1 class="text-lg font-semibold">${detail.nama_menu}</h1>
+                                <div class="w-16 text-center bg-[#FFD369] rounded-full">${detail.jumlah}</div>
                             </div>
                             <div>
-                                <h1 class="text-lg font-bold">Rp ${menu.subtotal}</h1>
-                                <div class="text-center w-fit p-1 px-2 bg-green-300 rounded-full">${menu.progress}</div>
+                                <h1 class="text-lg font-bold">Rp ${detail.subtotal}</h1>
+                                <div class="text-center w-fit p-1 px-2 bg-green-300 rounded-full">${detail.progress}</div>
                             </div>
                         </div>
                     </div>
                     `;
 
-                    container.appendChild(menuItem);
+                    menuContainer.appendChild(menuItem);
                 });
-                // const container = document.querySelector('.note-container');
 
                 // response.detailorder.forEach(note => {
                 //     const noteItem = document.createElement('div');
                 //     noteItem.className = 'flex';
 
                 //     noteItem.innerHTML = `
-                //     <p class="font-semibold text-base mr-3 w-1/2">Steak}</p>
+                //     <p class="font-semibold text-base mr-3 w-1/2">${note.}</p>
                 //     <p class="text-base w-2/3">${note.note}</p>
                 //     `;
 
-                //     container.appendChild(noteItem);
+                //     noteContainer.appendChild(noteItem);
+                // });
+                // response.detailorder.forEach(note => {
+                //     const noteItem = document.createElement('div');
+                //     noteItem.className = 'flex';
+
+                //     noteItem.innerHTML = `
+                //     <p class="font-semibold text-base mr-3 w-1/2">${note.}</p>
+                //     <p class="text-base w-2/3">${note.note}</p>
+                //     `;
+
+                //     noteContainer.appendChild(noteItem);
                 // });
 
 

@@ -56,6 +56,7 @@
                 <label for="nama-pelanggan" class="mx-10">
                     <span class="block font-semibold">Nama Pelanggan</span>
                     <input type="text" id="nama-pelanggan" placeholder="Masukkan Nama Pelanggan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
+                    
                     {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
                 </label>
                 <label for="jumlah-orang" class="mx-10">
@@ -240,3 +241,7 @@
     
 </script>
 @endpush
+
+
+
+  

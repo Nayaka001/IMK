@@ -43,6 +43,8 @@ Route::middleware(['auth', 'role:Kasir'])->group(function () {
     Route::get('/orders/{id_order}', [KasirController::class, 'modal'])->name('modal');
     Route::get('/order-list/done', [KasirController::class, 'orderdone'])->name('index.orderdone');
     Route::get('/kasir/laporan', [KasirController::class, 'laporan'])->name('index.laporan');
+
+    Route::get('/report',  [KasirController::class, 'indexreport'])->name('report');
 });
 
 //Bagian Admin
@@ -147,9 +149,7 @@ Route::get('/menu/minuman', function () {
     return view('menuminuman');
 });
 
-Route::get('/report', function () {
-    return view('report');
-})->name('report');
+
 
 
 // tes (nnt dihapus)
@@ -175,3 +175,29 @@ Route::get('/kitchen-main', function () {
 Route::get('/kitchen-detail', function () {
     return view('kitchen.detail');
 });
+Route::get('/kitchen-menu', function () {
+    return view('kitchen.menu');
+});
+Route::get('/kitchen-menu/cemilan', function () {
+    return view('kitchen.menucemilan');
+});
+Route::get('/kitchen-menu/geprek', function () {
+    return view('kitchen.menugeprek');
+});
+Route::get('/kitchen-menu/kids', function () {
+    return view('kitchen.menukids');
+});
+Route::get('/kitchen-menu/minuman', function () {
+    return view('kitchen.menuminuman');
+});
+Route::get('/kitchen-menu/rice', function () {
+    return view('kitchen.menurice');
+});
+Route::get('/kitchen-menu/sayuran', function () {
+    return view('kitchen.menusayuran');
+});
+Route::get('/kitchen-menu/steak', function () {
+    return view('kitchen.menusteak');
+});
+
+//pelayan
