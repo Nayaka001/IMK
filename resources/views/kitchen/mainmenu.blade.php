@@ -30,53 +30,57 @@
         <!-- pesanan -->
         <div class="m-4 justify-center gap-5 flex flex-wrap">
             <!-- box pesanan -->
-            <div class="bg-[#FDEBED] rounded-2xl flex justify-center flex-col p-6 gap-3 items-start shadow-2xl">
-                <div class="flex gap-3">
-                    <h2 class="font-bold text-2xl">M02</h2> <h2 class="font-bold text-2xl">#003</h2>
-                </div>
-                
-                <div class="bg-[#ECCF98] rounded-xl flex p-2 items-center">
-                    Sedang dimasak
-                </div>
-    
-                <div class="grid grid-cols-2">
-                    <div class="w-max flex">
-                        <p class="font-bold">2x</p>
+            <a href="/kitchen-detail">
+                <div class="bg-[#ffffff] rounded-2xl flex justify-center flex-col p-6 gap-3 items-start shadow-2xl">
+                    <div class="flex gap-3">
+                        <h2 class="font-bold text-2xl">M02</h2> <h2 class="font-bold text-2xl">#003</h2>
                     </div>
-    
-                    <div>
-                        <p>Mac n Cheese</p>
-                        <p>
-                            Notes: 
-                            <p>-</p> 
-                        </p>
+                    
+                    <div class="bg-[#ECCF98] rounded-xl flex p-2 items-center">
+                        Sedang dimasak
                     </div>
-                </div>
-            </div>
-    
-            <div class="bg-[#FDEBED] rounded-2xl flex flex-col p-6 gap-3 items-start shadow-2xl ">
-                <div class="flex gap-3">
-                    <h2 class="font-bold text-2xl">M02</h2> <h2 class="font-bold text-2xl">#003</h2>
-                </div>
-                
-                <div class="bg-[#ECCF98] rounded-xl flex p-2 items-center">
-                    Sedang dimasak
-                </div>
-    
-                <div class="grid grid-cols-2">
-                    <div class="w-max flex">
-                        <p class="font-bold">2x</p>
-                    </div>
-    
-                    <div>
-                        <p>Mac n Cheese</p>
-                        <p>
-                            Notes: 
-                            <p>-</p> 
-                        </p>
+        
+                    <div class="grid grid-cols-2">
+                        <div class="w-max flex">
+                            <p class="font-bold">2x</p>
+                        </div>
+        
+                        <div>
+                            <p>Mac n Cheese</p>
+                            <p>
+                                Notes: 
+                                <p>-</p> 
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
+    
+            <a href="/kitchen-detail">
+                <div class="bg-[#ffffff] rounded-2xl flex justify-center flex-col p-6 gap-3 items-start shadow-2xl">
+                    <div class="flex gap-3">
+                        <h2 class="font-bold text-2xl">M02</h2> <h2 class="font-bold text-2xl">#003</h2>
+                    </div>
+                    
+                    <div class="bg-[#ECCF98] rounded-xl flex p-2 items-center">
+                        Sedang dimasak
+                    </div>
+        
+                    <div class="grid grid-cols-2">
+                        <div class="w-max flex">
+                            <p class="font-bold">2x</p>
+                        </div>
+        
+                        <div>
+                            <p>Mac n Cheese</p>
+                            <p>
+                                Notes: 
+                                <p>-</p> 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
             <!-- end box pesanan -->
         </div>
         <!-- pesanan end -->
