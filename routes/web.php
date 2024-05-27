@@ -166,3 +166,29 @@ Route::get('/kitchen-main', function () {
 Route::get('/kitchen-detail', function () {
     return view('kitchen.detail');
 });
+Route::get('/kitchen-menu', function () {
+    return view('kitchen.menu');
+});
+Route::get('/kitchen-menu/cemilan', function () {
+    return view('kitchen.menucemilan');
+});
+Route::get('/kitchen-menu/geprek', function () {
+    return view('kitchen.menugeprek');
+});
+Route::get('/kitchen-menu/kids', function () {
+    return view('kitchen.menukids');
+});
+Route::get('/kitchen-menu/minuman', function () {
+    return view('kitchen.menuminuman');
+});
+Route::get('/kitchen-menu/rice', function () {
+    return view('kitchen.menurice');
+});
+Route::get('/kitchen-menu/sayuran', function () {
+    return view('kitchen.menusayuran');
+});
+Route::get('/kitchen-menu/steak', function () {
+    return view('kitchen.menusteak');
+});
+
+//pelayan
