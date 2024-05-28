@@ -38,6 +38,7 @@ Route::middleware(['auth', 'role:Kasir'])->group(function () {
     Route::post('/kasir/neworder/newdine/action', [KasirController::class, 'store'])->name('kasir.newdine.action');
     Route::get('/kasir/addmenu/newres', [KasirController::class, 'addnewres'])->name('kasir.addnewres');
     Route::get('/kasir/addmenu/newtake', [KasirController::class, 'addnewtake'])->name('kasir.addnewtake');
+    Route::get('/invoice', [KasirController::class, 'print'])->name('print');
 
     Route::get('/order-list', [KasirController::class, 'orderwait'])->name('index.orderwait');
     Route::get('/orders/{id_order}', [KasirController::class, 'modal'])->name('modal');
@@ -200,8 +201,6 @@ Route::get('/kitchen-menu/sayuran', function () {
 Route::get('/kitchen-menu/steak', function () {
     return view('kitchen.menusteak');
 });
-Route::get('/invoice', function () {
-    return view('invoice');
-});
+
 
 //pelayan

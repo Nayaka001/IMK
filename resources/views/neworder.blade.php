@@ -359,7 +359,7 @@
                     <div id="btn2" class="hidden">
                         <div class="flex gap-2">
                             <a href="/invoice" target="_blank" class="w-full">
-                                <button class="bg-[#FFD369] p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Print</button>
+                                <button type="button" class="bg-[#FFD369] p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Print</button>
                             </a>
                             {{-- <button class="bg-[#FFD369] p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Print</button> --}}
                             <button id="kirimButton" data-modal-target="popup-modal-berhasil" data-modal-toggle="popup-modal-berhasil" class="bg-green-500 p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Kirim</button>

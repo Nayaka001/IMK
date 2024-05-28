@@ -257,6 +257,10 @@ class KasirController extends Controller
         return back()->with('success', 'Pengeluaran berhasil ditambahkan!');
     }
 
+    public function print(){
+        
+        return view('invoice');
+    }
     public function orderdone(){
         return view('orderlistdone');
     }
