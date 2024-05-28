@@ -15,6 +15,7 @@
       @yield('content')
 
     @include('layouts.partial.footer')
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   </body>
   @include('layouts.partial.script')
 </html>

@@ -68,13 +68,23 @@
                     </label>
                     <label for="jumlah-orang" class="mx-10">
                         <span class="block font-semibold">Jumlah Orang</span>
-                        <input type="number" id="jumlah-orang-dine" name="jumlah-orang" placeholder="Masukkan Jumlah Orang" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/>
+                        <input type="number" id="jumlah-orang-dine" name="jumlah_orang" placeholder="Masukkan Jumlah Orang" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/>
                         <p id="jumlah-error-dine" class="text-sm m-1 text-pink-700  hidden">Jumlah orang tidak valid</p>
                     </label>
+                    {{-- <label for="nomor-meja" class="mx-10">
+                        <span class="block font-semibold">Nomor Meja</span>
+                        <input type="text" id="nomor-meja" name="nomor_meja" placeholder="Masukkan Nomor Meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " />
+                    </label> --}}
                     <label for="nomor-meja" class="mx-10">
                         <span class="block font-semibold">Nomor Meja</span>
-                        <input type="text" id="nomor-meja-dine" name="nomor_meja" placeholder="Masukkan Nomor Meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/>
+                        <select name="nomor_meja" id="nomor-meja-dine" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm">
+                            <option value="M01">M01</option>
+                            <option value="M02">M02</option>
+                            <option value="M03">M03</option>
+                            <option value="M04">M04</option>
+                        </select>
                     </label>
+                    {{-- <input type="text" id="nomor-meja-dine" name="nomor_meja" placeholder="Masukkan Nomor Meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/> --}}
                     <button type="submit" id="submit-dine" class="my-7 bg-[#FFD369] px-5 py-2 rounded-full text-black font-bold font-inter block mx-auto w-full hover:bg-[#f8dea0] focus:ring focus:ring-[#FFD369]">Selanjutnya</button>
                  </form>
                 
@@ -119,10 +129,20 @@
                         <p id="waktu-error-res" class="text-sm m-1 text-pink-700  hidden">Waktu tidak Valid</p>
                         
                     </label>
+                    {{-- <label for="nomor-meja" class="mx-10">
+                        <span class="block font-semibold">Nomor Meja</span>
+                        <input type="" id="nomor-meja" name="nomor_meja" placeholder="Masukkan Nomor Meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " /> --}}
+                        {{-- <p class="text-sm m-1 text-pink-700 invisible peer-invalid:visible">Username tidak valid</p> --}}
+                    {{-- </label> --}}
                     <label for="nomor-meja" class="mx-10">
                         <span class="block font-semibold">Nomor Meja</span>
-                        <input type="text" id="nomor-meja" name="nomor_meja" placeholder="Masukkan Nomor Meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/>
-                        
+                        <select name="nomor_meja" id="nomor_meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm">
+                            <option value="M01">M01</option>
+                            <option value="M02">M02</option>
+                            <option value="M03">M03</option>
+                            <option value="M04">M04</option>
+                        </select>
+                        {{-- <input type="text" id="nomor-meja" name="nomor_meja" placeholder="Masukkan Nomor Meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/> --}}                        
                     </label>
                     <button type="submit" id="submit-res" class="my-7 bg-[#FFD369] px-5 py-2 rounded-full text-black font-bold font-inter block mx-auto w-full hover:bg-[#f8dea0] focus:ring focus:ring-[#FFD369]">Selanjutnya</button>
                 </form>

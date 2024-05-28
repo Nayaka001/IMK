@@ -6,6 +6,7 @@ use App\Models\Kategori;
 use App\Models\Menu;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Pengeluaran;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -47,6 +48,7 @@ class KasirController extends Controller
         $order = new Order();
         $order->id_order = $customerId;
         $order->tipe_order = $request->input('tipe_order');
+        $order->id_user = $request->input('id_user');
         $order->nama_pelanggan = $customerName;
         $order->jlh_org = $customerJumlah;
         $order->id_meja = $customerMeja;
@@ -183,15 +185,61 @@ class KasirController extends Controller
         $jumlahMenu = $order->detailorder()->count();
         $orderDetails = [
             'waktu_order' => $order->waktu_order,
+            
             'nama_pelanggan' => $order->nama_pelanggan,
             'jlh_org' => $order->jlh_org,
             'id_meja' => $order->id_meja,
+            'detailorder' => $detailOrders,
             'jlh_menu' => $jumlahMenu,
             'notes' => $allNotes,
             'menus' => $allMenus
         ];
         // Kembalikan data dalam format JSON
         return response()->json($orderDetails);
+    }
+    public function indexreport(){
+        // Ambil semua pesanan yang dibuat hari ini dan diurutkan berdasarkan waktu_order
+        $orders = Order::whereDate('waktu_order', now()->toDateString())
+                        ->orderBy('waktu_order')
+                        ->get();
+        $report = Pengeluaran::all();
+        $totalIncome = 0;
+        $totalOrders = $orders->count();
+        $menuQuantities = [];
+
+        // Loop melalui setiap pesanan
+        foreach ($orders as $order) {
+            // Ambil detail pesanan dan hitung subtotalnya
+            $subtotal = $order->detailorder()->sum('subtotal');
+            $totalIncome += $subtotal;
+
+            // Ambil semua detail pesanan dari pesanan saat ini
+            $orderDetails = $order->detailorder;
+
+            // Loop melalui setiap detail pesanan dan tambahkan jumlah pesanan untuk setiap menu
+            foreach ($orderDetails as $detail) {
+                $menuId = $detail->id_menu;
+                if (!isset($menuQuantities[$menuId])) {
+                    $menuQuantities[$menuId] = 0;
+                }
+                $menuQuantities[$menuId] += $detail->jumlah;
+            }
+        }
+
+        arsort($menuQuantities);
+
+        // Ambil nama menu berdasarkan ID menu
+        $menuNames = Menu::whereIn('id_menu', array_keys($menuQuantities))->pluck('nama_menu', 'id_menu');
+
+
+        return view('report', [
+            'totalIncome' => $totalIncome,
+            'totalOrders' => $totalOrders,
+            'menuNames' => $menuNames,
+            'orderDetails' => $orderDetails,
+            'menuQuantities' => $menuQuantities,
+            'report' => $report
+        ]);
     }
     public function orderdone(){
         return view('orderlistdone');

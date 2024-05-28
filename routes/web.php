@@ -43,6 +43,8 @@ Route::middleware(['auth', 'role:Kasir'])->group(function () {
     Route::get('/orders/{id_order}', [KasirController::class, 'modal'])->name('modal');
     Route::get('/order-list/done', [KasirController::class, 'orderdone'])->name('index.orderdone');
     Route::get('/kasir/laporan', [KasirController::class, 'laporan'])->name('index.laporan');
+
+    Route::get('/report',  [KasirController::class, 'indexreport'])->name('report');
 });
 
 //Bagian Admin
@@ -50,7 +52,11 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('index.admin');
     Route::get('/admin/user', [AdminController::class, 'user'])->name('user');
     Route::get('/admin/form-daftar-akun', [AdminController::class, 'daftar'])->name('daftar-akun');
-    Route::post('/admin/store-daftar', [AdminController::class, 'storedaftar'])->name('store.daftar');
+    Route::post('/admin/store-daftar', [AdminController::class, 'storeuser'])->name('store.user');
+    Route::get('/admin/menu', [AdminController::class, 'menu'])->name('menu');
+    Route::post('/admin/storemenu', [AdminController::class, 'storemenu'])->name('storemenu');
+    Route::delete('/admin/destroymenu/{id_menu}', [AdminController::class, 'destroymenu'])->name('destroymenu');
+    Route::delete('/admin/destroyuser/{id_user}', [AdminController::class, 'destroyuser'])->name('destroyuser');
 
     Route::get('/admin/user/pelayan', function () {
         return view('admin.pelayan');
@@ -67,9 +73,9 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/profile', function () {
         return view('admin.profile');
     })->name('profile');
-    Route::get('/admin/menu', function () {
-        return view('admin.menu');
-    })->name('menu');
+    Route::get('/admin/meja', function () {
+        return view('admin.meja');
+    })->name('meja');
 
 
     Route::get('/admin/laporan-penjualan', function () {
@@ -143,9 +149,7 @@ Route::get('/menu/minuman', function () {
     return view('menuminuman');
 });
 
-Route::get('/report', function () {
-    return view('report');
-})->name('report');
+
 
 
 // tes (nnt dihapus)
@@ -171,3 +175,32 @@ Route::get('/kitchen-main', function () {
 Route::get('/kitchen-detail', function () {
     return view('kitchen.detail');
 });
+Route::get('/kitchen-menu', function () {
+    return view('kitchen.menu');
+});
+Route::get('/kitchen-menu/cemilan', function () {
+    return view('kitchen.menucemilan');
+});
+Route::get('/kitchen-menu/geprek', function () {
+    return view('kitchen.menugeprek');
+});
+Route::get('/kitchen-menu/kids', function () {
+    return view('kitchen.menukids');
+});
+Route::get('/kitchen-menu/minuman', function () {
+    return view('kitchen.menuminuman');
+});
+Route::get('/kitchen-menu/rice', function () {
+    return view('kitchen.menurice');
+});
+Route::get('/kitchen-menu/sayuran', function () {
+    return view('kitchen.menusayuran');
+});
+Route::get('/kitchen-menu/steak', function () {
+    return view('kitchen.menusteak');
+});
+Route::get('/invoice', function () {
+    return view('invoice');
+});
+
+//pelayan

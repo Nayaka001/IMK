@@ -17,7 +17,7 @@
                     </div>
                     <div class="mx-auto sm:ml-auto my-auto">
                         <h1 class="text-xs sm:text-sm font-semibold">Pendapatan Hari ini</h1>
-                        <h1 class="font-bold text-xl sm:text-2xl">Rp 10.000.000</h1>
+                        <h1 class="font-bold text-xl sm:text-2xl">Rp {{ number_format($totalIncome, 0, ',', '.') }}</h1>
                     </div>
                 </div>
                 {{--jumlah pesanan --}}
@@ -33,7 +33,7 @@
                     </div>
                     <div class="mx-auto sm:ml-3 my-auto">
                         <h1 class="text-xs sm:text-sm font-semibold">Jumlah Pesanan</h1>
-                        <h1 class="font-bold text-xl sm:text-2xl">200</h1>
+                        <h1 class="font-bold text-xl sm:text-2xl">{{ $totalOrders }}</h1>
                     </div>
                 </div>
             </div>
@@ -52,6 +52,8 @@
                             <tbody>
                                 <tr>
                                     {{-- list makanan --}}
+                                    @foreach ($menuQuantities as $menuId => $quantity)
+                                    
                                     <th class="my-2 flex gap-3 px-3 py-2 font-normal rounded-xl bg-[#2C2C2C]">
                                         <div class="relative h-12 w-12">
                                             <img
@@ -61,11 +63,13 @@
                                             />
                                         </div>
                                         <div class="text-sm">
-                                        <div class="font-medium text-white">Chicken Steak</div>
-                                        <div class="text-gray-400">Jumlah pesanan : 23</div>
-                                        </div>
-                                    </th>
-                                    
+                                        <div class="font-medium text-white">{{ $menuNames[$menuId] }}</div>
+                                        
+                                        <div class="text-gray-400">Jumlah pesanan : {{ $quantity }}</div>
+                                    </div>
+                                </th>
+                               
+                                    @endforeach
                                 </tr>
                                 
                             </tbody>
@@ -103,15 +107,17 @@
                                     {{-- <form class="space-y-4" action=""> --}}
                                         <div>
                                             <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Pengeluaran</label>
-                                            <input type="text" name="text" id="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" />
+                                            <input type="text" name="text" id="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Masukkan nama pengeluaran" />
+                                            <input type="text" name="text" id="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" name="nama_pengeluaran" placeholder="Masukkan nama pengeluaran" />
                                         </div>
                                         <div>
                                             <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal dan Waktu</label>
-                                            <input type="date" id="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
+                                            <input type="datetime-local" id="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
+                                            <input type="datetime-local" id="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" name="waktu_pengeluaran" />
                                         </div>
                                         <div>
                                             <label for="jumlah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah Uang</label>
-                                            <input type="number" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah uang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
+                                            <input type="number" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah uang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" name="pengeluaran" />
                                         </div>
                                         <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" data-modal-hide="authentication-modal" type="submit" class="w-full text-black bg-[#FFD369] hover:text-white focus:ring-4 focus:outline-none focus:ring-[#FFD369] font-medium rounded-lg text-sm px-5 py-2.5 text-center">Simpan</button>
                                     {{-- </form> --}}
@@ -134,12 +140,12 @@
                                     <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                                     </svg>
-                                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this product?</h3>
-                                    <button data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                        Yes, I'm sure
+                                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Apakah anda yakin data yang dimasukkan sudah benar?</h3>
+                                    <button data-modal-hide="popup-modal" type="button" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                        Ya 
                                     </button>
-                                    <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" data-modal-hide="popup-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                                        No, cancel
+                                    <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" data-modal-hide="popup-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                        Tidak
                                     </button>
                                 </div>
                             </div>
@@ -162,20 +168,22 @@
                                         </thead>
                                         <tbody class="divide-y divide-white">
                                             {{-- isi tabel --}}
+                                            @foreach($report as $reports)
                                             <tr class="bg-[#f5f5e6]">
                                                 {{-- no. pesanan --}}
                                                 <td class="px-3 pr-10 py-2 rounded-l-xl">
-                                                    <h1 class="text-black">Belanja</h1>
+                                                    <h1 class="text-black">{{$reports->nama_pengeluaran}}</h1>
                                                 </td>
                                                 {{-- Pelanggan --}}
                                                 <td class="pl-3 py-2">
-                                                    <h1 class="text-black">18 Mei 2024</h1>
+                                                    <h1 class="text-black">{{$reports->waktu_pengeluarann}}</h1>
                                                 </td>
                                                 {{-- Kasir --}}
                                                 <td class="px-3 py-2">
-                                                    <h1 class="text-black">Rp 10.000</h1>
+                                                    <h1 class="text-black">Rp {{ number_format($reports->pengeluaran, 0, ',', '.') }}</h1>
                                                 </td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </tr> 

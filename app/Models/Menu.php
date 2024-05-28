@@ -23,4 +23,8 @@ class Menu extends Model
     {
         return $this->hasMany(OrderDetail::class, 'id_menu', 'id_menu');
     }
+    public function ktgmenu()
+    {
+        return $this->belongsTo(Kategori::class, 'id_ktgmenu', 'id_ktgmenu');
+    }
 }
