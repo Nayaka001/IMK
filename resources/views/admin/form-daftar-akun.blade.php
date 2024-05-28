@@ -43,23 +43,27 @@
                   <div class="w-full  px-2 md:w-1/2">
                       <div class="mb-2">
                         <label class="block font-normal " for="nama_lengkap">Nama Lengkap</label>
-                        <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-black bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Nama Lengkap" id="nama_lengkap" name="nama_lengkap">
+                        <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-black bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Nama Lengkap" id="nama_lengkap" name="nama_lengkap" required>
+                        <p id="nama-error" class="text-sm m-1 text-pink-700  hidden">Nama tidak valid</p>
                         </div>
                       <div class="mb-2">
                         <label class="block font-normal " for="username">Username</label>
-                        <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-black bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan username" id="username" name="username">
+                        <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-black bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan username" id="username" name="username" required>
+                        <p id="user-error" class="text-sm m-1 text-pink-700  hidden">Username tidak valid</p>
                       </div>
                       <div class="mb-2">
                         <label class="block font-normal " for="password">Password</label>
-                        <input type="password" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-black bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Password" id="password" name="password">
+                        <input type="password" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-black bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Password" id="password" name="password" required>
+                        <p id="pass-error" class="text-sm m-1 text-pink-700  hidden">Password tidak valid</p>
                       </div>
                       <div class="mb-2">
                         <label class="block font-normal " for="konfirm-password">Konfirmasi Password</label>
-                        <input type="password" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-black bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Konfirmasi Password" id="konfirm-password" name="konfirm-password">
+                        <input type="password" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-black bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Konfirmasi Password" id="konfirm-password" name="konfirm-password" required>
+                        <p id="konfirpass-error" class="text-sm m-1 text-pink-700  hidden">Konfirmasi Password Tidak Sesuai</p>
                       </div>
                       <div class="mb-2">
                         <label class="block font-normal " for="level-user">Posisi</label>
-                        <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-black bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="level_user" name="level_user">
+                        <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-black bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="level_user" name="level_user" required>
                             <option value="">Pilih Posisi</option>
                             <option value="Kasir">Kasir</option>
                             <option value="Bartender">Bartender</option>
@@ -84,19 +88,22 @@
                   <div class="w-full  px-2 md:w-1/2">
                   <div class="mb-2">
                         <label class="block font-normal " for="no_telepone">No Telepon</label>
-                        <input type="tel" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-black bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan No Telepon" id="no_telepon" name="no_hp">
+                        <input type="tel" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-black bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan No Telepon" id="no_telepon" name="no_hp" required>
+                        <p id="no-error" class="text-sm m-1 text-pink-700  hidden">No Handphone Tidak Valid</p>
                       </div>
                     <div class="mb-2">
                       <label class="block font-normal " for="alamat">Alamat</label>
-                      <textarea type="tel" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-black bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Alamat" id="alamat" name="alamat"></textarea>
+                      <textarea type="tel" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-black bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Alamat" id="alamat" name="alamat" required></textarea>
                     </div>
                     <div class="mb-2">
                       <label class="block font-normal " for="gaji">Gaji</label>
-                      <input type="number" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-black bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Gaji" id="gaji" name="gaji">
+                      <input type="number" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-black bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Gaji" id="gaji" name="gaji" required>
+                      <p id="gaji-error" class="text-sm m-1 text-pink-700  hidden">Gaji Tidak Valid</p>
                     </div>
                     <div class="mb-4">
                       <label class="block font-normal " for="gaji">Tanggal lahir</label>
-                      <input type="date" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-black bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Tanggal Lahir" id="tanggal_lahir" name="tgl_lahir">
+                      <input type="date" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-black bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Tanggal Lahir" id="tanggal_lahir" name="tgl_lahir" required>
+                      <p id="ttl-error" class="text-sm m-1 text-pink-700  hidden">Tanggal Lahir Tidak Valid</p>
                     </div>
 
                     <!-- <div class="flex flex-none -mx-2 space-y-4 md:space-y-0">
@@ -182,6 +189,147 @@
   </div>
 </div>
 
+<script>
+ document.addEventListener('DOMContentLoaded', function () {
+    const form = {
+        namaKaryawan: document.getElementById('nama_lengkap'),
+        username: document.getElementById('username'),
+        password: document.getElementById('password'),
+        konfPass: document.getElementById('konfirm-password'),
+        noTelepon: document.getElementById('no_telepon'),
+        gaji: document.getElementById('gaji'),
+        tanggalLahir: document.getElementById('tanggal_lahir'),
+        namaError: document.getElementById('nama-error'),
+        userError: document.getElementById('user-error'),
+        passError: document.getElementById('pass-error'),
+        konfPassError: document.getElementById('konfirpass-error'),
+        noError: document.getElementById('no-error'),
+        gajiError: document.getElementById('gaji-error'),
+        ttlError: document.getElementById('ttl-error'),
+        submitButton: document.getElementById('tambahKaryawanBtn'),
+    };
+
+    const regexNama = /^[a-zA-Z\s]+$/;
+    const regexUsername = /^[a-zA-Z0-9_]{3,20}$/;
+    const regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+}{"':;?/>.<,]).{8,}$/;
+    const regexNoTelepon = /^\d{10,14}$/;
+    const regexGaji = /^\d+$/;
+    const regexTanggalLahir = /^(19[0-9]{2}|2[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
+
+    function validateNama(input) {
+        if (!regexNama.test(input.value)) {
+            form.namaError.classList.remove('hidden');
+            return false;
+        } else {
+            form.namaError.classList.add('hidden');
+            return true;
+        }
+    }
+
+    function validateUser(input) {
+        if (!regexUsername.test(input.value)) {
+            form.userError.classList.remove('hidden');
+            return false;
+        } else {
+            form.userError.classList.add('hidden');
+            return true;
+        }
+    }
+
+    function validatePass(input) {
+        if (!regexPassword.test(input.value)) {
+            form.passError.classList.remove('hidden');
+            return false;
+        } else {
+            form.passError.classList.add('hidden');
+            return true;
+        }
+    }
+
+    function validateKonfPass() {
+        if (form.password.value !== form.konfPass.value) {
+            form.konfPassError.classList.remove('hidden');
+            return false;
+        } else {
+            form.konfPassError.classList.add('hidden');
+            return true;
+        }
+    }
+
+    function validateNo(input) {
+        if (!regexNoTelepon.test(input.value)) {
+            form.noError.classList.remove('hidden');
+            return false;
+        } else {
+            form.noError.classList.add('hidden');
+            return true;
+        }
+    }
+
+    function validateGaji(input) {
+        if (!regexGaji.test(input.value)) {
+            form.gajiError.classList.remove('hidden');
+            return false;
+        } else {
+            form.gajiError.classList.add('hidden');
+            return true;
+        }
+    }
+
+    function validateTTL(input) {
+        if (!regexTanggalLahir.test(input.value)) {
+            form.ttlError.classList.remove('hidden');
+            return false;
+        } else {
+            form.ttlError.classList.add('hidden');
+            return true;
+        }
+    }
+
+    function checkFormValidity() {
+        let isValid = true;
+
+        if (form.namaKaryawan) {
+            isValid = validateNama(form.namaKaryawan) && isValid;
+        }
+        if (form.username) {
+            isValid = validateUser(form.username) && isValid;
+        }
+        if (form.password) {
+            isValid = validatePass(form.password) && isValid;
+        }
+        if (form.konfPass) {
+            isValid = validateKonfPass() && isValid;
+        }
+        if (form.noTelepon) {
+            isValid = validateNo(form.noTelepon) && isValid;
+        }
+        if (form.gaji) {
+            isValid = validateGaji(form.gaji) && isValid;
+        }
+        if (form.tanggalLahir) {
+            isValid = validateTTL(form.tanggalLahir) && isValid;
+        }
+
+        form.submitButton.disabled = !isValid;
+        form.submitButton.classList.toggle('bg-gray', !isValid);
+        form.submitButton.classList.toggle('bg-black', isValid);
+        form.submitButton.classList.toggle('cursor-not-allowed', !isValid);
+    }
+
+    form.namaKaryawan.addEventListener('input', checkFormValidity);
+    form.username.addEventListener('input', checkFormValidity);
+    form.password.addEventListener('input', checkFormValidity);
+    form.konfPass.addEventListener('input', checkFormValidity);
+    form.noTelepon.addEventListener('input', checkFormValidity);
+    form.gaji.addEventListener('input', checkFormValidity);
+    form.tanggalLahir.addEventListener('input', checkFormValidity);
+});
+
+
+
+
+</script>
 
 <script>
     // Get the modal

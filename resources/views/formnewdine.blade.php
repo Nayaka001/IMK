@@ -165,31 +165,31 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const forms = [
-        {
-            namaPelanggan: document.getElementById('nama-pelanggan-dine'),
-            jumlahOrang: document.getElementById('jumlah-orang-dine'),
-            namaError: document.getElementById('nama-error-dine'),
-            jumlahError: document.getElementById('jumlah-error-dine'),
-            submitButton: document.getElementById('submit-dine')
-        },
-        {
-            namaPelanggan: document.getElementById('nama-pelanggan-take'),
-            namaError: document.getElementById('nama-error-take'),
-            submitButton: document.getElementById('submit-take')
-        },
-        {
-            namaPelanggan: document.getElementById('nama-pelanggan-res'),
-            jumlahOrang: document.getElementById('jumlah-orang-res'),
-            nomorHp: document.getElementById('telepon-res'),
-            waktuKedatangan: document.getElementById('waktu-res'),
-            namaError: document.getElementById('nama-error-res'),
-            jumlahError: document.getElementById('jumlah-error-res'),
-            nomorHpError: document.getElementById('telepon-error-res'),
-            waktuError: document.getElementById('waktu-error-res'),
-            submitButton: document.getElementById('submit-res')
-        }
-    ];
+    const dineForm = {
+        namaPelanggan: document.getElementById('nama-pelanggan-dine'),
+        jumlahOrang: document.getElementById('jumlah-orang-dine'),
+        namaError: document.getElementById('nama-error-dine'),
+        jumlahError: document.getElementById('jumlah-error-dine'),
+        submitButton: document.getElementById('submit-dine')
+    };
+
+    const takeForm = {
+        namaPelanggan: document.getElementById('nama-pelanggan-take'),
+        namaError: document.getElementById('nama-error-take'),
+        submitButton: document.getElementById('submit-take')
+    };
+
+    const resForm = {
+        namaPelanggan: document.getElementById('nama-pelanggan-res'),
+        jumlahOrang: document.getElementById('jumlah-orang-res'),
+        nomorHp: document.getElementById('telepon-res'),
+        waktuKedatangan: document.getElementById('waktu-res'),
+        namaError: document.getElementById('nama-error-res'),
+        jumlahError: document.getElementById('jumlah-error-res'),
+        nomorHpError: document.getElementById('telepon-error-res'),
+        waktuError: document.getElementById('waktu-error-res'),
+        submitButton: document.getElementById('submit-res')
+    };
 
     const namaRegex = /^[a-zA-Z\s]+$/;
     const jumlahRegex = /^[1-9]\d*$/;
@@ -240,16 +240,16 @@ document.addEventListener('DOMContentLoaded', function () {
     function checkFormValidity(form) {
         let isValid = true;
 
-        if (form.namaPelanggan) {
+        if (form.namaPelanggan?.value) {
             isValid = validateNamaPelanggan(form.namaPelanggan, form.namaError) && isValid;
         }
-        if (form.jumlahOrang) {
+        if (form.jumlahOrang?.value) {
             isValid = validateJumlahOrang(form.jumlahOrang, form.jumlahError) && isValid;
         }
-        if (form.nomorHp) {
+        if (form.nomorHp?.value) {
             isValid = validateNomorHp(form.nomorHp, form.nomorHpError) && isValid;
         }
-        if (form.waktuKedatangan) {
+        if (form.waktuKedatangan?.value) {
             isValid = validateWaktuKedatangan(form.waktuKedatangan, form.waktuError) && isValid;
         }
 
@@ -260,34 +260,54 @@ document.addEventListener('DOMContentLoaded', function () {
         form.submitButton.classList.toggle('cursor-not-allowed', !isValid);
     }
 
-    forms.forEach(form => {
-        if (form.namaPelanggan) {
-            form.namaPelanggan.addEventListener('input', () => {
-                validateNamaPelanggan(form.namaPelanggan, form.namaError);
-                checkFormValidity(form);
-            });
-        }
-        if (form.jumlahOrang) {
-            form.jumlahOrang.addEventListener('input', () => {
-                validateJumlahOrang(form.jumlahOrang, form.jumlahError);
-                checkFormValidity(form);
-            });
-        }
-        if (form.nomorHp) {
-            form.nomorHp.addEventListener('input', () => {
-                validateNomorHp(form.nomorHp, form.nomorHpError);
-                checkFormValidity(form);
-            });
-        }
-        if (form.waktuKedatangan) {
-            form.waktuKedatangan.addEventListener('change', () => {
-                validateWaktuKedatangan(form.waktuKedatangan, form.waktuError);
-                checkFormValidity(form);
-            });
-        }
-    });
-});
+    // Dine form event listeners
+    if (dineForm.namaPelanggan) {
+        dineForm.namaPelanggan.addEventListener('input', function () {
+            validateNamaPelanggan(dineForm.namaPelanggan, dineForm.namaError);
+            checkFormValidity(dineForm);
+        });
+    }
+    if (dineForm.jumlahOrang) {
+        dineForm.jumlahOrang.addEventListener('input', function () {
+            validateJumlahOrang(dineForm.jumlahOrang, dineForm.jumlahError);
+            checkFormValidity(dineForm);
+        });
+    }
 
+    // Take form event listeners
+    if (takeForm.namaPelanggan) {
+        takeForm.namaPelanggan.addEventListener('input', function () {
+            validateNamaPelanggan(takeForm.namaPelanggan, takeForm.namaError);
+            checkFormValidity(takeForm);
+        });
+    }
+
+    // Reservation form event listeners
+    if (resForm.namaPelanggan) {
+        resForm.namaPelanggan.addEventListener('input', function () {
+            validateNamaPelanggan(resForm.namaPelanggan, resForm.namaError);
+            checkFormValidity(resForm);
+        });
+    }
+    if (resForm.jumlahOrang) {
+        resForm.jumlahOrang.addEventListener('input', function () {
+            validateJumlahOrang(resForm.jumlahOrang, resForm.jumlahError);
+            checkFormValidity(resForm);
+        });
+    }
+    if (resForm.nomorHp) {
+        resForm.nomorHp.addEventListener('input', function () {
+            validateNomorHp(resForm.nomorHp, resForm.nomorHpError);
+            checkFormValidity(resForm);
+        });
+    }
+    if (resForm.waktuKedatangan) {
+        resForm.waktuKedatangan.addEventListener('change', function () {
+            validateWaktuKedatangan(resForm.waktuKedatangan, resForm.waktuError);
+            checkFormValidity(resForm);
+        });
+    }
+});
 
 
 </script>
