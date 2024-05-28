@@ -961,7 +961,7 @@
         {{-- end modal konfirmasi pesanan --}}
 
         {{-- alert menu habis --}}
-        <div role="alert" class="hidden w-1/3 absolute top-2 right-2 rounded border-s-4 border-red-500 bg-red-50 p-4 opacity-95">
+        <div role="alert" class="hidden w-1/3 absolute top-2 right-2 rounded border-s-4 border-red-500 bg-red-50 p-4 opacity-95 transition-opacity duration-100 ease-in-out">
             <strong class="block font-medium text-red-800"> Menu habis ! </strong>
           
             <p class="mt-2 text-sm text-red-700">
