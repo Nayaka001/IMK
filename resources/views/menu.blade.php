@@ -101,32 +101,17 @@
                 </div>
             </div>
             <div class="w-3/4 flex justify-between my-5 overflow-x-scroll sm:w-4/5 md:w-11/12 lg:w-full lg:overflow-visible">
-                <a href="/menu">
-                    <div class="rounded-2xl bg-[#FFD369] w-fit px-3 py-2 shadow-md mx-2 font-bold">All</div>
-                </a>
-                <a href="/menu/kids">
-                    <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Kids Meal</div>
-                </a>
-                <a href="/menu/sayuran">
-                    <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Sayuran</div>
-                </a>
-                <a href="/menu/steak">
-                    <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Steaks & Hotplates</div>
-                </a>
-                <a href="/menu/rice">
-                    <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold ">Rice Hotplate</div>
-                </a>
-                <a href="/menu/geprek">
-                    <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Geprek</div>
-                </a>
-                <a href="/menu/cemilan">
-                    <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Cemilan</div>
-                </a>
-                <a href="/menu/minuman">
-                    <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold ">Minuman</div>
-                </a>
+              <div id="AllLink" class="rounded-2xl bg-[#FFD369] w-fit px-3 py-2 shadow-md mx-2 font-bold">All</div>
+              <div id="kidsMealLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Kids Meal</div>
+              <div id="sayuranLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Sayuran</div>
+              <div id="steakLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Steaks & Hotplates</div>
+              <div id="riceLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold ">Rice Hotplate</div>
+              <div id="geprekLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Geprek</div>
+              <div id="cemilanLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Cemilan</div>
+              <div id="minumanLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold ">Minuman</div>
             </div>
             <div id="search-results" class="mt-10 w-full mx-auto container gap-6">
+              <div id="all">
               @foreach($kategori as $kategoris)
                 <div class="w-full">
                   <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
@@ -152,46 +137,210 @@
                   @endforeach
                 </div>
               @endforeach
-              {{-- <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
-                  <img src="https://source.unsplash.com/600x400" alt="Image Caption" class="w-full">
-                  <div class="px-2 py-2">
-                    <div class="font-bold text-lg mb-1">Chicken Steak</div>
-                    <p class="text-xs mb-1 text-gray-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, libero!</p>
-                    <h1 class="font-bold mt-1 text-lg">Rp 15.000</h1>
-                  </div>
               </div>
-              <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
-                  <img src="https://source.unsplash.com/600x400" alt="Image Caption" class="w-full">
-                  <div class="px-2 py-2">
-                    <div class="font-bold text-lg mb-1">Chicken Steak</div>
-                    <p class="text-xs mb-1 text-gray-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, libero!</p>
-                    <h1 class="font-bold mt-1 text-lg">Rp 15.000</h1>
-                  </div>
+              <div id="kidsmeal" class="hidden">
+              @foreach($kategori as $kategoris)
+              @if($kategoris->kategori === 'KIDS MEAL')
+                <div class="w-full">
+                  <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+                  <hr class="mt-3 w-full mx-3">
+                </div>
+                <div class="mt-5 flex flex-wrap sm:justify-start">
+                  @foreach($menu as $menus)
+                    @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                      <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
+                          <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                          <div class="px-2 py-2">
+                            <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                            <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                            {{-- <div class="flex justify-between"> --}}
+                              <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
+                              {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
+                                  <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
+                              </button> --}}
+                            {{-- </div> --}}
+                          </div>
+                      </div>
+                    @endif
+                  @endforeach
+                </div>
+                @endif
+              @endforeach
               </div>
-              <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
-                  <img src="https://source.unsplash.com/600x400" alt="Image Caption" class="w-full">
-                  <div class="px-2 py-2">
-                    <div class="font-bold text-lg mb-1">Chicken Steak</div>
-                    <p class="text-xs mb-1 text-gray-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, libero!</p>
-                    <h1 class="font-bold mt-1 text-lg">Rp 15.000</h1>
-                  </div>
+              <div id="sayuran" class="hidden">
+              @foreach($kategori as $kategoris)
+              @if($kategoris->kategori === 'SAYURAN')
+                <div class="w-full">
+                  <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+                  <hr class="mt-3 w-full mx-3">
+                </div>
+                <div class="mt-5 flex flex-wrap sm:justify-start">
+                  @foreach($menu as $menus)
+                    @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                      <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
+                          <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                          <div class="px-2 py-2">
+                            <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                            <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                            {{-- <div class="flex justify-between"> --}}
+                              <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
+                              {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
+                                  <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
+                              </button> --}}
+                            {{-- </div> --}}
+                          </div>
+                      </div>
+                    @endif
+                  @endforeach
+                </div>
+                @endif
+              @endforeach
               </div>
-              <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
-                  <img src="https://source.unsplash.com/600x400" alt="Image Caption" class="w-full">
-                  <div class="px-2 py-2">
-                    <div class="font-bold text-lg mb-1">Chicken Steak</div>
-                    <p class="text-xs mb-1 text-gray-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, libero!</p>
-                    <h1 class="font-bold mt-1 text-lg">Rp 15.000</h1>
-                  </div>
+              <div id="steak" class="hidden">
+              @foreach($kategori as $kategoris)
+              @if($kategoris->kategori === 'STEAKS & HOTPLATES')
+                <div class="w-full">
+                  <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+                  <hr class="mt-3 w-full mx-3">
+                </div>
+                <div class="mt-5 flex flex-wrap sm:justify-start">
+                  @foreach($menu as $menus)
+                    @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                      <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
+                          <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                          <div class="px-2 py-2">
+                            <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                            <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                            {{-- <div class="flex justify-between"> --}}
+                              <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
+                              {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
+                                  <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
+                              </button> --}}
+                            {{-- </div> --}}
+                          </div>
+                      </div>
+                    @endif
+                  @endforeach
+                </div>
+                @endif
+              @endforeach
               </div>
-              <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
-                  <img src="https://source.unsplash.com/600x400" alt="Image Caption" class="w-full">
-                  <div class="px-2 py-2">
-                    <div class="font-bold text-lg mb-1">Chicken Steak</div>
-                    <p class="text-xs mb-1 text-gray-600">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident, libero!</p>
-                    <h1 class="font-bold mt-1 text-lg">Rp 15.000</h1>
-                  </div>
-              </div> --}}
+              <div id="rice" class="hidden">
+              @foreach($kategori as $kategoris)
+              @if($kategoris->kategori === 'RICE HOTPLATE')
+                <div class="w-full">
+                  <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+                  <hr class="mt-3 w-full mx-3">
+                </div>
+                <div class="mt-5 flex flex-wrap sm:justify-start">
+                  @foreach($menu as $menus)
+                    @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                      <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
+                          <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                          <div class="px-2 py-2">
+                            <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                            <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                            {{-- <div class="flex justify-between"> --}}
+                              <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
+                              {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
+                                  <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
+                              </button> --}}
+                            {{-- </div> --}}
+                          </div>
+                      </div>
+                    @endif
+                  @endforeach
+                </div>
+                @endif
+              @endforeach
+              </div>
+              <div id="geprek" class="hidden">
+              @foreach($kategori as $kategoris)
+              @if($kategoris->kategori === 'GEPREK')
+                <div class="w-full">
+                  <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+                  <hr class="mt-3 w-full mx-3">
+                </div>
+                <div class="mt-5 flex flex-wrap sm:justify-start">
+                  @foreach($menu as $menus)
+                    @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                      <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
+                          <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                          <div class="px-2 py-2">
+                            <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                            <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                            {{-- <div class="flex justify-between"> --}}
+                              <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
+                              {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
+                                  <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
+                              </button> --}}
+                            {{-- </div> --}}
+                          </div>
+                      </div>
+                    @endif
+                  @endforeach
+                </div>
+                @endif
+              @endforeach
+              </div>
+              <div id="cemilan" class="hidden">
+              @foreach($kategori as $kategoris)
+              @if($kategoris->kategori === 'CEMILAN')
+                <div class="w-full">
+                  <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+                  <hr class="mt-3 w-full mx-3">
+                </div>
+                <div class="mt-5 flex flex-wrap sm:justify-start">
+                  @foreach($menu as $menus)
+                    @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                      <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
+                          <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                          <div class="px-2 py-2">
+                            <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                            <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                            {{-- <div class="flex justify-between"> --}}
+                              <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
+                              {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
+                                  <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
+                              </button> --}}
+                            {{-- </div> --}}
+                          </div>
+                      </div>
+                    @endif
+                  @endforeach
+                </div>
+                @endif
+              @endforeach
+              </div>
+              <div id="minuman" class="hidden">
+              @foreach($kategori as $kategoris)
+              @if($kategoris->kategori === 'MINUMAN')
+                <div class="w-full">
+                  <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+                  <hr class="mt-3 w-full mx-3">
+                </div>
+                <div class="mt-5 flex flex-wrap sm:justify-start">
+                  @foreach($menu as $menus)
+                    @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                      <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80">
+                          <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                          <div class="px-2 py-2">
+                            <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                            <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                            {{-- <div class="flex justify-between"> --}}
+                              <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
+                              {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
+                                  <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
+                              </button> --}}
+                            {{-- </div> --}}
+                          </div>
+                      </div>
+                    @endif
+                  @endforeach
+                </div>
+                @endif
+              @endforeach
+              </div>
               
           </div>
         </div>
@@ -211,4 +360,131 @@
                 });
             });
         </script> --}}
+        <script>
+          // Mendapatkan elemen yang diperlukan
+          const allMenu = document.getElementById('all');
+          const kidsMealMenu = document.getElementById('kidsmeal');
+          const sayuranMenu = document.getElementById('sayuran');
+          const steakMenu = document.getElementById('steak');
+          const riceMenu = document.getElementById('rice');
+          const geprekMenu = document.getElementById('geprek');
+          const cemilanMenu = document.getElementById('cemilan');
+          const minumanMenu = document.getElementById('minuman');
+      
+          // Menyembunyikan elemen #all dan menampilkan elemen #sayuran
+          function showAllMenu() {
+              allMenu.style.display = 'block';
+              kidsMealMenu.style.display = 'none';
+              sayuranMenu.style.display = 'none';
+              steakMenu.style.display = 'none';
+              riceMenu.style.display = 'none';
+              geprekMenu.style.display = 'none';
+              cemilanMenu.style.display = 'none';
+              minumanMenu.style.display = 'none';
+          }
+          function showKidsMealMenu() {
+              allMenu.style.display = 'none';
+              kidsMealMenu.style.display = 'block';
+              sayuranMenu.style.display = 'none';
+              steakMenu.style.display = 'none';
+              riceMenu.style.display = 'none';
+              geprekMenu.style.display = 'none';
+              cemilanMenu.style.display = 'none';
+              minumanMenu.style.display = 'none';
+          }
+          function showSayuranMenu() {
+              allMenu.style.display = 'none';
+              kidsMealMenu.style.display = 'none';
+              sayuranMenu.style.display = 'block';
+              steakMenu.style.display = 'none';
+              riceMenu.style.display = 'none';
+              geprekMenu.style.display = 'none';
+              cemilanMenu.style.display = 'none';
+              minumanMenu.style.display = 'none';
+          }
+          function showSteakMenu() {
+              allMenu.style.display = 'none';
+              kidsMealMenu.style.display = 'none';
+              sayuranMenu.style.display = 'none';
+              steakMenu.style.display = 'block';
+              riceMenu.style.display = 'none';
+              geprekMenu.style.display = 'none';
+              cemilanMenu.style.display = 'none';
+              minumanMenu.style.display = 'none';
+          }
+          function showRiceMenu() {
+              allMenu.style.display = 'none';
+              kidsMealMenu.style.display = 'none';
+              sayuranMenu.style.display = 'none';
+              steakMenu.style.display = 'none';
+              riceMenu.style.display = 'block';
+              geprekMenu.style.display = 'none';
+              cemilanMenu.style.display = 'none';
+              minumanMenu.style.display = 'none';
+          }
+          function showGeprekMenu() {
+              allMenu.style.display = 'none';
+              kidsMealMenu.style.display = 'none';
+              sayuranMenu.style.display = 'none';
+              steakMenu.style.display = 'none';
+              riceMenu.style.display = 'none';
+              geprekMenu.style.display = 'block';
+              cemilanMenu.style.display = 'none';
+              minumanMenu.style.display = 'none';
+          }
+          function showCemilanMenu() {
+              allMenu.style.display = 'none';
+              kidsMealMenu.style.display = 'none';
+              sayuranMenu.style.display = 'none';
+              steakMenu.style.display = 'none';
+              riceMenu.style.display = 'none';
+              geprekMenu.style.display = 'none';
+              cemilanMenu.style.display = 'block';
+              minumanMenu.style.display = 'none';
+          }
+          function showMinumanMenu() {
+              allMenu.style.display = 'none';
+              kidsMealMenu.style.display = 'none';
+              sayuranMenu.style.display = 'none';
+              steakMenu.style.display = 'none';
+              riceMenu.style.display = 'none';
+              geprekMenu.style.display = 'none';
+              cemilanMenu.style.display = 'none';
+              minumanMenu.style.display = 'block';
+          }
+
+          // Mendengarkan klik pada tautan "Kids Meal"
+          document.getElementById('AllLink').addEventListener('click', function(event) {
+          event.preventDefault(); // Menghentikan perilaku bawaan dari tautan
+          showAllMenu(); // Memanggil fungsi untuk menampilkan menu Kids Meal
+          });
+          document.getElementById('kidsMealLink').addEventListener('click', function(event) {
+          event.preventDefault(); // Menghentikan perilaku bawaan dari tautan
+          showKidsMealMenu(); // Memanggil fungsi untuk menampilkan menu Kids Meal
+          });
+          document.getElementById('sayuranLink').addEventListener('click', function(event) {
+          event.preventDefault(); 
+          showSayuranMenu(); 
+          });
+          document.getElementById('steakLink').addEventListener('click', function(event) {
+          event.preventDefault(); 
+          showSteakMenu(); 
+          });
+          document.getElementById('riceLink').addEventListener('click', function(event) {
+          event.preventDefault(); 
+          showRiceMenu(); 
+          });
+          document.getElementById('geprekLink').addEventListener('click', function(event) {
+          event.preventDefault(); 
+          showGeprekMenu(); 
+          });
+          document.getElementById('cemilanLink').addEventListener('click', function(event) {
+          event.preventDefault(); 
+          showCemilanMenu(); 
+          });
+          document.getElementById('minumanLink').addEventListener('click', function(event) {
+          event.preventDefault(); 
+          showMinumanMenu(); 
+          });
+      </script>
 @endsection

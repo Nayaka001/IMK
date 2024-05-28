@@ -327,7 +327,7 @@
                     @csrf
                     <hr class="px-2">
                         <div id="selectedMenuItems" class="flex-none py-2">
-                            <input type="hidden" name="tipe_order" value="Makan di Tempat">
+                            
                             <input type="hidden" name="progress" value="Dimasak">
                             <input type="hidden" name="id_user" value="{{ auth()->user()->id_user }}">
                             
@@ -358,12 +358,12 @@
                     </div>
                     <div id="btn2" class="hidden">
                         <div class="flex gap-2">
-                            {{-- button baru print --}}
-                            {{-- <a href="/invoice" target="_blank" class="w-full">
-                                <button class="bg-[#FFD369] p-2 rounded-lg font-bold hover:text-white px-6 w-full my-4">Print</button>
-                            </a> --}}
                             {{-- button baru kirim --}}
                             <button id="kirimButton" data-modal-target="popup-modal-berhasil" data-modal-toggle="popup-modal-berhasil" class="bg-green-500 p-2 rounded-lg font-bold hover:text-white px-6 w-full my-4">Kirim</button>
+                            {{-- button baru print --}}
+                            <a href="/invoice" target="_blank" class="w-full">
+                                <button class="bg-[#FFD369] p-2 rounded-lg font-bold hover:text-white px-6 w-full my-4">Print</button>
+                            </a>
                             
                         </div>
                     </div>
@@ -488,6 +488,15 @@
         
 
     </div>
+    <script>
+        function toggleButtons() {
+            // Hide "Kirim" button
+            document.getElementById('kirimButton').classList.add('hidden');
+            // Show "Print" button
+            document.getElementById('printButton').classList.remove('hidden');
+        }
+    </script>
+    
 
 {{--     
         <script>
