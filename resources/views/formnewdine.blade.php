@@ -61,6 +61,7 @@
                 <form id="orderForm" action="{{route('kasir.newdine')}}" method="POST">
                     @csrf
                     <input type="hidden" id="order-id" name="order_id" required>
+                    <input type="hidden" name="tipe_order" value="Makan di Tempat">
                     <label for="nama-pelanggan" class="mx-10">
                         <span class="block font-semibold">Nama Pelanggan</span>
                         <input type="text" id="nama-pelanggan-dine" name="nama_pelanggan" placeholder="Masukkan Nama Pelanggan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/>
@@ -94,11 +95,12 @@
                 <form id="resForm" action="{{route('kasir.newtake')}}" method="POST">
                     @csrf
                     <input type="hidden" id="order-id" name="order_id" required>
+                    <input type="hidden" name="tipe_order" value="Bawa Pulang">
+                    <input type="hidden" name="nomor_meja" value="Bawa Pulang">
                     <label for="nama-pelanggan" class="mx-10">
                         <span class="block font-semibold">Nama Pelanggan</span>
                         <input type="text" id="nama-pelanggan-take" name="nama_pelanggan" placeholder="Masukkan Nama Pelanggan" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/>
                         <p id="nama-error-take" class="text-sm m-1 text-pink-700  hidden">Nama tidak valid</p>
-                        
                     </label>
                     <button type="submit" id="submit-take" class="my-7 bg-[#FFD369] px-5 py-2 rounded-full text-black font-bold font-inter block mx-auto w-full hover:bg-[#f8dea0] focus:ring focus:ring-[#FFD369]">Selanjutnya</button>
                 </form>

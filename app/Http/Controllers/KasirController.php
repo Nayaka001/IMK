@@ -39,23 +39,39 @@ class KasirController extends Controller
             'items.*.quantity' => 'required|integer|min:1',
             'items.*.note' => 'nullable|string',
         ]);
-        $customerName = Session::get('nama_pelanggan');
-        $customerMeja = Session::get('nomor_meja');
-        $customerId = Session::get('order_id');
-        $customerJumlah = Session::get('jumlah_orang');
-        // $total = array_reduce($validated['items'], function ($carry, $item) {
-        //     return $carry + ($item['price'] * $item['quantity']);
-        // }, 0);
+        $nomor= Session::get('nomor_meja');
+        $tipe = Session::get('tipe_order');
 
-        $order = new Order();
-        $order->id_order = $customerId;
-        $order->tipe_order = $request->input('tipe_order');
-        $order->id_user = $request->input('id_user');
-        $order->nama_pelanggan = $customerName;
-        $order->jlh_org = $customerJumlah;
-        $order->id_meja = $customerMeja;
-        $order->save();
-
+        if ($nomor !== 'Bawa Pulang') {
+            $customerName = Session::get('nama_pelanggan');
+            $customerMeja = Session::get('nomor_meja');
+            $customerId = Session::get('order_id');
+            $customerJumlah = Session::get('jumlah_orang');
+            $tipe_order = Session::get('tipe_order');
+    
+            $order = new Order();
+            $order->id_order = $customerId;
+            $order->tipe_order = $tipe_order;
+            $order->id_user = $request->input('id_user');
+            $order->nama_pelanggan = $customerName;
+            $order->jlh_org = $customerJumlah;
+            $order->id_meja = $customerMeja;
+            $order->save();
+        }
+        else if($tipe !== 'Bawa Pulang'){
+            $customerName = Session::get('nama_pelanggan');
+            $customerId = Session::get('order_id');
+            $customerJumlah = Session::get('jumlah_orang');
+            $tipe_order = Session::get('tipe_order');
+    
+            $order = new Order();
+            $order->id_order = $customerId;
+            $order->tipe_order = $tipe_order;
+            $order->id_user = $request->input('id_user');
+            $order->nama_pelanggan = $customerName;
+            $order->jlh_org = $customerJumlah;
+            $order->save();
+        }
         foreach ($validated['items'] as $item) {
                 $orderDetail = new OrderDetail();
                 $orderDetail->id_order = $customerId; // Menggunakan ID Order yang baru saja disimpan
@@ -90,7 +106,7 @@ class KasirController extends Controller
     }
     
     // Menyimpan nilai $newOrderId ke dalam sesi
-    
+    Session::put('tipe_order', $request->tipe_order);
     Session::put('nama_pelanggan', $request->nama_pelanggan);
     Session::put('jumlah_orang', $request->jumlah_orang);
     Session::put('nomor_meja', $request->nomor_meja);
@@ -106,13 +122,23 @@ class KasirController extends Controller
         // dd($test);
         return redirect()->route('kasir.addnewdine');
     }
-    public function neworderres(Request $request){
-
-        Session::put('nama_pelanggan', $request->nama_pelanggan);
-        // dd(Session::all());
-        return redirect()->route('kasir.addnewdine');
-    }
     public function newordertake(Request $request){
+        $lastOrderId = Order::max('id_order');
+
+    // Mengecek jika $lastOrderId null atau kosong, kemudian mengatur nilai awal
+        if (is_null($lastOrderId)) {
+            $newOrderId = 1; // Atur nilai awal jika tidak ada data order
+        } else {
+            $newOrderId = $lastOrderId + 1; // Jika ada data order, tambahkan 1
+        }
+        Session::put('nama_pelanggan', $request->nama_pelanggan);
+        Session::put('tipe_order', $request->tipe_order);
+        Session::put('nomor_meja', $request->nomor_meja);
+        Session::put('order_id', $newOrderId);
+        // dd(Session::all());
+        return redirect()->route('kasir.addnewtake');
+    }
+    public function neworderres(Request $request){
 
         Session::put('nama_pelanggan', $request->nama_pelanggan);
         Session::put('nomor_hp', $request->nomor_hp);
@@ -121,7 +147,7 @@ class KasirController extends Controller
         Session::put('waktu_datang', $request->waktu_datang);
         Session::put('nomor_meja', $request->nomor_meja);
         // dd(Session::all());
-        return redirect()->route('kasir.addnewdine');
+        return redirect()->route('kasir.addnewres');
     }
     public function addnewdine(Request $request){
         if ($request->has('search')) {
@@ -138,13 +164,38 @@ class KasirController extends Controller
             'menu' => $menu
         ]);
     }
-    public function addnewres(){
+    public function addnewres(Request $request){
+        if ($request->has('search')) {
+            $kategori = Kategori::all();
+            $menu = Menu::where('nama_menu', 'LIKE', '%' . $request->search . '%')->get();
 
-        return view('neworder');
+        } else {
+            $kategori = Kategori::all();
+            $menu = Menu::all();
+        }
+        
+
+        return view('neworder',  [
+            'kategori' => $kategori,
+            'menu' => $menu
+        ]);
     }
-    public function addnewtake(){
+    public function addnewtake(Request $request){
 
-        return view('neworder');
+        if ($request->has('search')) {
+            $kategori = Kategori::all();
+            $menu = Menu::where('nama_menu', 'LIKE', '%' . $request->search . '%')->get();
+
+        } else {
+            $kategori = Kategori::all();
+            $menu = Menu::all();
+        }
+        
+
+        return view('neworder',  [
+            'kategori' => $kategori,
+            'menu' => $menu
+        ]);
     }
     public function orderwait(){
         $orders = Order::all();
@@ -198,6 +249,7 @@ class KasirController extends Controller
                         ->orderBy('waktu_order')
                         ->get();
         $report = Pengeluaran::all();
+        $detail = DetailPesanan::all();
         $totalIncome = 0;
         $totalOrders = $orders->count();
         $menuQuantities = [];
