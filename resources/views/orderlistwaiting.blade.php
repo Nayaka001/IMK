@@ -39,11 +39,7 @@
                         <div class="h-5 w-full bg-[#00F0FF] text-white font-bold text-sm rounded-t-xl px-2">
                             Makan di tempat
                         </div>
-                    @elseif($order['order']->tipe_order === 'Bawa pulang')
-                        <div class="h-5 w-full bg-[#FF9900] text-white font-bold text-sm rounded-t-xl px-2">
-                            Bawa pulang
-                        </div>
-                    @endif`
+                    @endif
                     <div class="px-2 py-2 flex justify-between">
                         <div>
                             <div class="flex py-1 items-center">
@@ -71,13 +67,13 @@
                             <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                 <div class="relative p-4 w-full max-w-3xl max-h-full">
                                     <!-- Modal content -->
-                                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                    <div class="relative dark:bg-white rounded-lg shadow">
                                         {{-- Modal Header --}}
                                         <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
+                                            <h3 class="text-2xl font-bold dark:text-gray-900 ">
                                                 Detail Pesanan
                                             </h3>
-                                            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                                            <button type="button" class="dark:text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
                                                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                                                 </svg>
@@ -307,7 +303,7 @@
                                 </div>
                             </button>
                             {{-- Main modal --}}
-                            <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                            <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full ">
                                 <div class="relative p-4 w-full max-w-3xl max-h-full">
                                     <!-- Modal content -->
                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -463,18 +459,18 @@
                 // Asumsikan responsenya adalah object dengan struktur data yang diperlukan
                 var modalBody = `
                 <div class="w-full">
-                                                <div class="flex items-center">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-8">
-                                                        <path d="M11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM15.29 16.71L11 12.41V7H13V11.59L16.71 15.3L15.29 16.71Z" fill="black"/>
-                                                    </svg>
-                                                    <p class="text-lg ml-3">Waktu order : ${response.waktu_order}</p>
-                                                </div>
-                                                <div class="flex items-center">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none">
-                                                        <path d="M2 17H22V21H2V17ZM6.25 7H9V6H6V3H14V6H11V7H17.8C18.8 7 19.8 8 20 9L20.5 16H3.5L4.05 9C4.05 8 5.05 7 6.25 7ZM13 9V11H18V9H13ZM6 9V10H8V9H6ZM9 9V10H11V9H9ZM6 11V12H8V11H6ZM9 11V12H11V11H9ZM6 13V14H8V13H6ZM9 13V14H11V13H9ZM7 4V5H13V4H7Z" fill="black"/>
-                                                      </svg>
-                                                    <p class="text-lg ml-3">{{ auth()->user()->karyawan->nama }}</p>
-                                                </div>
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-8">
+                            <path d="M11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM15.29 16.71L11 12.41V7H13V11.59L16.71 15.3L15.29 16.71Z" fill="black"/>
+                        </svg>
+                        <p class="text-lg ml-3">Waktu order : ${response.waktu_order}</p>
+                    </div>
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none">
+                            <path d="M2 17H22V21H2V17ZM6.25 7H9V6H6V3H14V6H11V7H17.8C18.8 7 19.8 8 20 9L20.5 16H3.5L4.05 9C4.05 8 5.05 7 6.25 7ZM13 9V11H18V9H13ZM6 9V10H8V9H6ZM9 9V10H11V9H9ZM6 11V12H8V11H6ZM9 11V12H11V11H9ZM6 13V14H8V13H6ZM9 13V14H11V13H9ZM7 4V5H13V4H7Z" fill="black"/>
+                        </svg>
+                        <p class="text-lg ml-3">{{ auth()->user()->karyawan->nama }}</p>
+                    </div>
                                                 <div class="flex items-center">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-8">
                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M8 7C8 5.93913 8.42143 4.92172 9.17157 4.17157C9.92172 3.42143 10.9391 3 12 3C13.0609 3 14.0783 3.42143 14.8284 4.17157C15.5786 4.92172 16 5.93913 16 7C16 8.06087 15.5786 9.07828 14.8284 9.82843C14.0783 10.5786 13.0609 11 12 11C10.9391 11 9.92172 10.5786 9.17157 9.82843C8.42143 9.07828 8 8.06087 8 7ZM8 13C6.67392 13 5.40215 13.5268 4.46447 14.4645C3.52678 15.4021 3 16.6739 3 18C3 18.7956 3.31607 19.5587 3.87868 20.1213C4.44129 20.6839 5.20435 21 6 21H18C18.7956 21 19.5587 20.6839 20.1213 20.1213C20.6839 19.5587 21 18.7956 21 18C21 16.6739 20.4732 15.4021 19.5355 14.4645C18.5979 13.5268 17.3261 13 16 13H8Z" fill="black"/>
@@ -498,9 +494,8 @@
                                                 <div class="bg-[#EEEEEE] my-2 w-full sm:w-80 h-fit p-2 rounded-xl mt-5 mr-5">
                                                     <h1 class="font-bold text-lg">Notes</h1>
                                                     {{-- notes permenu --}}
-                                                    <div class="note-container flex">
-                                                        <p class="font-semibold text-base mr-3 w-1/2">Chicken Steak :</p>
-                                                        <p class="text-base w-2/3">gak pakai sayur Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum, perspiciatis.</p>                                                                                                        
+                                                    <div class="note-container">
+                                                        
                                                     </div>
                                                     {{-- end notes permenu --}}
                                                 </div>
@@ -509,76 +504,75 @@
                                                 {{-- menu yang dipesan --}}
                                                 
                                                 {{-- end menu yang dipesan --}}
-                                                <div class="flex text-xl font-bold mt-10 justify-between">
-                                                    <div>Total</div>
-                                                    <div>Rp 45000</div>
-                                                </div>
+                                                
                                             </div>
+                                            </div>
+
                                                 `;
                 $('#modalBody').html(modalBody);
 
                 // Bagian menu yang dipesan
                 const menuContainer = document.querySelector('.menu-container');
-                // const noteContainer = document.querySelector('.note-container');
+                const noteContainer = document.querySelector('.note-container');
 
-                response.detailorder.forEach(detail => {
+                response.detail.forEach(details => {
                     const menuItem = document.createElement('div');
                     menuItem.className = 'flex-col w-full';
-                    const idMenu = detail.id_menu;
-                    // const menuData = response.menus.find(menu => menu.id_menu === idMenu);
+                    
 
                     menuItem.innerHTML = `
                     <div class=" flex my-3">
                         <div>
-                            <img src="" alt="" class="rounded-xl object-cover hidden sm:flex">
+                            <img src="${details.gambar_menu}" alt=""  width="110" height="110" class="rounded-xl object-cover hidden sm:flex">
                         </div>
                         <div class="flex w-full justify-between">
                             <div class="ml-3 w-1/2">
-                                <h1 class="text-lg font-semibold">${detail.nama_menu}</h1>
-                                <div class="w-16 text-center bg-[#FFD369] rounded-full">${detail.jumlah}</div>
+                                <h1 class="text-lg font-semibold">${details.nama_menu}</h1>
+                                <div class="w-16 text-center bg-[#FFD369] rounded-full">${details.jumlah}</div>
                             </div>
                             <div>
-                                <h1 class="text-lg font-bold">Rp ${detail.subtotal}</h1>
-                                <div class="text-center w-fit p-1 px-2 bg-green-300 rounded-full">${detail.progress}</div>
+                                <h1 class="text-lg font-bold">Rp ${details.subtotal}</h1>
+                                <div class="text-center w-fit p-1 px-2 bg-green-300 rounded-full">${details.progress}</div>
                             </div>
                         </div>
                     </div>
                     `;
 
                     menuContainer.appendChild(menuItem);
+
+                    
                 });
+                
+                const totalElement = document.createElement('div');
+                totalElement.className = 'flex text-xl font-bold mt-10 justify-between';
+                const totalAmount = response.total;
+                totalElement.innerHTML = `
+                        <div>Total</div>
+                        <div>Rp  ${totalAmount}</div>
+                    `;
 
-                // response.detailorder.forEach(note => {
-                //     const noteItem = document.createElement('div');
-                //     noteItem.className = 'flex';
+                    // Tambahkan elemen total setelah elemen terakhir dalam kontainer
+                menuContainer.appendChild(totalElement);
 
-                //     noteItem.innerHTML = `
-                //     <p class="font-semibold text-base mr-3 w-1/2">${note.}</p>
-                //     <p class="text-base w-2/3">${note.note}</p>
-                //     `;
+                response.detail.forEach(note => {
+                    const noteItem = document.createElement('div');
+                    noteItem.className = 'flex';
+                    let noteText = note.note ? note.note : 'Tidak ada note';
 
-                //     noteContainer.appendChild(noteItem);
-                // });
-                // response.detailorder.forEach(note => {
-                //     const noteItem = document.createElement('div');
-                //     noteItem.className = 'flex';
+                    noteItem.innerHTML = `
+                    <p class="font-semibold text-base mr-3 w-1/2">${note.nama_menu}</p>
+                    <p class="text-base w-2/3">${noteText}</p>
+                    `;
 
-                //     noteItem.innerHTML = `
-                //     <p class="font-semibold text-base mr-3 w-1/2">${note.}</p>
-                //     <p class="text-base w-2/3">${note.note}</p>
-                //     `;
-
-                //     noteContainer.appendChild(noteItem);
-                // });
+                    noteContainer.appendChild(noteItem);
+                });
+                
 
 
 
                 $('#default-modal').removeClass('hidden');
             },
-            error: function() {
-                // Handle error
-                alert('Terjadi kesalahan, silakan coba lagi.');
-            }
+            
         });
     });
 
@@ -586,6 +580,6 @@
     $('[data-modal-hide="default-modal"]').on('click', function() {
         $('#default-modal').addClass('hidden');
     });
-});
+    });
 </script>
 @endsection
