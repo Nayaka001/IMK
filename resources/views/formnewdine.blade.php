@@ -78,10 +78,11 @@
                     <label for="nomor-meja" class="mx-10">
                         <span class="block font-semibold">Nomor Meja</span>
                         <select name="nomor_meja" id="nomor-meja-dine" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm">
-                            <option value="M01">M01</option>
-                            <option value="M02">M02</option>
-                            <option value="M03">M03</option>
-                            <option value="M04">M04</option>
+                            @foreach($meja as $mejas)
+                            @if($mejas->status === 'Tersedia')
+                            <option value="{{$mejas->id_meja}}">{{$mejas->id_meja}}</option>
+                            @endif
+                            @endforeach
                         </select>
                     </label>
                     {{-- <input type="text" id="nomor-meja-dine" name="nomor_meja" placeholder="Masukkan Nomor Meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/> --}}
