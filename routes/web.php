@@ -200,5 +200,8 @@ Route::get('/kitchen-menu/sayuran', function () {
 Route::get('/kitchen-menu/steak', function () {
     return view('kitchen.menusteak');
 });
+Route::get('/invoice', function () {
+    return view('invoice');
+});
 
 //pelayan
