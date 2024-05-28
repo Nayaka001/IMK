@@ -329,6 +329,8 @@
                         <div id="selectedMenuItems" class="flex-none py-2">
                             <input type="hidden" name="tipe_order" value="Makan di Tempat">
                             <input type="hidden" name="progress" value="Dimasak">
+                            <input type="hidden" name="id_user" value="{{ auth()->user()->id_user }}">
+                            
                             
                         </div>
                     <hr class="px-2">
@@ -356,17 +358,21 @@
                     </div>
                     <div id="btn2" class="hidden">
                         <div class="flex gap-2">
-                            <button class="bg-[#FFD369] p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Print</button>
-                            <button id="kirimButton" data-modal-target="popup-modal-berhasil" data-modal-toggle="popup-modal-berhasil" class="bg-green-500 p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Kirim</button>
+                            {{-- button baru print --}}
+                            {{-- <a href="/invoice" target="_blank" class="w-full">
+                                <button class="bg-[#FFD369] p-2 rounded-lg font-bold hover:text-white px-6 w-full my-4">Print</button>
+                            </a> --}}
+                            {{-- button baru kirim --}}
+                            <button id="kirimButton" data-modal-target="popup-modal-berhasil" data-modal-toggle="popup-modal-berhasil" class="bg-green-500 p-2 rounded-lg font-bold hover:text-white px-6 w-full my-4">Kirim</button>
                             
                         </div>
                     </div>
-                    </form>
-
                     
 
                     
-                    <button id="btn1" data-modal-target="popup-modal-konfirmasi-pesan" data-modal-toggle="popup-modal-konfirmasi-pesan" class="bg-[#FFD369] p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Konfirmasi</button>
+
+                    
+                    <button type="button" id="btn1" data-modal-target="popup-modal-konfirmasi-pesan" data-modal-toggle="popup-modal-konfirmasi-pesan" class="bg-[#FFD369] p-2 w-fit rounded-lg font-bold hover:text-white px-6 sm:w-60 md:w-[300px] lg:w-full my-4">Konfirmasi</button>
                     <div id="moneySection" class="hidden mt-5 h-screen">
                         <h1 class="text-xl md:text-2xl font-bold pt-7">Masukkan Uang</h1>
 
@@ -380,18 +386,18 @@
                             <div class="bg-white p-4 rounded-lg shadow-lg lg:w-72 sm:w-56 md:w-64">
                                 <div id="display" class="bg-gray-100 text-right p-4 rounded-lg text-2xl mb-4">0</div>
                                 <div class="grid grid-cols-3 gap-4">
-                                  <button class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(1)">1</button>
-                                  <button class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(2)">2</button>
-                                  <button class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(3)">3</button>
-                                  <button class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(4)">4</button>
-                                  <button class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(5)">5</button>
-                                  <button class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(6)">6</button>
-                                  <button class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(7)">7</button>
-                                  <button class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(8)">8</button>
-                                  <button class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(9)">9</button>
-                                  <button class="bg-red-500 text-2xl p-4 rounded-lg focus:outline-none" onclick="clearDisplay()">C</button>
-                                  <button class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(0)">0</button>
-                                  <button class="bg-green-500 text-2xl p-4 rounded-lg focus:outline-none" onclick="confirmMoney()">OK</button>
+                                  <button type="button" class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(1)">1</button>
+                                  <button type="button" class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(2)">2</button>
+                                  <button type="button" class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(3)">3</button>
+                                  <button type="button" class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(4)">4</button>
+                                  <button type="button" class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(5)">5</button>
+                                  <button type="button" class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(6)">6</button>
+                                  <button type="button" class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(7)">7</button>
+                                  <button type="button" class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(8)">8</button>
+                                  <button type="button" class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(9)">9</button>
+                                  <button type="button" class="bg-red-500 text-2xl p-4 rounded-lg focus:outline-none" onclick="clearDisplay()">C</button>
+                                  <button type="button" class="bg-[#FFD369] text-2xl p-4 rounded-lg focus:outline-none" onclick="appendNumber(0)">0</button>
+                                  <button type="button" class="bg-green-500 text-2xl p-4 rounded-lg focus:outline-none" onclick="confirmMoney()">OK</button>
                                 </div>
                         </div>
                     </div>
@@ -441,16 +447,17 @@
                                     </label>
                                 </li>
                             </ul>
-                            <button id="nextButton" class="text-black inline-flex w-full justify-center bg-green-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-500 dark:hover:bg-blue-700 dark:focus:ring-blue-800 my-2" data-modal-target="popup-modal-bayar" data-modal-toggle="popup-modal-bayar" data-modal-hide="select-modal" disabled>
+                            <button type="button" id="nextButton" class="text-black inline-flex w-full justify-center bg-green-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-500 dark:hover:bg-blue-700 dark:focus:ring-blue-800 my-2" data-modal-target="popup-modal-bayar" data-modal-toggle="popup-modal-bayar" data-modal-hide="select-modal" disabled>
                                 Selanjutnya
                             </button>
-                            <button class="text-black inline-flex w-full justify-center bg-red-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-500 dark:hover:bg-blue-700 dark:focus:ring-blue-800 my-2" data-modal-toggle="popup-modal-konfirmasi-pesan" data-modal-target="popup-modal-konfirmasi-pesan" data-modal-hide="select-modal">
+                            <button type="button" class="text-black inline-flex w-full justify-center bg-red-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-500 dark:hover:bg-blue-700 dark:focus:ring-blue-800 my-2" data-modal-toggle="popup-modal-konfirmasi-pesan" data-modal-target="popup-modal-konfirmasi-pesan" data-modal-hide="select-modal">
                                 Batalkan
                             </button>
                         </div>
                     </div>
                 </div>
             </div> 
+        </form>
         {{-- end modal metode pembayaran --}}
         {{-- modal pembayaran --}}
         <div id="popup-modal-bayar" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -471,6 +478,7 @@
                 </div>
             </div>
         </div>
+        
         {{-- end modal pembayaran --}}
 
        
@@ -953,7 +961,7 @@
         {{-- end modal konfirmasi pesanan --}}
 
         {{-- alert menu habis --}}
-        <div role="alert" class="hidden w-1/3 absolute top-2 right-2 rounded border-s-4 border-red-500 bg-red-50 p-4 opacity-95">
+        <div role="alert" class="hidden w-1/3 absolute top-2 right-2 rounded border-s-4 border-red-500 bg-red-50 p-4 opacity-95 transition-opacity duration-100 ease-in-out">
             <strong class="block font-medium text-red-800"> Menu habis ! </strong>
           
             <p class="mt-2 text-sm text-red-700">

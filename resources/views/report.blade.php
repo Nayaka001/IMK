@@ -86,6 +86,8 @@
 
                     {{-- modal --}}
                     <!-- Main modal -->
+                    <form action="{{route('store.pengeluaran')}}" method="POST">
+                        @csrf
                     <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                         <div class="relative p-4 w-full max-w-md max-h-full">
                             <!-- Modal content -->
@@ -105,19 +107,20 @@
                                 <!-- Modal body -->
                                 <div class="p-4 md:p-5 space-y-4">
                                     {{-- <form class="space-y-4" action=""> --}}
+                                        
                                         <div>
                                             <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Pengeluaran</label>
-                                            <input type="text" name="text" id="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Masukkan nama pengeluaran" />
+                                            <input type="text" id="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" name="nama_pengeluaran" placeholder="Masukkan nama pengeluaran" />
                                         </div>
                                         <div>
                                             <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal dan Waktu</label>
-                                            <input type="datetime-local" id="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
+                                            <input type="datetime-local" id="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" name="waktu_pengeluaran" />
                                         </div>
                                         <div>
                                             <label for="jumlah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah Uang</label>
-                                            <input type="number" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah uang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
+                                            <input type="number" id="jumlah" placeholder="Masukkan Jumlah uang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" name="pengeluaran" />
                                         </div>
-                                        <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" data-modal-hide="authentication-modal" type="submit" class="w-full text-black bg-[#FFD369] hover:text-white focus:ring-4 focus:outline-none focus:ring-[#FFD369] font-medium rounded-lg text-sm px-5 py-2.5 text-center">Simpan</button>
+                                        <button data-modal-target="popup-modal" type="button" data-modal-toggle="popup-modal" data-modal-hide="authentication-modal" class="w-full text-black bg-[#FFD369] hover:text-white focus:ring-4 focus:outline-none focus:ring-[#FFD369] font-medium rounded-lg text-sm px-5 py-2.5 text-center">Simpan</button>
                                     {{-- </form> --}}
                                 </div>
                             </div>
@@ -139,7 +142,7 @@
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                                     </svg>
                                     <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Apakah anda yakin data yang dimasukkan sudah benar?</h3>
-                                    <button data-modal-hide="popup-modal" type="button" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                    <button data-modal-hide="popup-modal" type="submit" class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                                         Ya 
                                     </button>
                                     <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" data-modal-hide="popup-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
@@ -149,7 +152,7 @@
                             </div>
                         </div>
                     </div>
-  
+                    </form>
                     <!-- component -->
                     <div class="overflow-y-scroll h-40">
                         <table class="w-full text-left text-sm mt-3">
@@ -166,20 +169,22 @@
                                         </thead>
                                         <tbody class="divide-y divide-white">
                                             {{-- isi tabel --}}
+                                            @foreach($report as $reports)
                                             <tr class="bg-[#f5f5e6]">
                                                 {{-- no. pesanan --}}
                                                 <td class="px-3 pr-10 py-2 rounded-l-xl">
-                                                    <h1 class="text-black">Belanja</h1>
+                                                    <h1 class="text-black">{{$reports->nama_pengeluaran}}</h1>
                                                 </td>
                                                 {{-- Pelanggan --}}
                                                 <td class="pl-3 py-2">
-                                                    <h1 class="text-black">18 Mei 2024</h1>
+                                                    <h1 class="text-black">{{$reports->waktu_pengeluaran}}</h1>
                                                 </td>
                                                 {{-- Kasir --}}
                                                 <td class="px-3 py-2">
-                                                    <h1 class="text-black">Rp 10.000</h1>
+                                                    <h1 class="text-black">Rp {{ number_format($reports->pengeluaran, 0, ',', '.') }}</h1>
                                                 </td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </tr> 
@@ -373,4 +378,16 @@
         </div>
                         
     </div>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', (event) => {
+          document.querySelector('.submit-button').addEventListener('click', function(event) {
+            event.preventDefault(); // Mencegah pengiriman formulir
+            // Tindakan lain seperti membuka modal
+            const popupModal = document.getElementById('popup-modal');
+            popupModal.classList.remove('hidden');
+            const authenticationModal = document.getElementById('authentication-modal');
+            authenticationModal.classList.add('hidden');
+          });
+        });
+      </script>
 @endsection

@@ -68,7 +68,7 @@
                     </label>
                     <label for="jumlah-orang" class="mx-10">
                         <span class="block font-semibold">Jumlah Orang</span>
-                        <input type="number" id="jumlah-orang-dine" name="jumlah-orang" placeholder="Masukkan Jumlah Orang" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/>
+                        <input type="number" id="jumlah-orang-dine" name="jumlah_orang" placeholder="Masukkan Jumlah Orang" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/>
                         <p id="jumlah-error-dine" class="text-sm m-1 text-pink-700  hidden">Jumlah orang tidak valid</p>
                     </label>
                     {{-- <label for="nomor-meja" class="mx-10">
@@ -77,11 +77,12 @@
                     </label> --}}
                     <label for="nomor-meja" class="mx-10">
                         <span class="block font-semibold">Nomor Meja</span>
-                        <select name="nomor_meja" id="nomor-meja-dine" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm">
-                            <option value="M01">M01</option>
-                            <option value="M02">M02</option>
-                            <option value="M03">M03</option>
-                            <option value="M04">M04</option>
+                        <select name="nomor_meja" id="nomor-meja-dine" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm" required>
+                            @foreach($meja as $mejas)
+                            @if($mejas->status === 'Tersedia')
+                            <option value="{{$mejas->id_meja}}">{{$mejas->id_meja}}</option>
+                            @endif
+                            @endforeach
                         </select>
                     </label>
                     {{-- <input type="text" id="nomor-meja-dine" name="nomor_meja" placeholder="Masukkan Nomor Meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/> --}}
@@ -136,7 +137,7 @@
                     {{-- </label> --}}
                     <label for="nomor-meja" class="mx-10">
                         <span class="block font-semibold">Nomor Meja</span>
-                        <select name="nomor_meja" id="nomor_meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm">
+                        <select name="nomor_meja" id="nomor_meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm" required>
                             <option value="M01">M01</option>
                             <option value="M02">M02</option>
                             <option value="M03">M03</option>
@@ -185,31 +186,31 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const forms = [
-        {
-            namaPelanggan: document.getElementById('nama-pelanggan-dine'),
-            jumlahOrang: document.getElementById('jumlah-orang-dine'),
-            namaError: document.getElementById('nama-error-dine'),
-            jumlahError: document.getElementById('jumlah-error-dine'),
-            submitButton: document.getElementById('submit-dine')
-        },
-        {
-            namaPelanggan: document.getElementById('nama-pelanggan-take'),
-            namaError: document.getElementById('nama-error-take'),
-            submitButton: document.getElementById('submit-take')
-        },
-        {
-            namaPelanggan: document.getElementById('nama-pelanggan-res'),
-            jumlahOrang: document.getElementById('jumlah-orang-res'),
-            nomorHp: document.getElementById('telepon-res'),
-            waktuKedatangan: document.getElementById('waktu-res'),
-            namaError: document.getElementById('nama-error-res'),
-            jumlahError: document.getElementById('jumlah-error-res'),
-            nomorHpError: document.getElementById('telepon-error-res'),
-            waktuError: document.getElementById('waktu-error-res'),
-            submitButton: document.getElementById('submit-res')
-        }
-    ];
+    const dineForm = {
+        namaPelanggan: document.getElementById('nama-pelanggan-dine'),
+        jumlahOrang: document.getElementById('jumlah-orang-dine'),
+        namaError: document.getElementById('nama-error-dine'),
+        jumlahError: document.getElementById('jumlah-error-dine'),
+        submitButton: document.getElementById('submit-dine')
+    };
+
+    const takeForm = {
+        namaPelanggan: document.getElementById('nama-pelanggan-take'),
+        namaError: document.getElementById('nama-error-take'),
+        submitButton: document.getElementById('submit-take')
+    };
+
+    const resForm = {
+        namaPelanggan: document.getElementById('nama-pelanggan-res'),
+        jumlahOrang: document.getElementById('jumlah-orang-res'),
+        nomorHp: document.getElementById('telepon-res'),
+        waktuKedatangan: document.getElementById('waktu-res'),
+        namaError: document.getElementById('nama-error-res'),
+        jumlahError: document.getElementById('jumlah-error-res'),
+        nomorHpError: document.getElementById('telepon-error-res'),
+        waktuError: document.getElementById('waktu-error-res'),
+        submitButton: document.getElementById('submit-res')
+    };
 
     const namaRegex = /^[a-zA-Z\s]+$/;
     const jumlahRegex = /^[1-9]\d*$/;
@@ -260,16 +261,16 @@ document.addEventListener('DOMContentLoaded', function () {
     function checkFormValidity(form) {
         let isValid = true;
 
-        if (form.namaPelanggan) {
+        if (form.namaPelanggan?.value) {
             isValid = validateNamaPelanggan(form.namaPelanggan, form.namaError) && isValid;
         }
-        if (form.jumlahOrang) {
+        if (form.jumlahOrang?.value) {
             isValid = validateJumlahOrang(form.jumlahOrang, form.jumlahError) && isValid;
         }
-        if (form.nomorHp) {
+        if (form.nomorHp?.value) {
             isValid = validateNomorHp(form.nomorHp, form.nomorHpError) && isValid;
         }
-        if (form.waktuKedatangan) {
+        if (form.waktuKedatangan?.value) {
             isValid = validateWaktuKedatangan(form.waktuKedatangan, form.waktuError) && isValid;
         }
 
@@ -280,34 +281,54 @@ document.addEventListener('DOMContentLoaded', function () {
         form.submitButton.classList.toggle('cursor-not-allowed', !isValid);
     }
 
-    forms.forEach(form => {
-        if (form.namaPelanggan) {
-            form.namaPelanggan.addEventListener('input', () => {
-                validateNamaPelanggan(form.namaPelanggan, form.namaError);
-                checkFormValidity(form);
-            });
-        }
-        if (form.jumlahOrang) {
-            form.jumlahOrang.addEventListener('input', () => {
-                validateJumlahOrang(form.jumlahOrang, form.jumlahError);
-                checkFormValidity(form);
-            });
-        }
-        if (form.nomorHp) {
-            form.nomorHp.addEventListener('input', () => {
-                validateNomorHp(form.nomorHp, form.nomorHpError);
-                checkFormValidity(form);
-            });
-        }
-        if (form.waktuKedatangan) {
-            form.waktuKedatangan.addEventListener('change', () => {
-                validateWaktuKedatangan(form.waktuKedatangan, form.waktuError);
-                checkFormValidity(form);
-            });
-        }
-    });
-});
+    // Dine form event listeners
+    if (dineForm.namaPelanggan) {
+        dineForm.namaPelanggan.addEventListener('input', function () {
+            validateNamaPelanggan(dineForm.namaPelanggan, dineForm.namaError);
+            checkFormValidity(dineForm);
+        });
+    }
+    if (dineForm.jumlahOrang) {
+        dineForm.jumlahOrang.addEventListener('input', function () {
+            validateJumlahOrang(dineForm.jumlahOrang, dineForm.jumlahError);
+            checkFormValidity(dineForm);
+        });
+    }
 
+    // Take form event listeners
+    if (takeForm.namaPelanggan) {
+        takeForm.namaPelanggan.addEventListener('input', function () {
+            validateNamaPelanggan(takeForm.namaPelanggan, takeForm.namaError);
+            checkFormValidity(takeForm);
+        });
+    }
+
+    // Reservation form event listeners
+    if (resForm.namaPelanggan) {
+        resForm.namaPelanggan.addEventListener('input', function () {
+            validateNamaPelanggan(resForm.namaPelanggan, resForm.namaError);
+            checkFormValidity(resForm);
+        });
+    }
+    if (resForm.jumlahOrang) {
+        resForm.jumlahOrang.addEventListener('input', function () {
+            validateJumlahOrang(resForm.jumlahOrang, resForm.jumlahError);
+            checkFormValidity(resForm);
+        });
+    }
+    if (resForm.nomorHp) {
+        resForm.nomorHp.addEventListener('input', function () {
+            validateNomorHp(resForm.nomorHp, resForm.nomorHpError);
+            checkFormValidity(resForm);
+        });
+    }
+    if (resForm.waktuKedatangan) {
+        resForm.waktuKedatangan.addEventListener('change', function () {
+            validateWaktuKedatangan(resForm.waktuKedatangan, resForm.waktuError);
+            checkFormValidity(resForm);
+        });
+    }
+});
 
 
 </script>
