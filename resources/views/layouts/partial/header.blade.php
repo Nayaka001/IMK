@@ -33,7 +33,7 @@
           <li class="mt-0.5 w-full">
             <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors {{ request()->routeIs('user', 'user-pelayan', 'user-kitchen', 'user-bartender', 'user-kasir') ? 'bg-[#cfdbd5] rounded-lg font-semibold text-slate-700' : '' }}" href="{{ route('user', 'user-pelayan', 'user-kitchen', 'user-bartender', 'user-kasir') }}">
               <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center stroke-0 text-center xl:p-2.5 {{ request()->routeIs('user', 'user-pelayan', 'user-kitchen', 'user-bartender', 'user-kasir') ? 'bg-gradient-to-tl from-[#000000] to-[#CCCCBD]' : '' }}">
-                <i class="fa fa-utensils text-lg text-gray-700 {{ request()->routeIs('user', 'user-pelayan', 'user-kitchen', 'user-bartender', 'user-kasir') ? 'text-white' : '' }}"></i>
+                <i class="fa fa-users text-lg text-gray-700 {{ request()->routeIs('user', 'user-pelayan', 'user-kitchen', 'user-bartender', 'user-kasir') ? 'text-white' : '' }}"></i>
               </div>
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Karyawan</span>
             </a>
@@ -42,7 +42,7 @@
           <li class="mt-0.5 w-full">
             <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors {{ request()->routeIs('menu') ? 'bg-[#cfdbd5] rounded-lg font-semibold text-slate-700' : '' }}" href="{{ route('menu') }}">
               <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center stroke-0 text-center xl:p-2.5 {{ request()->routeIs('menu') ? 'bg-gradient-to-tl from-[#000000] to-[#CCCCBD]' : '' }}">
-                <i class="fa fa-utensils text-lg text-gray-700 {{ request()->routeIs('menu') ? 'text-white' : '' }}"></i>
+                <i class="fa fa-pizza-slice text-lg text-gray-700 {{ request()->routeIs('menu') ? 'text-white' : '' }}"></i>
               </div>
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Menu</span>
             </a>
@@ -51,7 +51,7 @@
           <li class="mt-0.5 w-full">
             <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors {{ request()->routeIs('meja') ? 'bg-[#cfdbd5] rounded-lg font-semibold text-slate-700' : '' }}" href="{{ route('meja') }}">
               <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center stroke-0 text-center xl:p-2.5 {{ request()->routeIs('meja') ? 'bg-gradient-to-tl from-[#000000] to-[#CCCCBD]' : '' }}">
-                <i class="fa fa-utensils text-lg text-gray-700 {{ request()->routeIs('meja') ? 'text-white' : '' }}"></i>
+                <i class="fas fa-table text-lg text-gray-700 {{ request()->routeIs('meja') ? 'text-white' : '' }}"></i>
               </div>
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Data Meja</span>
             </a>
@@ -60,13 +60,13 @@
           <li class="mt-0.5 w-full">
             <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors {{ request()->routeIs('laporan-penjualan') ? 'bg-[#cfdbd5] rounded-lg font-semibold text-slate-700' : '' }}" href="{{ route('laporan-penjualan') }}">
               <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center stroke-0 text-center xl:p-2.5 {{ request()->routeIs('laporan-penjualan') ? 'bg-gradient-to-tl from-[#000000] to-[#CCCCBD]' : '' }}">
-                <i class="fa fa-utensils text-lg text-gray-700 {{ request()->routeIs('laporan-penjualan') ? 'text-white' : '' }}"></i>
+                <i class="fas fa-file-archive text-lg text-gray-700 {{ request()->routeIs('laporan-penjualan') ? 'text-white' : '' }}"></i>
               </div>
-              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Laporan Penjualan</span>
+              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Laporan</span>
             </a>
           </li>
 
-          <li class="mt-0.5 w-full">
+          <!-- <li class="mt-0.5 w-full">
             <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors {{ request()->routeIs('laporan-pendapatan') ? 'bg-[#cfdbd5] rounded-lg font-semibold text-slate-700' : '' }}" href="{{ route('laporan-pendapatan') }}">
               <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center stroke-0 text-center xl:p-2.5 {{ request()->routeIs('laporan-pendapatan') ? 'bg-gradient-to-tl from-[#000000] to-[#CCCCBD]' : '' }}">
                 <i class="fa fa-utensils text-lg text-gray-700 {{ request()->routeIs('laporan-pendapatan') ? 'text-white' : '' }}"></i>
@@ -94,7 +94,7 @@
               </div>
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Laporan Pengeluaran</span>
             </a>
-          </li>
+          </li> -->
 
           <li class="w-full mt-4">
             <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase opacity-60">Account pages</h6>

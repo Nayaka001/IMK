@@ -345,7 +345,7 @@
                     document.write(new Date().getFullYear() + ",");
                   </script>
                   made with <i class="fa fa-heart"></i> by
-                  <span class="font-semibold text-red-500" target="_blank">Kelompok 2</span>
+                  <span class="font-semibold text-red-500" target="_blank">Kelompok 4</span>
                   for
                   <span class="font-semibold text-slate-700">Home Steak Annisa</span>.
                 </div>

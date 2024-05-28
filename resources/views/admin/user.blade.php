@@ -576,7 +576,7 @@
 
 
                             <!-- Modal Edit Data Karyawan-->
-                            <div id="myModal" class="modal flex">
+                            <div id="editModal" class="modal flex">
                               <!-- Modal content -->
                               <div class="modal-content relative z-10">
                                 <span class="close absolute top-4 right-4">&times;</span>
@@ -669,7 +669,7 @@
 
 <script>
     // Get the modal
-    var modal = document.getElementById("myModal");
+    var modal = document.getElementById("editModal");
 
     // Get the button that opens the modal
     var btn = document.getElementById("editKaryawanBtn");
