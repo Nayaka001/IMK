@@ -74,7 +74,7 @@ class AdminController extends Controller
     public function menu(){
         $menus = Menu::all();
         $kategori = Kategori::all();
-        
+         
         return view('admin.menu',[
             'menus' => $menus,
             'kategori' => $kategori
