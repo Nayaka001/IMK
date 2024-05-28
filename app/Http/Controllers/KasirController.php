@@ -6,6 +6,7 @@ use App\Models\Kategori;
 use App\Models\Menu;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Pengeluaran;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -47,6 +48,7 @@ class KasirController extends Controller
         $order = new Order();
         $order->id_order = $customerId;
         $order->tipe_order = $request->input('tipe_order');
+        $order->id_user = $request->input('id_user');
         $order->nama_pelanggan = $customerName;
         $order->jlh_org = $customerJumlah;
         $order->id_meja = $customerMeja;
@@ -200,7 +202,7 @@ class KasirController extends Controller
         $orders = Order::whereDate('waktu_order', now()->toDateString())
                         ->orderBy('waktu_order')
                         ->get();
-    
+        $report = Pengeluaran::all();
         $totalIncome = 0;
         $totalOrders = $orders->count();
         $menuQuantities = [];
@@ -235,7 +237,8 @@ class KasirController extends Controller
             'totalOrders' => $totalOrders,
             'menuNames' => $menuNames,
             'orderDetails' => $orderDetails,
-            'menuQuantities' => $menuQuantities
+            'menuQuantities' => $menuQuantities,
+            'report' => $report
         ]);
     }
     public function orderdone(){

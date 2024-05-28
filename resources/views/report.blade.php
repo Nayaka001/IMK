@@ -115,7 +115,7 @@
                                         </div>
                                         <div>
                                             <label for="jumlah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah Uang</label>
-                                            <input type="number" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah uang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" />
+                                            <input type="number" name="jumlah" id="jumlah" placeholder="Masukkan Jumlah uang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" name="pengeluaran" />
                                         </div>
                                         <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" data-modal-hide="authentication-modal" type="submit" class="w-full text-black bg-[#FFD369] hover:text-white focus:ring-4 focus:outline-none focus:ring-[#FFD369] font-medium rounded-lg text-sm px-5 py-2.5 text-center">Simpan</button>
                                     {{-- </form> --}}
@@ -166,20 +166,22 @@
                                         </thead>
                                         <tbody class="divide-y divide-white">
                                             {{-- isi tabel --}}
+                                            @foreach($report as $reports)
                                             <tr class="bg-[#f5f5e6]">
                                                 {{-- no. pesanan --}}
                                                 <td class="px-3 pr-10 py-2 rounded-l-xl">
-                                                    <h1 class="text-black">Belanja</h1>
+                                                    <h1 class="text-black">{{$reports->nama_pengeluaran}}</h1>
                                                 </td>
                                                 {{-- Pelanggan --}}
                                                 <td class="pl-3 py-2">
-                                                    <h1 class="text-black">18 Mei 2024</h1>
+                                                    <h1 class="text-black">{{$reports->waktu_pengeluarann}}</h1>
                                                 </td>
                                                 {{-- Kasir --}}
                                                 <td class="px-3 py-2">
-                                                    <h1 class="text-black">Rp 10.000</h1>
+                                                    <h1 class="text-black">Rp {{ number_format($reports->pengeluaran, 0, ',', '.') }}</h1>
                                                 </td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </tr> 
