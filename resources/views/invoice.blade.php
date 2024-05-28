@@ -16,7 +16,7 @@
             </div>
             <div class="flex justify-between">
                 <p>Kasir</p>
-                <p>Nayaka</p>
+                <p>{{ auth()->user()->karyawan->nama }}</p>
             </div>
             <div class="flex justify-between">
                 <p>Waktu</p>
