@@ -24,6 +24,7 @@ return new class extends Migration
             SUM(od.jumlah) AS items, -- summing up the 'jumlah' column to get the total items
             od.id_order_details,
             m.nama_menu,
+            m.gambar_menu,
             od.jumlah,
             od.subtotal,
             od.progress,
@@ -43,7 +44,7 @@ return new class extends Migration
                 WHERE progress IN ('Dimasak', 'Siap Disajikan')
             )
         GROUP BY
-            o.id_order, o.tipe_order, o.nama_pelanggan, o.id_meja, o.waktu_order, k.nama, o.jlh_org, od.id_order_details, m.nama_menu, od.jumlah, od.subtotal, od.progress, od.note;
+            o.id_order, o.tipe_order, o.nama_pelanggan, o.id_meja, o.waktu_order, k.nama, o.jlh_org, od.id_order_details, m.nama_menu,m.gambar_menu, od.jumlah, od.subtotal, od.progress, od.note;
         
 
         ");
