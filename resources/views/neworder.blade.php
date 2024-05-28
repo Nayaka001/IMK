@@ -327,7 +327,7 @@
                     @csrf
                     <hr class="px-2">
                         <div id="selectedMenuItems" class="flex-none py-2">
-                            <input type="hidden" name="tipe_order" value="Makan di Tempat">
+                            
                             <input type="hidden" name="progress" value="Dimasak">
                             <input type="hidden" name="id_user" value="{{ auth()->user()->id_user }}">
                             
