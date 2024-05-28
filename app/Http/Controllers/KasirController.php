@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kategori;
+use App\Models\Meja;
 use App\Models\Menu;
 use App\Models\Order;
 use App\Models\OrderDetail;
@@ -69,7 +70,11 @@ class KasirController extends Controller
 
     }
     public function neworder(){
-        return view('formnewdine');
+        $meja = Meja::all();
+        
+        return view('formnewdine', [
+            'meja' => $meja
+        ]);
     }
     public function neworderdine(Request $request){
 
@@ -241,6 +246,17 @@ class KasirController extends Controller
             'report' => $report
         ]);
     }
+    public function storepengeluaran(Request $request)
+    {
+        $report = new Pengeluaran();
+        $report->nama_pengeluaran = $request->input('nama_pengeluaran');
+        $report->waktu_pengeluaran = $request->input('waktu_pengeluaran');
+        $report->pengeluaran = $request->input('pengeluaran');
+        $report->save();
+
+        return back()->with('success', 'Pengeluaran berhasil ditambahkan!');
+    }
+
     public function orderdone(){
         return view('orderlistdone');
     }

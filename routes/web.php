@@ -43,6 +43,7 @@ Route::middleware(['auth', 'role:Kasir'])->group(function () {
     Route::get('/orders/{id_order}', [KasirController::class, 'modal'])->name('modal');
     Route::get('/order-list/done', [KasirController::class, 'orderdone'])->name('index.orderdone');
     Route::get('/kasir/laporan', [KasirController::class, 'laporan'])->name('index.laporan');
+    Route::post('/kasir/laporan/pengeluaran', [KasirController::class, 'storepengeluaran'])->name('store.pengeluaran');
 
     Route::get('/report',  [KasirController::class, 'indexreport'])->name('report');
 });
