@@ -13,37 +13,38 @@ return new class extends Migration
     {
         DB::statement("
         CREATE VIEW detail_pesanan AS
-SELECT 
-    o.id_order,
-    o.tipe_order,
-    o.nama_pelanggan,
-    o.id_meja,
-    o.waktu_order,
-    k.nama AS nama_kasir,
-    o.jlh_org,
-    (SELECT COUNT(*) FROM `order-detail` od WHERE od.id_order = o.id_order) AS items,
-    (SELECT GROUP_CONCAT(
-            CONCAT(
-                'Menu: ', m.nama_menu, 
-                ', Jumlah: ', od.jumlah, 
-                ', Subtotal: ', od.subtotal, ', ',
-                od.progress,
-                IF(od.note IS NOT NULL, CONCAT(', Note: ', od.note), '')
-    ) 
-    SEPARATOR '\n'
-        )
-     FROM `order-detail` od
-     JOIN `menu` m ON od.id_menu = m.id_menu
-     WHERE od.id_order = o.id_order
-    ) AS detail_pesanan
-FROM 
-    `order` o
-JOIN 
-    `users` u ON o.id_user = u.id_user
-JOIN 
-    `karyawan` k ON u.id_user = k.id_user
-;
-
+        SELECT
+            o.id_order,
+            o.tipe_order,
+            o.nama_pelanggan,
+            o.id_meja,
+            o.waktu_order,
+            k.nama AS nama_kasir, -- assuming the name of the cashier is in the users table
+            o.jlh_org,
+            SUM(od.jumlah) AS items, -- summing up the 'jumlah' column to get the total items
+            od.id_order_details,
+            m.nama_menu,
+            od.jumlah,
+            od.subtotal,
+            od.progress,
+            od.note
+        FROM
+            `order` o
+        JOIN
+            `order-detail` od ON o.id_order = od.id_order
+        JOIN
+            `karyawan` k ON o.id_user = k.id_user
+        JOIN
+            `menu` m ON od.id_menu = m.id_menu
+        WHERE
+            o.id_order IN (
+                SELECT id_order
+                FROM `order-detail`
+                WHERE progress IN ('Dimasak', 'Siap Disajikan')
+            )
+        GROUP BY
+            o.id_order, o.tipe_order, o.nama_pelanggan, o.id_meja, o.waktu_order, k.nama, o.jlh_org, od.id_order_details, m.nama_menu, od.jumlah, od.subtotal, od.progress, od.note;
+        
 
         ");
     }

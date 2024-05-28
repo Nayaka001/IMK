@@ -77,7 +77,7 @@
                     </label> --}}
                     <label for="nomor-meja" class="mx-10">
                         <span class="block font-semibold">Nomor Meja</span>
-                        <select name="nomor_meja" id="nomor-meja-dine" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm">
+                        <select name="nomor_meja" id="nomor-meja-dine" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm" required>
                             @foreach($meja as $mejas)
                             @if($mejas->status === 'Tersedia')
                             <option value="{{$mejas->id_meja}}">{{$mejas->id_meja}}</option>
