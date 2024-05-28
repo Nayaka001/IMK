@@ -239,9 +239,33 @@
               </div>
               @endif
               <div class="flex items-center ml-2 md:ml-auto md:pr-4">
-                <span class="inline-block p-2 m-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-2 border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
+                <span id="logoutBtn" class="inline-block p-2 m-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-2 border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
                   Logout
                 </span>
+
+                  <!-- The Modal -->
+                  <div id="myModal" class="modal flex">
+                      <!-- Modal content -->
+                        <div class="modal-content relative z-10">
+                          <span class="close absolute top-4 right-4">&times;</span>
+                          <div class="flex-auto p-6">
+                            <div class="p-6 mb-0 text-center bg-white border-b-0 rounded-t-2xl">
+                              <h5><i class="fas fa-bell w-60 h-60 mr-2 text-xl"></i>Apakah anda yakin ingin keluar?</h5>
+                              <div class="w-full mt-2 h-1 bg-slate-700 rounded"></div>
+                            </div>
+                            <!-- <p class="text-center">Username, password, dan posisi karyawan yang Anda masukkan tidak dapat diubah lagi jika data telah disimpan.</p> -->
+                            <div class="flex flex-none md:w-full space-y-4 md:space-y-0 justify-end text-right">
+                              <div class="w-full text-right col-span-2 mx-2 md:ml-auto">
+                              <a id="cancelButton" class="inline-block w-1/6 px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Batal</a>
+                                <button type="submit" class="inline-block w-1/6 px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Keluar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                  </div>
+
+
+
               </div>
               <li class="flex items-center ml-2">
                 <a href="{{ route('profile') }}" class="block px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500">
@@ -277,4 +301,62 @@
 
       <!-- end Navbar -->
 
-      
+      <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("logoutBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      modal.style.display = "flex";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+</script>
+
+
+<script>
+    // Mendapatkan modal
+    var modal = document.getElementById("myModal");
+
+    // Mendapatkan tombol Batal
+    var cancelButton = document.getElementById("cancelButton");
+
+    // Fungsi untuk menutup modal
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    // Event listener untuk tombol Batal
+    cancelButton.onclick = function() {
+        closeModal();
+    }
+
+    // Event listener untuk tombol close (jika ada)
+    var closeBtn = document.querySelector(".close");
+    closeBtn.onclick = function() {
+        closeModal();
+    }
+
+    // Menutup modal jika user klik area luar modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+</script>
