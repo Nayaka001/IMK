@@ -77,7 +77,7 @@
                     </label> --}}
                     <label for="nomor-meja" class="mx-10">
                         <span class="block font-semibold">Nomor Meja</span>
-                        <select name="nomor_meja" id="nomor-meja-dine" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm">
+                        <select name="nomor_meja" id="nomor-meja-dine" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm" required>
                             <option value="M01">M01</option>
                             <option value="M02">M02</option>
                             <option value="M03">M03</option>
@@ -136,7 +136,7 @@
                     {{-- </label> --}}
                     <label for="nomor-meja" class="mx-10">
                         <span class="block font-semibold">Nomor Meja</span>
-                        <select name="nomor_meja" id="nomor_meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm">
+                        <select name="nomor_meja" id="nomor_meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm" required>
                             <option value="M01">M01</option>
                             <option value="M02">M02</option>
                             <option value="M03">M03</option>
