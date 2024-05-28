@@ -174,6 +174,18 @@ Route::get('/new-order', function () {
 Route::get('/kitchen-main', function () {
     return view('kitchen.mainmenu');
 });
+Route::get('/kitchen-cooking', function () {
+    return view('kitchen.cooking');
+});
+Route::get('/kitchen-ready', function () {
+    return view('kitchen.ready');
+});
+Route::get('/kitchen-done', function () {
+    return view('kitchen.done');
+});
+Route::get('/kitchen-reserve', function () {
+    return view('kitchen.reserve');
+});
 Route::get('/kitchen-detail', function () {
     return view('kitchen.detail');
 });
@@ -203,4 +215,34 @@ Route::get('/kitchen-menu/steak', function () {
 });
 
 
+//bartender
+Route::get('/bartender-main', function () {
+    return view('bartender.mainmenu');
+});
+Route::get('/bartender-process', function () {
+    return view('bartender.process');
+});
+Route::get('/bartender-done', function () {
+    return view('bartender.done');
+});
+Route::get('/bartender-ready', function () {
+    return view('bartender.ready');
+});
+Route::get('/bartender-detail', function () {
+    return view('bartender.detail');
+});
+Route::get('/bartender-menu', function () {
+    return view('bartender.menu');
+});
+Route::get('/bartender-reserve', function () {
+    return view('bartender.reserve');
+});
+
 //pelayan
+Route::get('/pelayan-list', function () {
+    return view('pelayan.orderlistwaiting');
+});
+Route::get('/pelayan-list/done', function () {
+    return view('pelayan.orderlistdone');
+});
+
