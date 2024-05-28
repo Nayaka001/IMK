@@ -34,33 +34,12 @@
   </div>
 
   {{-- kategori --}}
-  <div class="w-3/4 flex justify-between my-5 overflow-x-scroll sm:w-4/5 md:w-11/12 lg:w-full lg:overflow-visible">
-      <a href="/kitchen-main">
-          <div class="rounded-2xl bg-black w-fit px-3 py-2 shadow-md mx-2 font-bold">Utama</div>
+  <div class="w-3/4 flex justify-center my-5 overflow-x-scroll sm:w-4/5 md:w-11/12 lg:w-full lg:overflow-visible">
+      <a href="/bartender-main">
+        <div class="rounded-2xl bg-black text-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Main</div>
       </a>
-      <a href="/kitchen-menu">
-          <div class="rounded-2xl bg-[#FFD369] w-fit px-3 py-2 shadow-md mx-2 font-bold">Semua</div>
-      </a>
-      <a href="/kitchen-menu/kids">
-          <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Kids Meal</div>
-      </a>
-      <a href="/kitchen-menu/sayuran">
-          <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Sayuran</div>
-      </a>
-      <a href="/kitchen-menu/steak">
-          <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Steaks & Hotplates</div>
-      </a>
-      <a href="/kitchen-menu/rice">
-          <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Rice Hotplate</div>
-      </a>
-      <a href="/kitchen-menu/geprek">
-          <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Geprek</div>
-      </a>
-      <a href="/kitchen-menu/cemilan">
-          <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Cemilan</div>
-      </a>
-      <a href="/kitchen-menu/minuman">
-          <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Minuman</div>
+      <a href="/bartender-menu">
+        <div class="rounded-2xl bg-[#FFD369] w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Minuman</div>
       </a>
   </div>
   
