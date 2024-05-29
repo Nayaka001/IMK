@@ -161,3 +161,21 @@
 }
 
 </style>
+
+<style>
+    #toast {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 50;
+        display: none; /* Hidden by default */
+    }
+
+    .toast-show {
+        display: flex !important;
+    }
+
+    .toast-hidden {
+        display: none !important;
+    }
+</style>

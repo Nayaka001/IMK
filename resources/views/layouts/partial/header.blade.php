@@ -33,7 +33,7 @@
           <li class="mt-0.5 w-full">
             <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors {{ request()->routeIs('user', 'user-pelayan', 'user-kitchen', 'user-bartender', 'user-kasir') ? 'bg-[#cfdbd5] rounded-lg font-semibold text-slate-700' : '' }}" href="{{ route('user', 'user-pelayan', 'user-kitchen', 'user-bartender', 'user-kasir') }}">
               <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center stroke-0 text-center xl:p-2.5 {{ request()->routeIs('user', 'user-pelayan', 'user-kitchen', 'user-bartender', 'user-kasir') ? 'bg-gradient-to-tl from-[#000000] to-[#CCCCBD]' : '' }}">
-                <i class="fa fa-utensils text-lg text-gray-700 {{ request()->routeIs('user', 'user-pelayan', 'user-kitchen', 'user-bartender', 'user-kasir') ? 'text-white' : '' }}"></i>
+                <i class="fa fa-users text-lg text-gray-700 {{ request()->routeIs('user', 'user-pelayan', 'user-kitchen', 'user-bartender', 'user-kasir') ? 'text-white' : '' }}"></i>
               </div>
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Karyawan</span>
             </a>
@@ -42,7 +42,7 @@
           <li class="mt-0.5 w-full">
             <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors {{ request()->routeIs('menu') ? 'bg-[#cfdbd5] rounded-lg font-semibold text-slate-700' : '' }}" href="{{ route('menu') }}">
               <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center stroke-0 text-center xl:p-2.5 {{ request()->routeIs('menu') ? 'bg-gradient-to-tl from-[#000000] to-[#CCCCBD]' : '' }}">
-                <i class="fa fa-utensils text-lg text-gray-700 {{ request()->routeIs('menu') ? 'text-white' : '' }}"></i>
+                <i class="fa fa-pizza-slice text-lg text-gray-700 {{ request()->routeIs('menu') ? 'text-white' : '' }}"></i>
               </div>
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Menu</span>
             </a>
@@ -51,43 +51,22 @@
           <li class="mt-0.5 w-full">
             <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors {{ request()->routeIs('meja') ? 'bg-[#cfdbd5] rounded-lg font-semibold text-slate-700' : '' }}" href="{{ route('meja') }}">
               <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center stroke-0 text-center xl:p-2.5 {{ request()->routeIs('meja') ? 'bg-gradient-to-tl from-[#000000] to-[#CCCCBD]' : '' }}">
-                <i class="fa fa-utensils text-lg text-gray-700 {{ request()->routeIs('meja') ? 'text-white' : '' }}"></i>
+                <i class="fas fa-table text-lg text-gray-700 {{ request()->routeIs('meja') ? 'text-white' : '' }}"></i>
               </div>
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Data Meja</span>
             </a>
           </li>
 
           <li class="mt-0.5 w-full">
-            <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors" href="./pages/billing.html">
-              <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center fill-current stroke-0 text-center xl:p-2.5">
-                <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <title>credit-card</title>
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                      <g transform="translate(1716.000000, 291.000000)">
-                        <g transform="translate(453.000000, 454.000000)">
-                          <path class="fill-slate-800 opacity-60" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"></path>
-                          <path class="fill-slate-800" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Pembayaran</span>
-            </a>
-          </li>
-
-          <li class="mt-0.5 w-full">
             <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors {{ request()->routeIs('laporan-penjualan') ? 'bg-[#cfdbd5] rounded-lg font-semibold text-slate-700' : '' }}" href="{{ route('laporan-penjualan') }}">
               <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center stroke-0 text-center xl:p-2.5 {{ request()->routeIs('laporan-penjualan') ? 'bg-gradient-to-tl from-[#000000] to-[#CCCCBD]' : '' }}">
-                <i class="fa fa-utensils text-lg text-gray-700 {{ request()->routeIs('laporan-penjualan') ? 'text-white' : '' }}"></i>
+                <i class="fas fa-file-archive text-lg text-gray-700 {{ request()->routeIs('laporan-penjualan') ? 'text-white' : '' }}"></i>
               </div>
-              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Laporan Penjualan</span>
+              <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Laporan</span>
             </a>
           </li>
 
-          <li class="mt-0.5 w-full">
+          <!-- <li class="mt-0.5 w-full">
             <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors {{ request()->routeIs('laporan-pendapatan') ? 'bg-[#cfdbd5] rounded-lg font-semibold text-slate-700' : '' }}" href="{{ route('laporan-pendapatan') }}">
               <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center stroke-0 text-center xl:p-2.5 {{ request()->routeIs('laporan-pendapatan') ? 'bg-gradient-to-tl from-[#000000] to-[#CCCCBD]' : '' }}">
                 <i class="fa fa-utensils text-lg text-gray-700 {{ request()->routeIs('laporan-pendapatan') ? 'text-white' : '' }}"></i>
@@ -115,7 +94,7 @@
               </div>
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Laporan Pengeluaran</span>
             </a>
-          </li>
+          </li> -->
 
           <li class="w-full mt-4">
             <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase opacity-60">Account pages</h6>
@@ -124,7 +103,7 @@
           <li class="mt-0.5 w-full">
             <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors {{ request()->routeIs('profile') ? 'bg-[#cfdbd5] rounded-lg font-semibold text-slate-700' : '' }}" href="{{ route('profile') }}">
               <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center stroke-0 text-center xl:p-2.5 {{ request()->routeIs('profile') ? 'bg-gradient-to-tl from-[#000000] to-[#CCCCBD]' : '' }}">
-                <i class="fa fa-utensils text-lg text-gray-700 {{ request()->routeIs('profile') ? 'text-white' : '' }}"></i>
+                <i class="ni ni-single-02 text-lg text-gray-700 {{ request()->routeIs('profile') ? 'text-white' : '' }}"></i>
               </div>
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Profile</span>
             </a>
@@ -260,9 +239,33 @@
               </div>
               @endif
               <div class="flex items-center ml-2 md:ml-auto md:pr-4">
-                <span class="inline-block p-2 m-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-2 border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
+                <span id="logoutBtn" class="inline-block p-2 m-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-2 border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
                   Logout
                 </span>
+
+                  <!-- The Modal -->
+                  <div id="myModal" class="modal flex">
+                      <!-- Modal content -->
+                        <div class="modal-content relative z-10">
+                          <span class="close absolute top-4 right-4">&times;</span>
+                          <div class="flex-auto p-6">
+                            <div class="p-6 mb-0 text-center bg-white border-b-0 rounded-t-2xl">
+                              <h5><i class="fas fa-bell w-60 h-60 mr-2 text-xl"></i>Apakah anda yakin ingin keluar?</h5>
+                              <div class="w-full mt-2 h-1 bg-slate-700 rounded"></div>
+                            </div>
+                            <!-- <p class="text-center">Username, password, dan posisi karyawan yang Anda masukkan tidak dapat diubah lagi jika data telah disimpan.</p> -->
+                            <div class="flex flex-none md:w-full space-y-4 md:space-y-0 justify-end text-right">
+                              <div class="w-full text-right col-span-2 mx-2 md:ml-auto">
+                              <a id="cancelButton" class="inline-block w-1/6 px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Batal</a>
+                                <button type="submit" class="inline-block w-1/6 px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Keluar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                  </div>
+
+
+
               </div>
               <li class="flex items-center ml-2">
                 <a href="{{ route('profile') }}" class="block px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500">
@@ -298,4 +301,62 @@
 
       <!-- end Navbar -->
 
-      
+      <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("logoutBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      modal.style.display = "flex";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+</script>
+
+
+<script>
+    // Mendapatkan modal
+    var modal = document.getElementById("myModal");
+
+    // Mendapatkan tombol Batal
+    var cancelButton = document.getElementById("cancelButton");
+
+    // Fungsi untuk menutup modal
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    // Event listener untuk tombol Batal
+    cancelButton.onclick = function() {
+        closeModal();
+    }
+
+    // Event listener untuk tombol close (jika ada)
+    var closeBtn = document.querySelector(".close");
+    closeBtn.onclick = function() {
+        closeModal();
+    }
+
+    // Menutup modal jika user klik area luar modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+</script>

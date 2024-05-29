@@ -96,7 +96,7 @@
         <span id="deleteModalClose" class="close mr-4 mt-2 top-4 right-4">&times;</span>
         <div class="flex-auto p-6">
             <div class="p-6 mb-0 text-center bg-white rounded-t-2xl">
-                <h5><i class="fas fa-trash-alt mr-2 text-xl"></i>Apakah Anda yakin ingin menghapus data ini?</h5>
+                <h5><i class="fas fa-trash-alt mr-2 text-xl"></i>Apakah Anda yakin ingin menghapus data menu ini?</h5>
                 <div class="w-full mt-2 h-1 bg-slate-700 rounded"></div>
             </div>
             <p class="text-center">Data yang dihapus tidak dapat dikembalikan.</p>
@@ -180,7 +180,7 @@
                   <div class="p-6 pb-0 mb-0 bg-[#e8eddf] border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                     <h6>Data Kategori</h6>
                     <div class="flex-none w-full max-w-full px-6 justify-end text-right">
-                        <a id="tambahKategoriBtn" class="inline-block px-3 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"><i class="fas fa-plus"> </i></i>&nbsp;&nbsp;Tambah Data</a>
+                        <a id="tambahKategoriBtn" class="inline-block px-3 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"><i class="fas fa-plus"> </i></i>&nbsp;&nbsp;Tambah Kategori</a>
                     </div>
                   </div>
                   <div class="flex-auto px-0 pt-0 pb-2">
@@ -236,7 +236,7 @@
                   <div class="p-6 pb-0 mb-0 bg-[#e8eddf] border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                     <h6>Data Sub-Kategori</h6>
                     <div class="flex-none w-full max-w-full px-6 justify-end text-right">
-                        <a id="tambahSubKategoriBtn" class="inline-block px-3 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"><i class="fas fa-plus"> </i>&nbsp;&nbsp;Tambah Data</a>
+                        <a id="tambahSubKategoriBtn" class="inline-block px-3 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"><i class="fas fa-plus"> </i>&nbsp;&nbsp;Tambah Sub-Kategori</a>
                     </div>
                   </div>
                   <div class="flex-auto px-0 pt-0 pb-2">
@@ -333,7 +333,7 @@
                             </div>
                             </div>
                             <div class="text-center">
-                            <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Tambah Menu</button>
+                            <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Edit Menu</button>
                             </div>
                         </form>
                         </div>
@@ -378,7 +378,7 @@
                             </div> -->
                             </div>
                             <div class="text-center">
-                            <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Tambah Menu</button>
+                            <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Tambah Kategori</button>
                             </div>
                         </form>
                         </div>
@@ -392,7 +392,7 @@
                         <span class="close absolute top-4 right-4">&times;</span>
                         <div class="flex-auto p-6">
                         <div class="p-6 mb-0 text-center bg-white border-b-0 rounded-t-2xl">
-                            <h5 class="font-semibold text-lg"><i class="fa fa-utensils mr-2"> </i>Tambah Sub Kategori</h5>
+                            <h5 class="font-semibold text-lg"><i class="fa fa-utensils mr-2"> </i>Tambah Sub-Kategori</h5>
                             <div class="w-full mt-2 p-1 mb-2 h-2 bg-slate-700 rounded"></div>
                         </div>
                         <form id="tambahSubKategoriForm" class="p-6">
@@ -424,7 +424,7 @@
                             </div> -->
                             </div>
                             <div class="text-center">
-                            <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Tambah Menu</button>
+                            <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Tambah Sub-Kategori</button>
                             </div>
                         </form>
                         </div>

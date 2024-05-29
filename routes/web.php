@@ -51,6 +51,7 @@ Route::middleware(['auth', 'role:Kasir'])->group(function () {
 
 //Bagian Admin
 Route::middleware(['auth', 'role:Admin'])->group(function () {
+    session()->now('success', 'Pendaftaran Berhasil!');
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('index.admin');
     Route::get('/admin/user', [AdminController::class, 'user'])->name('user');
     Route::get('/admin/form-daftar-akun', [AdminController::class, 'daftar'])->name('daftar-akun');
