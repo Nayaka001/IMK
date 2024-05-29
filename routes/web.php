@@ -47,6 +47,7 @@ Route::middleware(['auth', 'role:Kasir'])->group(function () {
     Route::post('/kasir/laporan/pengeluaran', [KasirController::class, 'storepengeluaran'])->name('store.pengeluaran');
 
     Route::get('/report',  [KasirController::class, 'indexreport'])->name('report');
+    Route::get('/report/{id_order}',  [KasirController::class, 'report'])->name('modal.report');
 });
 
 //Bagian Admin
