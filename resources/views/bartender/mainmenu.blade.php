@@ -20,8 +20,11 @@
             <a href="/bartender-ready                                                                                                          ">
                 <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Siap</div>
             </a>
-            <a href="/bartender-reserve">
+            <a href="/bartender-done">
                 <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Selesai</div>
+            </a>
+            <a href="/bartender-reserve">
+                <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Reservasi</div>
             </a>
         </div>
         <!-- category end -->
@@ -41,11 +44,11 @@
         
                     <div class="grid grid-cols-2">
                         <div class="w-max flex">
-                            <p class="font-bold">2x</p>
+                            <p class="font-bold">1x</p>
                         </div>
         
                         <div>
-                            <p>Mac n Cheese</p>
+                            <p>Teh Manis Dingin</p>
                             <p>
                                 Notes: 
                                 <p>-</p> 
@@ -58,7 +61,7 @@
             <a href="/bartender-detail">
                 <div class="bg-[#ffffff] rounded-2xl flex justify-center flex-col p-6 gap-3 items-start shadow-2xl">
                     <div class="flex gap-3">
-                        <h2 class="font-bold text-2xl">M02</h2> <h2 class="font-bold text-2xl">#003</h2>
+                        <h2 class="font-bold text-2xl">M01</h2> <h2 class="font-bold text-2xl">#004</h2>
                     </div>
                     
                     <div class="bg-[#ECCF98] rounded-xl flex p-2 items-center">
@@ -71,9 +74,9 @@
                         </div>
         
                         <div>
-                            <p>Mac n Cheese</p>
+                            <p>Teh Tong</p>
                             <p>
-                                Notes: 
+                                Notes: Es nya dipisah
                                 <p>-</p> 
                             </p>
                         </div>
