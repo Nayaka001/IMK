@@ -22,7 +22,7 @@ return new class extends Migration
             $table->char('id_meja', 3)->nullable(); //DINE IN & RESERVASI
             $table->foreign('id_meja')->references('id_meja')->on('meja')->onDelete('restrict')->onUpdate('restrict'); //DINE IN & RESERVASI
             $table->timestamp('waktu_order')->useCurrent();
-            $table->string('no_hp', 13)->nullable();//RESERVASI
+            $table->string('no_hp', 14)->nullable();//RESERVASI
             $table->timestamp('kedatangan')->nullable(); //RESERVASI
         });
     }

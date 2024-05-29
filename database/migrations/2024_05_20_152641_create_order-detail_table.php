@@ -5,17 +5,6 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 
- /*
- Tabel Order Details
-    id_order_details PK INT
-    id_order FK 
-    id_menu FK
-    notes TEXT NULLABLE
-    jumlah INT
-    subtotal INT 
-    id_progres FK 
-    Progres ENUM (‘To Cook, ‘Ready’, ‘Complete’)
- */
 
 return new class extends Migration
 {
