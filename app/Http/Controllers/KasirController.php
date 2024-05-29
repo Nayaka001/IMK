@@ -248,6 +248,10 @@ class KasirController extends Controller
         $orders = Order::whereDate('waktu_order', now()->toDateString())
                         ->orderBy('waktu_order')
                         ->get();
+        // $pesan = DetailPesanan::whereDate('waktu_order', now()->toDateString())
+        //                 ->orderBy('waktu_order')
+        //                 ->get();
+        
         $report = Pengeluaran::all();
         $detail = DetailPesanan::all();
         $totalIncome = 0;
@@ -283,10 +287,34 @@ class KasirController extends Controller
             'totalIncome' => $totalIncome,
             'totalOrders' => $totalOrders,
             'menuNames' => $menuNames,
+            'orders' => $orders,
             // 'orderDetails' => $orderDetails,
             'menuQuantities' => $menuQuantities,
             'report' => $report
         ]);
+    }
+    public function report($id_order){
+        $order = Order::find($id_order);
+        $detailOrders = OrderDetail::where('id_order', $id_order)->get();
+        $detail = DetailPesanan::where('id_order', $id_order)->get();
+        $total = DetailPesanan::where('id_order', $id_order)->sum('subtotal');
+      
+        $jumlahMenu = OrderDetail::where('id_order', $id_order)->sum('jumlah');
+        $orderDetails = [
+            'waktu_order' => $order->waktu_order,
+            'nama_pelanggan' => $order->nama_pelanggan,
+            'jlh_org' => $order->jlh_org,
+            'id_meja' => $order->id_meja,
+            'detailorder' => $detailOrders,
+            'detail' => $detail,
+            'jlh_menu' => $jumlahMenu,
+            'total' => $total,
+        ];
+        foreach ($detail as $detailItem) {
+            $detailItem->gambar_menu = asset('img/menu/' . $detailItem->gambar_menu);
+        }
+        // Kembalikan data dalam format JSON
+        return response()->json($orderDetails);
     }
     public function storepengeluaran(Request $request)
     {

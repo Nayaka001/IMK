@@ -30,6 +30,11 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(Karyawan::class, 'id_user', 'id_user');
     }
+    public function order()
+    {
+        return $this->hasOne(Order::class, 'id_user', 'id_user');
+    }
+   
     public function getAuthIdentifierName()
     {
         return 'id_user'; // Nama kolom yang digunakan sebagai identifier
