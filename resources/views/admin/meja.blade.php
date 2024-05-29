@@ -88,5 +88,53 @@
               </div>
         </div>
     </div>
+
+
+    <!-- Tambah Meja Modal -->
+<div id="tambahMejaModal" class="modal flex">
+    <!-- Modal content -->
+    <div class="modal-content relative z-10 w-full max-w-xl mx-auto"> <!-- Adjusted width to max-w-6xl -->
+                        <span class="close absolute top-4 right-4">&times;</span>
+                        <div class="flex-auto p-6">
+                        <div class="p-6 mb-0 text-center bg-white border-b-0 rounded-t-2xl">
+                            <h5 class="font-semibold text-lg"><i class="fa fa-utensils mr-2"> </i>Tambah Meja</h5>
+                            <div class="w-full mt-2 p-1 mb-2 h-2 bg-slate-700 rounded"></div>
+                        </div>
+                        <form id="tambahSubKategoriForm" class="p-6">
+                            <div class="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
+                            <div class="w-full px-2 ">
+                                <div class="mb-4">
+                                <label class="block font-normal" for="nama">Nama Sub Kategori</label>
+                                <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Nama Sub Kategori" id="nama" name="nama">
+                                </div>
+                                <div class="mb-4">
+                                <label class="block font-normal" for="sub-kategori">Kategori</label>
+                                <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="sub-kategori" name="sub-kategori">
+                                    <option value="">Pilih Kategori</option>
+                                    <option value="Steaks & Hotplates">STEAKS & HOTPLATES</option>
+                                    <option value="Rice Hotplate">RICE HOTPLATE</option>
+                                    <option value="Geprek">Geprek</option>
+                                </select>
+                                </div>
+                            </div>
+                            <!-- <div class="w-full px-2 md:w-1/2">
+                                <div class="mb-4">
+                                <label class="block font-normal" for="keterangan">Keterangan</label>
+                                <textarea type="tel" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan keterangan menu" id="keterangan" name="keterangan"></textarea>
+                                </div>
+                                <div class="mb-4">
+                                <label class="block font-normal" for="foto">Foto</label>
+                                <input type="file" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="foto" name="foto">
+                                </div>
+                            </div> -->
+                            </div>
+                            <div class="text-center">
+                            <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Tambah Menu</button>
+                            </div>
+                        </form>
+                        </div>
+                    </div>                          
+</div>
+
     
 @endsection('content')

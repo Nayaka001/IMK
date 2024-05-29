@@ -103,7 +103,7 @@
           <li class="mt-0.5 w-full">
             <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors {{ request()->routeIs('profile') ? 'bg-[#cfdbd5] rounded-lg font-semibold text-slate-700' : '' }}" href="{{ route('profile') }}">
               <div class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-[#cfdbd5] bg-center stroke-0 text-center xl:p-2.5 {{ request()->routeIs('profile') ? 'bg-gradient-to-tl from-[#000000] to-[#CCCCBD]' : '' }}">
-                <i class="fa fa-utensils text-lg text-gray-700 {{ request()->routeIs('profile') ? 'text-white' : '' }}"></i>
+                <i class="ni ni-single-02 text-lg text-gray-700 {{ request()->routeIs('profile') ? 'text-white' : '' }}"></i>
               </div>
               <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Profile</span>
             </a>

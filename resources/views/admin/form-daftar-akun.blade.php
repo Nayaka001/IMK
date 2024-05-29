@@ -96,7 +96,7 @@
 
 
 <!-- The Modal -->
-<div id="myModal" class="modal flex">
+<div id="konfirmModal" class="modal flex">
     <!-- Modal content -->
       <div class="modal-content relative z-10">
         <span class="close absolute top-4 right-4">&times;</span>
@@ -263,13 +263,13 @@
 
 <script>
     // Get the modal
-    var modal = document.getElementById("myModal");
+    var modal = document.getElementById("konfirmModal");
 
     // Get the button that opens the modal
     var btn = document.getElementById("tambahKaryawanBtn");
 
     // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+    var span = modal.getElementsByClassName("close")[0];
 
     // When the user clicks the button, open the modal 
     btn.onclick = function() {
@@ -292,7 +292,7 @@
 
 <script>
     // Mendapatkan modal
-    var modal = document.getElementById("myModal");
+    var modal = document.getElementById("konfirmModal");
 
     // Mendapatkan tombol Batal
     var cancelButton = document.getElementById("cancelButton");

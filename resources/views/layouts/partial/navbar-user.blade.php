@@ -2,13 +2,13 @@
         <div id="linkall">
             <span style="background-color: #FFD369;" class="inline-block p-2 mr-4 m-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent {{ request()->routeIs('user') ? 'border-2 border-solid' : '' }} rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 bg-gray-500 border-black text-black hover:opacity-75">
                 All
-                <i class="fa fa-utensils text-lg text-gray-700 ml-2"></i>
+                <i class="fa fa-users text-lg text-gray-700 ml-2"></i>
             </span>
         </div>
         <div id="linkpelayan">
             <span style="background-color: #FFD369;" class="inline-block p-2 m-2 mb-0 mx-4 font-bold text-center uppercase align-middle transition-all bg-transparent {{ request()->routeIs('user.pelayan') ? 'border-2 border-solid' : '' }} rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
                 Pelayan
-                <i class="fa fa-utensils text-lg text-gray-700 ml-2"></i>
+                <i class="ni ni-single-02 text-lg text-gray-700 ml-2"></i>
             </span>
         </div>
         <div id="linkkitchen">
@@ -20,13 +20,13 @@
         <div id="linkbartender">
             <span style="background-color: #FFD369;" class="inline-block p-2 m-2 mx-4 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent {{ request()->routeIs('user-bartender') ? 'border-2 border-solid' : '' }} rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
                 Bartender
-                <i class="fa fa-utensils text-lg text-gray-700 ml-2"></i>
+                <i class="fa fa-blender text-lg text-gray-700 ml-2"></i>
             </span>
         </div>
         <div id="linkkasir">
             <span style="background-color: #FFD369;" class="inline-block p-2 mx-4 m-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent {{ request()->routeIs('user-kasir') ? 'border-2 border-solid' : '' }} rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
                 Kasir
-                <i class="fa fa-utensils text-lg text-gray-700 ml-2"></i>
+                <i class="fa fa-cash-register text-lg text-gray-700 ml-2"></i>
             </span>
         </div>
     </a>
