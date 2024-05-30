@@ -58,9 +58,13 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/form-daftar-akun', [AdminController::class, 'daftar'])->name('daftar-akun');
     Route::post('/admin/store-daftar', [AdminController::class, 'storeuser'])->name('store.user');
     Route::get('/admin/menu', [AdminController::class, 'menu'])->name('menu');
+    Route::get('/admin/menu/kategori', [AdminController::class, 'kategori'])->name('kategori');
+    Route::post('/admin/menu/subkategori', [AdminController::class, 'subkategori'])->name('subkategori');
     Route::post('/admin/storemenu', [AdminController::class, 'storemenu'])->name('storemenu');
     Route::delete('/admin/destroymenu/{id_menu}', [AdminController::class, 'destroymenu'])->name('destroymenu');
     Route::delete('/admin/destroyuser/{id_user}', [AdminController::class, 'destroyuser'])->name('destroyuser');
+    Route::get('/admin/laporan-penjualan', [AdminController::class, 'laporan'])->name('laporan-penjualan');
+    Route::get('/admin/meja', [AdminController::class, 'meja'])->name('meja');
 
     Route::get('/admin/user/pelayan', function () {
         return view('admin.pelayan');
@@ -77,14 +81,8 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/profile', function () {
         return view('admin.profile');
     })->name('profile');
-    Route::get('/admin/meja', function () {
-        return view('admin.meja');
-    })->name('meja');
 
 
-    Route::get('/admin/laporan-penjualan', function () {
-        return view('admin.laporan-penjualan');
-    })->name('laporan-penjualan');
 
     Route::get('/admin/laporan-pendapatan', function () {
         return view('admin.laporan-pendapatan');

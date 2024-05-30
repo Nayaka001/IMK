@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Karyawan;
 use App\Models\Kategori;
+use App\Models\Meja;
 use App\Models\User;
 use App\Models\Menu;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Pengeluaran;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -23,6 +26,7 @@ class AdminController extends Controller
         $totalCustomer = Order::sum('jlh_org');
         $jual = OrderDetail::sum('jumlah');
         $dapat = OrderDetail::sum('subtotal');
+        $pengeluaran = Pengeluaran::sum('pengeluaran');
 
         return view('admin.dashboard',[
             'totalKitchenUsers' => $totalKitchenUsers,
@@ -32,7 +36,8 @@ class AdminController extends Controller
             'totalMenu' => $totalMenu,
             'totalCustomer' => $totalCustomer,
             'jual' => $jual,
-            'dapat' => $dapat
+            'dapat' => $dapat,
+            'pengeluaran' => $pengeluaran
         ]);
     }
     public function user(){
@@ -78,6 +83,71 @@ class AdminController extends Controller
         return view('admin.menu',[
             'menus' => $menus,
             'kategori' => $kategori
+        ]);
+    }
+    public function meja(){
+        $meja = Meja::all();
+         
+        return view('admin.meja',[
+            'meja' => $meja,
+        ]);
+    }
+    public function kategori(Request $request){
+        $kategori = new Kategori();
+        $kategori->kategori = $request->input('nama');
+        $kategori->jenis = $request->input('jenis');
+        $kategori->save();
+         
+        return back()->with('succes', 'Kategori berhasil ditambahkan');
+    }
+    public function subkategori(Request $request){
+        $kategori = new Kategori();
+        $kategori->subkategori = $request->input('nama');
+        $kategori->kategori = $request->input('kategori');
+        $kategori->jenis = $request->input('jenis');
+        $kategori->save();
+         
+        return back()->with('succes', 'Sub Kategori berhasil ditambahkan');
+    }
+    public function laporan(){
+        $today = Carbon::today()->toDateString();
+
+        // Mengambil orders hari ini dan mengurutkannya berdasarkan waktu_order
+        $laporan = Order::whereDate('waktu_order', $today)
+                        ->orderBy('waktu_order')
+                        ->get();
+
+        // Mendapatkan awal dan akhir bulan saat ini
+        $startOfMonth = Carbon::now()->startOfMonth()->toDateString();
+        $endOfMonth = Carbon::now()->endOfMonth()->toDateString();
+
+        // Mengambil orders dalam bulan ini dan mengurutkannya berdasarkan waktu_order
+        $bulan = Order::whereBetween('waktu_order', [$startOfMonth, $endOfMonth])
+                    ->orderBy('waktu_order')
+                    ->get();
+
+        $startOfWeek = Carbon::now()->startOfWeek()->toDateString();
+        $endOfWeek = Carbon::now()->endOfWeek()->toDateString();   
+        
+        $minggu = Order::whereBetween('waktu_order', [$startOfWeek, $endOfWeek])
+                    ->orderBy('waktu_order')
+                    ->get();
+
+        // Menambahkan total subtotal ke setiap order
+        foreach ($laporan as $order) {
+            $order->total_subtotal = $order->detailorder->sum('subtotal');
+        }
+        foreach ($bulan as $bulans) {
+            $bulans->total_subtotal = $bulans->detailorder->sum('subtotal');
+        }
+        foreach ($minggu as $orders) {
+            $orders->total_subtotal = $orders->detailorder->sum('subtotal');
+        }
+         
+        return view('admin.laporan-penjualan',[
+            'laporan' => $laporan,
+            'minggu' => $minggu,
+            'bulan' => $bulan,
         ]);
     }
     public function storemenu(Request $request){

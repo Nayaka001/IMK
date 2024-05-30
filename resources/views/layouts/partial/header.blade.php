@@ -231,7 +231,7 @@
               </li> -->
               @if (request()->routeIs('index.admin') || request()->routeIs('laporan-penjualan') || request()->routeIs('laporan-pendapatan'))
               <div class="flex items-center ml-2 md:ml-auto md:pr-4">
-                <select class="inline-block px-0.5 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-2 border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
+                <select id="periodSelect" class="inline-block px-0.5 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-2 border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
                   <option value="option1">Daily</option>
                   <option value="option2">Weekly</option>
                   <option value="option3">Monthly</option>
@@ -300,7 +300,7 @@
       </nav>
 
       <!-- end Navbar -->
-
+      
       <script>
     // Get the modal
     var modal = document.getElementById("myModal");
