@@ -350,7 +350,8 @@
                             <h5 class="font-semibold text-lg"><i class="fa fa-utensils mr-2"> </i>Tambah Kategori</h5>
                             <div class="w-full mt-2 p-1 mb-2 h-2 bg-slate-700 rounded"></div>
                         </div>
-                        <form id="tambahKategoriForm" class="p-6">
+                        <form id="tambahKategoriForm" method="POST" action="{{route('kategori')}}" class="p-6">
+                          @csrf
                             <div class="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
                             <div class="w-full px-2 ">
                                 <div class="mb-4">
@@ -359,8 +360,8 @@
                                 </div>
                                 <div class="mb-4">
                                 <label class="block font-normal" for="sub-kategori">Jenis</label>
-                                <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="sub-kategori" name="sub-kategori">
-                                    <option value="">Pilih Jenis</option>
+                                <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="sub-kategori" name="jenis">
+                                    <option value="">Pilih Jenis</option> 
                                     <option value="Makanan">Makanan</option>
                                     <option value="Minuman">Minuman</option>
                                 </select>
@@ -395,7 +396,8 @@
                             <h5 class="font-semibold text-lg"><i class="fa fa-utensils mr-2"> </i>Tambah Sub-Kategori</h5>
                             <div class="w-full mt-2 p-1 mb-2 h-2 bg-slate-700 rounded"></div>
                         </div>
-                        <form id="tambahSubKategoriForm" class="p-6">
+                        <form id="tambahSubKategoriForm" action="{{route('subkategori')}}" method="POST" class="p-6">
+                          @csrf
                             <div class="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
                             <div class="w-full px-2 ">
                                 <div class="mb-4">
@@ -403,12 +405,21 @@
                                 <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Nama Sub Kategori" id="nama" name="nama">
                                 </div>
                                 <div class="mb-4">
-                                <label class="block font-normal" for="sub-kategori">Kategori</label>
-                                <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="sub-kategori" name="sub-kategori">
+                                <label class="block font-normal" for="kategori">Kategori</label>
+                                <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="sub-kategori" name="kategori">
                                     <option value="">Pilih Kategori</option>
-                                    <option value="Steaks & Hotplates">STEAKS & HOTPLATES</option>
-                                    <option value="Rice Hotplate">RICE HOTPLATE</option>
-                                    <option value="Geprek">Geprek</option>
+                                    @foreach($kategori->unique('kategori') as $kategoris)
+                                    <option value="{{$kategoris->kategori}}">{{$kategoris->kategori}}</option>
+                                    @endforeach
+                                </select>
+                                </div>
+                                <div class="mb-4">
+                                <label class="block font-normal" for="jenis">Jenis</label>
+                                <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="jenis" name="jenis">
+                                    <option value="">Pilih Kategori</option>
+                                    @foreach($kategori->unique('jenis') as $kategoris)
+                                    <option value="{{$kategoris->jenis}}">{{$kategoris->jenis}}</option>
+                                    @endforeach
                                 </select>
                                 </div>
                             </div>

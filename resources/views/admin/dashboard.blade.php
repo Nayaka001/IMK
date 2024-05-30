@@ -134,7 +134,7 @@
                       <div class="flex-auto p-4 pt-0 text-center">
                         <h6 class="mb-0 font-sans font-bold text-center">Total Pengeluaran</h6>
                         <hr class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent" />
-                        <h5 class="mb-0 font-bold text-black">700</h5>
+                        <h5 class="mb-0 font-bold text-black">Rp {{ number_format($pengeluaran, 0, ',', '.') }}</h5>
                       </div>
                     </div>
                   </div>
@@ -358,6 +358,7 @@
 
 
       <!-- LOGIN ALERT -->
+      @if(session('notification'))
 <div id="toast" role="alert" class="fixed top-5 right-14 rounded-2xl border border-gray-100 bg-white p-6 shadow-xl dark:border-gray-800 dark:bg-gray-900 transition duration-700 hidden"> 
     <div class="flex items-start gap-4">
         <span class="text-emerald-600" style="color: green;">
@@ -370,7 +371,7 @@
                 <strong class="block font-medium text-gray-900 dark:text-white">Login Berhasil!</strong>
                 <!-- <div class="w-full mt-2 h-1 bg-slate-700 rounded"></div> -->
             </div>
-            <p class="mt-1 text-sm text-gray-700 dark:text-gray-200" style="color: green;">Halo, selamat datang admin.</p>
+            <p class="mt-1 text-sm text-gray-700 dark:text-gray-200" style="color: green;">{{ session('notification') }}</p>
         </div>
         <button class="absolute top-4 right-4 text-gray-500 transition hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500" onclick="dismissToast()">
             <span class="sr-only">Dismiss popup</span>
@@ -380,6 +381,7 @@
         </button>
     </div>
 </div>
+@endif
 
 
 

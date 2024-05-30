@@ -31,7 +31,7 @@ class LoginController extends Controller
             } elseif ($user->level_user === 'Bartender') {
                 return redirect()->route('index.bartender')->with('notification', 'Login Berhasil sebagai Kasir');
             } elseif ($user->level_user === 'Admin') {
-                return redirect()->route('index.admin')->with('notification', 'Login Berhasil sebagai Admin');
+                return redirect()->route('index.admin')->with('notification', 'Halo, selamat datang admin.');
             }
         }
         
