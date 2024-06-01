@@ -19,9 +19,9 @@ return new class extends Migration
             o.nama_pelanggan,
             o.id_meja,
             o.waktu_order,
-            k.nama AS nama_kasir, -- assuming the name of the cashier is in the users table
+            k.nama AS nama_kasir, 
             o.jlh_org,
-            SUM(od.jumlah) AS items, -- summing up the 'jumlah' column to get the total items
+            SUM(od.jumlah) AS items, 
             od.id_order_details,
             m.nama_menu,
             m.gambar_menu,

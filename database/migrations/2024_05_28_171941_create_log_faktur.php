@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('log-faktur', function (Blueprint $table) {
-            $table->id();
             $table->integer('id_order');
             $table->string('tipe_order');
             $table->string('tipe_pembayaran');
