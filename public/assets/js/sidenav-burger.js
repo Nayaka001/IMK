@@ -28,7 +28,7 @@ sidenav_close_button.addEventListener("click", function () {
 
 window.addEventListener("click", function (e) {
   if (!sidenav.contains(e.target) && !sidenav_trigger.contains(e.target)) {
-    if (sidenav.classList.contains("-translate-x-full")) {
+    if (!sidenav.classList.contains("-translate-x-full")) {
       sidenav_trigger.click();
     }
   }
