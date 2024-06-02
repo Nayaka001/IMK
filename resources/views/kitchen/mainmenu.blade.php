@@ -32,57 +32,65 @@
         <!-- pesanan -->
         <div class="m-4 justify-center gap-5 flex flex-wrap">
             <!-- box pesanan -->
-            <a href="/kitchen-detail">
+            @foreach($orders as $order)
+            <a href="{{route('kitchen.detail', $order->id_order)}}">
                 <div class="bg-[#ffffff] rounded-2xl flex justify-center flex-col p-6 gap-3 items-start shadow-2xl">
                     <div class="flex gap-3">
-                        <h2 class="font-bold text-2xl">M02</h2> <h2 class="font-bold text-2xl">#003</h2>
+                        <h2 class="font-bold text-2xl">{{$order->id_meja}}</h2> <h2 class="font-bold text-2xl">#{{$order->id_order}}</h2>
                     </div>
-                    
-                    <div class="bg-[#ECCF98] rounded-xl flex p-2 items-center">
-                        Sedang dimasak
-                    </div>
-        
+                    @php
+                    $allCompleted = true;
+                    $cookingInProgress = false;
+                    @endphp
+                    @foreach($order->detailorder as $detail)
+                        @if($detail->progress !== 'Selesai')
+                            @php
+                                $allCompleted = false;
+                            @endphp
+                        @endif
+                        @if($detail->progress === 'Dimasak')
+                            @php
+                                $cookingInProgress = true;
+                            @endphp
+                        @endif
+                        @if($detail->progress === 'Siap Disajikan')
+                            @php
+                                $readyToCook = true;
+                            @endphp
+                        @endif
+                    @endforeach
+
+                    @if($cookingInProgress)
+                        <div class="bg-[#ECCF98] rounded-xl flex p-2 items-center">
+                            Sedang dimasak
+                        </div>
+                    @elseif($allCompleted)
+                        <div class="bg-[#ECCF98] rounded-xl flex p-2 items-center">
+                            Selesai
+                        </div>
+                    @elseif($readyToCook)
+                        <div class="bg-[#ECCF98] rounded-xl flex p-2 items-center">
+                            Siap Disajikan
+                        </div>
+                    @endif
+                    @foreach($order->detailorder as $detail)
                     <div class="grid grid-cols-2">
                         <div class="w-max flex">
-                            <p class="font-bold">2x</p>
+                            <p class="font-bold">{{$detail->jumlah}} x</p>
                         </div>
         
                         <div>
-                            <p>Mac n Cheese</p>
+                            <p>{{$detail->menu->nama_menu}}</p>
                             <p>
                                 Notes: 
-                                <p>-</p> 
+                                <p>{{ $detail->notes ?? '-'}}</p> 
                             </p>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </a>
-    
-            <a href="/kitchen-detail">
-                <div class="bg-[#ffffff] rounded-2xl flex justify-center flex-col p-6 gap-3 items-start shadow-2xl">
-                    <div class="flex gap-3">
-                        <h2 class="font-bold text-2xl">M02</h2> <h2 class="font-bold text-2xl">#003</h2>
-                    </div>
-                    
-                    <div class="bg-[#ECCF98] rounded-xl flex p-2 items-center">
-                        Sedang dimasak
-                    </div>
-        
-                    <div class="grid grid-cols-2">
-                        <div class="w-max flex">
-                            <p class="font-bold">2x</p>
-                        </div>
-        
-                        <div>
-                            <p>Mac n Cheese</p>
-                            <p>
-                                Notes: 
-                                <p>-</p> 
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
+            @endforeach
             <!-- end box pesanan -->
         </div>
         <!-- pesanan end -->

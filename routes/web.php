@@ -25,7 +25,10 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login.log
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Bagian Kitchen
-Route::get('/kitchen', [KitchenController::class, 'index'])->name('index.kitchen');
+Route::get('/kitchen-main', [KitchenController::class, 'index'])->name('index.kitchen');
+Route::get('/kitchen-detail/{id_order}',  [KitchenController::class, 'detail'])->name('kitchen.detail');
+Route::get('/kitchen-detail/{id_order}/{id_order_details}',  [KitchenController::class, 'modal'])->name('kitchen.detailmodal');
+
 
 //Bagian Kasir
 Route::middleware(['auth', 'role:Kasir'])->group(function () {
@@ -53,7 +56,7 @@ Route::middleware(['auth', 'role:Kasir'])->group(function () {
 
 //Bagian Admin
 Route::middleware(['auth', 'role:Admin'])->group(function () {
-    session()->now('success', 'Pendaftaran Berhasil!');
+    // session()->now('success', 'Pendaftaran Berhasil!');
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('index.admin');
     Route::get('/admin/user', [AdminController::class, 'user'])->name('user');
     Route::get('/admin/form-daftar-akun', [AdminController::class, 'daftar'])->name('daftar-akun');
@@ -172,9 +175,7 @@ Route::get('/new-order', function () {
 // })->name('new-order');
 
 //kitchen
-Route::get('/kitchen-main', function () {
-    return view('kitchen.mainmenu');
-});
+
 Route::get('/kitchen-cooking', function () {
     return view('kitchen.cooking');
 });
@@ -187,9 +188,7 @@ Route::get('/kitchen-done', function () {
 Route::get('/kitchen-reserve', function () {
     return view('kitchen.reserve');
 });
-Route::get('/kitchen-detail', function () {
-    return view('kitchen.detail');
-});
+
 Route::get('/kitchen-menu', function () {
     return view('kitchen.menu');
 });

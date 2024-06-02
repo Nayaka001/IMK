@@ -18,13 +18,15 @@
         <!-- kotak 1 -->
         <div class="bg-[#ffffff] rounded-2xl flex justify-center flex-col p-6 gap-3 items-start shadow-2xl w-full">
             <div class="flex gap-3">
-                <h2 class="font-bold text-2xl">M02</h2> <h2 class="font-bold text-2xl">#003</h2>
+                <h2 class="font-bold text-2xl">{{$order->id_meja}}</h2> <h2 class="font-bold text-2xl">#{{$order->id_order}}</h2>
             </div>
             <div class="bg-slate-500 py-1 px-3 rounded-3xl">
                 <h3 class="font-bold text-white">Sedang dimasak</h3>
             </div>
 
             <!-- pesanan 1 start -->
+            @foreach($details as $detail)
+            @if($detail->progress === 'Dimasak')
             <div class="w-full">
                 <!-- detail pesanan start -->
                 <div class="gap-3">
@@ -32,58 +34,20 @@
                     <div class="flex items-start flex-row justify-start gap-3">
                             <!-- gambarnya -->
                             <div>
-                                <img class="w-10" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                                <img class="w-10" src="{{asset('/img/menu/' . $detail->menu->gambar_menu)}}" alt="">
                             </div>
 
                             <!-- menu notes jumlah -->
                             <div>
                                 <h3 class="font-bold">
-                                    Menu 1
+                                    {{$detail->menu->nama_menu}}
                                 </h3>
                                 <p class="text-slate-400">
-                                    Notes:
+                                    Notes: {{$detail->note ?? 'Tidak ada note'}}
                                 </p>
                                 
                                 <div class="bg-[#FFD369] rounded-xl flex p-1 items-center justify-center">
-                                    <p>1</p>
-                                </div>
-                            </div>
-                            <!-- menu notes jumlah end -->
-                    </div>
-                    <!-- Detail Pesanan End -->
-
-                </div>
-                <!-- detail pesanan stop -->
-
-                <!-- button perbarui start -->
-                <div data-modal-target="default-modal" data-modal-toggle="default-modal" class="items-center mt-3 w-full">                <button  id="openModalBtn" type="button" class="w-full items-center justify-center text-white bg-[#FFD369] hover:bg-[#edca69] font-medium rounded-lg text-sm p-2 text-center">Perbarui</button>
-                </div>
-                <!-- button perbarui end -->
-            </div>
-            <!-- pesanan 1 end -->
-
-            <!-- pesanan 2 start -->
-            <div class="w-full">
-                <!-- detail pesanan start -->
-                <div class="gap-3">
-                    <!-- Detail Pesanan Start -->
-                    <div class="flex items-start flex-row justify-start gap-3">
-                            <!-- gambarnya -->
-                            <div>
-                                <img class="w-10" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-                            </div>
-
-                            <!-- menu notes jumlah -->
-                            <div>
-                                <h3 class="font-bold">
-                                    Menu 1
-                                </h3>
-                                <p class="text-slate-400">
-                                    Notes:
-                                </p>
-                                
-                                <div class="bg-[#FFD369] rounded-xl flex p-1 items-center justify-center">
-                                    <p>1</p>
+                                    <p>{{$detail->jumlah}}</p>
                                 </div>
                             </div>
                             <!-- menu notes jumlah end -->
@@ -95,10 +59,15 @@
 
                 <!-- button perbarui start -->
                 <div data-modal-target="default-modal" data-modal-toggle="default-modal" class="items-center mt-3 w-full">
-                    <button type="button" class="w-full items-center justify-center text-white bg-[#FFD369] hover:bg-[#edca69] font-medium rounded-lg text-sm p-2 text-center">Perbarui</button>
+                    <button data-detail-id="{{ $detail->id_order_details }}" data-order-id="{{ $detail->id_order }}"  class=""  id="openModalBtn" type="button" class="details-button w-full items-center justify-center text-white bg-[#FFD369] hover:bg-[#edca69] font-medium rounded-lg text-sm p-2 text-center">Perbarui</button>
                 </div>
                 <!-- button perbarui end -->
             </div>
+            @endif
+            @endforeach
+            <!-- pesanan 1 end -->
+
+            <!-- pesanan 2 start -->
             <!-- pesanan 2 end -->
         </div>
 
@@ -112,6 +81,8 @@
             </div>
 
             <!-- pesanan 1 start -->
+            @foreach($details as $detail)
+            @if($detail->progress === 'Siap Disajikan')
             <div class="w-full">
                 <!-- detail pesanan start -->
                 <div class="gap-3">
@@ -119,20 +90,20 @@
                     <div class="flex items-start flex-row justify-start gap-3">
                             <!-- gambarnya -->
                             <div>
-                                <img class="w-10" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                                <img class="w-10" src="{{asset('/img/menu/' . $detail->menu->gambar_menu)}}" alt="">
                             </div>
 
                             <!-- menu notes jumlah -->
                             <div>
                                 <h3 class="font-bold">
-                                    Menu 1
+                                    {{$detail->menu->nama_menu}}
                                 </h3>
                                 <p class="text-slate-400">
-                                    Notes:
+                                    Notes: {{$detail->note ?? 'Tidak ada note'}}
                                 </p>
                                 
                                 <div class="bg-[#FFD369] rounded-xl flex p-1 items-center justify-center">
-                                    <p>1</p>
+                                    <p>{{$detail->jumlah}}</p>
                                 </div>
                             </div>
                             <!-- menu notes jumlah end -->
@@ -142,6 +113,8 @@
                 </div>
                 <!-- detail pesanan stop -->
             </div>
+            @endif
+            @endforeach
             <!-- pesanan 1 end -->
 
             <!-- pesanan 2 start -->
@@ -197,44 +170,7 @@
                     <!-- Modal content here -->
                     <div class="flex items-start p-4 flex-row gap-3">
                         <!-- gambarnya -->
-                        <div>
-                            <img class="w-10" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-                        </div>
-                        <!-- menu notes jumlah -->
-                        <div>
-                            <h3 class="font-bold">Menu 1</h3>
-                            <p class="text-slate-400">Notes:</p>
-                            <div class="bg-yellow-400 rounded-xl flex p-2 items-center justify-center">
-                                <div x-data="{ productQuantity: 1 }">
-                                    <label for="Quantity" class="sr-only"> Quantity </label>
-                                    <div class="flex items-center w-14 h-7 my-2 md:w-20 md:h-7 lg:w-24 lg:h-8">
-                                    <button
-                                        type="button"
-                                        x-on:click="productQuantity--"
-                                        :disabled="productQuantity === 0"
-                                        class="size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75"
-                                    >
-                                        &minus;
-                                    </button>
-                                
-                                    <input
-                                        type="number"
-                                        id="Quantity"
-                                        x-model="productQuantity"
-                                        class="h-5 w-8 lg:h-7 lg:w-9 border-transparent text-center text-xs px-0 lg:text-lg [-moz-appearance:_textfield] sm:text-sm [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-                                    />
-                                
-                                    <button
-                                        type="button"
-                                        x-on:click="productQuantity++"
-                                        class="size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75"
-                                    >
-                                        &plus;
-                                    </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <!-- menu notes jumlah end -->
                     </div>
         
@@ -273,7 +209,132 @@
             </div>
         </div>
         <!-- Modal Konfirmasi End -->
-
+        <script>
+            $(document).ready(function() {
+            $('.details-button').on('click', function() {
+                var orderId = $(this).data('order-id');
+                var detailId = $(this).data('detail-id');
+        
+                $.ajax({
+                    url: '/kitchen-detail/' + orderId + '/' + detailId, // Ganti dengan endpoint yang sesuai
+                    type: 'GET',
+                    success: function(response) {
+        
+                        console.log(response)
+                        // Asumsikan responsenya adalah object dengan struktur data yang diperlukan
+                        var modalBody = `
+                        <div>
+                            <img class="w-10" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                        </div>
+                        <!-- menu notes jumlah -->
+                        <div>
+                            <h3 class="font-bold">Menu 1</h3>
+                            <p class="text-slate-400">Notes:</p>
+                            <div class="bg-yellow-400 rounded-xl flex p-2 items-center justify-center">
+                                <div x-data="{ productQuantity: 1 }">
+                                    <label for="Quantity" class="sr-only"> Quantity </label>
+                                    <div class="flex items-center w-14 h-7 my-2 md:w-20 md:h-7 lg:w-24 lg:h-8">
+                                    <button
+                                        type="button"
+                                        x-on:click="productQuantity--"
+                                        :disabled="productQuantity === 0"
+                                        class="size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75"
+                                    >
+                                        &minus;
+                                    </button>
+                                
+                                    <input
+                                        type="number"
+                                        id="Quantity"
+                                        x-model="productQuantity"
+                                        class="h-5 w-8 lg:h-7 lg:w-9 border-transparent text-center text-xs px-0 lg:text-lg [-moz-appearance:_textfield] sm:text-sm [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+                                    />
+                                
+                                    <button
+                                        type="button"
+                                        x-on:click="productQuantity++"
+                                        class="size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75"
+                                    >
+                                        &plus;
+                                    </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         `;
+                        $('#modalBody').html(modalBody);
+        
+                        // Bagian menu yang dipesan
+                        const menuContainer = document.querySelector('.menu-container');
+                        const noteContainer = document.querySelector('.note-container');
+        
+                        response.detail.forEach(details => {
+                            const menuItem = document.createElement('div');
+                            menuItem.className = 'flex-col w-full';
+                            
+        
+                            menuItem.innerHTML = `
+                            <div class=" flex my-3">
+                                <div>
+                                    <img src="${details.gambar_menu}" alt=""  width="110" height="110" class="rounded-xl object-cover hidden sm:flex">
+                                </div>
+                                <div class="flex w-full justify-between">
+                                    <div class="ml-3 w-1/2">
+                                        <h1 class="text-lg font-semibold">${details.nama_menu}</h1>
+                                        <div class="w-16 text-center bg-[#FFD369] rounded-full">${details.jumlah}</div>
+                                    </div>
+                                    <div>
+                                        <h1 class="text-lg font-bold">Rp ${details.subtotal}</h1>
+                                        <div class="text-center w-fit p-1 px-2 bg-green-300 rounded-full">${details.progress}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            `;
+        
+                            menuContainer.appendChild(menuItem);
+        
+                            
+                        });
+                        
+                        const totalElement = document.createElement('div');
+                        totalElement.className = 'flex text-xl font-bold mt-10 justify-between';
+                        const totalAmount = response.total;
+                        totalElement.innerHTML = `
+                                <div>Total</div>
+                                <div>Rp  ${totalAmount}</div>
+                            `;
+        
+                            // Tambahkan elemen total setelah elemen terakhir dalam kontainer
+                        menuContainer.appendChild(totalElement);
+        
+                        response.detail.forEach(note => {
+                            const noteItem = document.createElement('div');
+                            noteItem.className = 'flex';
+                            let noteText = note.note ? note.note : 'Tidak ada note';
+        
+                            noteItem.innerHTML = `
+                            <p class="font-semibold text-base mr-3 w-1/2">${note.nama_menu}</p>
+                            <p class="text-base w-2/3">${noteText}</p>
+                            `;
+        
+                            noteContainer.appendChild(noteItem);
+                        });
+                        
+        
+        
+        
+                        $('#default-modal').removeClass('hidden');
+                    },
+                    
+                });
+            });
+        
+            // Event listener to hide modal
+            $('[data-modal-hide="default-modal"]').on('click', function() {
+                $('#default-modal').addClass('hidden');
+            });
+            });
+        </script>
 
 
     <script>
