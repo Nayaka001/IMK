@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class KitchenController extends Controller
+class PelayanController extends Controller
 {
     public function index(){
-        return view('kitchen.mainmenu');
+        return view('pelayan.orderlistdone');
     }
 }
