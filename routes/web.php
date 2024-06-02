@@ -5,6 +5,7 @@ use App\Http\Controllers\BartenderController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\KitchenController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PelayanController;
 use Illuminate\Support\Facades\Route;
 
 /*

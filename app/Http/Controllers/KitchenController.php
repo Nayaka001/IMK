@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class KitchenController extends Controller
 {
     public function index(){
+
         $orders = Order::with('detailorder')->get();
         return view('kitchen.mainmenu', [
             'orders' => $orders
@@ -38,5 +39,6 @@ class KitchenController extends Controller
     } else {
         return response()->json(['error' => 'Order detail not found'], 404);
     }
+
     }
 }
