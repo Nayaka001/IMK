@@ -12,7 +12,7 @@
         <div class="my-3">
             <div class="flex justify-between">
                 <p>No Order</p>
-                <p>001</p>
+                <p>{{ $latestOrderId }}</p>
             </div>
             <div class="flex justify-between">
                 <p>Kasir</p>
@@ -20,57 +20,47 @@
             </div>
             <div class="flex justify-between">
                 <p>Waktu</p>
-                <p>28 Mei 2024 12.01 PM</p>
+                <p>{{$latestWaktuId}}</p>
             </div>
             <div class="flex justify-between">
                 <p>Nama Pelanggan</p>
-                <p>Fildza</p>
+                <p>{{$pelangganid}}</p>
             </div>
             <div class="flex justify-between">
                 <p>Jenis Pesanan</p>
-                <p>Makan di Tempat</p>
+                <p>{{$tipeid}}</p>
             </div>
         </div>
         <hr class="border border-dashed border-black">
         <div class="my-3">
             {{-- menu --}}
+            @foreach($order_detail as $order)
             <div>
-                <p>Chicken Steak</p>
+                <p>{{$order->menu->nama_menu}}</p>
                 <div class="flex gap-6 justify-between">
                     <div class="flex gap-5">
-                        <p>1</p>
+                        <p>{{$order->jumlah}}</p>
                         <p>X</p>
-                        <p>15.000</p>
+                        <p>Rp {{ number_format($order->subtotal, 0, ',', '.') }}</p>
                     </div>
-                    <p>Rp 15.000</p>
+                    <p>Rp {{ number_format($order->jumlah * $order->subtotal, 0, ',', '.') }}</p>
                 </div>
             </div>
-            {{-- menu --}}
-            <div>
-                <p>Chicken Steak</p>
-                <div class="flex gap-6 justify-between">
-                    <div class="flex gap-5">
-                        <p>1</p>
-                        <p>X</p>
-                        <p>15.000</p>
-                    </div>
-                    <p>Rp 15.000</p>
-                </div>
-            </div>
+            @endforeach
         </div>
         <hr class="border border-dashed border-black">
         <div class="my-3">
             <div class="flex justify-between">
                 <p class="font-bold">Total</p>
-                <p class="font-bold">Rp 30.000</p>
+                <p class="font-bold">Rp {{ number_format($total_harga, 0, ',', '.') }}</p>
             </div>
             <div class="flex justify-between">
                 <p>Bayar (Cash)</p>
-                <p>Rp 50.000</p>
+                <p>Rp {{ number_format($bayarid, 0, ',', '.') }}</p>
             </div>
             <div class="flex justify-between">
                 <p>Kembali</p>
-                <p>Rp 20.000</p>
+                <p>Rp {{ number_format($kembaliid, 0, ',', '.') }}</p>
             </div>
         </div>
         <hr class="border border-dashed border-black">

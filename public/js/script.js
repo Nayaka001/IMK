@@ -303,6 +303,8 @@ function confirmMoney(isInput = false) {
         document.getElementById('change').innerText = `Rp ${formatNumber(change)}`;
         document.getElementById('moneySection').classList.add('hidden');
         document.getElementById('moneyDisplay').classList.remove('hidden');
+        document.getElementById('money_paid').value = money;
+        document.getElementById('change_hidden').value = change;
     } else {
         alert('Jumlah uang tidak mencukupi');
     }
