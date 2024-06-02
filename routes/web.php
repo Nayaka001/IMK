@@ -5,6 +5,7 @@ use App\Http\Controllers\BartenderController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\KitchenController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PelayanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +25,10 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login.log
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Bagian Kitchen
-Route::get('/kitchen', [KitchenController::class, 'index'])->name('index.kitchen');
+Route::get('/kitchen-main', [KitchenController::class, 'index'])->name('index.kitchen');
+Route::get('/kitchen-detail/{id_order}',  [KitchenController::class, 'detail'])->name('kitchen.detail');
+Route::get('/kitchen-detail/{id_order}/{id_order_details}',  [KitchenController::class, 'modal'])->name('kitchen.detailmodal');
+
 
 //Bagian Kasir
 Route::middleware(['auth', 'role:Kasir'])->group(function () {
@@ -47,19 +51,24 @@ Route::middleware(['auth', 'role:Kasir'])->group(function () {
     Route::post('/kasir/laporan/pengeluaran', [KasirController::class, 'storepengeluaran'])->name('store.pengeluaran');
 
     Route::get('/report',  [KasirController::class, 'indexreport'])->name('report');
+    Route::get('/report/{id_order}',  [KasirController::class, 'report'])->name('modal.report');
 });
 
 //Bagian Admin
 Route::middleware(['auth', 'role:Admin'])->group(function () {
-    session()->now('success', 'Pendaftaran Berhasil!');
+    // session()->now('success', 'Pendaftaran Berhasil!');
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('index.admin');
     Route::get('/admin/user', [AdminController::class, 'user'])->name('user');
     Route::get('/admin/form-daftar-akun', [AdminController::class, 'daftar'])->name('daftar-akun');
     Route::post('/admin/store-daftar', [AdminController::class, 'storeuser'])->name('store.user');
     Route::get('/admin/menu', [AdminController::class, 'menu'])->name('menu');
+    Route::get('/admin/menu/kategori', [AdminController::class, 'kategori'])->name('kategori');
+    Route::post('/admin/menu/subkategori', [AdminController::class, 'subkategori'])->name('subkategori');
     Route::post('/admin/storemenu', [AdminController::class, 'storemenu'])->name('storemenu');
     Route::delete('/admin/destroymenu/{id_menu}', [AdminController::class, 'destroymenu'])->name('destroymenu');
     Route::delete('/admin/destroyuser/{id_user}', [AdminController::class, 'destroyuser'])->name('destroyuser');
+    Route::get('/admin/laporan-penjualan', [AdminController::class, 'laporan'])->name('laporan-penjualan');
+    Route::get('/admin/meja', [AdminController::class, 'meja'])->name('meja');
 
     Route::get('/admin/user/pelayan', function () {
         return view('admin.pelayan');
@@ -76,14 +85,8 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin/profile', function () {
         return view('admin.profile');
     })->name('profile');
-    Route::get('/admin/meja', function () {
-        return view('admin.meja');
-    })->name('meja');
 
 
-    Route::get('/admin/laporan-penjualan', function () {
-        return view('admin.laporan-penjualan');
-    })->name('laporan-penjualan');
 
     Route::get('/admin/laporan-pendapatan', function () {
         return view('admin.laporan-pendapatan');
@@ -172,9 +175,7 @@ Route::get('/new-order', function () {
 // })->name('new-order');
 
 //kitchen
-Route::get('/kitchen-main', function () {
-    return view('kitchen.mainmenu');
-});
+
 Route::get('/kitchen-cooking', function () {
     return view('kitchen.cooking');
 });
@@ -187,9 +188,7 @@ Route::get('/kitchen-done', function () {
 Route::get('/kitchen-reserve', function () {
     return view('kitchen.reserve');
 });
-Route::get('/kitchen-detail', function () {
-    return view('kitchen.detail');
-});
+
 Route::get('/kitchen-menu', function () {
     return view('kitchen.menu');
 });

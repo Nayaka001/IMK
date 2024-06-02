@@ -12,20 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('log-faktur', function (Blueprint $table) {
-            $table->id();
             $table->integer('id_order');
             $table->string('tipe_order');
             $table->string('tipe_pembayaran');
             $table->string('nama_pelanggan');
             $table->integer('kasir');
-            $table->integer('jlh_org');
+            $table->integer('jlh_org')->nullable();
             $table->integer('id_meja')->nullable();
             $table->timestamp('waktu_order');
             $table->string('no_hp')->nullable();
             $table->string('kedatangan')->nullable();
             $table->text('order_details');
             $table->decimal('total', 15, 2);
-            $table->timestamps();
+            
         });
 
         DB::statement("
@@ -33,7 +32,7 @@ return new class extends Migration
             BEFORE DELETE ON `order` 
             FOR EACH ROW
             BEGIN
-                INSERT INTO log (id_order, tipe_order, tipe_pembayaran, nama_pelanggan, kasir, jlh_org, id_meja, waktu_order, no_hp, kedatangan, order_details, total, created_at, updated_at)
+                INSERT INTO log_faktur (id_order, tipe_order, tipe_pembayaran, nama_pelanggan, kasir, jlh_org, id_meja, waktu_order, no_hp, kedatangan, order_details, total, created_at, updated_at)
                 SELECT 
                     OLD.id_order,
                     OLD.tipe_order,
@@ -54,9 +53,7 @@ return new class extends Migration
                         ) 
                         SEPARATOR '\n'
                     ) AS order_details,
-                    SUM(od.subtotal) AS total,
-                    NOW(),
-                    NOW()
+                    SUM(od.subtotal) AS total
                 FROM
                     `order` o
                 LEFT JOIN
@@ -76,7 +73,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('log');
+        Schema::dropIfExists('log-faktur');
 
         DB::statement("DROP TRIGGER IF EXISTS before_delete_order;");
     }

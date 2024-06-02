@@ -108,6 +108,7 @@
             <div id="form3" class="hidden mx-3 pb-2 md:mx-8">
                 <form action="{{route('kasir.newres')}}" method="POST">
                     @csrf
+                    <input type="hidden" name="tipe_order" value="Reservasi">
                     <input type="hidden" id="order-id" name="order_id" required>
                     <label for="nama-pelanggan" class="mx-10">
                         <span class="block font-semibold">Nama Pelanggan</span>
@@ -117,7 +118,7 @@
                     </label>
                     <label for="telepon" class="mx-10">
                         <span class="block font-semibold">Nomor telepon</span>
-                        <input type="number" id="telepon-res" placeholder="Masukkan Nomor Telepon" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/>
+                        <input type="number" id="telepon-res" name="no_hp" placeholder="Masukkan Nomor Telepon" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/>
                         <p id="telepon-error-res" class="text-sm m-1 text-pink-700  hidden">Nomor Handphone Tidak Valid</p>
                     </label>
                     <label for="jumlah-orang" class="mx-10">
@@ -140,10 +141,9 @@
                     <label for="nomor-meja" class="mx-10">
                         <span class="block font-semibold">Nomor Meja</span>
                         <select name="nomor_meja" id="nomor_meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm" required>
-                            <option value="M01">M01</option>
-                            <option value="M02">M02</option>
-                            <option value="M03">M03</option>
-                            <option value="M04">M04</option>
+                            @foreach($meja as $mejas)
+                            <option value="{{$mejas->id_meja}}">{{$mejas->id_meja}}</option>
+                            @endforeach
                         </select>
                         {{-- <input type="text" id="nomor-meja" name="nomor_meja" placeholder="Masukkan Nomor Meja" class="px-3 py-2 mt-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 text-black focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 invalid:text-pink-700 invalid:focus:ring-pink-700 invalid:focus:border-pink-700 peer " required/> --}}                        
                     </label>
@@ -185,6 +185,14 @@
         });
     });
 </script> --}}
+@if(session('redirectDelay'))
+<script>
+
+        window.open("{{ route('print') }}", "_blank");
+// Penundaan 3 detik
+</script>
+@endif
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {

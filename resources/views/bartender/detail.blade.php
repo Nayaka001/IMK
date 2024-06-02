@@ -4,7 +4,7 @@
 
 <div>
     <div class="px-4 pt-8 ">
-        <a href="/kitchen-main">
+        <a href="/bartender-main">
         <button class="text-black hover:text-gray-400 focus:outline-none">
         <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -18,7 +18,7 @@
         <!-- kotak 1 -->
         <div class="bg-[#ffffff] rounded-2xl flex justify-center flex-col p-6 gap-3 items-start shadow-2xl w-full">
             <div class="flex gap-3">
-                <h2 class="font-bold text-2xl">M02</h2> <h2 class="font-bold text-2xl">#003</h2>
+                <h2 class="font-bold text-2xl">M01</h2> <h2 class="font-bold text-2xl">#004</h2>
             </div>
             <div class="bg-slate-500 py-1 px-3 rounded-3xl">
                 <h3 class="font-bold text-white">Sedang diproses</h3>
@@ -38,10 +38,10 @@
                             <!-- menu notes jumlah -->
                             <div>
                                 <h3 class="font-bold">
-                                    Menu 1
+                                    Teh Tong
                                 </h3>
                                 <p class="text-slate-400">
-                                    Notes:
+                                    Notes:Es nya dipisah
                                 </p>
                                 
                                 <div class="bg-[#FFD369] rounded-xl flex p-1 items-center justify-center">
@@ -63,44 +63,6 @@
             </div>
             <!-- pesanan 1 end -->
 
-            <!-- pesanan 2 start -->
-            <div class="w-full">
-                <!-- detail pesanan start -->
-                <div class="gap-3">
-                    <!-- Detail Pesanan Start -->
-                    <div class="flex items-start flex-row justify-start gap-3">
-                            <!-- gambarnya -->
-                            <div>
-                                <img class="w-10" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-                            </div>
-
-                            <!-- menu notes jumlah -->
-                            <div>
-                                <h3 class="font-bold">
-                                    Menu 1
-                                </h3>
-                                <p class="text-slate-400">
-                                    Notes:
-                                </p>
-                                
-                                <div class="bg-[#FFD369] rounded-xl flex p-1 items-center justify-center">
-                                    <p>1</p>
-                                </div>
-                            </div>
-                            <!-- menu notes jumlah end -->
-                    </div>
-                    <!-- Detail Pesanan End -->
-
-                </div>
-                <!-- detail pesanan stop -->
-
-                <!-- button perbarui start -->
-                <div data-modal-target="default-modal" data-modal-toggle="default-modal" class="items-center mt-3 w-full">
-                    <button type="button" class="w-full items-center justify-center text-white bg-[#FFD369] hover:bg-[#edca69] font-medium rounded-lg text-sm p-2 text-center">Perbarui</button>
-                </div>
-                <!-- button perbarui end -->
-            </div>
-            <!-- pesanan 2 end -->
         </div>
 
         <!-- kotak 2 -->
@@ -126,10 +88,10 @@
                             <!-- menu notes jumlah -->
                             <div>
                                 <h3 class="font-bold">
-                                    Menu 1
+                                    Teh Tong
                                 </h3>
                                 <p class="text-slate-400">
-                                    Notes:
+                                    Notes: Es nya dipisah
                                 </p>
                                 
                                 <div class="bg-[#FFD369] rounded-xl flex p-1 items-center justify-center">
@@ -145,38 +107,6 @@
             </div>
             <!-- pesanan 1 end -->
 
-            <!-- pesanan 2 start -->
-            <div class="w-full">
-                <!-- detail pesanan start -->
-                <div class="gap-3">
-                    <!-- Detail Pesanan Start -->
-                    <div class="flex items-start flex-row justify-start gap-3">
-                            <!-- gambarnya -->
-                            <div>
-                                <img class="w-10" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-                            </div>
-
-                            <!-- menu notes jumlah -->
-                            <div>
-                                <h3 class="font-bold">
-                                    Menu 1
-                                </h3>
-                                <p class="text-slate-400">
-                                    Notes:
-                                </p>
-                                
-                                <div class="bg-[#FFD369] rounded-xl flex p-1 items-center justify-center">
-                                    <p>1</p>
-                                </div>
-                            </div>
-                            <!-- menu notes jumlah end -->
-                    </div>
-                    <!-- Detail Pesanan End -->
-
-                </div>
-                <!-- detail pesanan stop -->
-            </div>
-            <!-- pesanan 2 end -->
         </div>
 
         <!-- MODAL START -->
@@ -203,8 +133,8 @@
                         </div>
                         <!-- menu notes jumlah -->
                         <div>
-                            <h3 class="font-bold">Menu 1</h3>
-                            <p class="text-slate-400">Notes:</p>
+                            <h3 class="font-bold">Teh Tong</h3>
+                            <p class="text-slate-400">Notes: Es nya dipisah</p>
                             <div class="bg-yellow-400 rounded-xl flex p-2 items-center justify-center">
                                 <div x-data="{ productQuantity: 1 }">
                                     <label for="Quantity" class="sr-only"> Quantity </label>

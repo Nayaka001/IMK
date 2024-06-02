@@ -330,8 +330,8 @@
                             
                             <input type="hidden" name="progress" value="Dimasak">
                             <input type="hidden" name="id_user" value="{{ auth()->user()->id_user }}">
-                            
-                            
+                            <input type="hidden" name="total_uang" id="money_paid">
+                            <input type="hidden" name="kembalian" id="change_hidden">
                         </div>
                     <hr class="px-2">
                     {{-- end menu --}}
@@ -359,11 +359,12 @@
                     <div id="btn2" class="hidden">
                         <div class="flex gap-2">
                             {{-- button baru kirim --}}
-                            <button id="kirimButton" data-modal-target="popup-modal-berhasil" data-modal-toggle="popup-modal-berhasil" class="bg-green-500 p-2 rounded-lg font-bold hover:text-white px-6 w-full my-4">Kirim</button>
+                            {{-- <button id="kirimButton" data-modal-target="popup-modal-berhasil" data-modal-toggle="popup-modal-berhasil" class="bg-green-500 p-2 rounded-lg font-bold hover:text-white px-6 w-full my-4">Kirim</button> --}}
                             {{-- button baru print --}}
-                            <a href="/invoice" target="_blank" class="w-full">
-                                <button class="bg-[#FFD369] p-2 rounded-lg font-bold hover:text-white px-6 w-full my-4">Print</button>
-                            </a>
+                            {{-- <a href="/invoice" target="_blank" class="w-full">
+                                <button type="button" class="bg-[#FFD369] p-2 rounded-lg font-bold hover:text-white px-6 w-full my-4">Print</button>
+                            </a>  --}}
+                            <button id="kirimButton" data-modal-target="popup-modal-berhasil" data-modal-toggle="popup-modal-berhasil" type="button" onclick="submitFormAndPrint()" class="bg-green-500 p-2 rounded-lg font-bold hover:text-white px-6 w-full my-4">Print & Kirim</button>
                             
                         </div>
                     </div>
@@ -442,7 +443,7 @@
                                     <label for="Digital" class="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-500 dark:peer-checked:text-[#FFD369] peer-checked:border-[#FFD369] peer-checked:text-[#FFD369] peer-checked:font-semibold hover:text-gray-900 hover:bg-gray-100 dark:text-white dark:bg-gray-600 dark:hover:bg-gray-500">
                                         <div class="flex gap-5">
                                             <img src="/img/digital.png" alt="" width="45" height="45">
-                                            <div class="w-full text-lg font-semibold">Digital</div>
+                                            <div class="w-full text-lg font-semibold">Non Tunai</div>
                                         </div>
                                     </label>
                                 </li>
@@ -488,6 +489,7 @@
         
 
     </div>
+    
     <script>
         function toggleButtons() {
             // Hide "Kirim" button
@@ -497,7 +499,14 @@
         }
     </script>
     
-
+    <script>
+        function submitFormAndPrint() {
+            // Submit form to your desired route
+                document.getElementById('menuForm').submit();
+            
+    
+        }
+    </script>
 {{--     
         <script>
             let itemIdToDelete;
