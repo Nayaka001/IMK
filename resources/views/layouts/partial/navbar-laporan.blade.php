@@ -1,17 +1,17 @@
 <div class="w-3/4 flex justify-start my-6 px-4 overflow-x-scroll sm:w-4/5 md:w-11/12 lg:w-full lg:overflow-visible">
-        <div id="linkall">
-            <span id="allButton" style="background-color: #FFD369;" class="inline-block p-2 mr-4 m-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent {{ request()->routeIs('user') ? 'border-2 border-solid' : '' }} rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 bg-gray-500 border-black text-black hover:opacity-75">
-                All
+        <div id="linkpenjualan">
+            <span id="penjualanButton" style="background-color: #FFD369;" class="inline-block p-2 mr-4 m-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent {{ request()->routeIs('user') ? 'border-2 border-solid' : '' }} rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 bg-gray-500 border-black text-black hover:opacity-75">
+                Laporan Penjualan
                 <i class="fa fa-users text-lg text-gray-700 ml-2"></i>
             </span>
         </div>
-        <div id="linkpelayan">
-            <span id="pelayanButton" style="background-color: #FFD369;" class="inline-block p-2 m-2 mb-0 mx-4 font-bold text-center uppercase align-middle transition-all bg-transparent {{ request()->routeIs('user.pelayan') ? 'border-2 border-solid' : '' }} rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
-                Pelayan
+        <div id="linkpengeluaran">
+            <span id="pengeluaranButton" style="background-color: #FFD369;" class="inline-block p-2 m-2 mb-0 mx-4 font-bold text-center uppercase align-middle transition-all bg-transparent {{ request()->routeIs('user.pelayan') ? 'border-2 border-solid' : '' }} rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
+                laporan Pengeluaran
                 <i class="ni ni-single-02 text-lg text-gray-700 ml-2"></i>
             </span>
         </div>
-        <div id="linkkitchen">
+        <!-- <div id="linkkitchen">
             <span id="kitchenButton" style="background-color: #FFD369;"  class="inline-block p-2 m-2 mx-4 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent {{ request()->routeIs('user-kitchen') ? 'border-2 border-solid' : '' }} rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
                 Kitchen
                 <i class="fa fa-utensils text-lg text-gray-700 ml-2"></i>
@@ -29,7 +29,7 @@
                 <i class="fa fa-cash-register text-lg text-gray-700 ml-2"></i>
             </span>
         </div>
-    </a>
+    </a> -->
 
 
 
@@ -84,28 +84,28 @@
         }
 
         // Event listeners to set active button based on current section
-        document.getElementById('linkall').addEventListener('click', function() {
-            setActiveButton('allButton');
+        document.getElementById('linkpenjualan').addEventListener('click', function() {
+            setActiveButton('penjualanButton');
         });
 
-        document.getElementById('linkpelayan').addEventListener('click', function() {
-            setActiveButton('pelayanButton');
+        document.getElementById('linkpengeluaran').addEventListener('click', function() {
+            setActiveButton('pengeluaranButton');
         });
 
-        document.getElementById('linkkitchen').addEventListener('click', function() {
-            setActiveButton('kitchenButton');
-        });
+        // document.getElementById('linkkitchen').addEventListener('click', function() {
+        //     setActiveButton('kitchenButton');
+        // });
 
-        document.getElementById('linkbartender').addEventListener('click', function() {
-            setActiveButton('bartenderButton');
-        });
+        // document.getElementById('linkbartender').addEventListener('click', function() {
+        //     setActiveButton('bartenderButton');
+        // });
 
-        document.getElementById('linkkasir').addEventListener('click', function() {
-            setActiveButton('kasirButton');
-        });
+        // document.getElementById('linkkasir').addEventListener('click', function() {
+        //     setActiveButton('kasirButton');
+        // });
 
         // Set initial active button based on current page or state
         // For example, if 'linkpelayan' is the active section initially:
-        setActiveButton('allButton');
+        setActiveButton('penjualanButton');
     });
 </script>

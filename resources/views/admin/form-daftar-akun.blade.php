@@ -8,7 +8,7 @@
 </style>
 
 <div class="w-full px-3 py-6 max-w-full lg:w-full lg:flex-none">
-  <div class="border-black/12.5 shadow-soft-xl relative z-20 flex min-w-0 flex-col break-words rounded-2xl border-0 border-gray-400 border-solid bg-[#e8eddf] bg-transparent bg-clip-border">
+  <div class="border-black/12.5 shadow-soft-xl relative z-9 flex min-w-0 flex-col break-words rounded-2xl border-0 border-gray-400 border-solid bg-[#e8eddf] bg-transparent bg-clip-border">
     <div class="border-black/12.5 mb-6 rounded-t-2xl border-b-0 border-solid bg-[#e8eddf] bg-transparent p-6 pb-0 font-semibold">
       <div class="flex-auto p-2">
         <h5>Pendaftaran Akun Karyawan</h5>
