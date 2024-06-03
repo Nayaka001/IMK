@@ -135,43 +135,13 @@
                         <div>
                             <h3 class="font-bold">Teh Tong</h3>
                             <p class="text-slate-400">Notes: Es nya dipisah</p>
-                            <div class="bg-yellow-400 rounded-xl flex p-2 items-center justify-center">
-                                <div x-data="{ productQuantity: 1 }">
-                                    <label for="Quantity" class="sr-only"> Quantity </label>
-                                    <div class="flex items-center w-14 h-7 my-2 md:w-20 md:h-7 lg:w-24 lg:h-8">
-                                    <button
-                                        type="button"
-                                        x-on:click="productQuantity--"
-                                        :disabled="productQuantity === 0"
-                                        class="size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75"
-                                    >
-                                        &minus;
-                                    </button>
-                                
-                                    <input
-                                        type="number"
-                                        id="Quantity"
-                                        x-model="productQuantity"
-                                        class="h-5 w-8 lg:h-7 lg:w-9 border-transparent text-center text-xs px-0 lg:text-lg [-moz-appearance:_textfield] sm:text-sm [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
-                                    />
-                                
-                                    <button
-                                        type="button"
-                                        x-on:click="productQuantity++"
-                                        class="size-7 leading-7 md:size-9 md:leading-9 lg:size-10 lg:leading-10 text-gray-600 transition hover:opacity-75"
-                                    >
-                                        &plus;
-                                    </button>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <!-- menu notes jumlah end -->
                     </div>
         
                     <div class="flex justify-center mt-6">
-                        <button id="saveModalBtn" class="bg-yellow-400 text-white px-4 py-2 rounded-3xl mr-2" data-modal-save="default-modal">Save</button>
-                        <button id="cancelModalBtn" class="bg-red-500 text-white px-4 py-2 rounded-3xl" data-modal-cancel="default-modal">Cancel</button>
+                        <button id="saveModalBtn" class="bg-yellow-400 text-white px-4 py-2 rounded-3xl mr-2" data-modal-save="default-modal">Perbarui</button>
+                        <button id="cancelModalBtn" class="bg-red-500 text-white px-4 py-2 rounded-3xl" data-modal-cancel="default-modal">Batal</button>
                     </div>
                 </div>
         
