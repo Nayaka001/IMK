@@ -59,7 +59,7 @@
 
                 <!-- button perbarui start -->
                 <div data-modal-target="default-modal" data-modal-toggle="default-modal" class="items-center mt-3 w-full">
-                    <button data-detail-id="{{ $detail->id_order_details }}" data-order-id="{{ $detail->id_order }}"  class=""  id="openModalBtn" type="button" class="details-button w-full items-center justify-center text-white bg-[#FFD369] hover:bg-[#edca69] font-medium rounded-lg text-sm p-2 text-center">Perbarui</button>
+                    <button data-detail-id="{{ $detail->menu->nama_menu }}" data-order-id="{{ $detail->note }}" data-order-jumlah="{{ $detail->jumlah }}" gambar="{{ $detail->menu->gambar_menu }}"  type="button" class="openModalBtn w-full items-center justify-center text-white bg-[#FFD369] hover:bg-[#edca69] font-medium rounded-lg text-sm p-2 text-center">Perbarui</button>
                 </div>
                 <!-- button perbarui end -->
             </div>
@@ -170,68 +170,15 @@
                     <!-- Modal content here -->
                     <div class="flex items-start p-4 flex-row gap-3">
                         <!-- gambarnya -->
-                        
-                        <!-- menu notes jumlah end -->
-                    </div>
-        
-                    <div class="flex justify-center mt-6">
-                        <button id="saveModalBtn" class="bg-yellow-400 text-white px-4 py-2 rounded-3xl mr-2" data-modal-save="default-modal">Save</button>
-                        <button id="cancelModalBtn" class="bg-red-500 text-white px-4 py-2 rounded-3xl" data-modal-cancel="default-modal">Cancel</button>
-                    </div>
-                </div>
-        
-            </div>
-        </div>
-        <!-- MODAL END -->
-
-        <!-- Modal Konfirmasi Start -->
-        <div id="confirm-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex items-center justify-center modal">
-            <div class="fixed inset-0 bg-black bg-opacity-50"></div>
-            <div class="relative bg-white rounded-lg shadow-lg p-6 w-1/3">
-                <!-- Modal header -->
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-2xl font-bold">Konfirmasi</h2>
-                    <button id="closeConfirmModalBtn" class="text-gray-500 hover:text-gray-800 focus:outline-none" data-modal-hide="confirm-modal">
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                </div>
-                <!-- Modal body -->
-                <div class="space-y-4">
-                    <p>Apakah Anda yakin ingin menyimpan perubahan?</p>
-                    <div class="flex justify-center mt-6">
-                        <button id="confirmSaveBtn" class="bg-yellow-400 text-white px-4 py-2 rounded-3xl mr-2" data-modal-confirm-save="confirm-modal">Yes</button>
-                        <button id="cancelConfirmBtn" class="bg-red-500 text-white px-4 py-2 rounded-3xl" data-modal-confirm-cancel="confirm-modal">No</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal Konfirmasi End -->
-        <script>
-            $(document).ready(function() {
-            $('.details-button').on('click', function() {
-                var orderId = $(this).data('order-id');
-                var detailId = $(this).data('detail-id');
-        
-                $.ajax({
-                    url: '/kitchen-detail/' + orderId + '/' + detailId, // Ganti dengan endpoint yang sesuai
-                    type: 'GET',
-                    success: function(response) {
-        
-                        console.log(response)
-                        // Asumsikan responsenya adalah object dengan struktur data yang diperlukan
-                        var modalBody = `
                         <div>
                             <img class="w-10" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
                         </div>
                         <!-- menu notes jumlah -->
                         <div>
-                            <h3 class="font-bold">Menu 1</h3>
-                            <p class="text-slate-400">Notes:</p>
+                            <h3 class="font-bold" id="tittle">Menu</h3>
+                            <p class="text-slate-400" id="notes">Note</p>
                             <div class="bg-yellow-400 rounded-xl flex p-2 items-center justify-center">
-                                <div x-data="{ productQuantity: 1 }">
+                                <div x-data="{ productQuantity: orderjumlah }">
                                     <label for="Quantity" class="sr-only"> Quantity </label>
                                     <div class="flex items-center w-14 h-7 my-2 md:w-20 md:h-7 lg:w-24 lg:h-8">
                                     <button
@@ -261,82 +208,72 @@
                                 </div>
                             </div>
                         </div>
-                         `;
-                        $('#modalBody').html(modalBody);
+                        <!-- menu notes jumlah end -->
+                    </div>
         
-                        // Bagian menu yang dipesan
-                        const menuContainer = document.querySelector('.menu-container');
-                        const noteContainer = document.querySelector('.note-container');
+                    <div class="flex justify-center mt-6">
+                        <button id="saveModalBtn" class="bg-yellow-400 text-white px-4 py-2 rounded-3xl mr-2" data-modal-save="default-modal">Save</button>
+                        <button id="cancelModalBtn" class="bg-red-500 text-white px-4 py-2 rounded-3xl" data-modal-cancel="default-modal">Cancel</button>
+                    </div>
+                </div>
         
-                        response.detail.forEach(details => {
-                            const menuItem = document.createElement('div');
-                            menuItem.className = 'flex-col w-full';
-                            
-        
-                            menuItem.innerHTML = `
-                            <div class=" flex my-3">
-                                <div>
-                                    <img src="${details.gambar_menu}" alt=""  width="110" height="110" class="rounded-xl object-cover hidden sm:flex">
-                                </div>
-                                <div class="flex w-full justify-between">
-                                    <div class="ml-3 w-1/2">
-                                        <h1 class="text-lg font-semibold">${details.nama_menu}</h1>
-                                        <div class="w-16 text-center bg-[#FFD369] rounded-full">${details.jumlah}</div>
-                                    </div>
-                                    <div>
-                                        <h1 class="text-lg font-bold">Rp ${details.subtotal}</h1>
-                                        <div class="text-center w-fit p-1 px-2 bg-green-300 rounded-full">${details.progress}</div>
-                                    </div>
-                                </div>
-                            </div>
-                            `;
-        
-                            menuContainer.appendChild(menuItem);
-        
-                            
-                        });
-                        
-                        const totalElement = document.createElement('div');
-                        totalElement.className = 'flex text-xl font-bold mt-10 justify-between';
-                        const totalAmount = response.total;
-                        totalElement.innerHTML = `
-                                <div>Total</div>
-                                <div>Rp  ${totalAmount}</div>
-                            `;
-        
-                            // Tambahkan elemen total setelah elemen terakhir dalam kontainer
-                        menuContainer.appendChild(totalElement);
-        
-                        response.detail.forEach(note => {
-                            const noteItem = document.createElement('div');
-                            noteItem.className = 'flex';
-                            let noteText = note.note ? note.note : 'Tidak ada note';
-        
-                            noteItem.innerHTML = `
-                            <p class="font-semibold text-base mr-3 w-1/2">${note.nama_menu}</p>
-                            <p class="text-base w-2/3">${noteText}</p>
-                            `;
-        
-                            noteContainer.appendChild(noteItem);
-                        });
-                        
-        
-        
-        
-                        $('#default-modal').removeClass('hidden');
-                    },
-                    
-                });
-            });
-        
-            // Event listener to hide modal
-            $('[data-modal-hide="default-modal"]').on('click', function() {
-                $('#default-modal').addClass('hidden');
-            });
-            });
-        </script>
+            </div>
+        </div>
+        <!-- MODAL END -->
+
+        <!-- Modal Konfirmasi Start -->
+        <div id="confirm-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex items-center justify-center modal">
+            <div class="fixed inset-0 bg-black bg-opacity-50"></div>
+            <div class="relative bg-white rounded-lg shadow-lg p-6 w-1/3">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-2xl font-bold">Konfirmasi</h2>
+                    <button id="closeConfirmModalBtn" class="text-gray-500 hover:text-gray-800 focus:outline-none" data-modal-hide="confirm-modal">
+                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="space-y-4" id="menuModal">
+                    <p>Apakah Anda yakin ingin menyimpan perubahan?</p>
+                    <div class="flex justify-center mt-6">
+                        <button id="confirmSaveBtn" class="bg-yellow-400 text-white px-4 py-2 rounded-3xl mr-2" data-modal-confirm-save="confirm-modal">Yes</button>
+                        <button id="cancelConfirmBtn" class="bg-red-500 text-white px-4 py-2 rounded-3xl" data-modal-confirm-cancel="confirm-modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Konfirmasi End -->
 
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const openModalButtons = document.querySelectorAll('.openModalBtn');
+        const modal = document.getElementById('menuModal');
+        const modalTitle = document.getElementById('tittle');
+        const modalNotes = document.getElementById('notes');
+        const modalQuantityInput = document.getElementById('Quantity');
+        // const modalImage = document.getElementById('modalImage');
+        
+        openModalButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const detailId = this.getAttribute('data-detail-id');
+            const orderId = this.getAttribute('data-order-id');
+            const orderjumlah = this.getAttribute('data-order-jumlah');
+
+            // Update konten modal dengan data dari atribut
+            modalTitle.textContent = detailId; // Menggunakan detailId sebagai nama menu
+            modalNotes.textContent = orderId ? orderId : 'Tidak ada catatan';  // Menggunakan orderId sebagai catatan
+            
+            modalQuantityInput.value = orderjumlah;// Menggunakan orderId sebagai catatan
+            });
+
+        
+            });
+    });
+    </script>
     <script>
         // Function to show modal
         function showModal(modalId) {
@@ -418,7 +355,7 @@
 
     </div>
 </div>    
-    
+
 @endsection
 @push('scripts')
 <script>
