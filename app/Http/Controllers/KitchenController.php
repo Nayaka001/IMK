@@ -23,22 +23,22 @@ class KitchenController extends Controller
             'order' => $order
         ]);
     }
-    public function modal($id_order, $id_order_details){
-        $order = OrderDetail::where('id_order', $id_order)
-                        ->where('id_order_details', $id_order_details)
-                        ->first();
+    // public function modal($id_order, $id_order_details){
+    //     $order = OrderDetail::where('id_order', $id_order)
+    //                     ->where('id_order_details', $id_order_details)
+    //                     ->first();
     
-    if ($order) {
-        $detail = [
-            // 'nama_menu' => $order->menu->nama_menu,
-            'note' => $order->note,
-            // 'jumlah' => $order->jumlah,
-            // 'gambar_menu' => $order->menu->gambar_menu
-        ];
-        return response()->json($detail);
-    } else {
-        return response()->json(['error' => 'Order detail not found'], 404);
-    }
+    // if ($order) {
+    //     $detail = [
+    //         // 'nama_menu' => $order->menu->nama_menu,
+    //         'note' => $order->note,
+    //         // 'jumlah' => $order->jumlah,
+    //         // 'gambar_menu' => $order->menu->gambar_menu
+    //     ];
+    //     return response()->json($detail);
+    // } else {
+    //     return response()->json(['error' => 'Order detail not found'], 404);
+    // }
 
-    }
+    // }
 }
