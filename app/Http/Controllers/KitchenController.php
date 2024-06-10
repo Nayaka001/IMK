@@ -23,6 +23,35 @@ class KitchenController extends Controller
             'order' => $order
         ]);
     }
+    public function cooking(){
+        $orders = Order::with('detailorder')->get();
+        return view('kitchen.cooking', [
+            'orders' => $orders
+        ]);
+    }
+    public function ready(){
+        $orders = Order::with('detailorder')->get();
+        return view('kitchen.ready', [
+            'orders' => $orders
+        ]);
+    }
+    public function done(){
+        $orders = Order::with('detailorder')->get();
+        return view('kitchen.done', [
+            'orders' => $orders
+        ]);
+    }
+    
+    public function update(Request $request, $id_order, $id_order_details){
+        $order = OrderDetail::where('id_order', $id_order)->where('id_order_details', $id_order_details)->first();
+        if ($order) {
+            // Perbarui status pesanan
+            $order->progress = $request->input('progress');
+            $order->save();
+        }
+    
+        return back();
+    }
     // public function modal($id_order, $id_order_details){
     //     $order = OrderDetail::where('id_order', $id_order)
     //                     ->where('id_order_details', $id_order_details)

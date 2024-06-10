@@ -26,8 +26,14 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Bagian Kitchen
 Route::get('/kitchen-main', [KitchenController::class, 'index'])->name('index.kitchen');
+Route::get('/kcooking', [KitchenController::class, 'cooking'])->name('index.cooking');
+Route::get('/kready', [KitchenController::class, 'ready'])->name('index.ready');
+Route::get('/kdone', [KitchenController::class, 'done'])->name('index.done');
+// Route::get('/kitchen-cooking', [KitchenController::class, 'cooking'])->name('index.cooking');
 Route::get('/kitchen-detail/{id_order}',  [KitchenController::class, 'detail'])->name('kitchen.detail');
-Route::get('/kitchen-detail/{id_order}/{id_order_details}',  [KitchenController::class, 'modal'])->name('kitchen.detailmodal');
+
+// Route::get('/kitchen-detail/{id_order}/{id_order_details}',  [KitchenController::class, 'modal'])->name('kitchen.detailmodal');
+Route::put('/kitchen-update/{id_order}/{id_order_details}',  [KitchenController::class, 'update'])->name('kitchen.update');
 
 
 //Bagian Kasir
