@@ -60,7 +60,7 @@
                 </a> -->
 </div>
 
-<script>
+<!-- <script>
     // JavaScript to toggle active styles based on current active section
     document.addEventListener("DOMContentLoaded", function() {
         // Function to add 'border-2 border-solid' class to active button
@@ -106,6 +106,62 @@
 
         // Set initial active button based on current page or state
         // For example, if 'linkpelayan' is the active section initially:
+        setActiveButton('allButton');
+    });
+</script> -->
+
+<script>
+    // JavaScript to toggle active styles based on current active section
+    document.addEventListener("DOMContentLoaded", function() {
+        // Function to add 'border-2 border-solid' class to active button
+        function setActiveButton(buttonId) {
+            // Reset other buttons to default state
+            resetOtherButtons(buttonId);
+
+            // Activate the specified button
+            const button = document.getElementById(buttonId);
+            if (button) {
+                button.classList.add('border-2', 'border-solid');
+            }
+        }
+
+        // Function to reset specific buttons to default state
+        function resetOtherButtons(activeButtonId) {
+            const buttonIds = ['allButton', 'pelayanButton', 'kitchenButton', 'bartenderButton', 'kasirButton'];
+
+            buttonIds.forEach(id => {
+                if (id !== activeButtonId) {
+                    const button = document.getElementById(id);
+                    if (button) {
+                        button.classList.remove('border-2', 'border-solid');
+                    }
+                }
+            });
+        }
+
+        // Event listeners to set active button based on current section
+        document.getElementById('linkall').addEventListener('click', function() {
+            setActiveButton('allButton');
+        });
+
+        document.getElementById('linkpelayan').addEventListener('click', function() {
+            setActiveButton('pelayanButton');
+        });
+
+        document.getElementById('linkkitchen').addEventListener('click', function() {
+            setActiveButton('kitchenButton');
+        });
+
+        document.getElementById('linkbartender').addEventListener('click', function() {
+            setActiveButton('bartenderButton');
+        });
+
+        document.getElementById('linkkasir').addEventListener('click', function() {
+            setActiveButton('kasirButton');
+        });
+
+        // Set initial active button based on current page or state
+        // For example, if 'allButton' is the active section initially:
         setActiveButton('allButton');
     });
 </script>
