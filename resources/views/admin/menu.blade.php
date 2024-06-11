@@ -46,10 +46,10 @@
                                 <label class="block font-normal" for="sub-kategori">Sub Kategori</label>
                                 <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="sub-kategori" name="subkategori">
                                     <option value="">Pilih Sub Kategori</option>
-                                    <option value="Rice Hotplate Sambal Matah/Korek">Rice Hotplate Sambal Matah/Korek</option>
-                                    <option value="Nasi Geprek Sambal Matah/Korek">Nasi Geprek Sambal Matah/Korek</option>
-                                    <option value="Varian Geprek + Indomie">Varian Geprek + Indomie</option>
-                                    <option value="Rice Bowl Sambal Matah/Korek">Rice Bowl Sambal Matah/Korek</option>
+                                    @foreach($kategori as $kategoris)
+                                    <option value="{{$kategoris->subkategori}}">{{$kategoris->subkategori}}</option>
+                                    
+                                    @endforeach
                                 </select>
                                 </div>
                             </div>
@@ -88,8 +88,59 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @foreach($menus as $menu)
+                        
                         <!-- The Modal -->
+                        <div id="editMenu" class="modal flex">
+                          <!-- Modal content -->
+                          <div class="modal-content relative z-10 w-full max-w-xl mx-auto" style="max-width: 800px;"> <!-- Adjusted width to max-w-6xl -->
+                                              <span class="close absolute top-4 right-4">&times;</span>
+                                              <div class="flex-auto p-6">
+                                              <div class="p-6 mb-0 text-center bg-white border-b-0 rounded-t-2xl">
+                                                  <h5 class="font-semibold text-lg"><i class="fa fa-utensils mr-2"> </i>Edit Menu</h5>
+                                                  <div class="w-full mt-2 p-1 mb-2 h-2 bg-slate-700 rounded"></div>
+                                              </div>
+                                              <form id="updateForm" action="{{route('updatemenu', ['id_menu' => ':id_menu'])}}" method="POST" class="p-6">
+                                                @csrf
+                                                @method('PUT')
+                                                  <div class="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
+                                                  <div class="w-full px-2 md:w-1/2">
+                                                      <div class="mb-4">
+                                                      <label class="block font-normal" for="nama">Nama Menu</label>
+                                                      <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" value="" placeholder="Masukkan Nama Menu" id="namaupdate" name="nama">
+                                                      </div>
+                                                      <div class="mb-4">
+                                                      <label class="block font-normal" for="harga">Harga</label>
+                                                      <input type="number" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" value="" placeholder="Masukkan Harga" id="hargaupdate" name="harga">
+                                                      </div>
+                                                      <div class="mb-4">
+                                                      <label class="block font-normal" for="sub-kategori">Sub Kategori</label>
+                                                      <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="sub-kategori" name="sub-kategori">
+                                                          <option value="">Pilih Sub Kategori</option>
+                                                          @foreach($kategori as $kategoris)
+                                                          <option value="{{$kategoris->subkategori}}">{{$kategoris->subkategori}}</option>
+                                                          @endforeach
+                                                         
+                                                      </select>
+                                                      </div>
+                                                  </div>
+                                                  <div class="w-full px-2 md:w-1/2">
+                                                      <div class="mb-4">
+                                                      <label class="block font-normal" for="keterangan">Keterangan</label>
+                                                      <textarea type="tel" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan keterangan menu" id="keteranganupdate" name="keterangan"></textarea>
+                                                      </div>
+                                                      <div class="mb-4">
+                                                      <label class="block font-normal" for="foto">Foto</label>
+                                                      <input type="file" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="foto" name="foto">
+                                                      </div>
+                                                  </div>
+                                                  </div>
+                                                  <div class="text-center">
+                                                  <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Edit Menu</button>
+                                                  </div>
+                                              </form>
+                                              </div>
+                                          </div>                          
+                      </div>
 <div id="deleteModal" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
@@ -121,15 +172,15 @@
                                       <p>Apakah Anda yakin ingin menghapus?</p>
                                       <div class="mt-4 flex justify-end">
                                           <button id="cancelDelete" class="px-4 py-2 mr-2 text-gray-600 bg-gray-200 rounded">Batal</button>
-                                          <form id="deleteForm" action="{{route('destroymenu', ['id_menu' => ':id_menu'])}}" method="POST">
-                                              @csrf
-                                              @method('DELETE')
+                                          <form id="deleteForm" action="" method="POST">
+                                             
                                               <button type="submit" class="px-4 py-2 text-white bg-red-600 rounded">Hapus</button>
                                           </form>
                                       </div>
                                   </div>
                               </div>
                           </div> -->
+                          @foreach($menus as $menu)
                         <tr class="custom-rounded">
                             <td class="px-4 py-3 text-slate-800 bg-gradient-to-b from-[#FFD369] to-[#cfdbd5] border-b">{{$menu->id_menu}}</td>
                             <td class="px-4 py-3 text-gray-900 bg-gradient-to-b from-[#FFD369] to-[#cfdbd5] border-b">
@@ -150,7 +201,7 @@
                             </td>
                             <td class="px-4 py-3 text-sm text-slate-800 bg-gradient-to-b from-[#FFD369] to-[#cfdbd5] ">{{$menu->ktgmenu->subkategori}}</td>
                             <td class="px-4 py-3 text-gray-900 bg-gradient-to-b from-[#FFD369] to-[#cfdbd5]">
-                            <a id="editMenuBtn" class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
+                            <a id="editMenuBtn" class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700 edit-button" data-id="{{ $menu->id_menu }}"  data-nama="{{ $menu->nama_menu }}" data-harga="{{ $menu->harga }}" data-subkategori="{{ $menu->ktgmenu->subkategori }}" data-keterangan="{{ $menu->keterangan }}"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
                             <a class="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 delete-button to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text delete-button" data-id="{{ $menu->id_menu }}" ><i class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
                                 <!-- <a href="javascript:;" class="text-xs font-semibold leading-tight text-slate-400"> Edit </a> -->
                             </td>
@@ -290,55 +341,7 @@
 
 
 <!-- Edit Modal -->
-<div id="editMenu" class="modal flex">
-    <!-- Modal content -->
-    <div class="modal-content relative z-10 w-full max-w-xl mx-auto" style="max-width: 800px;"> <!-- Adjusted width to max-w-6xl -->
-                        <span class="close absolute top-4 right-4">&times;</span>
-                        <div class="flex-auto p-6">
-                        <div class="p-6 mb-0 text-center bg-white border-b-0 rounded-t-2xl">
-                            <h5 class="font-semibold text-lg"><i class="fa fa-utensils mr-2"> </i>Edit Menu</h5>
-                            <div class="w-full mt-2 p-1 mb-2 h-2 bg-slate-700 rounded"></div>
-                        </div>
-                        <form id="tambahMenuForm" class="p-6">
-                            <div class="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
-                            <div class="w-full px-2 md:w-1/2">
-                                <div class="mb-4">
-                                <label class="block font-normal" for="nama">Nama Menu</label>
-                                <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Nama Menu" id="nama" name="nama">
-                                </div>
-                                <div class="mb-4">
-                                <label class="block font-normal" for="harga">Harga</label>
-                                <input type="number" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan Harga" id="harga" name="harga">
-                                </div>
-                                <div class="mb-4">
-                                <label class="block font-normal" for="sub-kategori">Sub Kategori</label>
-                                <select class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="sub-kategori" name="sub-kategori">
-                                    <option value="">Pilih Sub Kategori</option>
-                                    <option value="Kasir">Rice Hotplate Sambal Matah/Korek</option>
-                                    <option value="Bartender">Nasi Geprek Sambal Matah/Korek</option>
-                                    <option value="Kitchen">Varian Geprek + Indomie</option>
-                                    <option value="Pelayan">Rice Bowl Sambal Matah/Korek</option>
-                                </select>
-                                </div>
-                            </div>
-                            <div class="w-full px-2 md:w-1/2">
-                                <div class="mb-4">
-                                <label class="block font-normal" for="keterangan">Keterangan</label>
-                                <textarea type="tel" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Masukkan keterangan menu" id="keterangan" name="keterangan"></textarea>
-                                </div>
-                                <div class="mb-4">
-                                <label class="block font-normal" for="foto">Foto</label>
-                                <input type="file" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" id="foto" name="foto">
-                                </div>
-                            </div>
-                            </div>
-                            <div class="text-center">
-                            <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Edit Menu</button>
-                            </div>
-                        </form>
-                        </div>
-                    </div>                          
-</div>
+
 
 <!-- Tambah Kategori Modal -->
 <div id="tambahKategoriModal" class="modal flex">
@@ -450,10 +453,13 @@
   document.addEventListener('DOMContentLoaded', function() {
     // Ambil elemen-elemen yang dibutuhkan
     var deleteModal = document.getElementById('deleteModal');
+    var editModal = document.getElementById('editMenu');
     var deleteButtons = document.querySelectorAll('.delete-button');
+    var editButtons = document.querySelectorAll('.edit-button');
     var cancelDelete = document.getElementById('cancelDelete');
     var modalClose = deleteModal.getElementsByClassName("close")[0];
     var deleteForm = document.getElementById('deleteForm');
+    var updateForm = document.getElementById('updateForm');
     
     // Fungsi untuk menampilkan modal
     function showModal() {
@@ -463,6 +469,14 @@
     // Fungsi untuk menyembunyikan modal
     function hideModal() {
         deleteModal.style.display = "none";
+    }
+    function show() {
+        editModal.style.display = "flex";
+    }
+
+    // Fungsi untuk menyembunyikan modal
+    function hide() {
+        editModal.style.display = "none";
     }
 
     // Tambahkan event listener untuk tombol close
@@ -491,6 +505,28 @@
         action = action.replace(':id_menu', id_menu);
         deleteForm.setAttribute('action', action);
         showModal();
+      });
+    });
+    // editButtons.forEach(function(button) {
+    //   button.addEventListener('click', function(event) {
+      document.querySelectorAll('.edit-button').forEach(function(button) {
+        button.addEventListener('click', function() {
+        event.preventDefault();
+        var id_menu = this.getAttribute('data-id');
+        var nama = this.getAttribute('data-nama');
+        var harga = this.getAttribute('data-harga');
+
+        var keterangan = this.getAttribute('data-keterangan');
+
+        // Isi nilai input dengan data menu yang diperoleh
+        document.getElementById('namaupdate').value = nama;
+        document.getElementById('hargaupdate').value = harga;
+        document.getElementById('keteranganupdate').value = keterangan;
+
+        var action = '{{ route('updatemenu', ['id_menu' => ':id_menu']) }}';
+        action = action.replace(':id_menu', id_menu);
+        updateForm.setAttribute('action', action);
+        show();
       });
     });
   });
