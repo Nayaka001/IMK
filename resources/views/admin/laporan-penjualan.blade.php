@@ -478,6 +478,8 @@
     event.preventDefault(); 
     showpengeluaran(); 
   });
+
+  showpenjualan();
   // document.getElementById('linkkitchen').addEventListener('click', function(event) {
   //   event.preventDefault(); 
   //   showkitchen(); 
