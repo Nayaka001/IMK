@@ -72,7 +72,9 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::post('/admin/menu/subkategori', [AdminController::class, 'subkategori'])->name('subkategori');
     Route::post('/admin/storemenu', [AdminController::class, 'storemenu'])->name('storemenu');
     Route::delete('/admin/destroymenu/{id_menu}', [AdminController::class, 'destroymenu'])->name('destroymenu');
+    Route::put('/admin/updatemenu/{id_menu}', [AdminController::class, 'updatemenu'])->name('updatemenu');
     Route::delete('/admin/destroyuser/{id_user}', [AdminController::class, 'destroyuser'])->name('destroyuser');
+    Route::put('/admin/updateuser/{id_user}', [AdminController::class, 'updateuser'])->name('updateuser');
     Route::get('/admin/laporan-penjualan', [AdminController::class, 'laporan'])->name('laporan-penjualan');
     Route::get('/admin/meja', [AdminController::class, 'meja'])->name('meja');
 

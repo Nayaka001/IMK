@@ -230,13 +230,15 @@
                 <a class="inline-block px-8 py-2 mb-0 mr-4 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro border-fuchsia-500 ease-soft-in hover:scale-102 active:shadow-soft-xs text-fuchsia-500 hover:border-fuchsia-500 active:bg-fuchsia-500 active:hover:text-fuchsia-500 hover:text-fuchsia-500 tracking-tight-soft hover:bg-transparent hover:opacity-75 hover:shadow-none active:text-white active:hover:bg-transparent" target="_blank" href="https://www.creative-tim.com/builder/soft-ui?ref=navbar-dashboard&amp;_ga=2.76518741.1192788655.1647724933-1242940210.1644448053">Online Builder</a>
               </li> -->
               @if (request()->routeIs('index.admin') || request()->routeIs('laporan-penjualan') || request()->routeIs('laporan-pendapatan'))
-              <div class="flex items-center ml-2 md:ml-auto md:pr-4">
-                <select id="periodSelect" class="inline-block px-0.5 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-2 border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
-                  <option value="option1">Daily</option>
-                  <option value="option2">Weekly</option>
-                  <option value="option3">Monthly</option>
-                </select>
-              </div>
+                  <form method="GET" action="{{ route('index.admin') }}">
+                      <div class="flex items-center ml-2 md:ml-auto md:pr-4">
+                          <select id="periodSelect" name="period" class="inline-block px-0.5 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-2 border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
+                              <option value="daily" {{ request('period') == 'daily' ? 'selected' : '' }}>Daily</option>
+                              <option value="weekly" {{ request('period') == 'weekly' ? 'selected' : '' }}>Weekly</option>
+                              <option value="monthly" {{ request('period') == 'monthly' ? 'selected' : '' }}>Monthly</option>
+                          </select>
+                      </div>
+                  </form>
               @endif
               <div class="flex items-center ml-2 md:ml-auto md:pr-4">
                 <span id="logoutBtn" class="inline-block p-2 m-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-2 border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">

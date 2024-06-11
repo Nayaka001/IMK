@@ -30,22 +30,7 @@
     </div>
 </div>
 
-  <!-- Modal Delete Naya -->
-  <!-- <div id="deleteModal" class="hidden fixed inset-0 z-50 overflow-auto bg-gray-500 bg-opacity-50">
-    <div class="flex items-center justify-center min-h-screen">
-        <div class="bg-yellow-200 p-8 rounded shadow-lg">
-                <p>Apakah Anda yakin ingin menghapus?</p>
-                <div class="mt-4 flex justify-end">
-                    <button id="cancelDelete" class="px-4 py-2 mr-2 text-gray-600 bg-gray-200 rounded">Batal</button>
-                    <form id="deleteForm" action="{{route('destroyuser', ['id_user' => ':id_user'])}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="px-4 py-2 text-white bg-red-600 rounded">Hapus</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div> -->
+  
     <!-- table 1 -->
     <div id="all" class="flex flex-wrap -mx-3">
           <div class="flex-none w-full max-w-full px-3">
@@ -107,7 +92,7 @@
                         <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
                             <a class="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text delete-button" data-id="{{ $karyawans->id_user }}" ><i class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
 
-                            <a id="editKaryawanBtn" class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
+                            <a id="editKaryawanBtn" class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700 update-button" data-id="{{ $karyawans->id_user }}" data-nama="{{ $karyawans->nama }}" data-id="{{ $karyawans->id_user }}" data-nohp="{{ $karyawans->no_hp }}" data-alamat="{{ $karyawans->alamat }}" data-tanggal="{{ $karyawans->tgl_lahir }}" data-gaji="{{ $karyawans->gaji }}"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
 
                             
                           <!-- <a href="javascript:;" class="text-xs font-semibold leading-tight text-slate-400"> Edit </a> -->
@@ -180,7 +165,7 @@
                         </td>
                         <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
                             <a class="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text delete-button" data-id="{{ $karyawans->id_user }}"><i class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
-                            <a id="tambahKaryawanBtn" class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
+                            <a id="tambahKaryawanBtn" class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700 update-button" data-id="{{ $karyawans->id_user }}" data-nama="{{ $karyawans->nama }}" data-id="{{ $karyawans->id_user }}" data-nohp="{{ $karyawans->no_hp }}" data-alamat="{{ $karyawans->alamat }}" data-tanggal="{{ $karyawans->tgl_lahir }}" data-gaji="{{ $karyawans->gaji }}"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
                           <!-- <a href="javascript:;" class="text-xs font-semibold leading-tight text-slate-400"> Edit </a> -->
                         </td>
                       </tr>
@@ -251,7 +236,7 @@
                         </td>
                         <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
                             <a class="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text delete-button" data-id="{{ $karyawans->id_user }}"><i class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
-                            <a class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
+                            <a class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700 update-button" data-id="{{ $karyawans->id_user }}" data-nama="{{ $karyawans->nama }}" data-id="{{ $karyawans->id_user }}" data-nohp="{{ $karyawans->no_hp }}" data-alamat="{{ $karyawans->alamat }}" data-tanggal="{{ $karyawans->tgl_lahir }}" data-gaji="{{ $karyawans->gaji }}"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
                           <!-- <a href="javascript:;" class="text-xs font-semibold leading-tight text-slate-400"> Edit </a> -->
                         </td>
                       </tr>
@@ -322,7 +307,7 @@
                         </td>
                         <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
                             <a class="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text delete-button" data-id="{{ $karyawans->id_user }}"><i class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
-                            <a class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
+                            <a class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700 update-button" data-id="{{ $karyawans->id_user }}" data-nama="{{ $karyawans->nama }}" data-id="{{ $karyawans->id_user }}" data-nohp="{{ $karyawans->no_hp }}" data-alamat="{{ $karyawans->alamat }}" data-tanggal="{{ $karyawans->tgl_lahir }}" data-gaji="{{ $karyawans->gaji }}"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
                           <!-- <a href="javascript:;" class="text-xs font-semibold leading-tight text-slate-400"> Edit </a> -->
                         </td>
                       </tr>
@@ -393,7 +378,7 @@
                         </td>
                         <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
                             <a class="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text delete-button" data-id="{{ $karyawans->id_user }}"><i class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
-                            <a class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
+                            <a class="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700 update-button" data-id="{{ $karyawans->id_user }}" data-nama="{{ $karyawans->nama }}" data-id="{{ $karyawans->id_user }}" data-nohp="{{ $karyawans->no_hp }}" data-alamat="{{ $karyawans->alamat }}" data-tanggal="{{ $karyawans->tgl_lahir }}" data-gaji="{{ $karyawans->gaji }}"><i class="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
                           <!-- <a href="javascript:;" class="text-xs font-semibold leading-tight text-slate-400"> Edit </a> -->
                         </td>
                       </tr>
@@ -415,14 +400,20 @@
   document.addEventListener('DOMContentLoaded', function() {
     // Ambil elemen-elemen yang dibutuhkan
     var deleteModal = document.getElementById('deleteModal');
+    var updateModal = document.getElementById('editModal');
     var deleteButtons = document.querySelectorAll('.delete-button');
+    var updateButtons = document.querySelectorAll('.update-button');
     var cancelDelete = document.getElementById('cancelDelete');
     var modalClose = deleteModal.getElementsByClassName("close")[0];
     var deleteForm = document.getElementById('deleteForm');
+    var updateForm = document.getElementById('updateForm');
     
     // Fungsi untuk menampilkan modal
     function showModal() {
         deleteModal.style.display = "flex";
+    }
+    function show() {
+        updateModal.style.display = "flex";
     }
 
     // Fungsi untuk menyembunyikan modal
@@ -456,6 +447,29 @@
         action = action.replace(':id_user', id_user);
         deleteForm.setAttribute('action', action);
         showModal();
+      });
+    });
+    document.querySelectorAll('.update-button').forEach(function(button) {
+        button.addEventListener('click', function() {
+        event.preventDefault();
+
+        var id_user = this.getAttribute('data-id');
+        var nama = this.getAttribute('data-nama');
+        var hp = this.getAttribute('data-nohp');
+        var alamat = this.getAttribute('data-alamat');
+        var tanggal = this.getAttribute('data-tanggal');
+        var gaji = this.getAttribute('data-gaji');
+
+        document.getElementById('namaupdate').value = nama;
+        document.getElementById('hpupdate').value = hp;
+        document.getElementById('alamatupdate').value = alamat;
+        document.getElementById('tanggalupdate').value = tanggal;
+        document.getElementById('gajiupdate').value = gaji;
+
+        var action = '{{ route('updateuser', ['id_user' => ':id_user']) }}';
+        action = action.replace(':id_user', id_user);
+        updateForm.setAttribute('action', action);
+        show();
       });
     });
   });
@@ -585,26 +599,28 @@
                                     <h5 class="font-semibold text-lg"><i class="ni ni-single-02 mr-2"></i>Edit Data Karyawan</h5>
                                     <div class="w-full mt-2 mb-0 h-1 bg-slate-700 rounded"></div>
                                   </div>
-                                  <form id="editKaryawanForm" class="p-6">
+                                  <form id="updateForm" action="{{ route('updateuser', ['id_user' => ':id_user']) }}" method="POST" class="p-6">
+                                    @csrf
+                                    @method('PUT')
                                       <div class="mb-4">
                                         <label class="block font-normal" for="nama">Nama Lengkap</label>
-                                        <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Nama Lengkap" id="nama" name="nama">
+                                        <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Nama Lengkap" id="namaupdate" name="nama">
                                       </div>
                                       <div class="mb-4">
                                         <label class="block font-normal " for="telepon">No Telepon</label>
-                                        <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Telepon" id="telepon" name="telepon">
+                                        <input type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Telepon" id="hpupdate" name="telepon">
                                       </div>
                                       <div class="mb-4">
                                         <label class="block font-normal " for="alamat">Alamat</label>
-                                        <textarea type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Alamat" id="alamat" name="alamat"></textarea>
+                                        <textarea type="text" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Alamat" id="alamatupdate" name="alamat"></textarea>
                                       </div>
                                       <div class="mb-4">
                                         <label class="block font-normal " for="tanggal_lahir">Tanggal Lahir</label>
-                                        <input type="date" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Tanggal Lahir" id="tanggal_lahir" name="tanggal_lahir">
+                                        <input type="date" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Tanggal Lahir" id="tanggalupdate" name="tanggal_lahir">
                                       </div>
                                       <div class="mb-4">
                                         <label class="block font-normal " for="gaji">Gaji</label>
-                                        <input type="number" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Gaji" id="gaji" name="gaji">
+                                        <input type="number" class="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-500 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" placeholder="Gaji" id="gajiupdate" name="gaji">
                                       </div>
                                       <div class="text-center">
                                         <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Edit Data</button>
