@@ -256,6 +256,9 @@ class AdminController extends Controller
         $laporan = Order::whereDate('waktu_order', $today)
                         ->orderBy('waktu_order')
                         ->get();
+        $daily = Pengeluaran::whereDate('waktu_pengeluaran', $today)
+                        ->orderBy('waktu_pengeluaran')
+                        ->get();
 
         // Mendapatkan awal dan akhir bulan saat ini
         $startOfMonth = Carbon::now()->startOfMonth()->toDateString();
@@ -265,12 +268,18 @@ class AdminController extends Controller
         $bulan = Order::whereBetween('waktu_order', [$startOfMonth, $endOfMonth])
                     ->orderBy('waktu_order')
                     ->get();
+        $monthly = Pengeluaran::whereBetween('waktu_pengeluaran', [$startOfMonth, $endOfMonth])
+                    ->orderBy('waktu_pengeluaran')
+                    ->get();
 
         $startOfWeek = Carbon::now()->startOfWeek()->toDateString();
         $endOfWeek = Carbon::now()->endOfWeek()->toDateString();   
         
         $minggu = Order::whereBetween('waktu_order', [$startOfWeek, $endOfWeek])
                     ->orderBy('waktu_order')
+                    ->get();
+        $weekly = Pengeluaran::whereBetween('waktu_pengeluaran', [$startOfWeek, $endOfWeek])
+                    ->orderBy('waktu_pengeluaran')
                     ->get();
 
         // Menambahkan total subtotal ke setiap order
@@ -283,11 +292,26 @@ class AdminController extends Controller
         foreach ($minggu as $orders) {
             $orders->total_subtotal = $orders->detailorder->sum('subtotal');
         }
+
+        foreach ($daily as $dail) {
+            $dail->total_subtotal = $dail->sum('pengeluaran');
+        }
+        foreach ($weekly as $week) {
+            $week->total_subtotal = $week->sum('pengeluaran');
+        }
+        foreach ($monthly as $month) {
+            $month->total_subtotal = $month->sum('pengeluaran');
+        }
+        
          
         return view('admin.laporan-penjualan',[
             'laporan' => $laporan,
             'minggu' => $minggu,
             'bulan' => $bulan,
+            'daily' => $daily,
+            'weekly' => $weekly,
+            'monthly' => $monthly,
+
         ]);
     }
     public function storemenu(Request $request){
