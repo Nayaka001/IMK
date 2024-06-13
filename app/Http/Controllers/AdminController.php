@@ -247,7 +247,7 @@ class AdminController extends Controller
         $kategori->jenis = $request->input('jenis');
         $kategori->save();
          
-        return back()->with('succes', 'Sub Kategori berhasil ditambahkan');
+        return back()->with('sub', 'Sub Kategori berhasil ditambahkan');
     }
     public function laporan(){
         $today = Carbon::today()->toDateString();
@@ -341,7 +341,7 @@ class AdminController extends Controller
         }
         $menu->delete();
 
-        return back()->with('success', 'Menu berhasil dihapus.');
+        return back()->with('delete', 'Menu berhasil dihapus.');
     }
     public function updatemenu(Request $request, $id_menu){
         $menu = Menu::find($id_menu);
@@ -359,7 +359,7 @@ class AdminController extends Controller
         $menu->save();
         
 
-        return back()->with('success', 'Menu berhasil diupdate.');
+        return back()->with('notification', 'Menu berhasil diupdate.');
     }
     public function destroyuser($id_user){
         $user = User::find($id_user);
@@ -369,7 +369,7 @@ class AdminController extends Controller
             $user->karyawan->delete();
         }
 
-        return back()->with('success', 'Menu berhasil dihapus.');
+        return back()->with('delete', 'Data karyawan berhasil dihapus.');
     }
     public function updateuser(Request $request, $id_user){
         $menu = Karyawan::find($id_user);
@@ -381,6 +381,6 @@ class AdminController extends Controller
         
         $menu->save();
 
-        return back()->with('success', 'Menu berhasil dihapus.');
+        return back()->with('notification', 'Data karyawan berhasil diupdate.');
     }
 }

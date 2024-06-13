@@ -21,11 +21,11 @@
                 </div>
             </a>
             <a href="{{ route('index.orderwait') }}">
-                <div class="items-center group my-10 py-1 w-16 h-14 mx-auto hover:bg-[#FFD369] hover:rounded-xl sm:w-20 sm:h-16 {{ request()->routeIs('index.orderwait') ? 'bg-[#FFD369] rounded-xl' : '' }}">
+                <div class="items-center group my-10 py-1 w-16 h-14 mx-auto hover:bg-[#FFD369] hover:rounded-xl sm:w-20 sm:h-16 {{ request()->routeIs('index.orderwait', 'index.orderdone') ? 'bg-[#FFD369] rounded-xl' : '' }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 33 35" fill="none" class="mx-auto">
                         <path d="M15.125 9.92578H23.375V12.7617H15.125V9.92578ZM15.125 15.5977H23.375V18.4336H15.125V15.5977ZM15.125 21.2695H23.375V24.1055H15.125V21.2695ZM9.625 9.92578H12.375V12.7617H9.625V9.92578ZM9.625 15.5977H12.375V18.4336H9.625V15.5977ZM9.625 21.2695H12.375V24.1055H9.625V21.2695ZM27.6375 4.25391H5.3625C4.675 4.25391 4.125 4.82109 4.125 5.53008V28.5012C4.125 29.0684 4.675 29.7773 5.3625 29.7773H27.6375C28.1875 29.7773 28.875 29.0684 28.875 28.5012V5.53008C28.875 4.82109 28.1875 4.25391 27.6375 4.25391ZM26.125 26.9414H6.875V7.08984H26.125V26.9414Z" fill="#FFFFF0"/>
                     </svg>
-                    <h5 class="text-white text-center text-[13px] group-hover:text-black {{ request()->routeIs('index.orderwait') ? 'text-black' : '' }}">Order List</h5>
+                    <h5 class="text-white text-center text-[13px] group-hover:text-black {{ request()->routeIs('index.orderwait', 'index.orderdone') ? 'text-black' : '' }}">Order List</h5>
                 </div>
             </a>
             <a href="{{ route('report') }}">

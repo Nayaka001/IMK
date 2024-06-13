@@ -34,6 +34,29 @@
             <div class="mt-10 w-full container gap-6 flex flex-wrap mr-0">
                 {{-- card --}}
                 @foreach($ordersWithDetails  as $order)
+                @php
+                    $allCompleted = true;
+                    $cookingInProgress = false;
+                    $readyToCook = false;
+                @endphp
+                    @foreach($order['order']->detailorder as $detail)
+                        @if($detail->progress !== 'Selesai')
+                            @php
+                                $allCompleted = false;
+                            @endphp
+                        @endif
+                        @if($detail->progress === 'Dimasak')
+                            @php
+                                $cookingInProgress = true;
+                            @endphp
+                        @endif
+                        @if($detail->progress === 'Siap Disajikan')
+                            @php
+                                $readyToCook = true;
+                            @endphp
+                        @endif
+                    @endforeach
+                    @if($readyToCook || $cookingInProgress)
                 @if($order['order']->tipe_order === 'Makan di Tempat' || $order['order']->tipe_order === 'Bawa Pulang')
                 <div class="rounded-xl shadow-lg mb-7 bg-white w-full md:w-80 lg:w-96">
                     @if($order['order']->tipe_order === 'Makan di Tempat')
@@ -113,6 +136,7 @@
                     </div>
                 </div>
                 @endif
+                @endif
                 @endforeach
                 {{-- end card --}}
 
@@ -124,6 +148,29 @@
                 <hr class="w-full border-black">
                 {{-- card --}}
                 @foreach($ordersWithDetails  as $order)
+                @php
+                    $allCompleted = true;
+                    $cookingInProgress = false;
+                    $readyToCook = false;
+                @endphp
+                    @foreach($order['order']->detailorder as $detail)
+                        @if($detail->progress !== 'Selesai')
+                            @php
+                                $allCompleted = false;
+                            @endphp
+                        @endif
+                        @if($detail->progress === 'Dimasak')
+                            @php
+                                $cookingInProgress = true;
+                            @endphp
+                        @endif
+                        @if($detail->progress === 'Siap Disajikan')
+                            @php
+                                $readyToCook = true;
+                            @endphp
+                        @endif
+                    @endforeach
+                    @if($readyToCook || $cookingInProgress)
                 @if($order['order']->tipe_order === 'Reservasi')
                 <div class="rounded-xl shadow-lg mb-7 bg-white w-full md:w-80 lg:w-96">
                         <div class="h-5 w-full bg-slate-300 text-white font-bold text-sm rounded-t-xl px-2">
@@ -192,6 +239,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 @endif
                 @endforeach
                 {{-- end card --}}
