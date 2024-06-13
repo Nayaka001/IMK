@@ -6,6 +6,13 @@
     <div class="w-full my-7 ml-24 sm:ml-36">
         <div class="mr-7">
             <div class="w-full flex justify-between gap-6">
+                <a href="{{ route('logout') }}">
+                    <button id="logoutButton" class="w-full mx-auto">
+                        <div class="rounded-2xl bg-[#ff8181] w-fit px-3 py-2 shadow-md hover:bg-[#ff6969] mx-2 font-bold">
+                            <ion-icon id="power-off-icon" name="power-outline" style="font-size: 2rem; width: 2rem; height: 2rem; cursor: pointer;"></ion-icon>
+                        </div>
+                    </button>
+                </a>
                 <form action="" class="w-full">
                     <div class="flex items-center">
                         <input type="search" placeholder="Search" class="px-3 py-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 peer "/>

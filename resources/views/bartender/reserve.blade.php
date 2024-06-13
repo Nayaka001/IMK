@@ -7,10 +7,13 @@
     <div class="w-auto items-center justify-center p-4 md:p-9 ">
 
         {{-- detail user --}}
-        <div class="flex justify-between items-center mt-4 mb-5 pb-5 ">            
-            <div class="rounded-2xl bg-[#ff8181] w-fit px-3 py-2 shadow-md hover:bg-[#ff6969] mx-2 font-bold">
-                <ion-icon id="power-off-icon" name="power-outline" style="font-size: 2rem; width: 2rem; height: 2rem; cursor: pointer;"></ion-icon>
-            </div>
+        <a href="{{ route('logout') }}">
+            <button id="logoutButton" class="w-full mx-auto">
+                <div class="rounded-2xl bg-[#ff8181] w-fit px-3 py-2 shadow-md hover:bg-[#ff6969] mx-2 font-bold">
+                    <ion-icon id="power-off-icon" name="power-outline" style="font-size: 2rem; width: 2rem; height: 2rem; cursor: pointer;"></ion-icon>
+                </div>
+            </button>
+        </a>
             <div class="flex items-center gap-4">
                 <ion-icon id="user-icon" name="person-circle-outline" style="font-size: 3rem; width: 3rem; height: 3rem;"></ion-icon>
                 <div class="text-center">
