@@ -444,9 +444,102 @@
                         </div>
                     </div>                          
 </div>
+@if(session('notification'))
+<div id="toast" role="alert" class="fixed top-5 right-14 rounded-2xl border border-gray-100 bg-white p-6 shadow-xl dark:border-gray-800 dark:bg-gray-900 transition duration-700 hidden"> 
+    <div class="flex items-start gap-4">
+        <span class="text-emerald-600" style="color: green;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </span>
+        <div class="flex-1">
+            <div class="text-center bg-white border-b-0 rounded-t-2xl" style="color: green;">
+                <strong class="block font-medium text-gray-900 dark:text-white">Update Berhasil!</strong>
+                <!-- <div class="w-full mt-2 h-1 bg-slate-700 rounded"></div> -->
+            </div>
+            <p class="mt-1 text-sm text-gray-700 dark:text-gray-200" style="color: green;">{{ session('notification') }}</p>
+        </div>
+        {{-- <button class="absolute top-4 right-4 text-gray-500 transition hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500" onclick="dismissToast()">
+            <span class="sr-only">Dismiss popup</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button> --}}
+    </div>
+</div>
+@endif
+@if(session('delete'))
+<div id="toast" role="alert" class="fixed top-5 right-14 rounded-2xl border border-gray-100 bg-white p-6 shadow-xl dark:border-gray-800 dark:bg-gray-900 transition duration-700 hidden"> 
+    <div class="flex items-start gap-4">
+        <span class="text-emerald-600" style="color: green;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </span>
+        <div class="flex-1">
+            <div class="text-center bg-white border-b-0 rounded-t-2xl" style="color: green;">
+                <strong class="block font-medium text-gray-900 dark:text-white">Delete Berhasil!</strong>
+                <!-- <div class="w-full mt-2 h-1 bg-slate-700 rounded"></div> -->
+            </div>
+            <p class="mt-1 text-sm text-gray-700 dark:text-gray-200" style="color: green;">{{ session('delete') }}</p>
+        </div>
+        {{-- <button class="absolute top-4 right-4 text-gray-500 transition hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500" onclick="dismissToast()">
+            <span class="sr-only">Dismiss popup</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button> --}}
+    </div>
+</div>
+@endif
+@if(session('sub'))
+<div id="toast" role="alert" class="fixed top-5 right-14 rounded-2xl border border-gray-100 bg-white p-6 shadow-xl dark:border-gray-800 dark:bg-gray-900 transition duration-700 hidden"> 
+    <div class="flex items-start gap-4">
+        <span class="text-emerald-600" style="color: green;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </span>
+        <div class="flex-1">
+            <div class="text-center bg-white border-b-0 rounded-t-2xl" style="color: green;">
+                <strong class="block font-medium text-gray-900 dark:text-white">Delete Berhasil!</strong>
+                <!-- <div class="w-full mt-2 h-1 bg-slate-700 rounded"></div> -->
+            </div>
+            <p class="mt-1 text-sm text-gray-700 dark:text-gray-200" style="color: green;">{{ session('sub') }}</p>
+        </div>
+        {{-- <button class="absolute top-4 right-4 text-gray-500 transition hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500" onclick="dismissToast()">
+            <span class="sr-only">Dismiss popup</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button> --}}
+    </div>
+</div>
+@endif
 
-
-
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+     // Simulasi login berhasil
+     showToast();
+ 
+     function showToast() {
+         const toast = document.getElementById('toast');
+         toast.classList.add('toast-show');
+ 
+         setTimeout(() => {
+             toast.classList.remove('toast-show');
+             toast.classList.add('toast-hidden');
+         }, 3000);
+     }
+ 
+     window.dismissToast = function() {
+         const toast = document.getElementById('toast');
+         toast.classList.remove('toast-show');
+         toast.classList.add('toast-hidden');
+     };
+ });
+ 
+ </script>
 
 <script>
   // Fungsi untuk menampilkan modal konfirmasi

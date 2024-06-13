@@ -53,6 +53,7 @@
             @php
                     $allCompleted = true;
                     $cookingInProgress = false;
+                    $readyToCook = false;
                     @endphp
                     @foreach($order->detailorder as $detail)
                         @if($detail->progress !== 'Selesai')
