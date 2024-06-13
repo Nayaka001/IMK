@@ -1,4 +1,4 @@
-@extends('layouts.main-kitchen')
+@extends('layouts.main')
 
 @section('container')
 
@@ -6,22 +6,26 @@
 
     <div class="w-auto items-center justify-center p-4 md:p-9 ">
 
-        {{-- detail user --}}
-        <div class="flex justify-between items-center mt-4 mb-5 pb-5 ">            
+{{-- detail user --}}
+<div class="flex justify-between items-center mt-4 mb-5 pb-5 ">            
+    <a href="{{ route('logout') }}">
+        <button id="logoutButton" class="w-full mx-auto">
             <div class="rounded-2xl bg-[#ff8181] w-fit px-3 py-2 shadow-md hover:bg-[#ff6969] mx-2 font-bold">
                 <ion-icon id="power-off-icon" name="power-outline" style="font-size: 2rem; width: 2rem; height: 2rem; cursor: pointer;"></ion-icon>
             </div>
-            <div class="flex items-center gap-4">
-                <ion-icon id="user-icon" name="person-circle-outline" style="font-size: 3rem; width: 3rem; height: 3rem;"></ion-icon>
-                <div class="text-center">
-                    <h1 class="text-sm font-medium">{{ auth()->user()->username }}</h1>
-                    <p class="text-xs text-slate-500">Cashier</p>
-                </div>
-            </div>
-        </div>
-        {{-- detail user end --}}
+        </button>
+    </a>
 
-        <div class="w-full h-5 p-2"></div> <!-- Spacer -->
+    <div class="flex items-center gap-4">
+        <ion-icon id="user-icon" name="person-circle-outline" style="font-size: 3rem; width: 3rem; height: 3rem;"></ion-icon>
+        <div class="text-center">
+            <h1 class="text-sm font-medium">{{ auth()->user()->username }}</h1>
+            <p class="text-xs text-slate-500">Cashier</p>
+        </div>
+    </div>
+</div>
+{{-- detail user end --}}
+
         
         <!-- category -->
         <div class="w-auto flex justify-between my-5 overflow-x-scroll sm:w-4/5 md:w-11/12 lg:w-full lg:overflow-visible">

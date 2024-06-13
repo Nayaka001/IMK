@@ -431,7 +431,7 @@
     this.querySelector('h1').textContent = 'Bawa Pulang';
     document.getElementById('showForm1').querySelector('h1').textContent = 'Makan di tempat';
 
-            // Function to show modal
+        // Function to show modal
         function showModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.classList.remove('hidden');
