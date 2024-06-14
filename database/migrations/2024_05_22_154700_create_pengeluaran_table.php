@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('nama_pengeluaran', 200);
             $table->integer('pengeluaran');
             $table->datetime('waktu_pengeluaran');
+            $table->uuid('id_user');
+            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade')->onUpdate('cascade'); //KASIR
             
         });
     }

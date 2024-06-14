@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('subkategori', 100);
             $table->string('kategori', 100);
             $table->enum('jenis', ['Makanan', 'Minuman']);
+            $table->enum('status', ['Tersedia', 'Habis']);
             
         });
     }
