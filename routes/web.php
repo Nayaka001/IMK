@@ -29,6 +29,7 @@ Route::get('/kitchen-main', [KitchenController::class, 'index'])->name('index.ki
 Route::get('/kcooking', [KitchenController::class, 'cooking'])->name('index.cooking');
 Route::get('/kready', [KitchenController::class, 'ready'])->name('index.ready');
 Route::get('/kdone', [KitchenController::class, 'done'])->name('index.done');
+Route::get('/kreser', [KitchenController::class, 'reser'])->name('index.reser');
 // Route::get('/kitchen-cooking', [KitchenController::class, 'cooking'])->name('index.cooking');
 Route::get('/kitchen-detail/{id_order}',  [KitchenController::class, 'detail'])->name('kitchen.detail');
 
