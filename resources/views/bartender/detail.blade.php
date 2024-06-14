@@ -1,4 +1,4 @@
-@extends('layouts.main-kitchen')
+@extends('layouts.main-bartender')
 
 @section('container')
 
@@ -13,10 +13,10 @@
         </button>
     </div>
 
-    <div class="m-4 justify-center gap-5 flex flex-row">
+    <div class="h-screen m-4 justify-center gap-5 flex flex-row">
 
         <!-- kotak 1 -->
-        <div class="bg-[#ffffff] rounded-2xl flex justify-center flex-col p-6 gap-3 items-start shadow-2xl w-full">
+        <div class="bg-[#ffffff] rounded-2xl flex justify-center flex-col p-6 gap-3 items-start shadow-2xl w-full overflow-auto ">
             <div class="flex gap-3">
                 <h2 class="font-bold text-2xl">M01</h2> <h2 class="font-bold text-2xl">#004</h2>
             </div>
@@ -25,7 +25,7 @@
             </div>
 
             <!-- pesanan 1 start -->
-            <div class="w-full">
+            <div class="w-full flex-grow">
                 <!-- detail pesanan start -->
                 <div class="gap-3">
                     <!-- Detail Pesanan Start -->
@@ -66,7 +66,7 @@
         </div>
 
         <!-- kotak 2 -->
-        <div class="bg-[#ffffff] border-12 rounded-2xl flex  flex-col p-6 gap-3 items-start shadow-2xl w-full">
+        <div class="bg-[#ffffff] border-12 rounded-2xl flex  flex-col p-6 gap-3 items-start shadow-2xl w-full h-full overflow-auto">
             <div class="flex gap-3">
                 <h2 class="font-bold text-2xl">M02</h2> <h2 class="font-bold text-2xl">#003</h2>
             </div>
@@ -75,7 +75,7 @@
             </div>
 
             <!-- pesanan 1 start -->
-            <div class="w-full">
+            <div class="w-full flex-grow">
                 <!-- detail pesanan start -->
                 <div class="gap-3">
                     <!-- Detail Pesanan Start -->
@@ -176,7 +176,7 @@
         <!-- Modal Konfirmasi End -->
 
 
-
+    </div>
     <script>
         // Function to show modal
         function showModal(modalId) {

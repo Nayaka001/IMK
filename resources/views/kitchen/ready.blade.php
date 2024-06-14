@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.main-kitchen ')
 
 @section('container')
 
@@ -78,7 +78,7 @@
                     @endforeach
                     @if($readyToCook)
             <a href="{{route('kitchen.detail', $order->id_order)}}">
-                <div class="bg-[#ffffff] rounded-2xl flex justify-center flex-col p-6 gap-3 items-start shadow-2xl">
+                <div class="bg-[#ffffff] rounded-2xl flex flex-col p-6 gap-3 items-start shadow-2xl h-64 overflow-auto">
                     <div class="flex gap-3">
                         <h2 class="font-bold text-2xl">{{$order->id_meja}}</h2> <h2 class="font-bold text-2xl">#{{$order->id_order}}</h2>
                     </div>
