@@ -18,7 +18,7 @@
 
 <div class=" p-8">
   <div class="w-3/4 flex justify-between gap-6 md:w-5/6 lg:w-full">
-      <form action="#" method="GET" class="w-full">
+      <form action="{{ route('menu.kitchen') }}" method="GET" class="w-full">
           <div class="flex items-center">
               <input type="search" placeholder="Search" id="search" name="search" class="px-3 py-2 border shadow rounded w-full block text-sm placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-sky-500 focus:border-sky-500 peer" />
               <button class="items-center mx-3 z-0">
@@ -28,7 +28,7 @@
       </form>
       <ion-icon name="person-circle-outline" class="flex items-center text-5xl -ml-7 -mr-3 -mt-1 z-0"></ion-icon>
       <div class="text-center items-center">
-          <h1 class="text-sm">User Name</h1>
+          <h1 class="text-sm">{{ auth()->user()->karyawan->nama }}</h1>
           <p class="text-xs text-slate-500">Cashier</p>
       </div>
   </div>
@@ -38,41 +38,218 @@
       <a href="/kitchen-main">
           <div class="rounded-2xl text-white bg-black w-fit px-3 py-2 shadow-md mx-2 font-bold">Utama</div>
       </a>
-      <a href="/kitchen-menu">
-          <div class="rounded-2xl bg-[#FFD369] w-fit px-3 py-2 shadow-md mx-2 font-bold">Semua</div>
-      </a>
-      <a href="/kitchen-menu/kids">
-          <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Kids Meal</div>
-      </a>
-      <a href="/kitchen-menu/sayuran">
-          <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Sayuran</div>
-      </a>
-      <a href="/kitchen-menu/steak">
-          <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Steaks & Hotplates</div>
-      </a>
-      <a href="/kitchen-menu/rice">
-          <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Rice Hotplate</div>
-      </a>
-      <a href="/kitchen-menu/geprek">
-          <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Geprek</div>
-      </a>
-      <a href="/kitchen-menu/cemilan">
-          <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Cemilan</div>
-      </a>
+      <div id="AllLink" class="rounded-2xl bg-[#FFD369] w-fit px-3 py-2 shadow-md mx-2 font-bold">All</div>
+              <div id="kidsMealLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Kids Meal</div>
+              <div id="sayuranLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Sayuran</div>
+              <div id="steakLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Steaks & Hotplates</div>
+              <div id="riceLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold ">Rice Hotplate</div>
+              <div id="geprekLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Geprek</div>
+              <div id="cemilanLink" class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Cemilan</div>
   </div>
   
-  <div id="search-results" class="mt-10 w-full mx-auto container gap-6 flex flex-wrap sm:justify-start">
-      <h1 class="text-3xl font-bold ml-3 pt-4">Kategori 1</h1>
-      <hr class="mt-5 w-full mx-3">
-      <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80" data-modal-toggle="default-modal">
-          <img src="path/to/image1.jpg" alt="Image Caption" class="w-full h-48 object-cover">
-          <div class="px-2 py-2">
-            <div class="font-bold text-lg mb-1">Menu Item 1</div>
-            <p class="text-xs mb-1 text-gray-600">Description for menu item 1.</p>
-            <h1 class="font-bold mt-1 text-lg">Rp 10000</h1>
-          </div>
+  <div id="all">
+    @foreach($kategori as $kategoris)
+    @if($kategoris->jenis === 'Makanan')
+      <div class="w-full">
+        <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+        <hr class="mt-3 w-full mx-3">
       </div>
-  </div>
+      <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal">
+        @foreach($menu as $menus)
+          @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+            <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update"  >
+                <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover openModalBtn" data-id-menu="{{$menus->id_menu}}" data-gambar-menu="{{$menus->gambar_menu}}" data-nama-menu="{{$menus->nama_menu}}">
+                <div class="px-2 py-2" >
+                  <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                  <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                  {{-- <div class="flex justify-between"> --}}
+                    <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
+                    {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
+                        <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
+                    </button> --}}
+                  {{-- </div> --}}
+                </div>
+            </div>
+          @endif
+        @endforeach
+      </div>
+      @endif
+    @endforeach
+    </div>
+    <div id="kidsmeal" class="hidden">
+        @foreach($kategori as $kategoris)
+        @if($kategoris->kategori === 'KIDS MEAL' && $kategoris->jenis === 'Makanan')
+          <div class="w-full">
+            <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+            <hr class="mt-3 w-full mx-3">
+          </div>
+          <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal">
+            @foreach($menu as $menus)
+              @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update " data-id-menu="{{$menus->id_menu}}" data-gambar-menu="{{$menus->gambar_menu}}" data-nama-menu="{{$menus->nama_menu}}">
+                    <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                    <div class="px-2 py-2">
+                      <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                      <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                      {{-- <div class="flex justify-between"> --}}
+                        <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
+                        {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
+                            <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
+                        </button> --}}
+                      {{-- </div> --}}
+                    </div>
+                </div>
+              @endif
+            @endforeach
+          </div>
+          @endif
+        @endforeach
+        </div>
+        <div id="sayuran" class="hidden">
+        @foreach($kategori as $kategoris)
+        @if($kategoris->kategori === 'SAYURAN' && $kategoris->jenis === 'Makanan')
+          <div class="w-full">
+            <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+            <hr class="mt-3 w-full mx-3">
+          </div>
+          <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal">
+            @foreach($menu as $menus)
+              @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update" data-id-menu="{{$menus->id_menu}}" data-gambar-menu="{{asset('/img/menu/' . $menus->gambar_menu)}}" data-nama-menu="{{$menus->nama_menu}}">
+                    <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                    <div class="px-2 py-2">
+                      <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                      <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                      {{-- <div class="flex justify-between"> --}}
+                        <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
+                        {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
+                            <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
+                        </button> --}}
+                      {{-- </div> --}}
+                    </div>
+                </div>
+              @endif
+            @endforeach
+          </div>
+          @endif
+        @endforeach
+        </div>
+        <div id="steak" class="hidden">
+        @foreach($kategori as $kategoris)
+        @if($kategoris->kategori === 'STEAKS & HOTPLATES' && $kategoris->jenis === 'Makanan')
+          <div class="w-full">
+            <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+            <hr class="mt-3 w-full mx-3">
+          </div>
+          <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal" >
+            @foreach($menu as $menus)
+              @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update" data-id-menu="{{$menus->id_menu}}" data-gambar-menu="{{$menus->gambar_menu}}" data-nama-menu="{{$menus->nama_menu}}">
+                    <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                    <div class="px-2 py-2">
+                      <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                      <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                      {{-- <div class="flex justify-between"> --}}
+                        <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
+                        {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
+                            <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
+                        </button> --}}
+                      {{-- </div> --}}
+                    </div>
+                </div>
+              @endif
+            @endforeach
+          </div>
+          @endif
+        @endforeach
+        </div>
+        <div id="rice" class="hidden">
+        @foreach($kategori as $kategoris)
+        @if($kategoris->kategori === 'RICE HOTPLATE' && $kategoris->jenis === 'Makanan')
+          <div class="w-full">
+            <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+            <hr class="mt-3 w-full mx-3">
+          </div>
+          <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal">
+            @foreach($menu as $menus)
+              @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update" data-id-menu="{{$menus->id_menu}}" data-gambar-menu="{{$menus->gambar_menu}}" data-nama-menu="{{$menus->nama_menu}}">
+                    <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                    <div class="px-2 py-2">
+                      <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                      <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                      {{-- <div class="flex justify-between"> --}}
+                        <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
+                        {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
+                            <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
+                        </button> --}}
+                      {{-- </div> --}}
+                    </div>
+                </div>
+              @endif
+            @endforeach
+          </div>
+          @endif
+        @endforeach
+        </div>
+        <div id="geprek" class="hidden">
+        @foreach($kategori as $kategoris)
+        @if($kategoris->kategori === 'GEPREK' && $kategoris->jenis === 'Makanan')
+          <div class="w-full">
+            <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+            <hr class="mt-3 w-full mx-3">
+          </div>
+          <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal">
+            @foreach($menu as $menus)
+              @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update" data-id-menu="{{$menus->id_menu}}" data-gambar-menu="{{$menus->gambar_menu}}" data-nama-menu="{{$menus->nama_menu}}">
+                    <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                    <div class="px-2 py-2">
+                      <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                      <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                      {{-- <div class="flex justify-between"> --}}
+                        <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
+                        {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
+                            <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
+                        </button> --}}
+                      {{-- </div> --}}
+                    </div>
+                </div>
+              @endif
+            @endforeach
+          </div>
+          @endif
+        @endforeach
+        </div>
+        <div id="cemilan" class="hidden">
+        @foreach($kategori as $kategoris)
+        @if($kategoris->kategori === 'CEMILAN' && $kategoris->jenis === 'Makanan')
+          <div class="w-full">
+            <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+            <hr class="mt-3 w-full mx-3">
+          </div>
+          <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal">
+            @foreach($menu as $menus)
+              @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update" data-id-menu="{{$menus->id_menu}}" data-gambar-menu="{{$menus->gambar_menu}}" data-nama-menu="{{$menus->nama_menu}}">
+                    <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                    <div class="px-2 py-2">
+                      <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                      <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                      {{-- <div class="flex justify-between"> --}}
+                        <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
+                        {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
+                            <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
+                        </button> --}}
+                      {{-- </div> --}}
+                    </div>
+                </div>
+              @endif
+            @endforeach
+          </div>
+          @endif
+        @endforeach
+        </div>
 
     <!-- Modal -->
         {{-- Main Modal --}}
@@ -95,22 +272,27 @@
                     <div class="flex items-start p-4 flex-row gap-3">
                         <!-- Image -->
                         <div>
-                            <img class="w-10" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                            <img class="w-10"  src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
                         </div>
                         <!-- Menu notes and quantity -->
                         <div>
-                            <h3 class="font-bold">Menu 1</h3>
+                            <h3 id="tittle" class="font-bold"></h3>
                         </div>
                         <!-- Menu notes and quantity end -->
                     </div>
         
                     <div class="flex items-start px-4 flex-row">
-                        <p> Silahkan pilih status ketersediaan menu </p>
+                        <p> Ubah status menu ini menjadi habis? </p>
                     </div>
         
                     <div class="flex justify-center mt-6">
-                        <button id="availableModalBtn" class="bg-yellow-400 text-white px-4 py-2 rounded-3xl mr-2" data-modal-save="confirm-modal">Tersedia</button>
-                        <button id="notAvailableModalBtn" class="bg-red-500 text-white px-4 py-2 rounded-3xl" data-modal-save="confirm-modal">Habis</button>
+                        <form id="updateForm" action="{{ route('menu.update', ['id_menu' => ':id_menu']) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <input type="hidden" name="status" value="Habis" id="">
+                            <button type="submit" id="notAvailableModalBtn" class="bg-red-500 text-white px-4 py-2 rounded-3xl" data-modal-save="confirm-modal">Habis</button>
+                        </form>
+                            {{-- <button type="butt" id="availableModalBtn" class="bg-yellow-400 text-white px-4 py-2 rounded-3xl mr-2" data-modal-save="confirm-modal">Tersedia</button> --}}
                     </div>
                 </div>
             </div>
@@ -118,7 +300,7 @@
         {{-- Main Modal End --}}
         
         {{-- Confirm Modal --}}
-        <div id="confirm-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex items-center justify-center modal">
+        {{-- <div id="confirm-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex items-center justify-center modal">
             <div class="fixed inset-0 bg-black bg-opacity-50"></div>
             <div class="relative bg-white rounded-lg shadow-lg p-6 w-1/3">
                 <!-- Modal header -->
@@ -133,6 +315,7 @@
                 </div>
                 <!-- Modal body -->
                 <div class="space-y-4">
+                    
                     <p>Apakah Anda yakin ingin menyimpan perubahan?</p>
                     <div class="flex justify-center mt-6">
                         <button id="confirmSaveBtn" class="bg-yellow-400 text-white px-4 py-2 rounded-3xl mr-2" data-modal-confirm-save="confirm-modal">Yes</button>
@@ -140,12 +323,171 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         {{-- Confirm Modal End --}}
     {{-- Modal End --}}
         
-        
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const openModalButtons = document.querySelectorAll('.openModalBtn');
+    const modal = document.getElementById('default-modal');
+    const modalTitle = document.getElementById('tittle');
+    const modalImg = document.getElementById('image');
+    const updateForm = document.getElementById('updateForm');
+
+    openModalButtons.forEach(function(button) {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            const menu = this.getAttribute('data-id-menu');
+            const gambar = this.getAttribute('data-gambar-menu');
+            const nama = this.getAttribute('data-nama-menu');
+
+            // Update konten modal dengan data dari atribut
+            modalTitle.textContent = nama; // Menggunakan nama menu sebagai judul modal
+            modalImg.src = gambar; // Menggunakan URL gambar penuh
+            var action = '{{ route('menu.update', ['id_menu' => ':id_menu']) }}';
+            action = action.replace(':id_menu', menu)
+            updateForm.setAttribute('action', action);
+
+            // Tampilkan modal jika Anda menggunakan modal
+            modal.style.display = 'block'; // atau metode lain sesuai dengan implementasi modal Anda
+        });
+    });
+
+    // Tambahkan event listener untuk menutup modal
+    document.querySelector('.close').addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+});
+</script>
+    </script>
+    <script>
+        // Mendapatkan elemen yang diperlukan
+        const allMenu = document.getElementById('all');
+        const kidsMealMenu = document.getElementById('kidsmeal');
+        const sayuranMenu = document.getElementById('sayuran');
+        const steakMenu = document.getElementById('steak');
+        const riceMenu = document.getElementById('rice');
+        const geprekMenu = document.getElementById('geprek');
+        const cemilanMenu = document.getElementById('cemilan');
+        const minumanMenu = document.getElementById('minuman');
     
+        // Menyembunyikan elemen #all dan menampilkan elemen #sayuran
+        function showAllMenu() {
+            allMenu.style.display = 'block';
+            kidsMealMenu.style.display = 'none';
+            sayuranMenu.style.display = 'none';
+            steakMenu.style.display = 'none';
+            riceMenu.style.display = 'none';
+            geprekMenu.style.display = 'none';
+            cemilanMenu.style.display = 'none';
+            minumanMenu.style.display = 'none';
+        }
+        function showKidsMealMenu() {
+            allMenu.style.display = 'none';
+            kidsMealMenu.style.display = 'block';
+            sayuranMenu.style.display = 'none';
+            steakMenu.style.display = 'none';
+            riceMenu.style.display = 'none';
+            geprekMenu.style.display = 'none';
+            cemilanMenu.style.display = 'none';
+            minumanMenu.style.display = 'none';
+        }
+        function showSayuranMenu() {
+            allMenu.style.display = 'none';
+            kidsMealMenu.style.display = 'none';
+            sayuranMenu.style.display = 'block';
+            steakMenu.style.display = 'none';
+            riceMenu.style.display = 'none';
+            geprekMenu.style.display = 'none';
+            cemilanMenu.style.display = 'none';
+            minumanMenu.style.display = 'none';
+        }
+        function showSteakMenu() {
+            allMenu.style.display = 'none';
+            kidsMealMenu.style.display = 'none';
+            sayuranMenu.style.display = 'none';
+            steakMenu.style.display = 'block';
+            riceMenu.style.display = 'none';
+            geprekMenu.style.display = 'none';
+            cemilanMenu.style.display = 'none';
+            minumanMenu.style.display = 'none';
+        }
+        function showRiceMenu() {
+            allMenu.style.display = 'none';
+            kidsMealMenu.style.display = 'none';
+            sayuranMenu.style.display = 'none';
+            steakMenu.style.display = 'none';
+            riceMenu.style.display = 'block';
+            geprekMenu.style.display = 'none';
+            cemilanMenu.style.display = 'none';
+            minumanMenu.style.display = 'none';
+        }
+        function showGeprekMenu() {
+            allMenu.style.display = 'none';
+            kidsMealMenu.style.display = 'none';
+            sayuranMenu.style.display = 'none';
+            steakMenu.style.display = 'none';
+            riceMenu.style.display = 'none';
+            geprekMenu.style.display = 'block';
+            cemilanMenu.style.display = 'none';
+            minumanMenu.style.display = 'none';
+        }
+        function showCemilanMenu() {
+            allMenu.style.display = 'none';
+            kidsMealMenu.style.display = 'none';
+            sayuranMenu.style.display = 'none';
+            steakMenu.style.display = 'none';
+            riceMenu.style.display = 'none';
+            geprekMenu.style.display = 'none';
+            cemilanMenu.style.display = 'block';
+            minumanMenu.style.display = 'none';
+        }
+        function showMinumanMenu() {
+            allMenu.style.display = 'none';
+            kidsMealMenu.style.display = 'none';
+            sayuranMenu.style.display = 'none';
+            steakMenu.style.display = 'none';
+            riceMenu.style.display = 'none';
+            geprekMenu.style.display = 'none';
+            cemilanMenu.style.display = 'none';
+            minumanMenu.style.display = 'block';
+        }
+
+        // Mendengarkan klik pada tautan "Kids Meal"
+        document.getElementById('AllLink').addEventListener('click', function(event) {
+        event.preventDefault(); // Menghentikan perilaku bawaan dari tautan
+        showAllMenu(); // Memanggil fungsi untuk menampilkan menu Kids Meal
+        });
+        document.getElementById('kidsMealLink').addEventListener('click', function(event) {
+        event.preventDefault(); // Menghentikan perilaku bawaan dari tautan
+        showKidsMealMenu(); // Memanggil fungsi untuk menampilkan menu Kids Meal
+        });
+        document.getElementById('sayuranLink').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        showSayuranMenu(); 
+        });
+        document.getElementById('steakLink').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        showSteakMenu(); 
+        });
+        document.getElementById('riceLink').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        showRiceMenu(); 
+        });
+        document.getElementById('geprekLink').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        showGeprekMenu(); 
+        });
+        document.getElementById('cemilanLink').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        showCemilanMenu(); 
+        });
+        document.getElementById('minumanLink').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        showMinumanMenu(); 
+        });
+    </script>
 <script>
     // Function to show modal
     function showModal(modalId) {
