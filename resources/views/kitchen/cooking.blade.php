@@ -42,7 +42,7 @@
             <a href="{{route('index.done')}}">
                 <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Selesai</div>
             </a>
-            <a href="/kitchen-menu/geprek">
+            <a href="{{ route('index.reser') }}">
                 <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Reservasi</div>
             </a>
         </div>
