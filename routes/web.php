@@ -26,6 +26,8 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Bagian Kitchen
 Route::get('/kitchen-main', [KitchenController::class, 'index'])->name('index.kitchen');
+Route::get('/kitchen-menu', [KitchenController::class, 'menu'])->name('menu.kitchen');
+Route::PUT('/kitchen-menu/update/{id_menu}', [KitchenController::class, 'menuupdate'])->name('menu.update');
 Route::get('/kcooking', [KitchenController::class, 'cooking'])->name('index.cooking');
 Route::get('/kready', [KitchenController::class, 'ready'])->name('index.ready');
 Route::get('/kdone', [KitchenController::class, 'done'])->name('index.done');
@@ -202,9 +204,7 @@ Route::get('/kitchen-reserve', function () {
     return view('kitchen.reserve');
 });
 
-Route::get('/kitchen-menu', function () {
-    return view('kitchen.menu');
-});
+
 Route::get('/kitchen-menu/cemilan', function () {
     return view('kitchen.menucemilan');
 });

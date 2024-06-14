@@ -59,7 +59,7 @@
 
                 <!-- button perbarui start -->
                 <div data-modal-target="default-modal" data-modal-toggle="default-modal" class="items-center mt-3 w-full">
-                    <button data-tail-id="{{ $detail->id_order_details }}" data-der-id="{{ $detail->id_order }}" data-detail-id="{{ $detail->menu->nama_menu }}" data-order-id="{{ $detail->note }}" data-order-jumlah="{{ $detail->jumlah }}" gambar="{{ $detail->menu->gambar_menu }}"  type="button" class="openModalBtn w-full items-center justify-center text-white bg-[#FFD369] hover:bg-[#edca69] font-medium rounded-lg text-sm p-2 text-center">Perbarui</button>
+                    <button data-gambar-id="{{ asset('/img/menu/' . $detail->menu->gambar_menu) }}" data-tail-id="{{ $detail->id_order_details }}" data-der-id="{{ $detail->id_order }}" data-detail-id="{{ $detail->menu->nama_menu }}" data-order-id="{{ $detail->note }}" data-order-jumlah="{{ $detail->jumlah }}" gambar="{{ $detail->menu->gambar_menu }}"  type="button" class="openModalBtn w-full items-center justify-center text-white bg-[#FFD369] hover:bg-[#edca69] font-medium rounded-lg text-sm p-2 text-center">Perbarui</button>
                 </div>
                 <!-- button perbarui end -->
             </div>
@@ -145,7 +145,7 @@
                     <div class="flex items-start p-4 flex-row gap-3">
                         <!-- gambarnya -->
                         <div>
-                            <img class="w-10" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                            <img class="w-10" id="image" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
                         </div>
                         <!-- menu notes jumlah -->
                         <div>
@@ -166,33 +166,6 @@
         </div>
         <!-- MODAL END -->
 
-        <!-- Modal Konfirmasi Start -->
-        {{-- <div id="confirm-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex items-center justify-center modal">
-            <div class="fixed inset-0 bg-black bg-opacity-50"></div>
-            <div class="relative bg-white rounded-lg shadow-lg p-6 w-1/3">
-                <!-- Modal header -->
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-2xl font-bold">Konfirmasi</h2>
-                    <button id="closeConfirmModalBtn" class="text-gray-500 hover:text-gray-800 focus:outline-none" data-modal-hide="confirm-modal">
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                </div>
-                <!-- Modal body -->
-                
-                <div class="space-y-4" id="menuModal">
-                    <p>Apakah Anda yakin ingin menyimpan perubahan?</p>
-                    <div class="flex justify-center mt-6">
-                        <button type="submit" data-detail-id="{{$detail->id_detail}}" data-order-id="{{$detail->id_order}}"  id="confirmSaveBtn" class="submit-button bg-yellow-400 text-white px-4 py-2 rounded-3xl mr-2" data-modal-confirm-save="confirm-modal">Yes</button>
-                    
-                        <button  id="cancelConfirmBtn" class="bg-red-500 text-white px-4 py-2 rounded-3xl" data-modal-confirm-cancel="confirm-modal">No</button>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-        <!-- Modal Konfirmasi End -->
 
 
     <script>
@@ -202,6 +175,7 @@
         const modal = document.getElementById('menuModal');
         const modalTitle = document.getElementById('tittle');
         const modalNotes = document.getElementById('notes');
+        const modalImg = document.getElementById('image');
         const updateForm = document.getElementById('updateForm');
         const modalQuantityInput = document.getElementById('Quantity');
         // const modalImage = document.getElementById('modalImage');
@@ -215,9 +189,11 @@
                 const order = this.getAttribute('data-der-id');
                 const detail = this.getAttribute('data-tail-id');
                 const orderjumlah = this.getAttribute('data-order-jumlah');
+                const gambarId = this.getAttribute('data-gambar-id');
 
                 // Update konten modal dengan data dari atribut
                 modalTitle.textContent = detailId; 
+                modalImg.src = gambarId;
                 modalNotes.textContent = orderId ? orderId : 'Tidak ada catatan';  
                 var action = '{{ route('kitchen.update', ['id_order' => ':id_order', 'id_order_details' => ':id_order_details']) }}';
                 action = action.replace(':id_order', order).replace(':id_order_details', detail);
