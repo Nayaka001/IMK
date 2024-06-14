@@ -49,6 +49,7 @@ class KasirController extends Controller
         if ($tipe === 'Makan di Tempat') {
             $customerName = Session::get('nama_pelanggan');
             $customerMeja = Session::get('nomor_meja');
+            
             $customerId = Session::get('order_id');
             $customerJumlah = Session::get('jumlah_orang');
             $tipe_order = Session::get('tipe_order');
@@ -61,7 +62,14 @@ class KasirController extends Controller
             $order->nama_pelanggan = $customerName;
             $order->jlh_org = $customerJumlah;
             $order->id_meja = $customerMeja;
+            
             $order->save();
+
+            $meja = Meja::find($customerMeja);
+            if ($customerMeja) {
+                $meja->status = 'Digunakan'; // Contoh status jika meja diisi
+            }
+            $meja->save();
 
             $faktur = new Faktur();
             $faktur->id_order = $customerId;
@@ -86,6 +94,7 @@ class KasirController extends Controller
             $faktur->id_order = $customerId;
             $faktur->total_uang = $request->total_uang;
             $faktur->kembalian = $request->kembalian;
+            $faktur->save();
         }
         else if($tipe === 'Reservasi'){
             $customerName = Session::get('nama_pelanggan');
@@ -108,10 +117,17 @@ class KasirController extends Controller
             $order->kedatangan = $waktu;
             $order->save();
 
+            $meja = Meja::find($customerMeja);
+            if ($customerMeja) {
+                $meja->status = 'Dipesan'; // Contoh status jika meja diisi
+            }
+            $meja->save();
+
             $faktur = new Faktur();
             $faktur->id_order = $customerId;
             $faktur->total_uang = $request->total_uang;
             $faktur->kembalian = $request->kembalian;
+            $faktur->save();
         }
         foreach ($validated['items'] as $item) {
                 $orderDetail = new OrderDetail();

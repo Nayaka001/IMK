@@ -86,7 +86,7 @@ class KitchenController extends Controller
             $order->save();
         }
     
-        return back();
+        return back()->with('succes', 'Status pesanan berhasil menjadi siap disajikan');
     }
     // public function modal($id_order, $id_order_details){
     //     $order = OrderDetail::where('id_order', $id_order)
