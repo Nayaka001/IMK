@@ -1,4 +1,4 @@
-@extends('layouts.main-bartender')
+@extends('layouts.main-bartender ')
 
 @section('container')
 
@@ -6,6 +6,7 @@
 
     <div class="w-auto items-center justify-center p-4 md:p-9 ">
 
+        
         {{-- detail user --}}
         <div class="flex justify-between items-center mt-4 mb-5 pb-5 ">            
             <a href="{{ route('logout') }}">
@@ -18,32 +19,31 @@
             <div class="flex items-center gap-4">
                 <ion-icon id="user-icon" name="person-circle-outline" style="font-size: 3rem; width: 3rem; height: 3rem;"></ion-icon>
                 <div class="text-center">
-                    <h1 class="text-sm font-medium">{{ auth()->user()->username }}</h1>
+                    <h1 class="text-sm font-medium">{{ auth()->user()->karyawan->nama }}</h1>
                     <p class="text-xs text-slate-500">Cashier</p>
                 </div>
             </div>
         </div>
         {{-- detail user end --}}
-
         
         <!-- category -->
         <div class="w-auto flex justify-between my-5 overflow-x-scroll sm:w-4/5 md:w-11/12 lg:w-full lg:overflow-visible">
             <a href="/bartender-menu">
                 <div class="rounded-2xl bg-black text-white w-fit px-3 py-2 shadow-md mx-2 font-bold">Menu</div>
             </a>
-            <a href="/bartender-main">
+            <a href="{{route('index.bartender')}}">
                 <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Semua</div>
             </a>
-            <a href="/bartender-proccess">
+            <a href="{{route('index.process')}}">
                 <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Diproses</div>
             </a>
-            <a href="/bartender-ready                                                                                                          ">
+            <a href="{{route('index.bready')}}                                                                                                         ">
                 <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Siap</div>
             </a>
-            <a href="/bartender-done">
+            <a href="{{route('index.bdone')}}">
                 <div class="rounded-2xl bg-[#FFD369] w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Selesai</div>
             </a>
-            <a href="/bartender-reserve">
+            <a href="{{ route('index.breser') }}">
                 <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Reservasi</div>
             </a>
         </div>
@@ -52,29 +52,64 @@
         <!-- pesanan -->
         <div class="m-4 justify-center gap-5 flex flex-wrap">
             <!-- box pesanan -->
-            <a href="/bartender-detail">
+            @foreach($orders as $order)
+            @php
+                    $allCompleted = true;
+                    $cookingInProgress = false;
+                    @endphp
+                    @foreach($order->detailorder as $detail)
+                        @if($detail->progress !== 'Selesai')
+                            @php
+                                $allCompleted = false;
+                            @endphp
+                        @endif
+                        @if($detail->progress === 'Dimasak')
+                            @php
+                                $cookingInProgress = true;
+                            @endphp
+                        @endif
+                        @if($detail->progress === 'Siap Disajikan')
+                            @php
+                                $readyToCook = true;
+                            @endphp
+                        @endif
+                    @endforeach
+                    @if($allCompleted)
+            <a href="{{route('bartender.detail', $order->id_order)}}">
                 <div class="bg-[#ffffff] rounded-2xl flex flex-col p-6 gap-3 items-start shadow-2xl h-64 overflow-auto">
                     <div class="flex gap-3">
-                        <h2 class="font-bold text-2xl">ID Meja</h2> 
-                        <h2 class="font-bold text-2xl">#ID Order</h2>
+                        <h2 class="font-bold text-2xl">{{$order->id_meja}}</h2> <h2 class="font-bold text-2xl">#{{$order->id_order}}</h2>
                     </div>
-                    <div class="bg-[#ECCF98] rounded-xl flex p-2 items-center">
-                        Status
-                    </div>
+                    
+
+                    
+                    
+                        <div class="bg-[#ECCF98] rounded-xl flex p-2 items-center">
+                            Selesai
+                        </div>
+                   
+                   
+                    @foreach($order->detailorder as $detail)
+                    @if($detail->menu->ktgmenu->jenis === 'Makanan')
                     <div class="grid grid-cols-2">
                         <div class="w-max flex">
-                            <p class="font-bold">Jumlah x</p>
+                            <p class="font-bold">{{$detail->jumlah}} x</p>
                         </div>
+        
                         <div>
-                            <p>Nama Menu</p>
+                            <p>{{$detail->menu->nama_menu}}</p>
                             <p>
                                 Notes: 
-                                <p>-</p> 
+                                <p>{{ $detail->notes ?? '-'}}</p> 
                             </p>
                         </div>
                     </div>
+                    @endif
+                    @endforeach
                 </div>
             </a>
+            @endif
+            @endforeach
             <!-- end box pesanan -->
         </div>
         <!-- pesanan end -->
