@@ -58,7 +58,7 @@
         @foreach($menu as $menus)
           @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
             <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update"  >
-                <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover openModalBtn" data-id-menu="{{$menus->id_menu}}" data-gambar-menu="{{$menus->gambar_menu}}" data-nama-menu="{{$menus->nama_menu}}">
+                <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover edit-button" data-id-menu="{{$menus->id_menu}}" data-gambar-menu="{{$menus->gambar_menu}}" data-nama-menu="{{$menus->nama_menu}}">
                 <div class="px-2 py-2" >
                   <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
                   <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
@@ -297,39 +297,11 @@
                 </div>
             </div>
         </div>
-        {{-- Main Modal End --}}
-        
-        {{-- Confirm Modal --}}
-        {{-- <div id="confirm-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex items-center justify-center modal">
-            <div class="fixed inset-0 bg-black bg-opacity-50"></div>
-            <div class="relative bg-white rounded-lg shadow-lg p-6 w-1/3">
-                <!-- Modal header -->
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-2xl font-bold">Konfirmasi</h2>
-                    <button id="closeConfirmModalBtn" class="text-gray-500 hover:text-gray-800 focus:outline-none" data-modal-hide="confirm-modal">
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                </div>
-                <!-- Modal body -->
-                <div class="space-y-4">
-                    
-                    <p>Apakah Anda yakin ingin menyimpan perubahan?</p>
-                    <div class="flex justify-center mt-6">
-                        <button id="confirmSaveBtn" class="bg-yellow-400 text-white px-4 py-2 rounded-3xl mr-2" data-modal-confirm-save="confirm-modal">Yes</button>
-                        <button id="cancelConfirmBtn" class="bg-red-500 text-white px-4 py-2 rounded-3xl" data-modal-confirm-cancel="confirm-modal">No</button>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-        {{-- Confirm Modal End --}}
-    {{-- Modal End --}}
+
         
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-    const openModalButtons = document.querySelectorAll('.openModalBtn');
+    const openModalButtons = document.querySelectorAll('.edit-button');
     const modal = document.getElementById('default-modal');
     const modalTitle = document.getElementById('tittle');
     const modalImg = document.getElementById('image');
@@ -338,7 +310,7 @@
     openModalButtons.forEach(function(button) {
         button.addEventListener('click', function(event) {
             event.preventDefault();
-            const menu = this.getAttribute('data-id-menu');
+            const id_menu = this.getAttribute('data-id-menu');
             const gambar = this.getAttribute('data-gambar-menu');
             const nama = this.getAttribute('data-nama-menu');
 
@@ -346,8 +318,8 @@
             modalTitle.textContent = nama; // Menggunakan nama menu sebagai judul modal
             modalImg.src = gambar; // Menggunakan URL gambar penuh
             var action = '{{ route('menu.update', ['id_menu' => ':id_menu']) }}';
-            action = action.replace(':id_menu', menu)
-            updateForm.setAttribute('action', action);
+            action = action.replace(':id_menu', id_menu);
+          updateForm.setAttribute('action', action);
 
             // Tampilkan modal jika Anda menggunakan modal
             modal.style.display = 'block'; // atau metode lain sesuai dengan implementasi modal Anda
