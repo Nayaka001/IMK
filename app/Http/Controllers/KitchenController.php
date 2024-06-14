@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderDetail;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class KitchenController extends Controller
 {
     public function index(){
-        $latestOrder = Order::orderBy('waktu_order', 'desc')->first();
-        $orders = Order::with('detailorder')->get();
+        $today = Carbon::today();
+        $orders = Order::with('detailorder')->whereDate('waktu_order', $today)->get();
         return view('kitchen.mainmenu', [
             'orders' => $orders,
-            'last' => $latestOrder
         ]);
     }
     public function detail($id_order){
@@ -25,20 +25,30 @@ class KitchenController extends Controller
         ]);
     }
     public function cooking(){
-        $orders = Order::with('detailorder')->get();
+        $today = Carbon::today();
+        $orders = Order::with('detailorder')->whereDate('waktu_order', $today)->get();
         return view('kitchen.cooking', [
             'orders' => $orders
         ]);
     }
     public function ready(){
-        $orders = Order::with('detailorder')->get();
+        $today = Carbon::today();
+        $orders = Order::with('detailorder')->whereDate('waktu_order', $today)->get();
         return view('kitchen.ready', [
             'orders' => $orders
         ]);
     }
     public function done(){
-        $orders = Order::with('detailorder')->get();
+        $today = Carbon::today();
+        $orders = Order::with('detailorder')->whereDate('waktu_order', $today)->get();
         return view('kitchen.done', [
+            'orders' => $orders
+        ]);
+    }
+    public function reser(){
+        $today = Carbon::today();
+        $orders = Order::with('detailorder')->whereDate('waktu_order', $today)->get();
+        return view('kitchen.reserve', [
             'orders' => $orders
         ]);
     }
