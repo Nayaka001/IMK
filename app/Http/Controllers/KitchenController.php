@@ -9,10 +9,11 @@ use Illuminate\Http\Request;
 class KitchenController extends Controller
 {
     public function index(){
-
+        $latestOrder = Order::orderBy('waktu_order', 'desc')->first();
         $orders = Order::with('detailorder')->get();
         return view('kitchen.mainmenu', [
-            'orders' => $orders
+            'orders' => $orders,
+            'last' => $latestOrder
         ]);
     }
     public function detail($id_order){

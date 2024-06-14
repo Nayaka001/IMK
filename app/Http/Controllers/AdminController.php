@@ -232,6 +232,27 @@ class AdminController extends Controller
             'meja' => $meja,
         ]);
     }
+    public function updatemeja(Request $request, $id_meja){
+        $meja = Meja::find($id_meja);
+        $meja->id_meja = $request->input('meja');
+        $meja->save();
+        return back()->with('edit', 'Meja berhasil diupdate');
+    }
+    public function deletemeja($id_meja){
+        $meja = Meja::find($id_meja);
+        $meja->delete();
+         
+        return back()->with('delete', 'Meja berhasil dihapus');
+    }
+    public function tambahmeja(Request $request){
+        $meja = new Meja();
+        $meja->id_meja = $request->input('meja');
+        $meja->status = $request->input('status');
+        $meja->save();
+
+        return back()->with('tambah', 'Meja berhasil ditambahkan');
+         
+    }
     public function kategori(Request $request){
         $kategori = new Kategori();
         $kategori->kategori = $request->input('nama');

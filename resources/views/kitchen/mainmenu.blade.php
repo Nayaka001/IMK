@@ -47,6 +47,24 @@
     </a>
 </div>
 <!-- category end -->
+<div id="notification" class="hidden fixed bottom-0 right-0 m-6 p-4 bg-green-500 text-white rounded-lg shadow-lg">
+    <p id="notificationMessage">Pesanan baru telah diterima!</p>
+    <div class="mb-4">
+        <strong>Nomor Antrian : </strong> {{ $last->id_order }}
+    </div>
+    <div>
+        @if($last->tipe_order === 'Bawa Pulang')
+        <strong>Bawa Pulang</strong>
+        @elseif($last->tipe_order === 'Bawa Pulang')
+        <strong>Nomor Meja:</strong> {{ $last->id_meja}}
+        @endif
+    </div>
+    <button id="okButton" class="mt-2 bg-white text-green-500 px-4 py-2 rounded-lg border border-green-500 hover:bg-green-500 hover:text-white">
+        OK
+    </button>
+</div>
+
+    
 
     
         <!-- pesanan -->
