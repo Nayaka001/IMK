@@ -310,7 +310,7 @@
 <script>
    // Script for "Tambah Menu" modal
    var tambahModal = document.getElementById("tambahMejaModal");
-    var tambahBtn = document.querySelectorAll("tambahMejaBtn");
+    var tambahBtn = document.getElementById("tambahMejaBtn");
     var tambahClose = tambahModal.getElementsByClassName("close")[0];
 
     tambahBtn.onclick = function() {
