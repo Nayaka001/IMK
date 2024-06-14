@@ -18,7 +18,7 @@ gradientStroke2.addColorStop(0, "rgba(51,51,51,0)");        // Abu-abu tua sepen
 new Chart(ctx2, {
   type: "line",
   data: {
-    labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ["Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     datasets: [
       {
         label: "Pendapatan",

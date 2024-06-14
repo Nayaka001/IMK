@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('nama_pelanggan', 100);
             $table->integer('jlh_org')->nullable(); //DINE IN & RESERVASI
             $table->char('id_meja', 3)->nullable(); //DINE IN & RESERVASI
-            $table->foreign('id_meja')->references('id_meja')->on('meja')->onDelete('restrict')->onUpdate('restrict'); //DINE IN & RESERVASI
+            $table->foreign('id_meja')->references('id_meja')->on('meja'); //DINE IN & RESERVASI
             $table->timestamp('waktu_order')->useCurrent();
             $table->string('no_hp', 14)->nullable();//RESERVASI
             $table->timestamp('kedatangan')->nullable(); //RESERVASI

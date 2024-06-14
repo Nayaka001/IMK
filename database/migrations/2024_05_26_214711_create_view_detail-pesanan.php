@@ -42,7 +42,7 @@ return new class extends Migration
             o.id_order IN (
                 SELECT id_order
                 FROM `order-detail`
-                WHERE progress IN ('Dimasak', 'Siap Disajikan')
+                WHERE progress IN ('Dimasak', 'Siap Disajikan', 'Selesai')
             )
         GROUP BY
             o.id_order, o.tipe_order, o.nama_pelanggan, o.id_meja, o.waktu_order, k.nama, o.jlh_org, od.id_order_details, m.nama_menu,m.gambar_menu, od.jumlah, od.subtotal, od.progress, od.note;

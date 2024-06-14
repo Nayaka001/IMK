@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.main-kitchen ')
 
 @section('container')
 
@@ -19,7 +19,7 @@
     <div class="flex items-center gap-4">
         <ion-icon id="user-icon" name="person-circle-outline" style="font-size: 3rem; width: 3rem; height: 3rem;"></ion-icon>
         <div class="text-center">
-            <h1 class="text-sm font-medium">{{ auth()->user()->username }}</h1>
+            <h1 class="text-sm font-medium">{{ auth()->user()->karyawan->nama }}</h1>
             <p class="text-xs text-slate-500">Cashier</p>
         </div>
     </div>
@@ -38,13 +38,13 @@
             <a href="{{route('index.cooking')}}">
                 <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Diproses</div>
             </a>
-            <a href="{{route('index.done')}}                                                                                                        ">
+            <a href="{{route('index.ready')}}                                                                                                        ">
                 <div class="rounded-2xl bg-[#FFD369] w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Siap</div>
             </a>
             <a href="{{route('index.done')}}">
                 <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Selesai</div>
             </a>
-            <a href="/kitchen-reserve">
+            <a href="{{ route('index.reser') }}">
                 <div class="rounded-2xl bg-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Reservasi</div>
             </a>
         </div>
@@ -78,7 +78,7 @@
                     @endforeach
                     @if($readyToCook)
             <a href="{{route('kitchen.detail', $order->id_order)}}">
-                <div class="bg-[#ffffff] rounded-2xl flex justify-center flex-col p-6 gap-3 items-start shadow-2xl">
+                <div class="bg-[#ffffff] rounded-2xl flex flex-col p-6 gap-3 items-start shadow-2xl h-64 overflow-auto">
                     <div class="flex gap-3">
                         <h2 class="font-bold text-2xl">{{$order->id_meja}}</h2> <h2 class="font-bold text-2xl">#{{$order->id_order}}</h2>
                     </div>

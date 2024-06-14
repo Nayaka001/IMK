@@ -1,4 +1,4 @@
-@extends('layouts.main-kitchen')
+@extends('layouts.main-bartender')
 
 @section('container')
 
@@ -7,13 +7,14 @@
     <div class="w-auto items-center justify-center p-4 md:p-9 ">
 
         {{-- detail user --}}
-        <a href="{{ route('logout') }}">
-            <button id="logoutButton" class="w-full mx-auto">
-                <div class="rounded-2xl bg-[#ff8181] w-fit px-3 py-2 shadow-md hover:bg-[#ff6969] mx-2 font-bold">
-                    <ion-icon id="power-off-icon" name="power-outline" style="font-size: 2rem; width: 2rem; height: 2rem; cursor: pointer;"></ion-icon>
-                </div>
-            </button>
-        </a>
+        <div class="flex justify-between items-center mt-4 mb-5 pb-5 ">            
+            <a href="{{ route('logout') }}">
+                <button id="logoutButton" class="w-full mx-auto">
+                    <div class="rounded-2xl bg-[#ff8181] w-fit px-3 py-2 shadow-md hover:bg-[#ff6969] mx-2 font-bold">
+                        <ion-icon id="power-off-icon" name="power-outline" style="font-size: 2rem; width: 2rem; height: 2rem; cursor: pointer;"></ion-icon>
+                    </div>
+                </button>
+            </a>
             <div class="flex items-center gap-4">
                 <ion-icon id="user-icon" name="person-circle-outline" style="font-size: 3rem; width: 3rem; height: 3rem;"></ion-icon>
                 <div class="text-center">
@@ -23,8 +24,6 @@
             </div>
         </div>
         {{-- detail user end --}}
-
-        <div class="w-full h-5 p-2"></div> <!-- Spacer -->
         
         <!-- category -->
         <div class="w-auto flex justify-between my-5 overflow-x-scroll sm:w-4/5 md:w-11/12 lg:w-full lg:overflow-visible">
@@ -52,24 +51,21 @@
         <!-- pesanan -->
         <div class="m-4 justify-center gap-5 flex flex-wrap">
             <!-- box pesanan -->
-    
-            <a href="/kitchen-detail">
-                <div class="bg-[#ffffff] rounded-2xl flex justify-center flex-col p-6 gap-3 items-start shadow-2xl">
+            <a href="/bartender-detail">
+                <div class="bg-[#ffffff] rounded-2xl flex flex-col p-6 gap-3 items-start shadow-2xl h-64 overflow-auto">
                     <div class="flex gap-3">
-                        <h2 class="font-bold text-2xl">M09</h2> <h2 class="font-bold text-2xl">#008</h2>
+                        <h2 class="font-bold text-2xl">ID Meja</h2> 
+                        <h2 class="font-bold text-2xl">#ID Order</h2>
                     </div>
-                    
                     <div class="bg-[#ECCF98] rounded-xl flex p-2 items-center">
-                        Reservasi
+                        Status
                     </div>
-        
                     <div class="grid grid-cols-2">
                         <div class="w-max flex">
-                            <p class="font-bold">2x</p>
+                            <p class="font-bold">Jumlah x</p>
                         </div>
-        
                         <div>
-                            <p>Lemonade</p>
+                            <p>Nama Menu</p>
                             <p>
                                 Notes: 
                                 <p>-</p> 

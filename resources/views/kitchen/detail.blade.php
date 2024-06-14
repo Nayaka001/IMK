@@ -13,10 +13,10 @@
         </button>
     </div>
 
-    <div class="m-4 justify-center gap-5 flex flex-row">
+    <div class="m-4 h-screen justify-center gap-5 flex flex-row">
 
         <!-- kotak 1 -->
-        <div class="bg-[#ffffff] rounded-2xl flex justify-center flex-col p-6 gap-3 items-start shadow-2xl w-full">
+        <div class="bg-[#ffffff] rounded-2xl flex flex-col p-6 gap-3 items-start shadow-2xl w-full overflow-auto">
             <div class="flex gap-3">
                 <h2 class="font-bold text-2xl">{{$order->id_meja}}</h2> <h2 class="font-bold text-2xl">#{{$order->id_order}}</h2>
             </div>
@@ -72,7 +72,7 @@
         </div>
 
         <!-- kotak 2 -->
-        <div class="bg-[#ffffff] border-12 rounded-2xl flex  flex-col p-6 gap-3 items-start shadow-2xl w-full">
+        <div class="bg-[#ffffff] border-12 rounded-2xl flex  flex-col p-6 gap-3 items-start shadow-2xl w-full overflow-auto">
             <div class="flex gap-3">
                 <h2 class="font-bold text-2xl">M02</h2> <h2 class="font-bold text-2xl">#003</h2>
             </div>

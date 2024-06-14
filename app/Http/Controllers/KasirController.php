@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderCreated;
 use App\Models\DetailPesanan;
 use App\Models\Faktur;
 use App\Models\Kategori;
@@ -123,6 +124,8 @@ class KasirController extends Controller
                 $orderDetail->save();
         }
         // dd($request->all());
+        $id_order = Session::get('order_id');
+        event(new OrderCreated($id_order));
         return redirect()->route('kasir.neworder')->with('redirectDelay', true);
 
     }
