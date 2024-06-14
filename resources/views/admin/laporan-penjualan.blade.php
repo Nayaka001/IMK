@@ -61,7 +61,7 @@
                           <span class="text-sm leading-tight text-slate-600">Rp {{ number_format($laporans->total_subtotal, 0, ',', '.')}}</span>
                         </td>
                         <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
-                        <span class="inline-block p-2 m-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-2 border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
+                        <span id="detailsBtn" class="inline-block p-2 m-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-2 border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75" href="javascript:;">
                         View Details
                         </span>
                             <!-- <a class="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text" href="javascript:;"><i class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
@@ -467,6 +467,126 @@
                 
 </div>
 
+
+
+<!-- Details Modal -->
+
+<div id="details-modal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close mr-4 mt-2 top-4 right-4">&times;</span>
+        <div class="flex-auto p-6">
+            <div class="p-3 mb-4 text-left font-bold bg-white rounded-t-2xl">
+                <h1 class="text-lg">Detail Pesanan</h1>
+                <div class="w-full mt-2 h-1 bg-slate-700 rounded"></div>
+            </div>
+            <div class="p-3 md:p-5 space-y-1 flex">
+            <div class="w-full text-slate-800">
+              <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-8">
+                  <path d="M11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM15.29 16.71L11 12.41V7H13V11.59L16.71 15.3L15.29 16.71Z" fill="black"/>
+                </svg>
+                <p class="text-2xl ml-4">Waktu order : 2024-06-14 15:38:31</p>
+              </div>
+              <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none">
+                  <path d="M2 17H22V21H2V17ZM6.25 7H9V6H6V3H14V6H11V7H17.8C18.8 7 19.8 8 20 9L20.5 16H3.5L4.05 9C4.05 8 5.05 7 6.25 7ZM13 9V11H18V9H13ZM6 9V10H8V9H6ZM9 9V10H11V9H9ZM6 11V12H8V11H6ZM9 11V12H11V11H9ZM6 13V14H8V13H6ZM9 13V14H11V13H9ZM7 4V5H13V4H7Z" fill="black"/>
+                </svg>
+                <p class="text-2xl ml-4">Nayaka </p>
+              </div>
+              <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-8">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M8 7C8 5.93913 8.42143 4.92172 9.17157 4.17157C9.92172 3.42143 10.9391 3 12 3C13.0609 3 14.0783 3.42143 14.8284 4.17157C15.5786 4.92172 16 5.93913 16 7C16 8.06087 15.5786 9.07828 14.8284 9.82843C14.0783 10.5786 13.0609 11 12 11C10.9391 11 9.92172 10.5786 9.17157 9.82843C8.42143 9.07828 8 8.06087 8 7ZM8 13C6.67392 13 5.40215 13.5268 4.46447 14.4645C3.52678 15.4021 3 16.6739 3 18C3 18.7956 3.31607 19.5587 3.87868 20.1213C4.44129 20.6839 5.20435 21 6 21H18C18.7956 21 19.5587 20.6839 20.1213 20.1213C20.6839 19.5587 21 18.7956 21 18C21 16.6739 20.4732 15.4021 19.5355 14.4645C18.5979 13.5268 17.3261 13 16 13H8Z" fill="black"/>
+                </svg>
+                <p class="text-2xl ml-4">Yemima</p>
+              </div>
+              <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+                  <path d="M5 16.25C6.375 16.25 7.5 15.125 7.5 13.75C7.5 12.375 6.375 11.25 5 11.25C3.625 11.25 2.5 12.375 2.5 13.75C2.5 15.125 3.625 16.25 5 16.25ZM6.4125 17.625C5.95 17.55 5.4875 17.5 5 17.5C3.7625 17.5 2.5875 17.7625 1.525 18.225C0.6 18.625 0 19.525 0 20.5375V22.5H5.625V20.4875C5.625 19.45 5.9125 18.475 6.4125 17.625ZM25 16.25C26.375 16.25 27.5 15.125 27.5 13.75C27.5 12.375 26.375 11.25 25 11.25C23.625 11.25 22.5 12.375 22.5 13.75C22.5 15.125 23.625 16.25 25 16.25ZM30 20.5375C30 19.525 29.4 18.625 28.475 18.225C27.4125 17.7625 26.2375 17.5 25 17.5C24.5125 17.5 24.05 17.55 23.5875 17.625C24.0875 18.475 24.375 19.45 24.375 20.4875V22.5H30V20.5375ZM20.3 17.0625C18.8375 16.4125 17.0375 15.9375 15 15.9375C12.9625 15.9375 11.1625 16.425 9.7 17.0625C8.35 17.6625 7.5 19.0125 7.5 20.4875V22.5H22.5V20.4875C22.5 19.0125 21.65 17.6625 20.3 17.0625ZM10.0875 20C10.2 19.7125 10.25 19.5125 11.225 19.1375C12.4375 18.6625 13.7125 18.4375 15 18.4375C16.2875 18.4375 17.5625 18.6625 18.775 19.1375C19.7375 19.5125 19.7875 19.7125 19.9125 20H10.0875ZM15 10C15.6875 10 16.25 10.5625 16.25 11.25C16.25 11.9375 15.6875 12.5 15 12.5C14.3125 12.5 13.75 11.9375 13.75 11.25C13.75 10.5625 14.3125 10 15 10ZM15 7.5C12.925 7.5 11.25 9.175 11.25 11.25C11.25 13.325 12.925 15 15 15C17.075 15 18.75 13.325 18.75 11.25C18.75 9.175 17.075 7.5 15 7.5Z" fill="black"/>
+                </svg>
+                <p class="text-2xl ml-4">3 orang</p>
+              </div>
+              <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-8">
+                  <path d="M22 7.5C22 5.57 17.52 4 12 4C6.48 4 2 5.57 2 7.5C2 9.31 5.95 10.81 11 10.98V15H9.35C8.53 15 7.8 15.5 7.49 16.26L6 20H8L9.2 17H14.8L16 20H18L16.5 16.26C16.2 15.5 15.46 15 14.65 15H13V10.98C18.05 10.81 22 9.31 22 7.5ZM12 6C16.05 6 18.74 6.86 19.72 7.5C18.74 8.14 16.05 9 12 9C7.95 9 5.26 8.14 4.28 7.5C5.26 6.86 7.95 6 12 6Z" fill="black"/>
+                </svg>
+                <p class="text-2xl ml-4">M01</p>
+              </div>
+              <h1 class="px-2 text-slate-400 text-lg tracking-wide">3 item(s)</h1>
+              <div class="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-left align-baseline font-bold uppercase leading-none text-white">Completed</div>
+              <div class="bg-[#FFD369] my-2 w-full sm:w-80 h-fit p-2 rounded-xl mt-5 mr-5">
+                <h1 class="font-bold text-lg mb-4">Notes</h1>
+                {{-- notes permenu --}}
+                <div class="flex flex-col w-full">
+                  <li class="flex w-full mb-2">
+                    <div class="w-1/2">
+                      <p class="font-semibold text-2xl mr-0">Single Chicken Steak</p>    
+                    </div>  
+                    <div class="w-1/2">
+                      <p class="text-2xl mr-0">Tidak ada note</p>    
+                    </div>
+                  </li>
+                  <li class="flex w-full mb-2">
+                    <div class="w-1/2">
+                      <p class="font-semibold text-2xl mr-0">Double Chicken Steak</p>    
+                    </div>  
+                    <div class="w-1/2">
+                      <p class=" text-2xl mr-0">Tidak ada note</p>    
+                    </div>
+                  </li>            
+                </div>
+                {{-- end notes permenu --}}
+                </div>
+              </div>
+              <div class="ml-6 flex-col w-full">
+                {{-- menu yang dipesan --}}
+                <li class="mb-2 flex my-3">
+                  <div class="mr-4">
+                    <h1 class="text-2xl font-semibold">1.</h1>
+                  </div>
+                  <div class="flex w-full justify-between">
+                    <div class="ml-3 w-1/2">
+                      <h1 class="text-2xl font-semibold">Single Chicken Steak</h1>
+                      <div class="w-16 text-center bg-[#FFD369] rounded-full">1</div>
+                    </div>
+                    <div>
+                      <h1 class="text-2xl font-bold">Rp 10.000</h1>
+                    </div>
+                  </div>
+                </li>
+                <li class="mb-2 flex my-3">
+                  <div class="mr-4">
+                    <h1 class="text-2xl font-semibold">2.</h1>
+                  </div>
+                  <div class="flex w-full justify-between">
+                    <div class="ml-3 w-1/2">
+                      <h1 class="text-2xl font-semibold">Double Chicken Steak</h1>
+                      <div class="w-16 text-center bg-[#FFD369] rounded-full">1</div>
+                    </div>
+                    <div>
+                      <h1 class="text-2xl font-bold">Rp 14.000</h1>
+                    </div>
+                  </div>
+                </li>
+                
+                <div class="mt-6 flex my-3 justify-between">
+                  <div class="mr-4">
+                    <h1 class="text-2xl font-semibold">Total</h1>
+                  </div>
+                  <div>
+                      <h1 class="text-2xl font-bold text-right justify-end">Rp 24.000</h1>
+                  </div>
+                </div>
+                {{-- end menu yang dipesan --}}
+                                                    
+              </div>
+            </div>
+                                                        
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
   
   
@@ -596,4 +716,25 @@
 
 </script>
 
+<script>
+    // Script for "Tambah Menu" modal
+    var detailsModal = document.getElementById("details-modal");
+    var detailsBtn = document.getElementById("detailsBtn");
+    var detailsClose = detailsModal.getElementsByClassName("close")[0];
+
+    detailsBtn.onclick = function() {
+        detailsModal.style.display = "flex";
+    };
+
+    detailsClose.onclick = function() {
+        detailsModal.style.display = "none";
+    };
+
+    // Improved event handling for closing the modal when clicking outside
+    window.onclick = function(event) {
+        if (event.target == detailsModal) {
+            detailsModal.style.display = "none";
+        }
+    };
+</script>
 @endsection('content')
