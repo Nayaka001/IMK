@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
+use App\Models\Menu;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use Carbon\Carbon;
@@ -16,6 +18,21 @@ class KitchenController extends Controller
             'orders' => $orders,
         ]);
     }
+    public function menu(Request $request){
+        if ($request->has('search')) {
+            $kategori = Kategori::all();
+            $menu = Menu::where('nama_menu', 'LIKE', '%' . $request->search . '%')->get();
+
+        } else {
+            $kategori = Kategori::all();
+            $menu = Menu::all();
+        }
+        
+        return view('kitchen.menu', [
+            'kategori' => $kategori,
+            'menu' => $menu
+        ]);
+    }
     public function detail($id_order){
         $details = OrderDetail::where('id_order', $id_order)->get();
         $order = Order::where('id_order', $id_order)->first();
@@ -23,6 +40,14 @@ class KitchenController extends Controller
             'details' => $details,
             'order' => $order
         ]);
+    }
+    public function menuupdate(Request $request, $id_menu){
+        $menu = Menu::find($id_menu);
+        
+        $menu->status = $request->input('status');
+        $menu->save();
+
+        return back()->with('succes', 'Berhasil merubah menjadi habis');
     }
     public function cooking(){
         $today = Carbon::today();

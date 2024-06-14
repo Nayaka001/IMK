@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('id_ktgmenu')->references('id_ktgmenu')->on('kategori-menu')->onDelete('restrict')->onUpdate('restrict');
             $table->string('gambar_menu')->nullable();
             $table->text('keterangan')->nullable();
+            $table->enum('status', ['Tersedia', 'Habis']);
 
         });
     }
