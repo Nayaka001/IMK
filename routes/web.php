@@ -25,6 +25,7 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login.log
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Bagian Kitchen
+Route::middleware(['auth', 'role:Kitchen'])->group(function () {
 Route::get('/kitchen-main', [KitchenController::class, 'index'])->name('index.kitchen');
 Route::get('/kcooking', [KitchenController::class, 'cooking'])->name('index.cooking');
 Route::get('/kready', [KitchenController::class, 'ready'])->name('index.ready');
@@ -35,7 +36,7 @@ Route::get('/kitchen-detail/{id_order}',  [KitchenController::class, 'detail'])-
 
 // Route::get('/kitchen-detail/{id_order}/{id_order_details}',  [KitchenController::class, 'modal'])->name('kitchen.detailmodal');
 Route::put('/kitchen-update/{id_order}/{id_order_details}',  [KitchenController::class, 'update'])->name('kitchen.update');
-
+});
 
 //Bagian Kasir
 Route::middleware(['auth', 'role:Kasir'])->group(function () {
@@ -109,10 +110,20 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
 //Bagian Bartender
 Route::middleware(['auth', 'role:Bartender'])->group(function () {
     Route::get('/bartender', [BartenderController::class, 'index'])->name('index.bartender');
-
+    Route::get('/bprocess', [BartenderController::class, 'process'])->name('index.process');
+    Route::get('/bready', [BartenderController::class, 'ready'])->name('index.bready');
+    Route::get('/bdone', [BartenderController::class, 'done'])->name('index.bdone');
+    Route::get('/breser', [BartenderController::class, 'reser'])->name('index.breser');
+    Route::get('/bartender-detail/{id_order}',  [BartenderController::class, 'detail'])->name('bartender.detail');
+    
+    // Route::get('/kitchen-detail/{id_order}/{id_order_details}',  [KitchenController::class, 'modal'])->name('kitchen.detailmodal');
+    Route::put('/bartender-update/{id_order}/{id_order_details}',  [BartenderController::class, 'update'])->name('bartender.update');
+    
 
 
 });
+
+
 
 Route::get('/form-dine-in', function () {
     return view('formnewdine');

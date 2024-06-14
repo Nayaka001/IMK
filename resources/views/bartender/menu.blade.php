@@ -34,13 +34,14 @@
   </div>
 
   {{-- kategori --}}
-  <div class="w-3/4 flex justify-center my-5 overflow-x-scroll sm:w-4/5 md:w-11/12 lg:w-full lg:overflow-visible">
-      <a href="/bartender-main">
-        <div class="rounded-2xl bg-black text-white w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Main</div>
+  <div class="w-3/4 flex justify-between my-5 overflow-x-scroll sm:w-4/5 md:w-11/12 lg:w-full lg:overflow-visible">
+  <a href="{{route('index.bartender')}}">
+          <div class="rounded-2xl text-white bg-black w-fit px-3 py-2 shadow-md mx-2 font-bold">Utama</div>
       </a>
       <a href="/bartender-menu">
-        <div class="rounded-2xl bg-[#FFD369] w-fit px-3 py-2 shadow-md hover:bg-[#FFD369] mx-2 font-bold">Minuman</div>
+          <div class="rounded-2xl bg-[#FFD369] w-fit px-3 py-2 shadow-md mx-2 font-bold">Semua</div>
       </a>
+     
   </div>
   
   <div id="search-results" class="mt-10 w-full mx-auto container gap-6 flex flex-wrap sm:justify-start">
