@@ -1,4 +1,4 @@
-@extends('layouts.main-kitchen')
+@extends('layouts.main-bartender')
 
 @section('container')
 
@@ -25,7 +25,6 @@
         </div>
         {{-- detail user end --}}
 
-        <div class="w-full h-5 p-2"></div> <!-- Spacer -->
         
         <!-- category -->
         <div class="w-auto flex justify-between my-5 overflow-x-scroll sm:w-4/5 md:w-11/12 lg:w-full lg:overflow-visible">
@@ -53,23 +52,21 @@
         <!-- pesanan -->
         <div class="m-4 justify-center gap-5 flex flex-wrap">
             <!-- box pesanan -->
-            <a href="/kitchen-detail">
-                <div class="bg-[#ffffff] rounded-2xl flex justify-center flex-col p-6 gap-3 items-start shadow-2xl">
+            <a href="/bartender-detail">
+                <div class="bg-[#ffffff] rounded-2xl flex flex-col p-6 gap-3 items-start shadow-2xl h-64 overflow-auto">
                     <div class="flex gap-3">
-                        <h2 class="font-bold text-2xl">M01</h2> <h2 class="font-bold text-2xl">#001</h2>
+                        <h2 class="font-bold text-2xl">ID Meja</h2> 
+                        <h2 class="font-bold text-2xl">#ID Order</h2>
                     </div>
-                    
                     <div class="bg-[#ECCF98] rounded-xl flex p-2 items-center">
-                        Sedang dimasak
+                        Status
                     </div>
-        
                     <div class="grid grid-cols-2">
                         <div class="w-max flex">
-                            <p class="font-bold">2x</p>
+                            <p class="font-bold">Jumlah x</p>
                         </div>
-        
                         <div>
-                            <p>Lemonade</p>
+                            <p>Nama Menu</p>
                             <p>
                                 Notes: 
                                 <p>-</p> 
@@ -78,7 +75,6 @@
                     </div>
                 </div>
             </a>
-    
             <!-- end box pesanan -->
         </div>
         <!-- pesanan end -->

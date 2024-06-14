@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.main-kitchen ')
 
 @section('container')
 
@@ -52,7 +52,7 @@
         <div class="m-4 justify-center gap-5 flex flex-wrap">
             <!-- box pesanan -->
             <a href="/kitchen-detail">
-                <div class="bg-[#ffffff] rounded-2xl flex justify-center flex-col p-6 gap-3 items-start shadow-2xl">
+                <div class="bg-[#ffffff] rounded-2xl flex flex-col p-6 gap-3 items-start shadow-2xl h-64 overflow-auto">
                     <div class="flex gap-3">
                         <h2 class="font-bold text-2xl">M02</h2> <h2 class="font-bold text-2xl">#003</h2>
                     </div>

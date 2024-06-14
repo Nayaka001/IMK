@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.main-pelayan')
 
 @section('container')
 <div class="flex overflow-x-hidden">
