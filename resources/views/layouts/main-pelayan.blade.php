@@ -8,7 +8,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRDFE9xHC9+FEfWZXdlIM6M1IG7xDYkGy30pyrx8I" crossorigin="anonymous"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    
     @vite('resources/css/app.css')
     <title>Document</title>
 </head>
