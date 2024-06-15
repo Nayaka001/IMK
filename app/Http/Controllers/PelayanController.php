@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DetailPesanan;
+use App\Models\Meja;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use Carbon\Carbon;
@@ -13,11 +14,32 @@ class PelayanController extends Controller
     public function index(){
         return view('pelayan.orderlistdone');
     }
+    public function pelayanupdate($id_order){
+
+            
+        $order = Order::find($id_order);
+        foreach ($order->detailorder as $detailOrder) {
+            $detailOrder->progress = 'Selesai';
+            $detailOrder->save();
+        }
+        
+        return back();
+    }
+    public function pelayandone($id_meja){
+
+        $meja = Meja::find($id_meja);
+        $meja->status = 'Tersedia';
+        $meja->save();
+            
+
+        
+        return back();
+    }
     public function orderdone(){
         $today = Carbon::today();
 
-        $orders = Order::whereDate('waktu_order', $today)->get();
-        $detail = Order::with('detailorder')->get();
+        $orders = Order::with(['meja', 'detailorder'])->whereDate('waktu_order', $today)->get();
+
 
     // Array untuk menyimpan hasil perhitungan
         $ordersWithDetails = [];
@@ -30,7 +52,7 @@ class PelayanController extends Controller
             // Menyimpan hasil perhitungan dalam array
             $ordersWithDetails[] = [
                 'order' => $order,
-                'detail' => $detail,
+                // 'detail' => $detail,
                 'totalMenu' => $totalMenu,
             ];
         }

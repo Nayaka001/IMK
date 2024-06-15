@@ -21,4 +21,8 @@ class Meja extends Model
     ];
     
     protected $primaryKey = 'id_meja';
+    public function order()
+    {
+        return $this->hasOne(Order::class, 'id_meja', 'id_meja');
+    }
 }

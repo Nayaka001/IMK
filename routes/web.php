@@ -28,7 +28,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['auth', 'role:Kitchen'])->group(function () {
 Route::get('/kitchen-main', [KitchenController::class, 'index'])->name('index.kitchen');
 Route::get('/kitchenmenu', [KitchenController::class, 'menu'])->name('menu.kitchen');
-Route::PUT('/kitchenmenu/update/{id_menu}', [KitchenController::class, 'menuupdate'])->name('menu.update');
+Route::put('/kitchenmenu/update/{id_menu}', [KitchenController::class, 'menuupdate'])->name('kitchen.updatemenu');
 Route::get('/kcooking', [KitchenController::class, 'cooking'])->name('index.cooking');
 Route::get('/kready', [KitchenController::class, 'ready'])->name('index.ready');
 Route::get('/kdone', [KitchenController::class, 'done'])->name('index.done');
@@ -128,7 +128,7 @@ Route::middleware(['auth', 'role:Bartender'])->group(function () {
 });
 
 Route::get('/orders/{id_order}', [KasirController::class, 'modal'])->name('modal');
-Route::get('/pelayan/{id_order}', [KasirController::class, 'modalp'])->name('modalp');
+// Route::get('/pelayan/{id_order}', [KasirController::class, 'modalp'])->name('modalp');
 
 Route::get('/form-dine-in', function () {
     return view('formnewdine');
@@ -270,6 +270,8 @@ Route::get('/bartender-reserve', function () {
 //pelayan
 Route::get('/pelayan-list', [PelayanController::class, 'orderwait'])->name('pelayan.main');
 Route::get('/pelayan-list/done', [PelayanController::class, 'orderdone'])->name('pelayan.done');
+Route::put('/pelayan-list/done/{id_order}', [PelayanController::class, 'pelayanupdate'])->name('pelayan.update');
+Route::put('/pelayan-list/done{id_meja}', [PelayanController::class, 'pelayandone'])->name('pelayan.dones');
 // Route::get('/pelayan-list/done', function () {
 //     return view('pelayan.orderlistdone');
 // });
