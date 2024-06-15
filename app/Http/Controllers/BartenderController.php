@@ -2,11 +2,65 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\OrderDetail;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BartenderController extends Controller
 {
     public function index(){
-        return view('bartender.mainmenu');
+        $today = Carbon::today();
+        $orders = Order::with('detailorder')->whereDate('waktu_order', $today)->get();
+        return view('bartender.mainmenu', [
+            'orders' => $orders,
+        ]);
+    }
+    public function detail($id_order){
+        $details = OrderDetail::where('id_order', $id_order)->get();
+        $order = Order::where('id_order', $id_order)->first();
+        return view('bartender.detail', [
+            'details' => $details,
+            'order' => $order
+        ]);
+    }
+    public function process(){
+        $today = Carbon::today();
+        $orders = Order::with('detailorder')->whereDate('waktu_order', $today)->get();
+        return view('bartender.process', [
+            'orders' => $orders
+        ]);
+    }
+    public function ready(){
+        $today = Carbon::today();
+        $orders = Order::with('detailorder')->whereDate('waktu_order', $today)->get();
+        return view('bartender.ready', [
+            'orders' => $orders
+        ]);
+    }
+    public function done(){
+        $today = Carbon::today();
+        $orders = Order::with('detailorder')->whereDate('waktu_order', $today)->get();
+        return view('bartender.done', [
+            'orders' => $orders
+        ]);
+    }
+    public function reser(){
+        $today = Carbon::today();
+        $orders = Order::with('detailorder')->whereDate('waktu_order', $today)->get();
+        return view('bartender.reserve', [
+            'orders' => $orders
+        ]);
+    }
+    
+    public function update(Request $request, $id_order, $id_order_details){
+        $order = OrderDetail::where('id_order', $id_order)->where('id_order_details', $id_order_details)->first();
+        if ($order) {
+            // Perbarui status pesanan
+            $order->progress = $request->input('progress');
+            $order->save();
+        }
+    
+        return back();
     }
 }
