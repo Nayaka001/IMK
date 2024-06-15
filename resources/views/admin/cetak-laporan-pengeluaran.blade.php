@@ -56,7 +56,7 @@
         h2, h3 {
             margin: 0;
         }
-        .total-penjualan {
+        .total-pengeluaran {
             text-align: right;
             padding: 40px 40px 20px 20px;
             font-weight: bold;
@@ -78,7 +78,7 @@
             <tr>
                 <td><img src="/img/logo.jpg" class="rounded-full" id="logo"></td>
                 <td>
-                    <h2>Laporan Penjualan Harian</h2>
+                    <h2>Laporan Pengeluaran Harian</h2>
                     <h2>Restaurant HomeSteak Annisa</h2>
                     <p style="font-size: 14px;"><i>Jl. Air Bersih Ujung Gang Jati</i></p>
                 </td>
@@ -89,28 +89,26 @@
                 <td><hr /></td>
             </tr>
         </table>
-        <h3>Laporan Penjualan Harian</h3>
+        <h3>Laporan Pengeluaran Harian</h3>
         <table border='1' class='table'>
             <tr>
                 <th width="5%">No.</th>
-                <th width="10%">ID Order</th>
-                <th width="20%">Waktu Order</th>
-                <th width="20%">Pelanggan</th>
-                <th width="20%">Kasir</th>
-                <th width="25%">Total Subtotal</th>
+                <th width="15%">ID Pengeluaran</th>
+                <th width="20%">Tanggal & Waktu</th>
+                <th width="30%">Nama Pengeluaran</th>
+                <th width="30%">Total Pengeluaran</th>
             </tr>
-            @foreach($laporan as $index => $order)
+            @foreach($daily as $index => $pengeluaran)
             <tr>
                 <td><center>{{ $index + 1 }}</center></td>
-                <td>{{ $order->id_order }}</td>
-                <td>{{ $order->waktu_order }}</td>
-                <td>{{ $order->nama_pelanggan }}</td>
-                <td>{{ $order->user->karyawan->nama }}</td>
-                <td>{{ number_format($order->total_subtotal, 0, ',', '.') }}</td>
+                <td>{{ $pengeluaran->id_pengeluaran }}</td>
+                <td>{{ $pengeluaran->waktu_pengeluaran }}</td>
+                <td>{{ $pengeluaran->nama_pengeluaran }}</td>
+                <td>{{  number_format($pengeluaran->pengeluaran, 0, ',', '.') }}</td>
             </tr>
             @endforeach
         </table>
-        <p class="total-penjualan">Total Penjualan : Rp {{ number_format($dapat, 0, ',', '.') }}</p>
+        <p class="total-pengeluaran">Total Pengeluaran: Rp {{ number_format($totalDailyExpense, 0, ',', '.') }}</p>
     </div>
     <div id="print">
         <table width="100%" align="right" class="ttd">

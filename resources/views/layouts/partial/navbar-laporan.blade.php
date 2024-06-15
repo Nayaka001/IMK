@@ -2,13 +2,13 @@
         <div id="linkpenjualan">
             <span id="penjualanButton" style="background-color: #FFD369;" class="inline-block p-2 mr-4 m-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent {{ request()->routeIs('user') ? 'border-2 border-solid' : '' }} rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 bg-gray-500 border-black text-black hover:opacity-75">
                 Laporan Penjualan
-                <i class="fa fa-users text-lg text-gray-700 ml-2"></i>
+                <i class="fas fa-file-invoice text-lg text-gray-700 ml-2"></i>
             </span>
         </div>
         <div id="linkpengeluaran">
             <span id="pengeluaranButton" style="background-color: #FFD369;" class="inline-block p-2 m-2 mb-0 mx-4 font-bold text-center uppercase align-middle transition-all bg-transparent {{ request()->routeIs('user.pelayan') ? 'border-2 border-solid' : '' }} rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
                 laporan Pengeluaran
-                <i class="ni ni-single-02 text-lg text-gray-700 ml-2"></i>
+                <i class="fas fa-receipt text-lg text-gray-700 ml-2"></i>
             </span>
         </div>
 </div>

@@ -22,7 +22,7 @@
                       <tr>
                         <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-500 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-800 opacity-70">ID Pesanan</th>
                         <!-- <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-500 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-800 opacity-70">Tanggal</th> -->
-                        <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-500 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-800 opacity-70">Tanggal</th>
+                        <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-500 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-800 opacity-70">Tanggal & Waktu</th>
                         <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-500 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-800 opacity-70">Pembeli</th>
                         <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-500 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-800 opacity-70">Kasir</th>
                         <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-500 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-800 opacity-70">Total</th>
@@ -236,9 +236,10 @@
                         <div class="flex-none w-full max-w-full px-3">
                           <div class="relative flex flex-col min-w-0 mb-6 break-words bg-[#e8eddf] border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                             <div class="p-6 pb-0 mb-0 bg-[#e8eddf] border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                              <h6>Laporan Pengeluaran</h6>
+                              <h6 class="font-semibold text-lg">Laporan Pengeluaran</h6>
                               <div class="flex-none w-full max-w-full px-6 justify-end text-right">
-                                  <a class="inline-block px-3 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"><i class="mr-1 fas fa-file-pdf text-lg"> </i>&nbsp;&nbsp;Cetak Laporan</a>
+                                  <a href="{{ route('cetak-laporan-pengeluaran') }}" target="_blank" class="inline-block px-3 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"><i class="mr-1 fas fa-file-pdf text-lg"> </i>&nbsp;&nbsp;Cetak Laporan</a>
+                                  <p class="mt-2 font-semibold text-2xl text-slate-800">Total Pengeluaran : Rp {{ number_format($totalDailyExpense, 0, ',', '.') }}</p>
                               </div>
                             </div>
                             <div class="flex-auto px-0 pt-0 pb-2">
@@ -283,10 +284,10 @@
                                         <!-- <p class="mb-0 text-xs leading-tight text-slate-600">18-10-2004</p> -->
                                       </td> --}}
                                       <td class="p-2 text-center align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
-                                        <span class="text-sm leading-tight text-slate-600">Sadtria</span>
+                                        <span class="text-sm leading-tight text-slate-600">{{$dailys->nama_pengeluaran}}</span>
                                       </td>
                                       <td class="px-6 py-3 text-center align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
-                                        <span class="text-sm leading-tight text-slate-600">Rp {{ number_format($dailys->total_subtotal, 0, ',', '.')}}</span>
+                                        <span class="text-sm leading-tight text-slate-600">Rp {{ number_format($dailys->pengeluaran, 0, ',', '.')}}</span>
                                       </td>
                                       
                                     </tr>
@@ -309,9 +310,10 @@
                         <div class="flex-none w-full max-w-full px-3">
                           <div class="relative flex flex-col min-w-0 mb-6 break-words bg-[#e8eddf] border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                             <div class="p-6 pb-0 mb-0 bg-[#e8eddf] border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                              <h6>Laporan Pengeluaran</h6>
+                              <h6 class="font-semibold text-lg">Laporan Pengeluaran</h6>
                               <div class="flex-none w-full max-w-full px-6 justify-end text-right">
                                   <a class="inline-block px-3 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"><i class="mr-1 fas fa-file-pdf text-lg"> </i>&nbsp;&nbsp;Cetak Laporan</a>
+                                  <p class="mt-2 font-semibold text-2xl text-slate-800">Total Pengeluaran : Rp {{ number_format($totalWeeklyExpense, 0, ',', '.') }}</p>
                               </div>
                             </div>
                             <div class="flex-auto px-0 pt-0 pb-2">
@@ -389,9 +391,10 @@
                         <div class="flex-none w-full max-w-full px-3">
                           <div class="relative flex flex-col min-w-0 mb-6 break-words bg-[#e8eddf] border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                             <div class="p-6 pb-0 mb-0 bg-[#e8eddf] border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                              <h6>Laporan Pengeluaran</h6>
+                              <h6 class="font-semibold text-lg">Laporan Pengeluaran</h6>
                               <div class="flex-none w-full max-w-full px-6 justify-end text-right">
                                   <a class="inline-block px-3 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"><i class="mr-1 fas fa-file-pdf text-lg"> </i>&nbsp;&nbsp;Cetak Laporan</a>
+                                  <p class="mt-2 font-semibold text-2xl text-slate-800">Total Pengeluaran : Rp {{ number_format($totalMonthlyExpense, 0, ',', '.') }}</p>
                               </div>
                             </div>
                             <div class="flex-auto px-0 pt-0 pb-2">
