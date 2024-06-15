@@ -303,6 +303,16 @@ class AdminController extends Controller
                     ->orderBy('waktu_pengeluaran')
                     ->get();
 
+                    $dapat = OrderDetail::whereHas('order', function ($query) {
+                        $query->whereBetween('waktu_order', [now()->startOfDay(), now()->endOfDay()]);
+                    })->sum('subtotal');
+                    $dapatw = OrderDetail::whereHas('order', function ($query) {
+                        $query->whereBetween('waktu_order', [now()->startOfWeek(), now()->endOfWeek()]);
+                    })->sum('subtotal');
+                    $dapatm = OrderDetail::whereHas('order', function ($query) {
+                        $query->whereBetween('waktu_order', [now()->startOfMonth(), now()->endOfMonth()]);
+                    })->sum('subtotal');
+
         // Menambahkan total subtotal ke setiap order
         foreach ($laporan as $order) {
             $order->total_subtotal = $order->detailorder->sum('subtotal');
@@ -332,7 +342,66 @@ class AdminController extends Controller
             'daily' => $daily,
             'weekly' => $weekly,
             'monthly' => $monthly,
+            'dapat' => $dapat,
+            'dapatw' => $dapatw,
+            'dapatm' => $dapatm,
 
+        ]);
+    }
+    public function cetakLaporanPenjualan() {
+        $today = Carbon::today()->toDateString();
+        $laporan = Order::whereDate('waktu_order', $today)->orderBy('waktu_order')->get();
+        $daily = Pengeluaran::whereDate('waktu_pengeluaran', $today)->orderBy('waktu_pengeluaran')->get();
+
+        $startOfMonth = Carbon::now()->startOfMonth()->toDateString();
+        $endOfMonth = Carbon::now()->endOfMonth()->toDateString();
+        $bulan = Order::whereBetween('waktu_order', [$startOfMonth, $endOfMonth])->orderBy('waktu_order')->get();
+        $monthly = Pengeluaran::whereBetween('waktu_pengeluaran', [$startOfMonth, $endOfMonth])->orderBy('waktu_pengeluaran')->get();
+
+        $startOfWeek = Carbon::now()->startOfWeek()->toDateString();
+        $endOfWeek = Carbon::now()->endOfWeek()->toDateString();
+        $minggu = Order::whereBetween('waktu_order', [$startOfWeek, $endOfWeek])->orderBy('waktu_order')->get();
+        $weekly = Pengeluaran::whereBetween('waktu_pengeluaran', [$startOfWeek, $endOfWeek])->orderBy('waktu_pengeluaran')->get();
+
+        foreach ($laporan as $order) {
+            $order->total_subtotal = $order->detailorder->sum('subtotal');
+        }
+        foreach ($bulan as $bulans) {
+            $bulans->total_subtotal = $bulans->detailorder->sum('subtotal');
+        }
+        foreach ($minggu as $orders) {
+            $orders->total_subtotal = $orders->detailorder->sum('subtotal');
+        }
+        foreach ($daily as $dail) {
+            $dail->total_subtotal = $dail->sum('pengeluaran');
+        }
+        foreach ($weekly as $week) {
+            $week->total_subtotal = $week->sum('pengeluaran');
+        }
+        foreach ($monthly as $month) {
+            $month->total_subtotal = $month->sum('pengeluaran');
+        }
+
+        $dapat = OrderDetail::whereHas('order', function ($query) {
+            $query->whereBetween('waktu_order', [now()->startOfDay(), now()->endOfDay()]);
+        })->sum('subtotal');
+        $dapatw = OrderDetail::whereHas('order', function ($query) {
+            $query->whereBetween('waktu_order', [now()->startOfWeek(), now()->endOfWeek()]);
+        })->sum('subtotal');
+        $dapatm = OrderDetail::whereHas('order', function ($query) {
+            $query->whereBetween('waktu_order', [now()->startOfMonth(), now()->endOfMonth()]);
+        })->sum('subtotal');
+
+        return view('admin.cetak-laporan-penjualan',[
+            'laporan' => $laporan,
+            'minggu' => $minggu,
+            'bulan' => $bulan,
+            'daily' => $daily,
+            'weekly' => $weekly,
+            'monthly' => $monthly,
+            'dapat' => $dapat,
+            'dapatw' => $dapatw,
+            'dapatm' => $dapatm,
         ]);
     }
     public function storemenu(Request $request){

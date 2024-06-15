@@ -239,19 +239,19 @@
                               $nomorUrut = 1;
                           @endphp
                       @foreach ($topMenuQuantities as $menuId => $menudata)
-                      <li class="relative flex px-4 py-2 pl-0 bg-gradient-to-b from-[#FFD369] to-[#cfdbd5] border-b border-solid border-transparent rounded-t-inherit rounded-xl shadow-xl shadow-slate-700">
+                      <li class="relative flex px-2 py-2 bg-gradient-to-b from-[#FFD369] to-[#cfdbd5] border-b border-solid border-transparent rounded-t-inherit rounded-xl shadow-xl shadow-slate-700 mb-4">
                         <div class="flex items-center xl:w-1/6 align-middle px-2">
                           <span class="max-w-full py-1 px-2 mx-auto border border-black rounded-full text-black font-semibold">#{{$nomorUrut}}</span>
                         </div>
                         <div class="flex-col items-center xl:w-2/6">
-                          <h6 class="max-w-full text-4xl text-slate-700 font-mono">{{ $menuNames[$menuId] }}</h6>
+                          <h6 class="max-w-full text-4xl text-slate-700 font-semibold">{{ $menuNames[$menuId] }}</h6>
                           <span class="leading-normal font-mono text-sm text-slate-700">Rp {{ number_format($menudata['total_price'], 0, ',', '.') }}</span>
                           <div class="flex border border-solid border-transparent border-black rounded-full p-0 w-1/4 my-2">
                             <span class="text-red-600 mx-auto">{{ $menudata['quantity'] }}</span>
                           </div>
                         </div>
-                        <div class="flex flex-col items-center justify-center xl:w-3/6">
-                          <img src="{{ $menudata['gambar_menu'] }}" alt="Description of Image" class=" rounded-lg h-16 w-16">
+                        <div class="flex flex-col items-center ml-4 justify-center xl:w-3/6">
+                          <img src="{{ $menudata['gambar_menu'] }}" alt="Description of Image" class="custom-size rounded-lg">
                         </div>
                       </li>
                       @php
