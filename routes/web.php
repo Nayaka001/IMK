@@ -27,7 +27,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 //Bagian Kitchen
 Route::middleware(['auth', 'role:Kitchen'])->group(function () {
 Route::get('/kitchen-main', [KitchenController::class, 'index'])->name('index.kitchen');
-Route::get('/kitchen-menu', [KitchenController::class, 'menu'])->name('menu.kitchen');
+Route::get('/kitchenmenu', [KitchenController::class, 'menu'])->name('menu.kitchen');
 Route::PUT('/kitchenmenu/update/{id_menu}', [KitchenController::class, 'menuupdate'])->name('menu.update');
 Route::get('/kcooking', [KitchenController::class, 'cooking'])->name('index.cooking');
 Route::get('/kready', [KitchenController::class, 'ready'])->name('index.ready');

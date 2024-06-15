@@ -27,7 +27,7 @@
 
 <!-- category -->
 <div class="w-auto flex justify-between my-5 mt-5 overflow-x-auto sm:w-4/5 md:w-11/12 lg:w-full lg:overflow-visible gap-2">            
-    <a href="/kitchen-menu">    
+    <a href="{{route('menu.kitchen')}}">    
         <div class="rounded-2xl bg-black text-white w-fit px-4 py-2 shadow-md mx-2 font-bold text-center">Menu</div>
     </a>
     <a href="{{ route('index.kitchen') }}">
