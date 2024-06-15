@@ -12,6 +12,7 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Pengeluaran;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -265,7 +266,9 @@ class KasirController extends Controller
         ]);
     }
     public function orderwait(){
-        $orders = Order::all();
+        $today = Carbon::today();
+
+        $orders = Order::whereDate('waktu_order', $today)->get();
         $detail = Order::with('detailorder')->get();
 
     // Array untuk menyimpan hasil perhitungan
@@ -454,7 +457,9 @@ class KasirController extends Controller
 
     }
     public function orderdone(){
-        $orders = Order::all();
+        $today = Carbon::today();
+
+        $orders = Order::whereDate('waktu_order', $today)->get();
         $detail = Order::with('detailorder')->get();
 
     // Array untuk menyimpan hasil perhitungan
