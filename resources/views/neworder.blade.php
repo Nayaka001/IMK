@@ -45,12 +45,20 @@
                             <div class="px-2 py-2">
                             <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
                             <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                            @if($menus->status === 'Tersedia')
                             <div class="justify-between flex">
                                 <h1 class="font-bold mt-1 text-lg">Rp {{$menus->harga}}</h1>
                                 <button id="addButton-{{$menus->id_menu}}" class="hover:rounded-full hover:bg-[#FFD369] h-8 group text-3xl">
                                     <ion-icon name="add-circle-outline" class="group-hover:text-white"></ion-icon>
                                 </button>
                             </div>
+                            @elseif($menus->status === 'Habis')
+                            <div class="justify-between flex">
+                                <button type="button" class="bg-slate-500 p-2 rounded-lg w-full hover:bg-slate-800 flex items-center justify-center disabled-button">
+                                    <h1 class="text-white font-bold text-lg">Stok Habis</h1>
+                                </button>
+                            </div>
+                            @endif
                             </div>
                         </div>
                         @endif
@@ -234,12 +242,20 @@
                             <div class="px-2 py-2">
                             <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
                             <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                            @if($menus->status === 'Tersedia')
                             <div class="justify-between flex">
                                 <h1 class="font-bold mt-1 text-lg">Rp {{$menus->harga}}</h1>
                                 <button id="addButton-{{$menus->id_menu}}" class="hover:rounded-full hover:bg-[#FFD369] h-8 group text-3xl">
                                     <ion-icon name="add-circle-outline" class="group-hover:text-white"></ion-icon>
                                 </button>
                             </div>
+                            @elseif($menus->status === 'Habis')
+                            <div class="justify-between flex">
+                                <button type="button" class="bg-slate-500 p-2 rounded-lg w-full hover:bg-slate-800 flex items-center justify-center">
+                                    <h1 class="text-white font-bold text-lg">Stok Habis</h1>
+                                </button>
+                            </div>
+                            @endif
                             </div>
                         </div>
                         @endif

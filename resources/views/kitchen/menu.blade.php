@@ -50,53 +50,128 @@
   <div id="all">
     @foreach($kategori as $kategoris)
     @if($kategoris->jenis === 'Makanan')
-      <div class="w-full">
-        <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
-        <hr class="mt-3 w-full mx-3">
-      </div>
-      <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal">
-        @foreach($menu as $menus)
-          @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
-            <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update"  >
-                <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover edit-button" data-id-menu="{{$menus->id_menu}}" data-gambar-menu="{{$menus->gambar_menu}}" data-nama-menu="{{$menus->nama_menu}}">
-                <div class="px-2 py-2" >
-                  <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
-                  <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
-                  {{-- <div class="flex justify-between"> --}}
-                    <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
-                    {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
-                        <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
-                    </button> --}}
-                  {{-- </div> --}}
+        <div class="w-full">
+            <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+            <hr class="mt-3 w-full mx-3">
+        </div>
+        <div class="mt-5 flex flex-wrap sm:justify-start" >
+            @foreach($menu as $menus)
+            @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update">
+                    <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                    <div class="px-2 py-2">
+                        <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                        <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                        <h1 class="font-bold mt-1 text-lg">Rp {{$menus->harga}}</h1>
+                        @if($menus->status === 'Tersedia')
+                        <div class="w-full flex justify-center px-10 py-2" data-modal-toggle="default-modal">
+                            <button class="bg-red-500 p-2 rounded-lg w-full hover:bg-red-800 flex items-center justify-center edit-button"
+                                data-id-menu="{{$menus->id_menu}}"
+                                data-gambar-menu="{{ asset('img/menu/' . $menus->gambar_menu) }}"
+                                data-nama-menu="{{$menus->nama_menu}}">
+                                <h1 class="text-white font-bold text-lg">Stok Tersedia</h1>
+                            </button>
+                        </div>
+                        @elseif($menus->status === 'Habis')
+                        <div class="w-full flex justify-center px-10 py-2">
+                            <button type="button" class="bg-slate-500 p-2 rounded-lg w-full hover:bg-slate-800 flex items-center justify-center">
+                                <h1 class="text-white font-bold text-lg">Stok Habis</h1>
+                            </button>
+                        </div>
+                        @endif
+                    </div>
+                </div>
+            @endif
+            @endforeach
+        </div>
+    @endif
+    @endforeach
+</div>
+
+<div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex items-center justify-center modal">
+    <div class="fixed inset-0 bg-black bg-opacity-50"></div>
+    <div class="relative bg-white rounded-lg shadow-lg p-6 w-1/3">
+        <!-- Modal header -->
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-2xl font-bold">Perbarui Menu</h2>
+            <button id="closeModalBtn" class="text-gray-500 hover:text-gray-800 focus:outline-none" data-modal-hide="default-modal">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span class="sr-only">Close modal</span>
+            </button>
+        </div>
+        <!-- Modal body -->
+        <div class="space-y-4">
+            <div class="flex items-start p-4 flex-row gap-3">
+                <!-- Image -->
+                <div>
+                    <img id="modal-image" class="w-10" src="" alt="">
+                </div>
+                <!-- Menu notes and quantity -->
+                <div>
+                    <h3 id="modal-title" class="font-bold"></h3>
                 </div>
             </div>
-          @endif
-        @endforeach
-      </div>
-      @endif
-    @endforeach
+            <div class="flex items-start px-4 flex-row">
+                <p>Ubah status menu ini menjadi habis?</p>
+            </div>
+            <div class="flex justify-center mt-6">
+                <form id="updateForm" action="{{ route('kitchen.updatemenu', ['id_menu' => ':id_menu']) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <input type="hidden" name="status" value="Habis">
+                    <button type="submit" id="notAvailableModalBtn" class="bg-red-500 text-white px-4 py-2 rounded-3xl" data-modal-save="confirm-modal">Habis</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <div id="kidsmeal" class="hidden">
-        @foreach($kategori as $kategoris)
-        @if($kategoris->kategori === 'KIDS MEAL' && $kategoris->jenis === 'Makanan')
-          <div class="w-full">
-            <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
-            <hr class="mt-3 w-full mx-3">
-          </div>
-          <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal">
-            @foreach($menu as $menus)
-              @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
-                <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update " data-id-menu="{{$menus->id_menu}}" data-gambar-menu="{{$menus->gambar_menu}}" data-nama-menu="{{$menus->nama_menu}}">
-                    <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+</div>
+
+        {{-- <div id="kidsmeal" class="hidden">
+          @foreach($kategori as $kategoris)
+          @if($kategoris->kategori === 'KIDS MEAL' && $kategoris->jenis === 'Makanan')
+            <div class="w-full">
+              <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+              <hr class="mt-3 w-full mx-3">
+            </div>
+            <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal">
+              @foreach($menu as $menus)
+                @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                  <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update " >
+                      <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                      <div class="px-2 py-2">
+                        <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                        <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                        
+                          <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
+                          
+                      </div>
+                  </div>
+                @endif
+              @endforeach
+            </div>
+            @endif
+          @endforeach
+        </div> --}}
+        {{-- <div id="sayuran" class="hidden">
+           @foreach($kategori as $kategoris)
+          @if($kategoris->kategori === 'SAYURAN' && $kategoris->jenis === 'Makanan')
+            <div class="w-full">
+              <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+              <hr class="mt-3 w-full mx-3">
+            </div>
+            <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal">
+              @foreach($menu as $menus)
+                @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                  <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update">
+                      <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
                     <div class="px-2 py-2">
                       <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
                       <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
-                      {{-- <div class="flex justify-between"> --}}
+                      
                         <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
-                        {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
-                            <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
-                        </button> --}}
-                      {{-- </div> --}}
+                        
                     </div>
                 </div>
               @endif
@@ -104,28 +179,25 @@
           </div>
           @endif
         @endforeach
-        </div>
-        <div id="sayuran" class="hidden">
-        @foreach($kategori as $kategoris)
-        @if($kategoris->kategori === 'SAYURAN' && $kategoris->jenis === 'Makanan')
-          <div class="w-full">
-            <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
-            <hr class="mt-3 w-full mx-3">
-          </div>
-          <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal">
-            @foreach($menu as $menus)
-              @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
-                <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update" data-id-menu="{{$menus->id_menu}}" data-gambar-menu="{{asset('/img/menu/' . $menus->gambar_menu)}}" data-nama-menu="{{$menus->nama_menu}}">
-                    <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
-                    <div class="px-2 py-2">
-                      <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
-                      <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
-                      {{-- <div class="flex justify-between"> --}}
+        </div> --}}
+        {{-- <div id="steak" class="hidden">
+          @foreach($kategori as $kategoris)
+          @if($kategoris->kategori === 'STEAKS & HOTPLATES' && $kategoris->jenis === 'Makanan')
+            <div class="w-full">
+              <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+              <hr class="mt-3 w-full mx-3">
+            </div>
+            <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal" >
+              @foreach($menu as $menus)
+                @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                  <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update">
+                      <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                      <div class="px-2 py-2">
+                        <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                        <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                        
                         <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
-                        {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
-                            <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
-                        </button> --}}
-                      {{-- </div> --}}
+                        
                     </div>
                 </div>
               @endif
@@ -133,95 +205,60 @@
           </div>
           @endif
         @endforeach
-        </div>
-        <div id="steak" class="hidden">
-        @foreach($kategori as $kategoris)
-        @if($kategoris->kategori === 'STEAKS & HOTPLATES' && $kategoris->jenis === 'Makanan')
-          <div class="w-full">
-            <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
-            <hr class="mt-3 w-full mx-3">
-          </div>
-          <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal" >
-            @foreach($menu as $menus)
-              @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
-                <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update" data-id-menu="{{$menus->id_menu}}" data-gambar-menu="{{$menus->gambar_menu}}" data-nama-menu="{{$menus->nama_menu}}">
-                    <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
-                    <div class="px-2 py-2">
-                      <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
-                      <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
-                      {{-- <div class="flex justify-between"> --}}
-                        <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
-                        {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
-                            <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
-                        </button> --}}
-                      {{-- </div> --}}
-                    </div>
-                </div>
-              @endif
-            @endforeach
-          </div>
-          @endif
-        @endforeach
-        </div>
-        <div id="rice" class="hidden">
-        @foreach($kategori as $kategoris)
-        @if($kategoris->kategori === 'RICE HOTPLATE' && $kategoris->jenis === 'Makanan')
-          <div class="w-full">
-            <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
-            <hr class="mt-3 w-full mx-3">
-          </div>
-          <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal">
-            @foreach($menu as $menus)
-              @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
-                <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update" data-id-menu="{{$menus->id_menu}}" data-gambar-menu="{{$menus->gambar_menu}}" data-nama-menu="{{$menus->nama_menu}}">
-                    <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
-                    <div class="px-2 py-2">
-                      <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
-                      <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
-                      {{-- <div class="flex justify-between"> --}}
-                        <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
-                        {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
-                            <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
-                        </button> --}}
-                      {{-- </div> --}}
-                    </div>
-                </div>
-              @endif
-            @endforeach
+        </div> --}}
+        {{-- <div id="rice" class="hidden">
+          @foreach($kategori as $kategoris)
+          @if($kategoris->kategori === 'RICE HOTPLATE' && $kategoris->jenis === 'Makanan')
+            <div class="w-full">
+              <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+              <hr class="mt-3 w-full mx-3">
+            </div>
+            <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal">
+              @foreach($menu as $menus)
+                @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                  <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update">
+                      <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                      <div class="px-2 py-2">
+                        <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                        <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                        
+                          <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
+                          
+                      </div>
+                  </div>
+                @endif
+              @endforeach
+            </div>
+            @endif
+          @endforeach
+        </div> --}}
+        {{-- <div id="geprek" class="hidden">
+          @foreach($kategori as $kategoris)
+          @if($kategoris->kategori === 'GEPREK' && $kategoris->jenis === 'Makanan')
+            <div class="w-full">
+              <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
+              <hr class="mt-3 w-full mx-3">
+            </div>
+            <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal">
+              @foreach($menu as $menus)
+                @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
+                  <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update">
+                      <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
+                      <div class="px-2 py-2">
+                        <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
+                        <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
+                        
+                          <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
+                          
+                      </div>
+                  </div>
+                @endif
+              @endforeach
           </div>
           @endif
         @endforeach
-        </div>
-        <div id="geprek" class="hidden">
-        @foreach($kategori as $kategoris)
-        @if($kategoris->kategori === 'GEPREK' && $kategoris->jenis === 'Makanan')
-          <div class="w-full">
-            <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
-            <hr class="mt-3 w-full mx-3">
-          </div>
-          <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal">
-            @foreach($menu as $menus)
-              @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
-                <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update" data-id-menu="{{$menus->id_menu}}" data-gambar-menu="{{$menus->gambar_menu}}" data-nama-menu="{{$menus->nama_menu}}">
-                    <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
-                    <div class="px-2 py-2">
-                      <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
-                      <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
-                      {{-- <div class="flex justify-between"> --}}
-                        <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
-                        {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
-                            <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
-                        </button> --}}
-                      {{-- </div> --}}
-                    </div>
-                </div>
-              @endif
-            @endforeach
-          </div>
-          @endif
-        @endforeach
-        </div>
-        <div id="cemilan" class="hidden">
+        </div> --}}
+        {{-- <div id="cemilan" class="hidden">
         @foreach($kategori as $kategoris)
         @if($kategoris->kategori === 'CEMILAN' && $kategoris->jenis === 'Makanan')
           <div class="w-full">
@@ -231,17 +268,14 @@
           <div class="mt-5 flex flex-wrap sm:justify-start" data-modal-toggle="default-modal">
             @foreach($menu as $menus)
               @if($menus->id_ktgmenu == $kategoris->id_ktgmenu)
-                <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update" data-id-menu="{{$menus->id_menu}}" data-gambar-menu="{{$menus->gambar_menu}}" data-nama-menu="{{$menus->nama_menu}}">
+                <div class="rounded-md shadow-lg overflow-hidden mb-7 bg-transparent w-1/3 md:w-80 button-update">
                     <img src="{{ asset('img/menu/' . $menus->gambar_menu) }}" alt="Image Caption" class="w-full h-48 object-cover">
                     <div class="px-2 py-2">
                       <div class="font-bold text-lg mb-1">{{$menus->nama_menu}}</div>
                       <p class="text-xs mb-1 text-gray-600">{{$menus->keterangan}}</p>
-                      {{-- <div class="flex justify-between"> --}}
+
                         <h1 class="font-bold mt-1 text-lg ">Rp {{$menus->harga}}</h1>
-                        {{-- <button class="hover:rounded-full hover:bg-[#FFD369] h-8 group">
-                            <ion-icon name="add-circle-outline" size="large" class="group-hover:text-white"></ion-icon>
-                        </button> --}}
-                      {{-- </div> --}}
+
                     </div>
                 </div>
               @endif
@@ -249,90 +283,59 @@
           </div>
           @endif
         @endforeach
-        </div>
+        </div> --}}
 
     <!-- Modal -->
-        {{-- Main Modal --}}
-         <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex items-center justify-center modal">
-            <div class="fixed inset-0 bg-black bg-opacity-50"></div>
-            <div class="relative bg-white rounded-lg shadow-lg p-6 w-1/3">
-                <!-- Modal header -->
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-2xl font-bold">Perbarui Menu</h2>
-                    <button id="closeModalBtn" class="text-gray-500 hover:text-gray-800 focus:outline-none" data-modal-hide="default-modal">
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                </div>
-                <!-- Modal body -->
-                <div class="space-y-4">
-                    <!-- Modal content here -->
-                    <div class="flex items-start p-4 flex-row gap-3">
-                        <!-- Image -->
-                        <div>
-                            <img class="w-10"  src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
-                        </div>
-                        <!-- Menu notes and quantity -->
-                        <div>
-                            <h3 id="tittle" class="font-bold"></h3>
-                        </div>
-                        <!-- Menu notes and quantity end -->
-                    </div>
         
-                    <div class="flex items-start px-4 flex-row">
-                        <p> Ubah status menu ini menjadi habis? </p>
-                    </div>
-        
-                    <div class="flex justify-center mt-6">
-                        <form id="updateForm" action="{{ route('menu.update', ['id_menu' => ':id_menu']) }}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <input type="hidden" name="status" value="Habis" id="">
-                            <button type="submit" id="notAvailableModalBtn" class="bg-red-500 text-white px-4 py-2 rounded-3xl" data-modal-save="confirm-modal">Habis</button>
-                        </form>
-                            {{-- <button type="butt" id="availableModalBtn" class="bg-yellow-400 text-white px-4 py-2 rounded-3xl mr-2" data-modal-save="confirm-modal">Tersedia</button> --}}
-                    </div>
-                </div>
-            </div>
-        </div>
 
         
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-    const openModalButtons = document.querySelectorAll('.edit-button');
-    const modal = document.getElementById('default-modal');
-    const modalTitle = document.getElementById('tittle');
-    const modalImg = document.getElementById('image');
-    const updateForm = document.getElementById('updateForm');
-
-    openModalButtons.forEach(function(button) {
-        button.addEventListener('click', function(event) {
-            event.preventDefault();
-            const id_menu = this.getAttribute('data-id-menu');
-            const gambar = this.getAttribute('data-gambar-menu');
-            const nama = this.getAttribute('data-nama-menu');
-
-            // Update konten modal dengan data dari atribut
-            modalTitle.textContent = nama; // Menggunakan nama menu sebagai judul modal
-            modalImg.src = gambar; // Menggunakan URL gambar penuh
-            var action = '{{ route('menu.update', ['id_menu' => ':id_menu']) }}';
-            action = action.replace(':id_menu', id_menu);
-          updateForm.setAttribute('action', action);
-
-            // Tampilkan modal jika Anda menggunakan modal
-            modal.style.display = 'block'; // atau metode lain sesuai dengan implementasi modal Anda
-        });
-    });
-
-    // Tambahkan event listener untuk menutup modal
-    document.querySelector('.close').addEventListener('click', function() {
-        modal.style.display = 'none';
-    });
-});
-</script>
-    </script>
+      document.addEventListener('DOMContentLoaded', function() {
+          var modal = document.getElementById('default-modal');
+          var closeModalBtn = document.getElementById('closeModalBtn');
+          const updateForm = document.getElementById('updateForm');
+          var modalImage = document.getElementById('modal-image');
+          var modalTitle = document.getElementById('modal-title');
+  
+          // Function to open the modal
+          function openModal(modal) {
+              modal.classList.remove('hidden');
+          }
+  
+          // Function to close the modal
+          function closeModal(modal) {
+              modal.classList.add('hidden');
+          }
+  
+          // Event listener for close button
+          closeModalBtn.addEventListener('click', function(event) {
+              event.preventDefault();
+              closeModal(modal);
+          });
+  
+          // Loop through all edit buttons
+          document.querySelectorAll('.edit-button').forEach(function(button) {
+              button.addEventListener('click', function(event) {
+                  event.preventDefault();
+                  openModal(modal);
+  
+                  var id_menu = this.getAttribute('data-id-menu');
+                  var gambar_menu = this.getAttribute('data-gambar-menu');
+                  var nama_menu = this.getAttribute('data-nama-menu');
+  
+                  // Update the modal content
+                  modalImage.src = gambar_menu;
+                  modalTitle.textContent = nama_menu;
+  
+                  // Update the form action
+                  var action = updateForm.getAttribute('action').replace(':id_menu', id_menu);
+                  updateForm.setAttribute('action', action);
+              });
+          });
+      });
+  </script>
+  
+      
     <script>
         // Mendapatkan elemen yang diperlukan
         const allMenu = document.getElementById('all');
