@@ -9,10 +9,11 @@
           <div class="flex-none w-full max-w-full px-3" >
             <div class="relative flex flex-col min-w-0 mb-6 break-words bg-[#e8eddf] border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
               <div class="p-6 pb-0 mb-0 bg-[#e8eddf] border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                <h6>Laporan Penjualan</h6>
+                <h6 class="font-semibold text-lg">Laporan Penjualan</h6>
                 <div class="flex-none w-full max-w-full px-6 justify-end text-right">
-                    <a class="inline-block px-3 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"><i class="mr-1 fas fa-file-pdf text-lg"></i>&nbsp;&nbsp;Cetak Laporan</a>
-                </div>
+                    <a href="{{ route('cetak-laporan-penjualan') }}" target="_blank" class="inline-block px-3 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"><i class="mr-1 fas fa-file-pdf text-lg"></i>&nbsp;&nbsp;Cetak Laporan</a>
+                    <p class="mt-2 font-semibold text-2xl text-slate-800">Total Penjualan : Rp {{ number_format($dapat, 0, ',', '.') }}</p>
+                  </div>
               </div>
               <div class="flex-auto px-0 pt-0 pb-2">
                 <div class="p-0 overflow-x-auto">
@@ -84,9 +85,10 @@
           <div class="flex-none w-full max-w-full px-3" >
             <div class="relative flex flex-col min-w-0 mb-6 break-words bg-[#e8eddf] border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
               <div class="p-6 pb-0 mb-0 bg-[#e8eddf] border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                <h6>Laporan Penjualan</h6>
+                <h6 class="font-semibold text-lg">Laporan Penjualan</h6>
                 <div class="flex-none w-full max-w-full px-6 justify-end text-right">
                     <a class="inline-block px-3 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"><i class="mr-1 fas fa-file-pdf text-lg"></i>&nbsp;&nbsp;Cetak Laporan</a>
+                    <p class="mt-2 font-semibold text-2xl text-slate-800">Total Penjualan : Rp {{ number_format($dapatw, 0, ',', '.') }}</p>
                 </div>
               </div>
               <div class="flex-auto px-0 pt-0 pb-2">
@@ -136,7 +138,7 @@
                           <span class="text-sm leading-tight text-slate-600">Rp {{ number_format($laporans->total_subtotal, 0, ',', '.')}}</span>
                         </td>
                         <td class="p-2 align-middle bg-transparent border-b border-gray-500 border-solid whitespace-nowrap shadow-transparent">
-                        <span class="inline-block p-2 m-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-2 border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
+                        <span id="detailsBtn-minggu" class="inline-block p-2 m-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-2 border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-black text-black hover:opacity-75">
                         View Details
                         </span>
                             <!-- <a class="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text" href="javascript:;"><i class="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
@@ -159,9 +161,10 @@
           <div class="flex-none w-full max-w-full px-3" >
             <div class="relative flex flex-col min-w-0 mb-6 break-words bg-[#e8eddf] border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
               <div class="p-6 pb-0 mb-0 bg-[#e8eddf] border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                <h6>Laporan Penjualan</h6>
+                <h6 class="font-semibold text-lg">Laporan Penjualan</h6>
                 <div class="flex-none w-full max-w-full px-6 justify-end text-right">
                     <a class="inline-block px-3 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent rounded-lg cursor-pointer leading-pro text-xs ease-soft-in shadow-soft-md bg-150 bg-gradient-to-tl from-gray-900 to-slate-800 hover:shadow-soft-xs active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25" href="javascript:;"><i class="mr-1 fas fa-file-pdf text-lg"></i>&nbsp;&nbsp;Cetak Laporan</a>
+                    <p class="mt-2 font-semibold text-2xl text-slate-800">Total Penjualan : Rp {{ number_format($dapatm, 0, ',', '.') }}</p>
                 </div>
               </div>
               <div class="flex-auto px-0 pt-0 pb-2">

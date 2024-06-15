@@ -11,7 +11,7 @@
   <div class="border-black/12.5 shadow-soft-xl relative z-9 flex min-w-0 flex-col break-words rounded-2xl border-0 border-gray-400 border-solid bg-[#e8eddf] bg-transparent bg-clip-border">
     <div class="border-black/12.5 mb-6 rounded-t-2xl border-b-0 border-solid bg-[#e8eddf] bg-transparent p-6 pb-0 font-semibold">
       <div class="flex-auto p-2">
-        <h5>Pendaftaran Akun Karyawan</h5>
+        <h5 class="font-semibold text-lg">Pendaftaran Akun Karyawan</h5>
         <div class="w-full mt-2 mb-2 h-1 bg-slate-700 rounded"></div>
               <form action="{{route('store.user')}}" method="POST" enctype="multipart/form-data" class="space-y-4 text-slate-700 p-4">
                 @csrf

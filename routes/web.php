@@ -26,12 +26,9 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Bagian Kitchen
 Route::get('/kitchen-main', [KitchenController::class, 'index'])->name('index.kitchen');
-Route::get('/kitchen-menu', [KitchenController::class, 'menu'])->name('menu.kitchen');
-Route::PUT('/kitchen-menu/update/{id_menu}', [KitchenController::class, 'menuupdate'])->name('menu.update');
 Route::get('/kcooking', [KitchenController::class, 'cooking'])->name('index.cooking');
 Route::get('/kready', [KitchenController::class, 'ready'])->name('index.ready');
 Route::get('/kdone', [KitchenController::class, 'done'])->name('index.done');
-Route::get('/kreser', [KitchenController::class, 'reser'])->name('index.reser');
 // Route::get('/kitchen-cooking', [KitchenController::class, 'cooking'])->name('index.cooking');
 Route::get('/kitchen-detail/{id_order}',  [KitchenController::class, 'detail'])->name('kitchen.detail');
 
@@ -84,6 +81,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::put('/admin/meja/update/{id_meja}', [AdminController::class, 'updatemeja'])->name('update.meja');
     Route::delete('/admin/meja/delete/{id_meja}', [AdminController::class, 'deletemeja'])->name('delete.meja');
     Route::post('/admin/meja/tambah', [AdminController::class, 'tambahmeja'])->name('tambah.meja');
+    Route::get('/cetak-laporan-penjualan', [AdminController::class, 'cetakLaporanPenjualan'])->name('cetak-laporan-penjualan');
 
     Route::get('/admin/user/pelayan', function () {
         return view('admin.pelayan');
@@ -204,7 +202,9 @@ Route::get('/kitchen-reserve', function () {
     return view('kitchen.reserve');
 });
 
-
+Route::get('/kitchen-menu', function () {
+    return view('kitchen.menu');
+});
 Route::get('/kitchen-menu/cemilan', function () {
     return view('kitchen.menucemilan');
 });
