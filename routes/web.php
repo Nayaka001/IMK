@@ -86,6 +86,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::delete('/admin/meja/delete/{id_meja}', [AdminController::class, 'deletemeja'])->name('delete.meja');
     Route::post('/admin/meja/tambah', [AdminController::class, 'tambahmeja'])->name('tambah.meja');
     Route::get('/cetak-laporan-penjualan', [AdminController::class, 'cetakLaporanPenjualan'])->name('cetak-laporan-penjualan');
+    Route::get('/cetak-laporan-pengeluaran', [AdminController::class, 'cetakLaporanPengeluaran'])->name('cetak-laporan-pengeluaran');
 
     Route::get('/admin/user/pelayan', function () {
         return view('admin.pelayan');
