@@ -2,17 +2,19 @@
 <html>
 <head>
     <style>
+        body {
+            font-family: "Calibri", Courier, monospace;
+        }
         #print {
             margin: auto;
             text-align: center;
-            font-family: "Calibri", Courier, monospace;
-            width: 1200px;
+            width: 100%;
+            max-width: 1200px;
             font-size: 14px;
         }
         #print .title {
             margin: 20px;
             text-align: right;
-            font-family: "Calibri", Courier, monospace;
             font-size: 12px;
         }
         #print span {
@@ -23,36 +25,50 @@
         #print table {
             border-collapse: collapse;
             width: 100%;
-            margin: 10px;
+            margin: 10px 0;
         }
         #print .table1 {
             border-collapse: collapse;
-            width: 90%;
+            width: 100%;
             text-align: center;
-            margin: 10px;
+            margin: 10px 0;
         }
         #print table hr {
             border: 3px double #000;
         }
         #print .ttd {
             float: right;
-            width: 250px;
-            background-position: center;
-            background-size: contain;
+            width: 100%;
+            max-width: 250px;
+            text-align: center;
         }
-        #print table th {
+        #print table th, #print table td {
             color: #000;
             font-family: Verdana, Geneva, sans-serif;
             font-size: 12px;
+            padding: 5px;
         }
         #logo {
-            width: 111px;
-            height: 90px;
-            padding-top: 10px;
-            margin-left: 10px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
         }
         h2, h3 {
-            margin: 0px 0px 0px 0px;
+            margin: 0;
+        }
+        .total-penjualan {
+            text-align: right;
+            padding: 40px 40px 20px 20px;
+            font-weight: bold;
+        }
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .no-print, .no-print * {
+                display: none !important;
+            }
         }
     </style>
 </head>
@@ -60,7 +76,7 @@
     <div id="print">
         <table class='table1'>
             <tr>
-                <td><img src="/img/logo.jpg" height="100" width="100"></td>
+                <td><img src="/img/logo.jpg" class="rounded-full" id="logo"></td>
                 <td>
                     <h2>Laporan Penjualan Harian</h2>
                     <h2>Restaurant HomeSteak Annisa</h2>
@@ -69,43 +85,41 @@
             </tr>
         </table>
         <table class='table'>
-            <td><hr /></td>
+            <tr>
+                <td><hr /></td>
+            </tr>
         </table>
-        <td><h3>Laporan Penjualan Harian</h3></td>
-        <tr>
-            <td>
-                <table border='1' class='table' width="90%">
-                    <tr>
-                        <th width="30">No.</th>
-                        <th>ID Order</th>
-                        <th>Waktu Order</th>
-                        <th>Pelanggan</th>
-                        <th>Kasir</th>
-                        <th>Total Subtotal</th>
-                    </tr>
-                    @foreach($laporan as $index => $order)
-                    <tr>
-                        <td><center>{{ $index + 1 }}</center></td>
-                        <td>&nbsp;&nbsp;{{ $order->id_order }}</td>
-                        <td>&nbsp;&nbsp;{{ $order->waktu_order }}</td>
-                        <td>&nbsp;&nbsp;{{ $order->nama_pelanggan }}</td>
-                        <td>&nbsp;&nbsp;{{ $order->user->karyawan->nama }}</td>
-                        <td>&nbsp;&nbsp;{{ number_format($order->total_subtotal, 0, ',', '.') }}</td>
-                    </tr>
-                    @endforeach
-                </table>
-            </td>
-            <p align="right" style="padding: 40px 40px 20px 20px;" class="mb-6"> <strong>Total Penjualan : Rp {{ number_format($dapat, 0, ',', '.') }} <strong></p>
-        </tr>
-    </table>
+        <h3>Laporan Penjualan Harian</h3>
+        <table border='1' class='table'>
+            <tr>
+                <th width="5%">No.</th>
+                <th width="10%">ID Order</th>
+                <th width="20%">Waktu Order</th>
+                <th width="20%">Pelanggan</th>
+                <th width="20%">Kasir</th>
+                <th width="25%">Total Subtotal</th>
+            </tr>
+            @foreach($laporan as $index => $order)
+            <tr>
+                <td><center>{{ $index + 1 }}</center></td>
+                <td>{{ $order->id_order }}</td>
+                <td>{{ $order->waktu_order }}</td>
+                <td>{{ $order->nama_pelanggan }}</td>
+                <td>{{ $order->user->karyawan->nama }}</td>
+                <td>{{ number_format($order->total_subtotal, 0, ',', '.') }}</td>
+            </tr>
+            @endforeach
+        </table>
+        <p class="total-penjualan">Total Penjualan : Rp {{ number_format($dapat, 0, ',', '.') }}</p>
     </div>
     <div id="print">
-        <table width="450" align="right" class="ttd">
+        <table width="100%" align="right" class="ttd">
             <tr>
-                <td width="100px" style="padding: 20px 20px 20px 20px;" align="center">
+                <td style="padding: 30px;" align="center">
                     <strong>Restaurant HomeSteak Annisa,</strong>
                     <br><br><br><br>
-                    <strong><u>TTD</u><br></strong><small></small>
+                    <strong><u>TTD</u></strong>
+                    <small></small>
                 </td>
             </tr>
         </table>
