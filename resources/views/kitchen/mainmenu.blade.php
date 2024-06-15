@@ -57,7 +57,7 @@
             <!-- box pesanan -->
             @foreach($orders as $order)
             <a href="{{route('kitchen.detail', $order->id_order)}}">
-                <div class="bg-[#ffffff] rounded-2xl flex flex-col p-6 gap-3 items-start shadow-2xl h-64 overflow-auto">
+                <div class="bg-[#ffffff] rounded-2xl flex flex-col p-6 gap-3 items-start shadow-2xl h-fit w-80">
                     <div class="flex gap-3">
                         <h2 class="font-bold text-2xl">{{$order->id_meja}}</h2> <h2 class="font-bold text-2xl">#{{$order->id_order}}</h2>
                     </div>
@@ -96,23 +96,37 @@
                             Siap Disajikan
                         </div>
                     @endif
-                    @foreach($order->detailorder as $detail)
-                    @if($detail->menu->ktgmenu->jenis === 'Makanan')
-                    <div class="grid grid-cols-2">
-                        <div class="w-max flex">
-                            <p class="font-bold">{{$detail->jumlah}} x</p>
+                    {{-- menu scroll --}}
+                    @php
+                        $menuCount = $order->detailorder->count();
+                    @endphp
+                    <div class="{{ $menuCount > 3 ?  'overflow-y-auto h-48' : '' }}">
+                        @foreach($order->detailorder as $detail)
+                        @if($detail->menu->ktgmenu->jenis === 'Makanan')
+                        <div class="grid grid-cols-2">
+                            <div class="w-max flex">
+                                <p class="font-bold">{{$detail->jumlah}} x</p>
+                            </div>
+            
+                            <div>
+                                <p>{{$detail->menu->nama_menu}}</p>
+                                <p>
+                                    Notes: 
+                                    <p>{{ $detail->notes ?? '-'}}</p> 
+                                </p>
+                            </div>
                         </div>
-        
-                        <div>
-                            <p>{{$detail->menu->nama_menu}}</p>
-                            <p>
-                                Notes: 
-                                <p>{{ $detail->notes ?? '-'}}</p> 
-                            </p>
-                        </div>
+                        @endif
+                        @endforeach
                     </div>
-                    @endif
-                    @endforeach
+                    {{-- end menu scroll --}}
+                    {{-- button selesai --}}
+                    <div class="w-full flex justify-center px-5">
+                        <button class="bg-green-500 p-2 rounded-lg w-full hover:bg-green-800 flex items-center justify-center">
+                            <h1 class="text-white font-bold text-lg">Pesanan Selesai</h1>
+                        </button>
+                    </div>
+                    {{-- button selesai --}}
                 </div>
             </a>
             @endforeach

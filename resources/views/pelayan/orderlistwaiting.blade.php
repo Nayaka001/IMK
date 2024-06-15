@@ -65,7 +65,7 @@
                     @endforeach
                     @if($readyToCook || $cookingInProgress)
                 @if($order['order']->tipe_order === 'Makan di Tempat')
-                <div class="rounded-xl shadow-lg mb-7 bg-white w-full md:w-80 lg:w-96">
+                <div class="rounded-xl shadow-lg mb-7 bg-white w-full md:w-80 lg:w-96 h-fit">
                     @if($order['order']->tipe_order === 'Makan di Tempat')
                         <div class="h-5 w-full bg-[#00F0FF] text-white font-bold text-sm rounded-t-xl px-2">
                             Makan di tempat
@@ -95,9 +95,16 @@
                                 <p class="text-lg ml-2">Bawa Pulang</p>
                                 @endif
                             </div>
-                            @foreach($order['order']->detailorder as $menus)
-                            <h1 class="py-1 px-2 text-black font-bold text-xl tracking-wide"> {{$menus->jumlah}}x {{$menus->menu->nama_menu}}</h1>
-                            @endforeach
+                            {{-- menu scroll --}}
+                            @php
+                                $menuCount = $order['order']->detailorder->count();
+                            @endphp
+                            <div class="{{ $menuCount > 5 ? 'overflow-y-scroll h-52' : '' }}">
+                                @foreach($order['order']->detailorder as $menus)
+                                <h1 class="py-1 px-2 text-black font-bold text-xl tracking-wide"> {{$menus->jumlah}}x {{$menus->menu->nama_menu}}</h1>
+                                @endforeach
+                            </div>
+                            {{-- end menu scroll --}}
                             <button data-modal-target="default-modal" data-modal-toggle="default-modal" data-order-id="{{ $order['order']->id_order }}" type="button" class="details-button">
                                 <div class="flex items-center">
                                     <h1 class="py-1 pl-2 pr-1 text-[#55C2FF] text-lg cursor-pointer" id="openModal">Details</h1>
@@ -143,6 +150,13 @@
                             <p class="text-3xl font-bold">{{$order['order']->id_order}}</p>
                         </div>
                     </div>
+                    {{-- Button selesai --}}
+                    <div class="w-full flex justify-center px-10 py-2">
+                        <button class="bg-green-500 p-2 rounded-lg w-full hover:bg-green-800 flex items-center justify-center">
+                            <h1 class="text-white font-bold text-lg">Pesanan Selesai</h1>
+                        </button>
+                    </div>
+                    {{-- end button selesai --}}
                 </div>
                 @endif
                 @endif

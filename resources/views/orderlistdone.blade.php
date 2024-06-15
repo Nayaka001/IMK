@@ -60,7 +60,7 @@
                 @if($order['order']->tipe_order === 'Makan di Tempat' || $order['order']->tipe_order === 'Bawa Pulang')
                 
                 
-                <div class="rounded-xl shadow-lg mb-7 bg-white w-full md:w-80 lg:w-96">
+                <div class="rounded-xl shadow-lg mb-7 bg-white w-full md:w-80 lg:w-96 h-fit">
                     @if($order['order']->tipe_order === 'Makan di Tempat')
                         <div class="h-5 w-full bg-[#00F0FF] text-white font-bold text-sm rounded-t-xl px-2">
                             Makan di tempat

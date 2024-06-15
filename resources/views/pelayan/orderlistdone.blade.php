@@ -40,7 +40,7 @@
         <div class="mt-10 w-full container gap-6 flex flex-wrap mr-0">
 
                         {{-- card --}}
-                        <div class="rounded-xl shadow-lg mb-7 bg-white w-full md:w-80 lg:w-96">
+                        <div class="rounded-xl shadow-lg mb-7 bg-white w-full md:w-80 lg:w-96 h-fit">
                             <div class="h-5 w-full bg-slate-500 text-white font-bold text-sm rounded-t-xl px-2">
                                 Reservasi
                             </div>
