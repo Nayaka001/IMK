@@ -243,14 +243,14 @@
                         <div class="flex items-center xl:w-1/6 align-middle px-2">
                           <span class="max-w-full py-1 px-2 mx-auto border border-black rounded-full text-black font-semibold">#{{$nomorUrut}}</span>
                         </div>
-                        <div class="flex-col items-center xl:w-2/6">
+                        <div class="flex-col items-center w-full xl:w-2/6">
                           <h6 class="max-w-full text-4xl text-slate-700 font-semibold">{{ $menuNames[$menuId] }}</h6>
                           <span class="leading-normal font-mono text-sm text-slate-700">Rp {{ number_format($menudata['total_price'], 0, ',', '.') }}</span>
                           <div class="flex border border-solid border-transparent border-black rounded-full p-0 w-1/4 my-2">
                             <span class="text-red-600 mx-auto">{{ $menudata['quantity'] }}</span>
                           </div>
                         </div>
-                        <div class="flex flex-col items-center ml-4 justify-center xl:w-3/6">
+                        <div class="flex flex-col items-center w-full ml-4 justify-center xl:w-3/6">
                           <img src="{{ $menudata['gambar_menu'] }}" alt="Description of Image" class="custom-size rounded-lg">
                         </div>
                       </li>
