@@ -330,7 +330,7 @@
                         <div class="absolute inset-0 bg-black opacity-50"></div>
                         <div class="bg-white rounded-lg p-6 z-10 max-w-md mx-auto">
                             <h2 class="text-xl font-bold mb-4">Informasi</h2>
-                            <p id="infoModalMessage">Item already added!</p>
+                            <p id="infoModalMessage">Menu telah ditambahkan!</p>
                             <div class="mt-6 flex justify-end">
                                 <button id="infoModalCloseButton" class="bg-gray-500 text-white px-4 py-2 rounded">Tutup</button>
                             </div>
@@ -455,7 +455,7 @@
                                     </label>
                                 </li>
                                 <li class="w-full">
-                                    <input type="radio" id="Digital" name="job" value="Digital" class="hidden peer" required>
+                                    <input type="radio" id="Digital" name="job" value="Non Tunai" class="hidden peer" required>
                                     <label for="Digital" class="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-[#FFD369] peer-checked:text-[#FFD369] peer-checked:font-semibold hover:text-gray-900 hover:bg-gray-100 ">
                                         <div class="flex gap-5">
                                             <img src="/img/digital.png" alt="" width="45" height="45">
