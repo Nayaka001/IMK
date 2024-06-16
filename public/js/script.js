@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             // Check if the menu item is already added
             if (selectedMenuItems.querySelector(`.menu-item[data-id="${menuId}"]`)) {
-                showInfoModal('Item already added!');
+                showInfoModal('Menu telah ditambahkan!');
                 return;
             }
 
