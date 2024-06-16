@@ -26,8 +26,8 @@
                 </form>
                 <ion-icon name="person-circle-outline" class="flex items-center text-5xl -ml-7 -mr-3 -mt-1"></ion-icon>
                 <div class="text-center items-center">
-                    <h1 class="text-sm">Sadtria</h1>
-                    <p class="text-xs text-slate-500">Cashier</p>
+                    <h1 class="text-sm">{{ auth()->user()->karyawan->nama }}</h1>
+                    <p class="text-xs text-slate-500">Pelayan</p>
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
                             @endphp
                         @endif
                     @endforeach
-                    @if($allCompleted && ($order->meja)->status === 'Digunakan')
+                    @if($allCompleted && $order['meja']->status === 'Digunakan')
                 @if($order['order']->tipe_order === 'Makan di Tempat' || $order['order']->tipe_order === 'Reservasi')
                 <div class="rounded-xl shadow-lg mb-7 bg-white w-full md:w-80 lg:w-96 h-fit">
                     @if($order['order']->tipe_order === 'Makan di Tempat')
@@ -186,6 +186,7 @@
                 </div>
                 @endif
                 @endif
+                @endforeach
                 @endforeach
                 {{-- end card --}}
 
