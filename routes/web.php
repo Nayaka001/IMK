@@ -271,7 +271,7 @@ Route::get('/bartender-reserve', function () {
 Route::get('/pelayan-list', [PelayanController::class, 'orderwait'])->name('pelayan.main');
 Route::get('/pelayan-list/done', [PelayanController::class, 'orderdone'])->name('pelayan.done');
 Route::put('/pelayan-list/done/{id_order}', [PelayanController::class, 'pelayanupdate'])->name('pelayan.update');
-Route::put('/pelayan-list/done{id_meja}', [PelayanController::class, 'pelayandone'])->name('pelayan.dones');
+Route::put('/meja/dones/{id_meja}', [PelayanController::class, 'pelayandone'])->name('pelayan.meja');
 // Route::get('/pelayan-list/done', function () {
 //     return view('pelayan.orderlistdone');
 // });

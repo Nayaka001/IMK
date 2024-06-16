@@ -45,9 +45,13 @@
                 {{-- card --}}
                 @foreach($ordersWithDetails  as $order)
                 @php
+                    $meja = $order['order'];
                     $allCompleted = true;
                     $cookingInProgress = false;
                     $readyToCook = false;
+                @endphp
+                @php
+                    $mejaid = $meja->meja; // Asumsi $order memiliki relasi 'meja'
                 @endphp
                     @foreach($order['order']->detailorder as $detail)
                         @if($detail->progress !== 'Selesai')
@@ -66,7 +70,8 @@
                             @endphp
                         @endif
                     @endforeach
-                    @if($allCompleted && $order['meja']->status === 'Digunakan')
+                    {{-- @foreach($order['order']->meja as $meja) --}}
+                    @if($allCompleted && $mejaid && $mejaid->status === 'Digunakan')
                 @if($order['order']->tipe_order === 'Makan di Tempat' || $order['order']->tipe_order === 'Reservasi')
                 <div class="rounded-xl shadow-lg mb-7 bg-white w-full md:w-80 lg:w-96 h-fit">
                     @if($order['order']->tipe_order === 'Makan di Tempat')
@@ -161,7 +166,7 @@
                     <div class="fixed inset-0 bg-black bg-opacity-50"></div>
                     <div class="relative bg-white rounded-lg shadow-lg p-6 w-1/3">
                         <!-- Modal header -->
-                        <form id="updateForm" action="{{ route('pelayan.dones', ['id_meja' => ':id_meja']) }}" method="POST">
+                        <form id="updateForm" action="{{ route('pelayan.meja', ['id_meja' => ':id_meja']) }}" method="POST">
                             @csrf 
                             @method('PUT')
                         <div class="flex items-center justify-between mb-4">
@@ -186,7 +191,6 @@
                 </div>
                 @endif
                 @endif
-                @endforeach
                 @endforeach
                 {{-- end card --}}
 
@@ -241,8 +245,8 @@
                 var order = this.getAttribute('data-id-order');
 
                 // Event listener untuk tombol "Ya"
-                var action = '{{ route('pelayan.dones', ['id_meja' => ':id_meja']) }}';
-                action = action.replace(':id_order', order);
+                var action = '{{ route('pelayan.meja', ['id_meja' => ':id_meja']) }}';
+                action = action.replace(':id_meja', meja);
                 updateForm.setAttribute('action', action); // Ensure the event listener runs only once
             });
         });

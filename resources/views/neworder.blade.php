@@ -348,6 +348,7 @@
                             <input type="hidden" name="id_user" value="{{ auth()->user()->id_user }}">
                             <input type="hidden" name="total_uang" id="money_paid">
                             <input type="hidden" name="kembalian" id="change_hidden">
+                            <input type="hidden" name="nontunai" id="total_nontunai">
                         </div>
                     <hr class="px-2">
                     {{-- end menu --}}
@@ -355,6 +356,7 @@
                     <div class="flex items-center gap-2 mt-5 sm:gap-20 md:gap-[150px] lg:justify-between">
                         <h1 class="font-semibold text-sm py-4 text-gray-600 lg:text-base">Total</h1>
                         <h1 id="subTotal" class="font-bold text-lg lg:text-xl">Rp.0</h1>
+                        <input id="subTotal" type="hidden" value="" class="mt-7 w-[149px] p-1">
                     </div>                   
                     <div id="moneyDisplay" class="hidden">
                         <div class="flex items-center gap-2 sm:gap-20 md:gap-[150px] lg:justify-between">
@@ -455,7 +457,7 @@
                                     </label>
                                 </li>
                                 <li class="w-full">
-                                    <input type="radio" id="Digital" name="job" value="Non Tunai" class="hidden peer" required>
+                                    <input type="radio" id="Digital" name="job" value="NonTunai" class="hidden peer" required>
                                     <label for="Digital" class="inline-flex items-center justify-between w-full p-5 text-gray-900 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-[#FFD369] peer-checked:text-[#FFD369] peer-checked:font-semibold hover:text-gray-900 hover:bg-gray-100 ">
                                         <div class="flex gap-5">
                                             <img src="/img/digital.png" alt="" width="45" height="45">

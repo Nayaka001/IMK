@@ -75,11 +75,19 @@
                         @endif
                     @endforeach
                     @if($allCompleted)
+                    @foreach($order->detailorder as $detail)
+            @if($detail->menu->ktgmenu->jenis === 'Makanan')
             <a href="{{route('kitchen.detail', $order->id_order)}}">
                 <div class="bg-[#ffffff] rounded-2xl flex flex-col p-6 gap-3 items-start shadow-2xl h-64 overflow-auto">
+                    @if($order->tipe_order === 'Makan di Tempat' || $order->tipe_order === 'Reservasi')
                     <div class="flex gap-3">
                         <h2 class="font-bold text-2xl">{{$order->id_meja}}</h2> <h2 class="font-bold text-2xl">#{{$order->id_order}}</h2>
                     </div>
+                    @elseif($order->tipe_order === 'Bawa Pulang')
+                    <div class="flex gap-3">
+                        <h2 class="font-bold text-2xl">Bawa Pulang</h2> <h2 class="font-bold text-2xl">#{{$order->id_order}}</h2>
+                    </div>
+                    @endif
                     
 
                     
@@ -108,6 +116,10 @@
                     @endforeach
                 </div>
             </a>
+            @endif
+            @endforeach
+            @elseif(!$allCompleted)
+            Tidak ada yang siap disajikan
             @endif
             @endforeach
             <!-- end box pesanan -->

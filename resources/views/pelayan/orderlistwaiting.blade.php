@@ -70,7 +70,10 @@
                         <div class="h-5 w-full bg-[#00F0FF] text-white font-bold text-sm rounded-t-xl px-2">
                             Makan di tempat
                         </div>
-                    
+                        @elseif($order['order']->tipe_order === 'Bawa Pulang')
+                        <div class="h-5 w-full bg-[#FF9900] text-white font-bold text-sm rounded-t-xl px-2">
+                            Bawa pulang
+                        </div>
                     @elseif($order['order']->tipe_order === 'Reservasi')
                         <div class="h-5 w-full bg-slate-300 text-white font-bold text-sm rounded-t-xl px-2">
                             Reservasi

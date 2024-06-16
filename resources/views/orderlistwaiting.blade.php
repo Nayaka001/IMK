@@ -321,7 +321,7 @@
                     const menuItem = document.createElement('div');
                     menuItem.className = 'flex-col w-full';
                     
-
+                    const progressClass = details.progress === 'Siap Disajikan' ? 'bg-[#ECCF98]' : details.progress === 'Selesai' ? 'bg-green-300' :  details.progress === 'Dimasak' ? 'bg-pink-300' :'';
                     menuItem.innerHTML = `
                     <div class=" flex my-3">
                         <div>
@@ -334,7 +334,7 @@
                             </div>
                             <div>
                                 <h1 class="text-lg font-bold">Rp ${details.subtotal}</h1>
-                                <div class="text-center w-fit p-1 px-2 bg-green-300 rounded-full">${details.progress}</div>
+                                <div class="text-center w-fit p-1 px-2 ${progressClass} rounded-full">${details.progress}</div>
                             </div>
                         </div>
                     </div>
