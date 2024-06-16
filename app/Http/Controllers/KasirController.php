@@ -71,10 +71,24 @@ class KasirController extends Controller
                 $meja->status = 'Digunakan'; // Contoh status jika meja diisi
             }
             $meja->save();
-
+            foreach ($validated['items'] as $item) {
+                $orderDetail = new OrderDetail();
+                $orderDetail->id_order = $customerId; // Menggunakan ID Order yang baru saja disimpan
+                $orderDetail->id_menu = $item['menu_id'];
+                $orderDetail->note = $item['note'];
+                $orderDetail->jumlah = $item['quantity'];
+                $orderDetail->subtotal = $item['price'];
+                $orderDetail->progress = $request->input('progress');
+                $orderDetail->save();
+        }
             $faktur = new Faktur();
             $faktur->id_order = $customerId;
-            $faktur->total_uang = $request->total_uang;
+            if ($request->input('job') === 'Tunai') {
+                $faktur->total_uang = $request->total_uang;
+            } else {
+                $total_subtotal = OrderDetail::where('id_order', $customerId)->sum('subtotal');
+                $faktur->total_uang = $total_subtotal;
+            }
             $faktur->kembalian = $request->kembalian;
             $faktur->save();
         }
@@ -90,10 +104,25 @@ class KasirController extends Controller
             $order->tipe_pembayaran = $request->input('job');
             $order->nama_pelanggan = $customerName;
             $order->save();
-
+            foreach ($validated['items'] as $item) {
+                $orderDetail = new OrderDetail();
+                $orderDetail->id_order = $customerId; // Menggunakan ID Order yang baru saja disimpan
+                $orderDetail->id_menu = $item['menu_id'];
+                $orderDetail->note = $item['note'];
+                $orderDetail->jumlah = $item['quantity'];
+                $orderDetail->subtotal = $item['price'];
+                $orderDetail->progress = $request->input('progress');
+                $orderDetail->save();
+        }
             $faktur = new Faktur();
             $faktur->id_order = $customerId;
-            $faktur->total_uang = $request->total_uang;
+            if ($request->input('job') === 'Tunai') {
+                $faktur->total_uang = $request->total_uang;
+            } else {
+                $total_subtotal = OrderDetail::where('id_order', $customerId)->sum('subtotal');
+                $faktur->total_uang = $total_subtotal;
+            }
+            
             $faktur->kembalian = $request->kembalian;
             $faktur->save();
         }
@@ -123,14 +152,7 @@ class KasirController extends Controller
                 $meja->status = 'Dipesan'; // Contoh status jika meja diisi
             }
             $meja->save();
-
-            $faktur = new Faktur();
-            $faktur->id_order = $customerId;
-            $faktur->total_uang = $request->total_uang;
-            $faktur->kembalian = $request->kembalian;
-            $faktur->save();
-        }
-        foreach ($validated['items'] as $item) {
+            foreach ($validated['items'] as $item) {
                 $orderDetail = new OrderDetail();
                 $orderDetail->id_order = $customerId; // Menggunakan ID Order yang baru saja disimpan
                 $orderDetail->id_menu = $item['menu_id'];
@@ -139,7 +161,19 @@ class KasirController extends Controller
                 $orderDetail->subtotal = $item['price'];
                 $orderDetail->progress = $request->input('progress');
                 $orderDetail->save();
+            }
+            $faktur = new Faktur();
+            $faktur->id_order = $customerId;
+            if ($request->input('job') === 'Tunai') {
+                $faktur->total_uang = $request->total_uang;
+            } else {
+                $total_subtotal = OrderDetail::where('id_order', $customerId)->sum('subtotal');
+                $faktur->total_uang = $total_subtotal;
+            }
+            $faktur->kembalian = $request->kembalian;
+            $faktur->save();
         }
+        
         // dd($request->all());
         $id_order = Session::get('order_id');
         event(new OrderCreated($id_order));
@@ -426,6 +460,8 @@ class KasirController extends Controller
         $latestOrderId = $latestOrder ? $latestOrder->id_order : null;
         $latestWaktu = Order::latest('id_order')->first();
         $latestWaktuId = $latestWaktu->waktu_order;
+        $latesttipe = Order::latest('id_order')->first();
+        $latesttipeId = $latesttipe->tipe_pembayaran;
         $pelanggan = Order::latest('id_order')->first();
         $pelangganid = $pelanggan->nama_pelanggan;
         $tipe = Order::latest('id_order')->first();
@@ -447,6 +483,7 @@ class KasirController extends Controller
         return view('invoice', [
             'latestOrderId' => $latestOrderId,
             'latestWaktuId' => $latestWaktuId,
+            'latesttipeId' => $latesttipeId,
             'pelangganid' => $pelangganid,
             'total_harga' => $total_harga,
             'tipeid' => $tipeid,

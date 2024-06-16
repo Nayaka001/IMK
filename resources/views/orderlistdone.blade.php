@@ -295,7 +295,7 @@
                                                     <p class="text-lg ml-3">${response.id_meja}</p>
                                                 </div>
                                                 <h1 class=" px-2 text-slate-400 text-lg tracking-wide">${response.jlh_menu} item(s)</h1>
-                                                <div class="w-20 text-center bg-blue-500 text-white rounded-full p-2 tracking-wide my-2 font-semibold">Waiting</div>
+                                                <div class="w-20 text-center bg-green-500 text-white rounded-full p-2 tracking-wide my-2 font-semibold">Done</div>
                                                 <div class="bg-[#EEEEEE] my-2 w-full sm:w-80 h-fit p-2 rounded-xl mt-5 mr-5">
                                                     <h1 class="font-bold text-lg">Notes</h1>
                                                     {{-- notes permenu --}}
@@ -324,7 +324,7 @@
                     const menuItem = document.createElement('div');
                     menuItem.className = 'flex-col w-full';
                     
-
+                    const progressClass = details.progress === 'Siap Disajikan' ? 'bg-[#ECCF98]' : details.progress === 'Selesai' ? 'bg-green-300' :  details.progress === 'Dimasak' ? 'bg-pink-300' :'';
                     menuItem.innerHTML = `
                     <div class=" flex my-3">
                         <div>
@@ -337,7 +337,7 @@
                             </div>
                             <div>
                                 <h1 class="text-lg font-bold">Rp ${details.subtotal}</h1>
-                                <div class="text-center w-fit p-1 px-2 bg-green-300 rounded-full">${details.progress}</div>
+                                <div class="text-center w-fit p-1 px-2 ${progressClass} rounded-full">${details.progress}</div>
                             </div>
                         </div>
                     </div>

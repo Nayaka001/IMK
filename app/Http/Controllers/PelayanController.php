@@ -40,7 +40,7 @@ class PelayanController extends Controller
 
         $orders = Order::whereDate('waktu_order', $today)->get();
         $detail = Order::with('detailorder')->get();
-        $meja = Order::with('meja')->get();
+        $meja = Meja::get();
 
     // Array untuk menyimpan hasil perhitungan
         $ordersWithDetails = [];
@@ -55,12 +55,11 @@ class PelayanController extends Controller
                 'order' => $order,
                 'detail' => $detail,
                 'totalMenu' => $totalMenu,
-                'meja' => $meja
             ];
         }
 
         // Mengirim hasil ke view
-        return view('pelayan.orderlistdone', ['ordersWithDetails' => $ordersWithDetails]);
+        return view('pelayan.orderlistdone', ['ordersWithDetails' => $ordersWithDetails, 'meja' => $meja]);
     }
     public function orderwait(){
         $today = Carbon::today();

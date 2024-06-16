@@ -49,6 +49,14 @@
             @endforeach
         </div>
         <hr class="border border-dashed border-black">
+        @if($latesttipeId === 'NonTunai')
+        <div class="my-3">
+            <div class="flex justify-between">
+                <p class="font-bold">Bayar (QRIS)</p>
+                <p class="font-bold">Rp {{ number_format($bayarid, 0, ',', '.') }}</p>
+            </div>
+        <div>
+        @elseif($latesttipeId === 'Tunai')
         <div class="my-3">
             <div class="flex justify-between">
                 <p class="font-bold">Total</p>
@@ -63,6 +71,7 @@
                 <p>Rp {{ number_format($kembaliid, 0, ',', '.') }}</p>
             </div>
         </div>
+        @endif
         <hr class="border border-dashed border-black">
         <hr class="border border-dashed border-black mt-0.5">
         <h1 class="font-bold text-lg my-5 text-center">Thank You</h1>
