@@ -406,7 +406,7 @@
         </span>
         <div class="flex-1">
             <div class="text-center bg-white border-b-0 rounded-t-2xl" style="color: green;">
-                <strong class="block font-medium text-gray-900 dark:text-white">Delete Berhasil!</strong>
+                <strong class="block font-medium text-gray-900 dark:text-white">Tambah data berhasil!</strong>
                 <!-- <div class="w-full mt-2 h-1 bg-slate-700 rounded"></div> -->
             </div>
             <p class="mt-1 text-sm text-gray-700 dark:text-gray-200" style="color: green;">{{ session('sub') }}</p>

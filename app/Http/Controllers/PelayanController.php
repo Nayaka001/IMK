@@ -38,8 +38,9 @@ class PelayanController extends Controller
     public function orderdone(){
         $today = Carbon::today();
 
-        $orders = Order::with(['meja', 'detailorder'])->whereDate('waktu_order', $today)->get();
-
+        $orders = Order::whereDate('waktu_order', $today)->get();
+        $detail = Order::with('detailorder')->get();
+        $meja = Order::with('meja')->get();
 
     // Array untuk menyimpan hasil perhitungan
         $ordersWithDetails = [];
@@ -52,8 +53,9 @@ class PelayanController extends Controller
             // Menyimpan hasil perhitungan dalam array
             $ordersWithDetails[] = [
                 'order' => $order,
-                // 'detail' => $detail,
+                'detail' => $detail,
                 'totalMenu' => $totalMenu,
+                'meja' => $meja
             ];
         }
 

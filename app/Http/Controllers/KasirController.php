@@ -415,6 +415,7 @@ class KasirController extends Controller
         $report->nama_pengeluaran = $request->input('nama_pengeluaran');
         $report->waktu_pengeluaran = $request->input('waktu_pengeluaran');
         $report->pengeluaran = $request->input('pengeluaran');
+        $report->id_user = $request->input('user');
         $report->save();
 
         return back()->with('success', 'Pengeluaran berhasil ditambahkan!');

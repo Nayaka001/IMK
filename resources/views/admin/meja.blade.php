@@ -84,7 +84,7 @@
                             </div>
                             </div>
                             <div class="text-center">
-                            <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Tambah Menu</button>
+                            <button type="submit" class="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white">Tambah Meja</button>
                             </div>
                         </form>
                         </div>
@@ -100,7 +100,7 @@
         </span>
         <div class="flex-1">
             <div class="text-center bg-white border-b-0 rounded-t-2xl" style="color: green;">
-                <strong class="block font-medium text-gray-900 dark:text-white">Update Berhasil!</strong>
+                <strong class="block font-medium text-gray-900 dark:text-white">Tambah Meja Berhasil!</strong>
                 <!-- <div class="w-full mt-2 h-1 bg-slate-700 rounded"></div> -->
             </div>
             <p class="mt-1 text-sm text-gray-700 dark:text-gray-200" style="color: green;">{{ session('tambah') }}</p>
@@ -124,7 +124,7 @@
         </span>
         <div class="flex-1">
             <div class="text-center bg-white border-b-0 rounded-t-2xl" style="color: green;">
-                <strong class="block font-medium text-gray-900 dark:text-white">Update Berhasil!</strong>
+                <strong class="block font-medium text-gray-900 dark:text-white">Delete Berhasil!</strong>
                 <!-- <div class="w-full mt-2 h-1 bg-slate-700 rounded"></div> -->
             </div>
             <p class="mt-1 text-sm text-gray-700 dark:text-gray-200" style="color: green;">{{ session('delete') }}</p>

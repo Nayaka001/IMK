@@ -37,7 +37,7 @@
                 <div class="flex flex-row -mx-3">
                   <div class="flex-none w-2/3 max-w-full px-3">
                     <div>
-                      <p class="mb-0 font-sans text-sm font-semibold leading-normal">Kitchen Daily</p>
+                      <p class="mb-0 font-sans text-sm font-semibold leading-normal">Kitchen </p>
                       <h5 class="mb-0 font-bold">
                         {{$totalKitchenUsers}}
                         <span class="text-sm leading-normal font-weight-bolder text-lime-500"></span>
@@ -465,7 +465,7 @@
                 <div class="flex flex-row -mx-3">
                   <div class="flex-none w-2/3 max-w-full px-3">
                     <div>
-                      <p class="mb-0 font-sans text-sm font-semibold leading-normal">Kitchen Minggu</p>
+                      <p class="mb-0 font-sans text-sm font-semibold leading-normal">Kitchen</p>
                       <h5 class="mb-0 font-bold">
                         {{$totalKitchenUsers}}
                         <span class="text-sm leading-normal font-weight-bolder text-lime-500"></span>
@@ -796,7 +796,7 @@
                 <div class="flex flex-row -mx-3">
                   <div class="flex-none w-2/3 max-w-full px-3">
                     <div>
-                      <p class="mb-0 font-sans text-sm font-semibold leading-normal">Kitchen Bulan</p>
+                      <p class="mb-0 font-sans text-sm font-semibold leading-normal">Kitchen</p>
                       <h5 class="mb-0 font-bold">
                         {{$totalKitchenUsers}}
                         <span class="text-sm leading-normal font-weight-bolder text-lime-500"></span>
