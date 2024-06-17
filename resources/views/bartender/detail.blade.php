@@ -21,7 +21,7 @@
                 <h2 class="font-bold text-2xl">{{$order->id_meja}}</h2> <h2 class="font-bold text-2xl">#{{$order->id_order}}</h2>
             </div>
             <div class="bg-slate-500 py-1 px-3 rounded-3xl">
-                <h3 class="font-bold text-white">Sedang dimasak</h3>
+                <h3 class="font-bold text-white">Sedang dibuat</h3>
             </div>
 
             <!-- pesanan 1 start -->
