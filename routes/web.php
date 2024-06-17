@@ -118,6 +118,8 @@ Route::middleware(['auth', 'role:Bartender'])->group(function () {
     Route::get('/bready', [BartenderController::class, 'ready'])->name('index.bready');
     Route::get('/bdone', [BartenderController::class, 'done'])->name('index.bdone');
     Route::get('/breser', [BartenderController::class, 'reser'])->name('index.breser');
+    Route::get('/bmenu', [BartenderController::class, 'menu'])->name('menu.bartender');
+    Route::put('/bmenu/update/{id_menu}', [BartenderController::class, 'menuupdate'])->name('bartender.updatemenu');
     Route::get('/bartender-detail/{id_order}',  [BartenderController::class, 'detail'])->name('bartender.detail');
     
     // Route::get('/kitchen-detail/{id_order}/{id_order_details}',  [KitchenController::class, 'modal'])->name('kitchen.detailmodal');
