@@ -83,7 +83,7 @@
 
                     
                         <div class="bg-[#ECCF98] rounded-xl flex p-2 items-center">
-                            Sedang dimasak
+                            Sedang dibuat
                         </div>
                     
                     

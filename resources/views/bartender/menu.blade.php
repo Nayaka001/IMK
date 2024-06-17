@@ -29,7 +29,7 @@
       <ion-icon name="person-circle-outline" class="flex items-center text-5xl -ml-7 -mr-3 -mt-1 z-0"></ion-icon>
       <div class="text-center items-center">
           <h1 class="text-sm">User Name</h1>
-          <p class="text-xs text-slate-500">Cashier</p>
+          <p class="text-xs text-slate-500">Bartender</p>
       </div>
   </div>
 
