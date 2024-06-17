@@ -157,7 +157,7 @@
                     {{-- Button selesai --}}
                     <div  class="w-full flex justify-center px-10 py-2">
                         <button id="availableModalBtn" class=" bg-green-500 p-2 rounded-lg w-full hover:bg-green-800 flex items-center justify-center edit-button" data-id-meja="{{$order['order']->id_meja}}" data-id-order="{{$order['order']->id_order}}">
-                            <h1  class="text-white font-bold text-lg">Pesanan Selesai</h1>
+                            <h1  class="text-white font-bold text-lg">Kosongkan Meja</h1>
                         </button>
                     </div>
                     {{-- end button selesai --}}
