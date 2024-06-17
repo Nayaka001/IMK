@@ -158,6 +158,30 @@
     @endif
 @endsection
 @push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('logoutButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin logout?',
+                text: "Anda akan keluar dari akun Anda!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, Logout!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect ke route logout setelah pengguna mengonfirmasi
+                    window.location.href = "{{ route('logout') }}";
+                }
+            });
+        });
+    });
+</script>
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
        // Simulasi login berhasil

@@ -259,7 +259,7 @@
             url: '/orders/' + orderId, // Ganti dengan endpoint yang sesuai
             type: 'GET',
             success: function(response) {
-
+                var waktuDisplay = response.tipe_order === 'Reservasi' ? 'Waktu reservasi : ' + response.kedatangan : 'Waktu order : ' + response.waktu_order;
                 console.log(response)
                 // Asumsikan responsenya adalah object dengan struktur data yang diperlukan
                 var modalBody = `
@@ -268,7 +268,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-8">
                             <path d="M11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM15.29 16.71L11 12.41V7H13V11.59L16.71 15.3L15.29 16.71Z" fill="black"/>
                         </svg>
-                        <p class="text-lg ml-3">Waktu order : ${response.waktu_order}</p>
+                        <p class="text-lg ml-3">${waktuDisplay}</p>
                     </div>
                     <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none">
