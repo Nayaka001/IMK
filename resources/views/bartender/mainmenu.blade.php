@@ -85,7 +85,7 @@
 
                     @if($cookingInProgress)
                         <div class="bg-[#ECCF98] rounded-xl flex p-2 items-center">
-                            Sedang dimasak
+                            Sedang dibuat
                         </div>
                     @elseif($allCompleted)
                         <div class="bg-[#ECCF98] rounded-xl flex p-2 items-center">

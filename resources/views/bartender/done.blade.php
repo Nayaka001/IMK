@@ -20,7 +20,7 @@
                 <ion-icon id="user-icon" name="person-circle-outline" style="font-size: 3rem; width: 3rem; height: 3rem;"></ion-icon>
                 <div class="text-center">
                     <h1 class="text-sm font-medium">{{ auth()->user()->karyawan->nama }}</h1>
-                    <p class="text-xs text-slate-500">Cashier</p>
+                    <p class="text-xs text-slate-500">Bartender</p>
                 </div>
             </div>
         </div>
@@ -90,7 +90,7 @@
                    
                    
                     @foreach($order->detailorder as $detail)
-                    @if($detail->menu->ktgmenu->jenis === 'Makanan')
+                    @if($detail->menu->ktgmenu->jenis === 'Minuman')
                     <div class="grid grid-cols-2">
                         <div class="w-max flex">
                             <p class="font-bold">{{$detail->jumlah}} x</p>
