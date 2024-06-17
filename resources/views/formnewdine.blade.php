@@ -40,7 +40,7 @@
                     <a href="" id="showForm1">
                         <div class="w-32 h-32 rounded-full bg-black relative mx-3 -mt-14 flex-col shadow-lg group hover:bg-black md:w-40 md:h-40">
                             <img src="/img/iftar.png" width="70" alt="" class="mx-auto pt-1 md:pt-7">
-                            <h1 class="text-white text-center font-bold text-sm md:text-md">Makan di tempat</h1>
+                            <h1 class="text-white text-center font-bold text-sm group-hover:text-white md:text-md">Makan di tempat</h1>
                         </div>
                     </a>
                     <a href="" id="showForm2">
