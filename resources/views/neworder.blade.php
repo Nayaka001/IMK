@@ -275,7 +275,17 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-8">
                                 <path d="M11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM15.29 16.71L11 12.41V7H13V11.59L16.71 15.3L15.29 16.71Z" fill="black"/>
                             </svg>
-                            <p class="text-sm ml-0.5 md:text-base">{{ now()->format('d F Y g:i A') }}</p>
+                            @php
+                                use Carbon\Carbon;
+                            @endphp
+                            @if (Session::get('tipe_order') === 'Reservasi')
+                                @php
+                                    $waktuDatang = Carbon::parse(Session::get('waktu_datang'))->format('d F Y g:i A');
+                                @endphp
+                                <p class="text-sm ml-0.5 md:text-base">{{ $waktuDatang }}</p>
+                            @else
+                                <p class="text-sm ml-0.5 md:text-base">{{ now()->format('d F Y g:i A') }}</p>
+                            @endif
                         </div>
                         <div class="flex my-2 items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-8">
