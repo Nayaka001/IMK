@@ -359,14 +359,20 @@ class KasirController extends Controller
             'nama_pelanggan' => $order->nama_pelanggan,
             'jlh_org' => $order->jlh_org,
             'id_meja' => $order->id_meja,
+            'progress' =>$detail->progress,
             'detailorder' => $detailOrders,
             'detail' => $detail,
             'jlh_menu' => $jumlahMenu,
             'total' => $total,
         ];
+        $allProgressSelesai = true;
         foreach ($detail as $detailItem) {
             $detailItem->gambar_menu = asset('img/menu/' . $detailItem->gambar_menu);
+            if ($detailItem->progress !== 'Selesai') {
+                $allProgressSelesai = false;
+            }
         }
+        $orderDetails['progress'] = $allProgressSelesai ? 'Selesai' : 'Waiting';
         // Kembalikan data dalam format JSON
         return response()->json($orderDetails);
     }
