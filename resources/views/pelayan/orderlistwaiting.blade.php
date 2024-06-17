@@ -44,7 +44,7 @@
                 @php
                     $allCompleted = true;
                     $cookingInProgress = false;
-                    $readyToCook = false;
+                    $readyToCook = true;
                 @endphp
                     @foreach($order['order']->detailorder as $detail)
                         @if($detail->progress !== 'Selesai')
@@ -57,9 +57,9 @@
                                 $cookingInProgress = true;
                             @endphp
                         @endif
-                        @if($detail->progress === 'Siap Disajikan')
+                        @if($detail->progress !== 'Siap Disajikan')
                             @php
-                                $readyToCook = true;
+                                $readyToCook = false;
                             @endphp
                         @endif
                     @endforeach
@@ -200,7 +200,30 @@
     </div>
 
 </div>    
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('logoutButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin logout?',
+                text: "Anda akan keluar dari akun Anda!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, Logout!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect ke route logout setelah pengguna mengonfirmasi
+                    window.location.href = "{{ route('logout') }}";
+                }
+            });
+        });
+    });
+</script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var confirmModal = document.getElementById('confirm-modal');
@@ -257,6 +280,9 @@
             url: '/orders/' + orderId, // Ganti dengan endpoint yang sesuai
             type: 'GET',
             success: function(response) {
+                var progressStatus = response.progress === 'Selesai' ? 'Done' : 'Waiting';
+                var progressBgColor = response.progress === 'Selesai' ? 'bg-green-500' : 'bg-blue-500';
+                var waktuDisplay = response.tipe_order === 'Reservasi' ? 'Waktu reservasi : ' + response.kedatangan : 'Waktu order : ' + response.waktu_order;
 
                 console.log(response)
                 // Asumsikan responsenya adalah object dengan struktur data yang diperlukan
@@ -266,7 +292,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="size-8">
                             <path d="M11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM15.29 16.71L11 12.41V7H13V11.59L16.71 15.3L15.29 16.71Z" fill="black"/>
                         </svg>
-                        <p class="text-lg ml-3">Waktu order : ${response.waktu_order}</p>
+                        <p class="text-lg ml-3">${waktuDisplay}</p>
                     </div>
                     <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none">
@@ -293,7 +319,7 @@
                                                     <p class="text-lg ml-3">${response.id_meja ? response.id_meja : '-'}</p>
                                                 </div>
                                                 <h1 class=" px-2 text-slate-400 text-lg tracking-wide">${response.jlh_menu} item(s)</h1>
-                                                <div class="w-20 text-center bg-blue-500 text-white rounded-full p-2 tracking-wide my-2 font-semibold">Waiting</div>
+                                                <div class="w-20 text-center ${progressBgColor} text-white rounded-full p-2 tracking-wide my-2 font-semibold">${progressStatus}</div>
                                                 <div class="bg-[#EEEEEE] my-2 w-full sm:w-80 h-fit p-2 rounded-xl mt-5 mr-5">
                                                     <h1 class="font-bold text-lg">Notes</h1>
                                                     {{-- notes permenu --}}

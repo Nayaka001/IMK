@@ -340,30 +340,8 @@ class KasirController extends Controller
             'detail' => $detail,
             'jlh_menu' => $jumlahMenu,
             'total' => $total,
-        ];
-        foreach ($detail as $detailItem) {
-            $detailItem->gambar_menu = asset('img/menu/' . $detailItem->gambar_menu);
-        }
-        // Kembalikan data dalam format JSON
-        return response()->json($orderDetails);
-    }
-    public function modaldone($id_order){
-        $order = Order::find($id_order);
-        $detailOrders = OrderDetail::where('id_order', $id_order)->get();
-        $detail = DetailPesanan::where('id_order', $id_order)->get();
-        $total = DetailPesanan::where('id_order', $id_order)->sum('subtotal');
-      
-        $jumlahMenu = OrderDetail::where('id_order', $id_order)->sum('jumlah');
-        $orderDetails = [
-            'waktu_order' => $order->waktu_order, 
-            'nama_pelanggan' => $order->nama_pelanggan,
-            'jlh_org' => $order->jlh_org,
-            'id_meja' => $order->id_meja,
-            'progress' =>$detail->progress,
-            'detailorder' => $detailOrders,
-            'detail' => $detail,
-            'jlh_menu' => $jumlahMenu,
-            'total' => $total,
+            'tipe_order' => $order->tipe_order,
+            'kedatangan' => $order->kedatangan ?? null,
         ];
         $allProgressSelesai = true;
         foreach ($detail as $detailItem) {
@@ -376,6 +354,31 @@ class KasirController extends Controller
         // Kembalikan data dalam format JSON
         return response()->json($orderDetails);
     }
+    public function modaldone($id_order){
+        $order = Order::find($id_order);
+        $detailOrders = OrderDetail::where('id_order', $id_order)->get();
+        $detail = DetailPesanan::where('id_order', $id_order)->get();
+        $total = DetailPesanan::where('id_order', $id_order)->sum('subtotal');
+    
+        $jumlahMenu = OrderDetail::where('id_order', $id_order)->sum('jumlah');
+        $orderDetails = [
+            'waktu_order' => $order->waktu_order,
+            'nama_pelanggan' => $order->nama_pelanggan,
+            'jlh_org' => $order->jlh_org,
+            'id_meja' => $order->id_meja,
+            'progress' => $detail->progress,
+            'detailorder' => $detailOrders,
+            'detail' => $detail,
+            'jlh_menu' => $jumlahMenu,
+            'total' => $total,
+            'tipe_order' => $order->tipe_order,
+            'kedatangan' => $order->kedatangan ?? null,
+        ];
+        
+        // Return data in JSON format
+        return response()->json($orderDetails);
+    }
+    
     public function indexreport(){
         // Ambil semua pesanan yang dibuat hari ini dan diurutkan berdasarkan waktu_order
         $orders = Order::whereDate('waktu_order', now()->toDateString())
@@ -442,10 +445,17 @@ class KasirController extends Controller
             'detail' => $detail,
             'jlh_menu' => $jumlahMenu,
             'total' => $total,
+            'tipe_order' => $order->tipe_order,
+            'kedatangan' => $order->kedatangan ?? null,
         ];
+        $allProgressSelesai = true;
         foreach ($detail as $detailItem) {
             $detailItem->gambar_menu = asset('img/menu/' . $detailItem->gambar_menu);
+            if ($detailItem->progress !== 'Selesai') {
+                $allProgressSelesai = false;
+            }
         }
+        $orderDetails['progress'] = $allProgressSelesai ? 'Selesai' : 'Waiting';
         // Kembalikan data dalam format JSON
         return response()->json($orderDetails);
     }
