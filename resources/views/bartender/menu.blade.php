@@ -35,7 +35,7 @@
 
   {{-- kategori --}}
   <div class="w-3/4 flex justify-between my-5 overflow-x-scroll sm:w-4/5 md:w-11/12 lg:w-full lg:overflow-visible">
-      <a href="/kitchen-main">
+      <a href="{{ route('index.bartender') }}">
           <div class="rounded-2xl text-white bg-black w-fit px-3 py-2 shadow-md mx-2 font-bold">Utama</div>
       </a>
       <div id="AllLink" class="rounded-2xl bg-[#FFD369] w-fit px-3 py-2 shadow-md mx-2 font-bold">All</div>
@@ -49,7 +49,7 @@
   
   <div id="all">
     @foreach($kategori as $kategoris)
-    @if($kategoris->jenis === 'Makanan')
+    @if($kategoris->jenis === 'Minuman')
         <div class="w-full">
             <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
             <hr class="mt-3 w-full mx-3">
@@ -130,7 +130,7 @@
 
         {{-- <div id="kidsmeal" class="hidden">
           @foreach($kategori as $kategoris)
-          @if($kategoris->kategori === 'KIDS MEAL' && $kategoris->jenis === 'Makanan')
+          @if($kategoris->kategori === 'KIDS MEAL' && $kategoris->jenis === 'Minuman')
             <div class="w-full">
               <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
               <hr class="mt-3 w-full mx-3">
@@ -156,7 +156,7 @@
         </div> --}}
         {{-- <div id="sayuran" class="hidden">
            @foreach($kategori as $kategoris)
-          @if($kategoris->kategori === 'SAYURAN' && $kategoris->jenis === 'Makanan')
+          @if($kategoris->kategori === 'SAYURAN' && $kategoris->jenis === 'Minuman')
             <div class="w-full">
               <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
               <hr class="mt-3 w-full mx-3">
@@ -182,7 +182,7 @@
         </div> --}}
         {{-- <div id="steak" class="hidden">
           @foreach($kategori as $kategoris)
-          @if($kategoris->kategori === 'STEAKS & HOTPLATES' && $kategoris->jenis === 'Makanan')
+          @if($kategoris->kategori === 'STEAKS & HOTPLATES' && $kategoris->jenis === 'Minuman')
             <div class="w-full">
               <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
               <hr class="mt-3 w-full mx-3">
@@ -208,7 +208,7 @@
         </div> --}}
         {{-- <div id="rice" class="hidden">
           @foreach($kategori as $kategoris)
-          @if($kategoris->kategori === 'RICE HOTPLATE' && $kategoris->jenis === 'Makanan')
+          @if($kategoris->kategori === 'RICE HOTPLATE' && $kategoris->jenis === 'Minuman')
             <div class="w-full">
               <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
               <hr class="mt-3 w-full mx-3">
@@ -234,7 +234,7 @@
         </div> --}}
         {{-- <div id="geprek" class="hidden">
           @foreach($kategori as $kategoris)
-          @if($kategoris->kategori === 'GEPREK' && $kategoris->jenis === 'Makanan')
+          @if($kategoris->kategori === 'GEPREK' && $kategoris->jenis === 'Minuman')
             <div class="w-full">
               <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
               <hr class="mt-3 w-full mx-3">
@@ -260,7 +260,7 @@
         </div> --}}
         {{-- <div id="cemilan" class="hidden">
         @foreach($kategori as $kategoris)
-        @if($kategoris->kategori === 'CEMILAN' && $kategoris->jenis === 'Makanan')
+        @if($kategoris->kategori === 'CEMILAN' && $kategoris->jenis === 'Minuman')
           <div class="w-full">
             <h1 class="text-3xl font-bold ml-3 pt-4">{{$kategoris->subkategori}}</h1>
             <hr class="mt-3 w-full mx-3">

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
+use App\Models\Menu;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use Carbon\Carbon;
@@ -62,5 +64,28 @@ class BartenderController extends Controller
         }
     
         return back();
+    }
+    public function menu(Request $request){
+        if ($request->has('search')) {
+            $kategori = Kategori::all();
+            $menu = Menu::where('nama_menu', 'LIKE', '%' . $request->search . '%')->get();
+
+        } else {
+            $kategori = Kategori::all();
+            $menu = Menu::all();
+        }
+        
+        return view('bartender.menu', [
+            'kategori' => $kategori,
+            'menu' => $menu
+        ]);
+    }
+    public function menuupdate(Request $request, $id_menu){
+        $menu = Menu::find($id_menu);
+        
+        $menu->status = $request->input('status');
+        $menu->save();
+
+        return back()->with('succes', 'Berhasil merubah menjadi habis');
     }
 }
