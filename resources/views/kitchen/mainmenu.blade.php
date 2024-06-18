@@ -56,8 +56,8 @@
         <div class="m-4 justify-center gap-5 flex flex-wrap">
             <!-- box pesanan -->
             @foreach($orders as $order)
-            @foreach($order->detailorder as $detail)
-            @if($detail->menu->ktgmenu->jenis === 'Makanan')
+            {{-- @foreach($order->detailorder as $detail)
+            @if($detail->menu->ktgmenu->jenis === 'Makanan') --}}
             <a href="{{route('kitchen.detail', $order->id_order)}}">
                 <div class="bg-[#ffffff] rounded-2xl flex flex-col p-6 gap-3 items-start shadow-2xl h-64 overflow-auto">
                     @if($order->tipe_order === 'Makan di Tempat' || $order->tipe_order === 'Reservasi')
@@ -74,17 +74,17 @@
                     $cookingInProgress = false;
                     @endphp
                     @foreach($order->detailorder as $detail)
-                        @if($detail->progress !== 'Selesai')
+                        @if($detail->progress !== 'Selesai' && $detail->menu->ktgmenu->jenis === 'Makanan')
                             @php
                                 $allCompleted = false;
                             @endphp
                         @endif
-                        @if($detail->progress === 'Dimasak')
+                        @if($detail->progress === 'Dimasak' && $detail->menu->ktgmenu->jenis === 'Makanan')
                             @php
                                 $cookingInProgress = true;
                             @endphp
                         @endif
-                        @if($detail->progress === 'Siap Disajikan')
+                        @if($detail->progress === 'Siap Disajikan' && $detail->menu->ktgmenu->jenis === 'Makanan')
                             @php
                                 $readyToCook = true;
                             @endphp
@@ -125,8 +125,8 @@
                     {{-- button selesai --}}
                 </div>
             </a>
-            @endif
-            @endforeach
+            {{-- @endif
+            @endforeach --}}
             @endforeach
             <!-- end box pesanan -->
         </div>

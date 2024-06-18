@@ -125,7 +125,7 @@ Route::middleware(['auth', 'role:Bartender'])->group(function () {
     // Route::get('/kitchen-detail/{id_order}/{id_order_details}',  [KitchenController::class, 'modal'])->name('kitchen.detailmodal');
     Route::put('/bartender-update/{id_order}/{id_order_details}',  [BartenderController::class, 'update'])->name('bartender.update');
     
-
+    
 
 });
 
@@ -262,9 +262,9 @@ Route::get('/bartender-ready', function () {
 Route::get('/bartender-detail', function () {
     return view('bartender.detail');
 });
-Route::get('/bartender-menu', function () {
-    return view('bartender.menu');
-});
+// Route::get('/bartender-menu', function () {
+//     return view('bartender.menu');
+// });
 Route::get('/bartender-reserve', function () {
     return view('bartender.reserve');
 });
